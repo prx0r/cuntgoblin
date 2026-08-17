@@ -1,0 +1,23 @@
+{
+  "description": "Persist a key/value to local state (MUTATING \u2014 never invoked by probes).",
+  "inputSchema": {
+    "properties": {
+      "key": {
+        "title": "Key",
+        "type": "string"
+      },
+      "value": {
+        "title": "Value",
+        "type": "string"
+      }
+    },
+    "required": [
+      "key",
+      "value"
+    ],
+    "title": "mutate_stateArguments",
+    "type": "object"
+  },
+  "name": "mutate_state",
+  "safety_class": "MUTATING"
+}

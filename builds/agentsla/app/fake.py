@@ -7,6 +7,7 @@ without a network. Real benchmark numbers come only from app/client.LLMClient.
 from __future__ import annotations
 
 import json
+from pathlib import Path
 from typing import Callable, Protocol
 
 from .client import ChatResult  # noqa: F401  (re-exported for tests)
@@ -86,26 +87,44 @@ def make_scripted_client(model: str, patch_text: str = ""):
 
 
 # Known-good patch texts for offline pipeline demos (correct fixes).
+#
+# IMPORTANT: generated with difflib.unified_diff from the ACTUAL task files so
+# hunk headers and context lines are always valid for `patch -p1`.
 
-MATHLIB_FIX = """--- a/src/mathlib.py
-+++ b/src/mathlib.py
-@@ -17,7 +17,7 @@
--    return ordered[mid - 1] + ordered[mid] / 2.0  # ← wrong: missing /2 on the sum
-+    return (ordered[mid - 1] + ordered[mid]) / 2.0
-"""
+import difflib  # noqa: E402
 
-PARSE_LOG_FIX = """--- a/src/parse_log.py
-+++ b/src/parse_log.py
-@@ -38,10 +38,10 @@
--    if "skip=" in stripped:
--        trailing = stripped.split("skip=", 1)[1]
--        if trailing == "0":
--            return None  # ← wrong: skip=0 means "do NOT skip"
-+    if "skip=" in stripped:
-+        trailing = stripped.split("skip=", 1)[1]
-+        if trailing == "1":
-+            return None  # only skip=1 lines are dropped
-"""
+_TASKS = Path(__file__).resolve().parent.parent / "tasks"
+
+
+def _unified(rel_path: str, transform) -> str:
+    """Build a unified diff between the task file and its fixed version."""
+    src = (_TASKS / rel_path).read_text(encoding="utf-8")
+    fixed = transform(src)
+    diff = difflib.unified_diff(
+        src.splitlines(keepends=True),
+        fixed.splitlines(keepends=True),
+        fromfile=f"a/{rel_path}",
+        tofile=f"b/{rel_path}",
+    )
+    return "".join(diff)
+
+
+def _mathlib_fixed(src: str) -> str:
+    return src.replace(
+        "return ordered[mid - 1] + ordered[mid] / 2.0  # ← wrong: missing /2 on the sum",
+        "return (ordered[mid - 1] + ordered[mid]) / 2.0",
+    )
+
+
+def _parselog_fixed(src: str) -> str:
+    return src.replace(
+        '        if trailing == "0":\n            return None  # ← wrong: skip=0 means "do NOT skip"',
+        '        if trailing == "1":\n            return None  # only skip=1 lines are dropped',
+    )
+
+
+MATHLIB_FIX = _unified("coding_patch/mathlib/src/mathlib.py", _mathlib_fixed)
+PARSE_LOG_FIX = _unified("coding_debug/parse_log/src/parse_log.py", _parselog_fixed)
 
 RESEARCH_PERFECT = (
     "Alpha was founded in 1998, which is earlier than Beta (2005). "

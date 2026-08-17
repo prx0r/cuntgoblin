@@ -1,0 +1,23 @@
+{
+  "description": "Add two integers (read-only, deterministic).",
+  "inputSchema": {
+    "properties": {
+      "a": {
+        "title": "A",
+        "type": "integer"
+      },
+      "b": {
+        "title": "B",
+        "type": "integer"
+      }
+    },
+    "required": [
+      "a",
+      "b"
+    ],
+    "title": "addArguments",
+    "type": "object"
+  },
+  "name": "add",
+  "safety_class": "MUTATING"
+}

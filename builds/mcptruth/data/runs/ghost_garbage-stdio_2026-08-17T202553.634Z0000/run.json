@@ -1,0 +1,16 @@
+{
+  "artifact_count": 0,
+  "completed_at": "2026-08-17T20:25:53.690+00:00",
+  "error_class": "INIT_FAILED",
+  "error_detail": "unhandled errors in a TaskGroup (1 sub-exception)",
+  "measurement_count": 1,
+  "method_version": "mcptruth-harness-v1",
+  "observation_count": 0,
+  "probe_type": "full",
+  "region": "local",
+  "run_id": "run_ghost_garbage-stdio_2026-08-17T202553634+0000",
+  "server_id": "ghost:garbage-stdio",
+  "server_name": "Garbage",
+  "started_at": "2026-08-17T20:25:53.634+00:00",
+  "status": "FAILED"
+}

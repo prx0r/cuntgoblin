@@ -566,7 +566,7 @@ def run_cell(
     conn.execute(
         """INSERT INTO runs (run_id, benchmark_id, architecture_version_id, task_version_id, attempt,
            git_sha, environment_hash, model_ids, provider_endpoint_ids, random_seed, started_at,
-           status) VALUES (?,?,?,?,?,?,?,?,?,?,'running')""",
+           status) VALUES (?,?,?,?,?,?,?,?,?,?,?,'running')""",
         (
             run_id, benchmark_id, arch_ver_id, task_ver_id, attempt, git_sha,
             spec["environment_hash"], json.dumps([_model_of(client)]),

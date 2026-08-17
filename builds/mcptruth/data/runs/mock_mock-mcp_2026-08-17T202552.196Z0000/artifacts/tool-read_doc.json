@@ -1,0 +1,18 @@
+{
+  "description": "Read a document (read-only mock; returns canned content).",
+  "inputSchema": {
+    "properties": {
+      "path": {
+        "title": "Path",
+        "type": "string"
+      }
+    },
+    "required": [
+      "path"
+    ],
+    "title": "read_docArguments",
+    "type": "object"
+  },
+  "name": "read_doc",
+  "safety_class": "READ_ONLY"
+}

@@ -1,0 +1,16 @@
+{
+  "artifact_count": 6,
+  "completed_at": "2026-08-17T20:28:01.348+00:00",
+  "error_class": null,
+  "error_detail": "",
+  "measurement_count": 6,
+  "method_version": "mcptruth-harness-v1",
+  "observation_count": 6,
+  "probe_type": "full",
+  "region": "local",
+  "run_id": "run_mock_mock-mcp_2026-08-17T202800565+0000",
+  "server_id": "mock:mock-mcp",
+  "server_name": "Mock MCP (local)",
+  "started_at": "2026-08-17T20:28:00.565+00:00",
+  "status": "SUCCESS"
+}

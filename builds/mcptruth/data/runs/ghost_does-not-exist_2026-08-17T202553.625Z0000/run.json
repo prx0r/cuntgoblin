@@ -1,0 +1,16 @@
+{
+  "artifact_count": 0,
+  "completed_at": "2026-08-17T20:25:53.632+00:00",
+  "error_class": "CONNECTION_ERROR",
+  "error_detail": "[Errno 2] No such file or directory: '/nonexistent/binary-xyz'",
+  "measurement_count": 1,
+  "method_version": "mcptruth-harness-v1",
+  "observation_count": 0,
+  "probe_type": "full",
+  "region": "local",
+  "run_id": "run_ghost_does-not-exist_2026-08-17T202553625+0000",
+  "server_id": "ghost:does-not-exist",
+  "server_name": "Ghost",
+  "started_at": "2026-08-17T20:25:53.625+00:00",
+  "status": "FAILED"
+}

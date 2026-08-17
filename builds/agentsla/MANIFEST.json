@@ -1,0 +1,40 @@
+{
+  "product": "agentsla",
+  "version": "0.1.0",
+  "description": "Cost-per-success profiler: measure real cost, duration and success rate of agent task execution.",
+  "docs": [
+    "docs/README.md"
+  ],
+  "entrypoints": {
+    "benchmark": "run_benchmark.py",
+    "gate": "check.py",
+    "api": "app/api.py",
+    "mcp": "mcp/server.py"
+  },
+  "modules": [
+    "app/api.py",
+    "app/client.py",
+    "app/cost.py",
+    "app/dataset.py",
+    "app/db.py",
+    "app/evidence.py",
+    "app/fake.py",
+    "app/grader.py",
+    "app/metrics.py",
+    "app/prices.py",
+    "app/runner.py",
+    "check.py",
+    "mcp/server.py",
+    "run_benchmark.py"
+  ],
+  "data_contracts": {
+    "tables": [
+      "tasks", "task_versions", "architectures", "architecture_versions",
+      "runs", "run_components", "model_calls", "tool_calls",
+      "evaluations", "cost_events"
+    ],
+    "run_envelope": [
+      "run.json", "stdout.log", "results.jsonl", "artifacts/"
+    ]
+  }
+}

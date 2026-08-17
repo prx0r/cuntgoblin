@@ -93,7 +93,7 @@ def map_tool_capabilities(server_id: str, tool_name: str, description: str) -> l
     """Return [(capability_id, confidence, method)] for one tool."""
     key = f"{server_id}:{tool_name}"
     if key in CURATED:
-        return CURATED[key]
+        return CURATED.get(key) or []
 
     haystack = f"{tool_name} {description}".lower()
     hits: list[tuple[str, float, str]] = []

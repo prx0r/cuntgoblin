@@ -1,0 +1,32 @@
+[
+  {
+    "artifact": "tool-echo.json",
+    "selector": "$.tool-echo.json",
+    "sha256": "1a1123fa3f5c93e069efeda29a39e30da80dabfaec224b33c5b2b57cb7d1954e"
+  },
+  {
+    "artifact": "tool-add.json",
+    "selector": "$.tool-add.json",
+    "sha256": "af3eaeeea6f1d71d464ee48bf7ad151bd6e0309abb15c510ad15c2fc534431b9"
+  },
+  {
+    "artifact": "tool-read_doc.json",
+    "selector": "$.tool-read_doc.json",
+    "sha256": "abcf48dd706bfb3bf236ef1a80bf4794047f617c0b6b2d16b54f545e29314a5a"
+  },
+  {
+    "artifact": "tool-list_tree.json",
+    "selector": "$.tool-list_tree.json",
+    "sha256": "53e691fb1ba5d3b75ca33d81d933e91c4aaac65c958e5d0a4609c4bd6fce59bb"
+  },
+  {
+    "artifact": "tool-web_search.json",
+    "selector": "$.tool-web_search.json",
+    "sha256": "07493d984dadc3a30fc86ffb214dbbe64f0dbbaddc0b74c8ad5af54a13515943"
+  },
+  {
+    "artifact": "tool-mutate_state.json",
+    "selector": "$.tool-mutate_state.json",
+    "sha256": "2b4ce8b05ef1b9c0b94a4c4dbfd688a9b1bfaea50de8ad42c456d9bbbcf070f9"
+  }
+]

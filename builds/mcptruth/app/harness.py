@@ -143,7 +143,10 @@ class Harness:
             args = server.get("args") or []
             env = dict(os.environ)
             env.update(server.get("env") or {})
-            params = StdioServerParameters(command=cmd, args=args, env=env)
+            params = StdioServerParameters(
+                command=cmd, args=args, env=env,
+                cwd=os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+            )
             async with stdio_client(params) as (read, write):
                 async with ClientSession(read, write) as session:
                     await asyncio.wait_for(session.initialize(), timeout=self.timeout_s)
@@ -298,6 +301,10 @@ class Harness:
             except Exception as exc:
                 inv_ms = (time.perf_counter() - inv_start) * 1000.0
                 ec, ed = classify_error(exc)
+                # classify_error defaults unknown exceptions to INIT_FAILED;
+                # at the invocation stage that means the TOOL call failed.
+                if ec == "INIT_FAILED":
+                    ec = "INVOCATION_FAILED"
                 err = f"{ec}: {ed}"
                 if ec == "RATE_LIMITED":
                     self.result.error_class = self.result.error_class or "RATE_LIMITED"

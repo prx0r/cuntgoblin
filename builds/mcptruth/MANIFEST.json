@@ -1,0 +1,69 @@
+{
+  "schema": "venturelab.build.v1",
+  "description": "MCPTruth build registry: every doc/script/module + id + owner + validator.",
+  "date": "2026-08-17",
+  "build": "mcptruth",
+  "spec": "specs/mcptruth/architecture.md",
+  "docs": {
+    "README.md": {
+      "id": "mcptruth:readme",
+      "owner": "patala",
+      "role": "quick start + API surface + product decisions",
+      "validator": "python -m pytest tests/test_integrity.py::test_manifest_covers_build"
+    },
+    "docs/README.md": {
+      "id": "mcptruth:engineering-doc",
+      "owner": "patala",
+      "role": "engineering notes, layering, boundaries, test-scenario coverage",
+      "validator": "python -c \"import json; json.load(open('MANIFEST.json'))\""
+    },
+    "app/api.py": {
+      "id": "mcptruth:api",
+      "owner": "patala",
+      "role": "FastAPI REST surface (spec §API)",
+      "validator": "python -m pytest tests/test_api.py"
+    },
+    "app/harness.py": {
+      "id": "mcptruth:harness",
+      "owner": "patala",
+      "role": "safe MCP probe harness (init/tools-list/invocation)",
+      "validator": "python -m pytest tests/test_harness.py"
+    },
+    "app/db.py": {
+      "id": "mcptruth:db",
+      "owner": "patala",
+      "role": "SQLite schema + fingerprint + schema-change detection",
+      "validator": "python -m pytest tests/test_db.py"
+    },
+    "app/reducer.py": {
+      "id": "mcptruth:reducer",
+      "owner": "patala",
+      "role": "window aggregation -> current state -> healthiest ranking",
+      "validator": "python -m pytest tests/test_reducer.py"
+    },
+    "app/discovery.py": {
+      "id": "mcptruth:discovery",
+      "owner": "patala",
+      "role": "tracked-server registry (~50) + deep-test targets",
+      "validator": "python -m app.runner seed"
+    },
+    "app/oracle.py": {
+      "id": "mcptruth:oracle",
+      "owner": "patala",
+      "role": "universal evidence envelope + content addressing",
+      "validator": "python -m pytest tests/test_integrity.py::test_observation_ids_are_real_sha256"
+    },
+    "app/mcp_gateway.py": {
+      "id": "mcptruth:mcp-gateway",
+      "owner": "patala",
+      "role": "MCP interface (mcp_search/mcp_health/capability_search/tool_get)",
+      "validator": "python -c \"from app import mcp_gateway; mcp_gateway._mcp()\""
+    },
+    "app/runner.py": {
+      "id": "mcptruth:runner",
+      "owner": "patala",
+      "role": "CLI: seed/probe/reduce/demo/show",
+      "validator": "python -m app.runner show"
+    }
+  }
+}
