@@ -28,7 +28,7 @@ def log(msg=""):
         print()
 
 
-def search_arxiv(query, max_results=5):
+def search_arxiv(query, max_results=3):
     """Search arxiv for related papers."""
     encoded_query = urllib.parse.quote(query)
     url = f'http://export.arxiv.org/api/query?search_query=all:{encoded_query}&max_results={max_results}&sortBy=submittedDate&sortOrder=descending'
@@ -55,7 +55,7 @@ def search_arxiv(query, max_results=5):
         return [{'error': str(e)}]
 
 
-def search_github(query, max_results=5):
+def search_github(query, max_results=3):
     """Search github for related repos."""
     encoded_query = urllib.parse.quote(query)
     url = f'https://api.github.com/search/repositories?q={encoded_query}&sort=stars&per_page={max_results}'
@@ -78,58 +78,37 @@ def search_github(query, max_results=5):
         return [{'error': str(e)}]
 
 
-def seed_ideas_from_gaps():
-    """Seed new ideas from research gaps."""
-    log("Seeding ideas from research gaps...")
-    
-    # Load existing research
+def load_ideas():
+    """Load all ideas."""
+    ideas = []
+    ideas_file = ROOT / "data" / "ideas.jsonl"
+    if ideas_file.exists():
+        with open(ideas_file, encoding='utf-8') as f:
+            for line in f:
+                if line.strip():
+                    ideas.append(json.loads(line))
+    return ideas
+
+
+def save_ideas(ideas):
+    """Save all ideas."""
+    ideas_file = ROOT / "data" / "ideas.jsonl"
+    with open(ideas_file, 'w', encoding='utf-8') as f:
+        for idea in ideas:
+            f.write(json.dumps(idea, ensure_ascii=False) + '\n')
+
+
+def load_investigated():
+    """Load investigated idea IDs."""
+    investigated = set()
     research_file = ROOT / "data" / "research.jsonl"
-    if not research_file.exists():
-        return []
-    
-    existing = []
-    with open(research_file, encoding='utf-8') as f:
-        for line in f:
-            existing.append(json.loads(line))
-    
-    # Find gaps
-    gaps = set()
-    for r in existing:
-        competitors = r.get('competitors', [])
-        if len(competitors) < 3:
-            gaps.add(r.get('idea', ''))
-    
-    # Generate new ideas from gaps
-    new_ideas = []
-    
-    idea_templates = [
-        "Agent-native {domain} verification API",
-        "Machine-readable {domain} receipt protocol",
-        "{domain} reputation from grounded receipts",
-        "Runtime policy decision point for {domain}",
-        "Evidence-backed {domain} attestation service",
-    ]
-    
-    domains = [
-        "physical-world",
-        "agent-task",
-        "human-inference",
-        "real-world-execution",
-        "cross-platform",
-    ]
-    
-    for domain in domains:
-        for template in idea_templates[:2]:
-            idea = template.format(domain=domain)
-            if idea not in [r.get('idea', '') for r in existing]:
-                new_ideas.append({
-                    'idea_id': f"VENT_{int(time.time())}_{len(new_ideas)}",
-                    'idea': idea,
-                    'status': 'seeded',
-                    'created_at': datetime.now(timezone.utc).isoformat(),
-                })
-    
-    return new_ideas
+    if research_file.exists():
+        with open(research_file, encoding='utf-8') as f:
+            for line in f:
+                if line.strip():
+                    r = json.loads(line)
+                    investigated.add(r.get('idea_id', ''))
+    return investigated
 
 
 def investigate_idea(idea):
@@ -158,65 +137,55 @@ def investigate_idea(idea):
     return research_record
 
 
-def assess_idea(research_record):
-    """Assess an idea for potential."""
+def expand_from_research(research_record):
+    """Expand from research to find related ideas."""
     idea = research_record.get('idea', '')
-    arxiv_count = len(research_record.get('arxiv', []))
-    github_count = len(research_record.get('github', []))
+    arxiv = research_record.get('arxiv', [])
+    github = research_record.get('github', [])
     
-    # Score
-    novelty = 10 if github_count < 3 else 7 if github_count < 10 else 4
-    research = 10 if arxiv_count >= 5 else 7 if arxiv_count >= 2 else 4
-    feasibility = 8 if github_count > 0 else 6
-    
-    overall = (novelty + research + feasibility) / 3
-    
-    assessment = {
-        'idea_id': research_record.get('idea_id'),
-        'idea': idea,
-        'scores': {
-            'novelty': novelty,
-            'research': research,
-            'feasibility': feasibility,
-            'overall': overall,
-        },
-        'verdict': 'STRONG' if overall >= 7 else 'MODERATE' if overall >= 5 else 'WEAK',
-        'assessed_at': datetime.now(timezone.utc).isoformat(),
-    }
-    
-    # Save assessment
-    eval_file = ROOT / "data" / "evaluations.jsonl"
-    with open(eval_file, 'a', encoding='utf-8') as f:
-        f.write(json.dumps(assessment, ensure_ascii=False) + '\n')
-    
-    return assessment
-
-
-def expand_ideas(assessment):
-    """Expand from an assessment to find related ideas."""
-    idea = assessment.get('idea', '')
+    new_ideas = []
     
     # Extract keywords
     keywords = idea.lower().split()
     
-    # Search for related
-    related_queries = []
+    # Generate related ideas based on what we found
     if 'verification' in keywords:
-        related_queries.append('agent verification protocol')
+        new_ideas.append({
+            'idea_id': f"VENT_{int(time.time())}_verification",
+            'idea': f"Agent-native {keywords[0] if keywords else 'task'} verification protocol",
+            'status': 'seeded',
+            'created_at': datetime.now(timezone.utc).isoformat(),
+        })
+    
     if 'receipt' in keywords:
-        related_queries.append('signed work receipt')
+        new_ideas.append({
+            'idea_id': f"VENT_{int(time.time())}_receipt",
+            'idea': f"Machine-readable {keywords[0] if keywords else 'task'} receipt standard",
+            'status': 'seeded',
+            'created_at': datetime.now(timezone.utc).isoformat(),
+        })
+    
     if 'reputation' in keywords:
-        related_queries.append('agent reputation system')
-    if 'policy' in keywords:
-        related_queries.append('agent authorization policy')
+        new_ideas.append({
+            'idea_id': f"VENT_{int(time.time())}_reputation",
+            'idea': f"Grounded reputation from {keywords[0] if keywords else 'task'} receipts",
+            'status': 'seeded',
+            'created_at': datetime.now(timezone.utc).isoformat(),
+        })
     
-    # Search
-    related = []
-    for query in related_queries[:2]:
-        results = search_arxiv(query)
-        related.extend(results)
+    # Extract from arxiv papers
+    for paper in arxiv[:2]:
+        if 'error' not in paper:
+            title = paper.get('title', '')
+            if title:
+                new_ideas.append({
+                    'idea_id': f"VENT_{int(time.time())}_paper",
+                    'idea': f"Application of: {title[:60]}",
+                    'status': 'seeded',
+                    'created_at': datetime.now(timezone.utc).isoformat(),
+                })
     
-    return related
+    return new_ideas
 
 
 def run_loop(iterations=5):
@@ -225,28 +194,55 @@ def run_loop(iterations=5):
     log(f"Iterations: {iterations}")
     log()
     
+    ideas = load_ideas()
+    investigated = load_investigated()
+    
+    log(f"Loaded {len(ideas)} ideas, {len(investigated)} already investigated")
+    log()
+    
+    total_investigated = 0
+    total_expanded = 0
+    
     for i in range(iterations):
         log(f"--- Iteration {i+1}/{iterations} ---")
         
-        # Seed ideas
-        new_ideas = seed_ideas_from_gaps()
-        log(f"Seeded {len(new_ideas)} new ideas")
+        # Find ideas that haven't been investigated
+        uninvestigated = [idea for idea in ideas if idea.get('idea_id') not in investigated]
         
-        # Investigate each
-        for idea in new_ideas[:3]:
+        if not uninvestigated:
+            log("No uninvestigated ideas found, generating new ones...")
+            # Generate new ideas from existing
+            for idea in ideas[:3]:
+                new_ideas = expand_from_research({'idea': idea.get('idea', '')})
+                ideas.extend(new_ideas)
+                total_expanded += len(new_ideas)
+            uninvestigated = [idea for idea in ideas if idea.get('idea_id') not in investigated]
+        
+        # Investigate top 3 uninvestigated ideas
+        for idea in uninvestigated[:3]:
             research = investigate_idea(idea)
+            investigated.add(idea.get('idea_id'))
+            total_investigated += 1
             
-            # Assess
-            assessment = assess_idea(research)
-            log(f"  Assessed: {assessment['verdict']} (score={assessment['scores']['overall']:.1f})")
+            # Expand from research
+            new_ideas = expand_from_research(research)
+            ideas.extend(new_ideas)
+            total_expanded += len(new_ideas)
             
-            # Expand
-            related = expand_ideas(assessment)
-            log(f"  Found {len(related)} related ideas")
+            log(f"  Investigated: {idea['idea_id']}")
+            log(f"  Found: {len(new_ideas)} related ideas")
         
+        # Save updated ideas
+        save_ideas(ideas)
+        
+        log(f"  Total ideas: {len(ideas)}")
+        log(f"  Total investigated: {total_investigated}")
         log()
     
     log("=== AUTONOMOUS LOOP COMPLETE ===")
+    log(f"Total investigated: {total_investigated}")
+    log(f"Total expanded: {total_expanded}")
+    log(f"Total ideas: {len(ideas)}")
 
 
 if __name__ == "__main__":
