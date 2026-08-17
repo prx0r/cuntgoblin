@@ -1,0 +1,116 @@
+# Factory Configuration
+
+factory:
+  name: VentureLab
+  version: 1.0.0
+  description: Autonomous venture factory
+
+# Product archetypes
+archetypes:
+  data-oracle:
+    description: Data collection, normalization, API
+    template: templates/data-oracle/
+    
+  agent-tool:
+    description: MCP server, API, resolver
+    template: templates/agent-tool/
+    
+  benchmark:
+    description: Task corpus, runner, grader
+    template: templates/benchmark/
+    
+  registry:
+    description: Registry database, search, ranking
+    template: templates/registry/
+    
+  saas:
+    description: Auth, billing, dashboard
+    template: templates/saas/
+    
+  library:
+    description: Package, CLI, docs
+    template: templates/library/
+
+# Scoring dimensions
+scoring:
+  dimensions:
+    - name: pain
+      weight: 0.15
+      description: How painful is the problem?
+    
+    - name: customer_clarity
+      weight: 0.10
+      description: How clear is the customer?
+    
+    - name: willingness_to_pay
+      weight: 0.15
+      description: Will they pay?
+    
+    - name: competition_gap
+      weight: 0.10
+      description: How much white space?
+    
+    - name: technical_complexity
+      weight: 0.10
+      description: How hard to build?
+    
+    - name: time_to_mvp
+      weight: 0.10
+      description: How fast can we ship?
+    
+    - name: data_moat
+      weight: 0.10
+      description: Does data accumulate?
+    
+    - name: strategic_fit
+      weight: 0.10
+      description: Does it fit the portfolio?
+    
+    - name: monetization
+      weight: 0.10
+      description: Clear revenue path?
+    
+    - name: regulatory_risk
+      weight: 0.05
+      description: Legal/compliance risk?
+
+# Product lifecycle
+lifecycle:
+  stages:
+    - inbox
+    - researching
+    - scored
+    - experiment
+    - mvp
+    - published
+    - deployed
+    - measured
+    - scaled
+    - killed
+
+# Templates
+templates:
+  data-oracle:
+    files:
+      - README.md
+      - AGENTS.md
+      - ARCHITECTURE.md
+      - DATA-MODEL.md
+      - API.md
+      - MCP.md
+      - TESTING.md
+      - CERTIFICATE.md
+
+# Certification
+certification:
+  checks:
+    - clean_bootstrap
+    - schema_valid
+    - unit_tests
+    - integration_tests
+    - api_contract
+    - mcp_contract
+    - security
+    - adversarial
+    - documentation
+    - deploy_smoke

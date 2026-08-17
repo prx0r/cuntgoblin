@@ -1,4 +1,4 @@
-# AGENTS.md — VentureLab
+# AGENTS.md — VentureLab Factory
 
 *The rules for agents working on this project*
 *Model: mimo v2.5*
@@ -16,10 +16,6 @@
 
 **Always use mimo v2.5 for all hermes calls.**
 
-```bash
-hermes chat -m opencode-go/mimo-v2.5 -q "..."
-```
-
 ---
 
 ## HOW AN AGENT CONTROLS THIS SYSTEM
@@ -31,6 +27,7 @@ cat AGENTS.md          # Rules
 cat REFERENCE.md       # System reference
 cat ENFORCEMENT.md     # Quality gates
 cat STANDARD.md        # Schemas
+cat SCORING-RUBRIC.md  # Scoring rules
 ```
 
 ### 2. Check Kanban Status
@@ -86,7 +83,7 @@ hermes kanban request-review <task_id>
 
 ```bash
 cd builds/{product}
-.venv/bin/python -m app.certify
+.venv/bin/python -m factory.certification.certifier
 ```
 
 ---
@@ -149,6 +146,24 @@ Evidence must be:
 
 ---
 
+## SCORING STANDARD
+
+**Every score MUST have evidence attached.**
+
+```json
+{
+  "factor": "novelty",
+  "score": 8,
+  "evidence": "GitHub search found 0 similar repos",
+  "checked_at": "2026-08-18T09:00:00Z",
+  "method": "github_search"
+}
+```
+
+If you can't find evidence, the score is 0.
+
+---
+
 ## FILE STRUCTURE
 
 ```
@@ -157,25 +172,25 @@ venturelab/
 ├── REFERENCE.md           # System reference
 ├── ENFORCEMENT.md         # Quality gates
 ├── STANDARD.md            # Schemas
-├── FACTORY.md             # Factory line
-├── data/
-│   └── venturelab.db      # SQLite database
-├── reports/
-│   └── {product}/report.md
-├── specs/
-│   └── {product}/architecture.md
-├── builds/
-│   └── {product}/         # Built MVPs
-├── reviews/
-│   └── log*.md            # Review logs
-├── ideas/
-│   └── *.md               # Research documents
-└── skills/
-    ├── factory-build/
-    ├── factory-verify/
-    ├── factory-spec/
-    ├── venture-report/
-    └── certify/
+├── SCORING-RUBRIC.md      # Scoring rules
+├── RECIPES.md             # Step-by-step guides
+├── SCHEMAS.md             # Data structures
+├── DOCS-INDEX.md          # Documentation index
+├── factory/               # Factory implementation
+│   ├── domain/            # Domain models
+│   ├── scoring/           # Scoring engine
+│   ├── intake/            # Idea ingestion
+│   ├── research/          # Research generation
+│   ├── builders/          # MVP building
+│   └── certification/     # Certification
+├── templates/             # Product templates
+├── schemas/               # JSON schemas
+├── builds/                # Built MVPs
+├── reports/               # Venture reports
+├── specs/                 # Architecture specs
+├── reviews/               # Review logs
+├── ideas/                 # Research documents
+└── skills/                # Hermes skills
 ```
 
 ---
@@ -188,6 +203,7 @@ venturelab/
 4. **Provenance required** — Every observation must link to evidence
 5. **"Nothing in markdown counts as evidence"**
 6. **Always use mimo v2.5**
+7. **Every score MUST have evidence**
 
 ---
 

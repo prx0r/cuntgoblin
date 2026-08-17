@@ -6,27 +6,27 @@
 
 ## System Overview
 
-VentureLab is an autonomous venture research and MVP building system driven by hermes kanban.
+VentureLab is an autonomous venture factory that converts raw ideas into researched, tested, versioned, deployed products.
 
 ```text
 ┌─────────────────────────────────────────────────────────┐
-│                  VENTURELAB SYSTEM                       │
+│                  VENTURELAB FACTORY                      │
 │                                                         │
 │  ┌─────────────┐    ┌─────────────┐    ┌─────────────┐ │
-│  │   IDEAS     │    │  RESEARCH   │    │   REPORTS   │ │
-│  │  (SQLite)   │───▶│  (browser)  │───▶│  (markdown) │ │
+│  │   IDEAS     │    │  RESEARCH   │    │   SCORING   │ │
+│  │  (ingest)   │───▶│  (packets)  │───▶│ (evidence)  │ │
 │  └─────────────┘    └─────────────┘    └─────────────┘ │
 │         │                  │                  │         │
 │         ▼                  ▼                  ▼         │
 │  ┌─────────────┐    ┌─────────────┐    ┌─────────────┐ │
-│  │   SPECS     │    │  KANBAN     │    │   BUILDS    │ │
-│  │ (markdown)  │───▶│  (hermes)   │───▶│   (code)    │ │
+│  │  BUILDERS   │    │ CERTIFICATION│    │  GITHUB     │ │
+│  │  (MVP gen)  │───▶│  (12 checks)│───▶│ (publish)   │ │
 │  └─────────────┘    └─────────────┘    └─────────────┘ │
 │         │                  │                  │         │
 │         ▼                  ▼                  ▼         │
 │  ┌─────────────┐    ┌─────────────┐    ┌─────────────┐ │
-│  │ CERTIFICATE │    │   EVIDENCE  │    │   DEPLOY    │ │
-│  │   (JSON)    │◀───│  (hashes)   │◀───│  (docker)   │ │
+│  │   DEPLOY    │    │  TELEMETRY  │    │ PORTFOLIO   │ │
+│  │  (cloud)    │◀───│  (metrics)  │◀───│  (manage)   │ │
 │  └─────────────┘    └─────────────┘    └─────────────┘ │
 └─────────────────────────────────────────────────────────┘
 ```
@@ -36,149 +36,126 @@ VentureLab is an autonomous venture research and MVP building system driven by h
 ## Data Flow
 
 ```
-IDEA (SQLite)
+IDEA (text/JSON)
     ↓
-RESEARCH (browser: arxiv/github/web)
+INGEST (normalize, deduplicate)
     ↓
-REPORT (reports/{product}/report.md)
+RESEARCH (GitHub, arxiv, market)
     ↓
-SPEC (specs/{product}/architecture.md)
+SCORE (deterministic, with evidence)
     ↓
-KANBAN (create → specify → decompose)
+DECIDE (BUILD, WATCH, REJECT)
     ↓
-DISPATCH (spawn workers)
+BUILD (from template)
     ↓
-BUILD (workers write code)
+TEST (unit, integration)
     ↓
-TEST (pytest)
+CERTIFY (12-check suite)
     ↓
-VERIFY (content hashes, provenance)
+PUBLISH (GitHub)
     ↓
-CERTIFY (12-check certification)
+DEPLOY (cloud)
     ↓
-DEPLOY (docker, API live)
+MEASURE (metrics)
+    ↓
+ITERATE / KILL / SCALE
 ```
 
 ---
 
 ## Components
 
-### 1. Ideas Database (SQLite)
+### 1. Domain Models
 
-Location: `data/venturelab.db`
+Location: `factory/domain/`
 
-Tables:
-- ideas (153 ideas)
-- research (193 research records)
-- evaluations (scores)
-- competitors (27 competitors)
-- evidence (16 evidence points)
+- `idea.py` — Idea with scores and evidence
+- `product.py` — Product with metrics
+- `research.py` — Research packet
+- `score.py` — Scorecard with dimensions
 
-### 2. Reports
+### 2. Scoring Engine
 
-Location: `reports/{product}/report.md`
+Location: `factory/scoring/`
 
-Structure:
-- Thesis
-- Product Spec
-- Competitors
-- arXiv Research
-- GitHub Projects
-- Why It's Cool
-- Monetization
-- Path to Market
-- Rating
+- `engine.py` — Deterministic scoring with evidence
 
-### 3. Architecture Specs
+Dimensions:
+- novelty (0.15)
+- research (0.10)
+- feasibility (0.10)
+- market_timing (0.10)
+- pain_severity (0.15)
+- willingness_to_pay (0.13)
+- competition_gap (0.10)
+- data_moat (0.10)
+- strategic_fit (0.07)
 
-Location: `specs/{product}/architecture.md`
+### 3. Intake
 
-Structure:
-- System Overview (ASCII diagram)
-- Core Components
-- Data Model
-- API Endpoints
-- Deployment Architecture
-- Technology Stack
-- Cost Estimates
-- Risk Analysis
-- Implementation Phases
+Location: `factory/intake/`
 
-### 4. Builds
+- `ingester.py` — Idea ingestion from text/JSON
 
-Location: `builds/{product}/`
+### 4. Research
 
-Structure:
-```
-builds/{product}/
-├── app/
-│   ├── api.py
-│   ├── db.py
-│   ├── models.py
-│   └── mcp.py
-├── tests/
-├── data/
-├── docs/
-├── CERTIFICATE.json
-├── MANIFEST.json
-├── README.md
-└── requirements.txt
-```
+Location: `factory/research/`
 
-### 5. Certificates
+- `packet.py` — Research packet generation
 
-Location: `builds/{product}/CERTIFICATE.json`
+### 5. Builders
 
-Checks:
-1. clean_install
-2. schema_valid
-3. unit_tests
-4. api_contract
-5. mcp_contract
-6. content_hashes
-7. provenance
-8. observations_logged
-9. documentation
-10. deterministic_fixtures
-11. integration_tests
-12. adversarial_tests
+Location: `factory/builders/`
+
+- `builder.py` — MVP generation from templates
+
+### 6. Certification
+
+Location: `factory/certification/`
+
+- `certifier.py` — 12-check certification suite
 
 ---
 
-## Hermes Integration
+## Templates
 
-### Kanban Commands
+Location: `templates/`
 
-```bash
-# Create task
-hermes kanban create "Build Product" --body "..." --assignee patala
+- `data-oracle/` — For Dell, MCPTruth, EndpointTruth
+- `agent-tool/` — For Toolloader, Knee
+- `benchmark/` — For AgentSLA
+- `registry/` — For ArchOracle, Agentpacks
+- `saas/` — For dashboards
+- `library/` — For packages
 
-# Specify task (hermes fleshes out)
-hermes kanban specify <task_id>
+---
 
-# Decompose (hermes breaks into subtasks)
-hermes kanban decompose <task_id>
+## Schemas
 
-# Dispatch workers
-hermes kanban dispatch --max 5
+Location: `schemas/`
 
-# Worker claims task
-hermes kanban claim <task_id>
+- `idea.schema.json` — Idea structure
+- `product.schema.json` — Product structure
+- `certificate.schema.json` — Certificate structure
 
-# Complete task
-hermes kanban complete <task_id> --result "..."
+---
 
-# Request review
-hermes kanban request-review <task_id>
-```
+## Certification
 
-### Skills
+Every MVP must pass 12 checks:
 
-- `factory-build` — Build MVPs from specs
-- `factory-verify` — Verify builds pass tests
-- `factory-spec` — Generate architecture specs
-- `venture-report` — Generate venture reports
-- `certify` — Certify MVPs pass production checks
+1. clean_bootstrap
+2. schema_valid
+3. unit_tests
+4. integration_tests
+5. api_contract
+6. mcp_contract
+7. security
+8. adversarial
+9. documentation
+10. deterministic_fixtures
+11. content_hashes
+12. provenance
 
 ---
 
@@ -195,45 +172,6 @@ def compute_hash(data):
     return hashlib.sha256(canonical.encode()).hexdigest()
 ```
 
-Run records:
-```json
-{
-  "run_id": "...",
-  "gold_hash": "...",
-  "code_hash": "...",
-  "config_hash": "...",
-  "out_hash": "..."
-}
-```
-
----
-
-## Certification
-
-Every MVP must pass 12 checks:
-
-1. Clean install works
-2. Schema valid
-3. Unit tests pass
-4. API contract valid
-5. MCP contract valid
-6. Content hashes computed
-7. Provenance tracked
-8. Observations logged
-9. Documentation exists
-10. Deterministic fixtures
-11. Integration tests pass
-12. Adversarial tests pass
-
-Certificate format:
-```json
-{
-  "product": "knee",
-  "certificate": "PASS",
-  "checks": {...}
-}
-```
-
 ---
 
 ## Anti-Cheat Rules
@@ -243,6 +181,7 @@ Certificate format:
 3. **Content hashes required** — Every artifact must be hashed
 4. **Provenance required** — Every observation must link to evidence
 5. **"Nothing in markdown counts as evidence"**
+6. **Every score MUST have evidence**
 
 ---
 
