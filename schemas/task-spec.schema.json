@@ -1,0 +1,120 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "FactoryTaskSpec",
+  "type": "object",
+  "required": [
+    "task_id",
+    "task_kind",
+    "difficulty",
+    "criticality",
+    "quality",
+    "economics"
+  ],
+  "properties": {
+    "task_id": {
+      "type": "string"
+    },
+    "factory": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "product": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "phase": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "task_kind": {
+      "type": "string"
+    },
+    "difficulty": {
+      "enum": [
+        "trivial",
+        "easy",
+        "medium",
+        "hard",
+        "frontier"
+      ]
+    },
+    "criticality": {
+      "enum": [
+        "disposable",
+        "routine",
+        "important",
+        "release_gate",
+        "production"
+      ]
+    },
+    "input": {
+      "type": "object"
+    },
+    "capabilities": {
+      "type": "object"
+    },
+    "quality": {
+      "type": "object",
+      "required": [
+        "floor"
+      ],
+      "properties": {
+        "floor": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "target": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "evaluator": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "economics": {
+      "type": "object",
+      "required": [
+        "free_policy",
+        "paid_allowed"
+      ],
+      "properties": {
+        "free_policy": {
+          "enum": [
+            "require",
+            "prefer",
+            "neutral",
+            "avoid"
+          ]
+        },
+        "paid_allowed": {
+          "type": "boolean"
+        },
+        "task_budget_usd": {
+          "type": [
+            "number",
+            "null"
+          ]
+        }
+      }
+    },
+    "latency": {
+      "type": "object"
+    },
+    "learning": {
+      "type": "object"
+    }
+  }
+}

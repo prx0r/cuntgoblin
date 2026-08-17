@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "HotSwapExecutionPlan",
+  "type": "object",
+  "required": [
+    "plan_id",
+    "task_id",
+    "primary",
+    "fallbacks",
+    "decision"
+  ],
+  "properties": {
+    "plan_id": {
+      "type": "string"
+    },
+    "task_id": {
+      "type": "string"
+    },
+    "primary": {
+      "type": "object"
+    },
+    "fallbacks": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "decision": {
+      "type": "object"
+    },
+    "quota_reservations": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "account_opportunities": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    }
+  }
+}
