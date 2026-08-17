@@ -1,0 +1,10 @@
+{"name": "Market timing", "weight": 0.14, "meaning": "How strongly 2026–27 agent adoption creates demand now"}
+{"name": "Pain severity", "weight": 0.14, "meaning": "How costly or blocking the problem is for autonomous agents/operators"}
+{"name": "Willingness to pay", "weight": 0.13, "meaning": "Likelihood of enterprise/platform/API buyers paying recurring or usage fees"}
+{"name": "API-native fit", "weight": 0.1, "meaning": "Can it be consumed as a narrow reusable machine dependency"}
+{"name": "Competitive whitespace", "weight": 0.1, "meaning": "How much room remains after incumbents/standards"}
+{"name": "Defensibility", "weight": 0.12, "meaning": "Historical data, network effects, verification data, integrations, trust"}
+{"name": "Solo MVP buildability", "weight": 0.08, "meaning": "Can a highly technical small team ship a useful wedge quickly"}
+{"name": "Expansion upside", "weight": 0.1, "meaning": "Ability to grow into a broader infrastructure control point"}
+{"name": "Standards tailwind", "weight": 0.05, "meaning": "Benefit from MCP/A2A/AP2/FIDO/SCITT/ERC-8004 standardization"}
+{"name": "Regulatory simplicity", "weight": 0.04, "meaning": "Higher means easier legal/compliance posture"}

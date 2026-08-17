@@ -1,0 +1,15 @@
+{"venture": "RealityRouter", "repo": "punkpeye/awesome-mcp-servers", "why_relevant": "Discovery list includes human-operator MCP tools", "url": "https://github.com/punkpeye/awesome-mcp-servers"}
+{"venture": "RealityRouter", "repo": "profullstack/ugig.net", "why_relevant": "Catalog of agent platforms/task marketplaces", "url": "https://github.com/profullstack/ugig.net"}
+{"venture": "Proof-of-Work / Reality Attestation", "repo": "lfedgeai/AegisSovereignAI", "why_relevant": "Attestation-linked evidence bundles / geofencing concepts", "url": "https://github.com/lfedgeai/AegisSovereignAI"}
+{"venture": "Proof-of-Work / Reality Attestation", "repo": "nedmsmith/draft-klspa-wimse-verifiable-geo-fence", "why_relevant": "Verifiable geofence proof design", "url": "https://github.com/nedmsmith/draft-klspa-wimse-verifiable-geo-fence"}
+{"venture": "Human Escalation API", "repo": "humanlayer/humanlayer", "why_relevant": "Historic HITL approvals/messaging SDK", "url": "https://github.com/humanlayer/humanlayer"}
+{"venture": "Human Escalation API", "repo": "GitHub human-in-the-loop topic", "why_relevant": "Many approval/agent-control references", "url": "https://github.com/topics/human-in-the-loop"}
+{"venture": "Delegated Authority + Budget API", "repo": "SatGate-io/satgate", "why_relevant": "Macaroon delegation + MCP budget enforcement", "url": "https://github.com/SatGate-io/satgate"}
+{"venture": "Delegated Authority + Budget API", "repo": "decentralized-identity/kya-os-mcp", "why_relevant": "DID/VC identity, revocable delegation, consent gates", "url": "https://github.com/decentralized-identity/kya-os-mcp"}
+{"venture": "Delegated Authority + Budget API", "repo": "DeepTrail/deepsecure", "why_relevant": "Identity/credential/access management for agents", "url": "https://github.com/DeepTrail/deepsecure"}
+{"venture": "Delegated Authority + Budget API", "repo": "PraneethGunas/aegis-wallet", "why_relevant": "Agent wallet with macaroon-enforced budgets", "url": "https://github.com/PraneethGunas/aegis-wallet"}
+{"venture": "Delegated Authority + Budget API", "repo": "Zahanturel/adtp", "why_relevant": "Signed delegation-chain protocol", "url": "https://github.com/Zahanturel/adtp"}
+{"venture": "Work Receipt / Reputation Protocol", "repo": "AgentTanuki/agent-guild", "why_relevant": "Portable agent reputation/trust network", "url": "https://github.com/AgentTanuki/agent-guild"}
+{"venture": "Work Receipt / Reputation Protocol", "repo": "decentralized-identity/did-jwt-vc", "why_relevant": "VC issuance/verification primitive", "url": "https://github.com/decentralized-identity/did-jwt-vc"}
+{"venture": "Work Receipt / Reputation Protocol", "repo": "decentralized-identity/veramo", "why_relevant": "Modular verifiable data framework", "url": "https://github.com/decentralized-identity/veramo"}
+{"venture": "Work Receipt / Reputation Protocol", "repo": "iotaledger/identity", "why_relevant": "Rust DID + Verifiable Credentials implementation", "url": "https://github.com/iotaledger/identity"}

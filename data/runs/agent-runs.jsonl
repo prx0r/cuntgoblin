@@ -3,3 +3,4 @@
 {"step": "evaluate", "idea_id": "VENT_1786991422", "scores": {"novelty": 10, "research": 8, "implementation": 2, "overall": 6.666666666666667}, "verdict": "MODERATE — Worth investigating", "ts": "2026-08-17T18:30:54.726820+00:00"}
 {"step": "hypothesis", "count": 2, "rounds": 1, "ts": "2026-08-17T18:30:55.241876+00:00"}
 {"step": "report", "total_evaluated": 2, "report_file": "/root/venturelab/data/reports/venture-brief-1786991462.json", "ts": "2026-08-17T18:31:02.636976+00:00"}
+{"step": "report", "total_evaluated": 2, "report_file": "/root/venturelab/data/reports/venture-brief-1786992011.json", "ts": "2026-08-17T18:40:11.298620+00:00"}
