@@ -1,13 +1,11 @@
-# market Module
+# Pure Decision-Logic Reference
 
-*Part of the VentureLab factory*
+These modules are intentionally dependency-light.
 
-## Purpose
-Market intelligence layer
+They exist to make the algorithms precise and testable before the repo agent wires
+them into VentureLab's domain classes/database.
 
-## Files
-format.py
-layer.py
+They are NOT a replacement for the repo's evidence store.
 
-## Usage
-See factory/README.md for overall usage.
+Synthetic values in unit tests are contract fixtures only and MUST NEVER be treated
+as market evidence.

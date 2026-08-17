@@ -1,0 +1,23 @@
+version: opportunity-score-v1
+weights:
+  need: 0.22
+  gap: 0.18
+  feasibility: 0.18
+  economics: 0.18
+  moat: 0.10
+  portfolio: 0.14
+risk_penalty: 0.55
+evidence_floor: 0.55
+evidence_multiplier: 0.45
+
+decision:
+  build:
+    score: 0.72
+    confidence: 0.72
+    coverage: 0.70
+  research:
+    score: 0.62
+  watch_floor: 0.48
+  reject_below:
+    score: 0.48
+    confidence: 0.70

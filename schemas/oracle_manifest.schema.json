@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "OracleManifest",
+  "type": "object",
+  "required": [
+    "id",
+    "version",
+    "domains",
+    "source_families",
+    "interfaces"
+  ],
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "version": {
+      "type": "string"
+    },
+    "domains": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "entities": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "metrics": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "dimensions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "source_families": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "geography": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "cadence": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "interfaces": {
+      "type": "object"
+    },
+    "evidence_policy": {
+      "type": "object"
+    }
+  }
+}

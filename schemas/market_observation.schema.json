@@ -1,0 +1,85 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "MarketObservation",
+  "type": "object",
+  "required": [
+    "observation_id",
+    "oracle_id",
+    "entity_id",
+    "metric",
+    "observed_at",
+    "source_family",
+    "evidence"
+  ],
+  "properties": {
+    "observation_id": {
+      "type": "string"
+    },
+    "oracle_id": {
+      "type": "string"
+    },
+    "entity_id": {
+      "type": "string"
+    },
+    "metric": {
+      "type": "string"
+    },
+    "value": {},
+    "unit": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "period_start": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "period_end": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "geography": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "sector": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "source_family": {
+      "type": "string"
+    },
+    "observed_at": {
+      "type": "string"
+    },
+    "evidence": {
+      "type": "object",
+      "required": [
+        "artifact_sha256"
+      ],
+      "properties": {
+        "artifact_sha256": {
+          "type": "string"
+        },
+        "source_url": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "quality": {
+      "type": "object"
+    }
+  }
+}

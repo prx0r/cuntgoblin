@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ProductOutcome",
+  "type": "object",
+  "required": [
+    "outcome_id",
+    "product_id",
+    "metric",
+    "observed_at",
+    "evidence"
+  ],
+  "properties": {
+    "outcome_id": {
+      "type": "string"
+    },
+    "product_id": {
+      "type": "string"
+    },
+    "metric": {
+      "type": "string"
+    },
+    "value": {},
+    "unit": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "observed_at": {
+      "type": "string"
+    },
+    "evidence": {
+      "type": "object"
+    }
+  }
+}

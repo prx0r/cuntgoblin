@@ -1,0 +1,28 @@
+version: factory-genesis-v1
+
+existing_factory_fit:
+  use_existing: 0.75
+  extend_existing: 0.60
+
+hard_gates:
+  min_opportunities: 3
+  max_existing_fit_for_new_factory: 0.60
+  min_repeatability: 0.65
+  min_shared_infra_reuse: 0.60
+  min_evidence_confidence: 0.70
+  min_independent_source_families: 3
+  max_single_source_evidence_share: 0.60
+  min_opportunity_mass: 0.65
+  min_reuse_roi: 0.50
+
+weights:
+  opportunity_mass: 0.25
+  repeatability: 0.20
+  evidence_confidence: 0.15
+  strategic_coherence: 0.15
+  shared_infra_savings: 0.15
+  persistence: 0.10
+
+decisions:
+  spawn_candidate: 0.72
+  factory_experiment: 0.58

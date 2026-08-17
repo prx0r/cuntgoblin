@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "FactoryProposal",
+  "type": "object",
+  "required": [
+    "proposal_id",
+    "opportunity_ids",
+    "vision",
+    "genesis_score",
+    "decision"
+  ],
+  "properties": {
+    "proposal_id": {
+      "type": "string"
+    },
+    "opportunity_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "vision": {
+      "type": "string"
+    },
+    "allowed_product_archetypes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "genesis_score": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "decision": {
+      "enum": [
+        "USE_EXISTING",
+        "EXTEND_EXISTING",
+        "FACTORY_EXPERIMENT",
+        "SPAWN_CANDIDATE",
+        "NO_FACTORY"
+      ]
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

@@ -1,0 +1,209 @@
+version: market-sources-v1
+reviewed_at: "2026-08-18"
+
+sources:
+  openrouter_datasets:
+    family: behavioral_ai_usage
+    status: verified
+    docs: "https://openrouter.ai/docs/api/api-reference/datasets/get-app-rankings"
+    auth: api_key
+    useful_for:
+      - public_app_token_usage
+      - public_app_requests
+      - app_trending
+      - top_model_daily_tokens
+    limitations:
+      - hidden_private_apps_excluded
+      - tokenizers_differ_by_provider
+      - platform_share_not_global_market_share
+    cadence: daily
+    attribution_required: true
+
+  huggingface_hub:
+    family: open_model_ecosystem
+    status: verified
+    docs: "https://huggingface.co/docs/hub/en/api"
+    openapi: "https://huggingface.co/.well-known/openapi.json"
+    useful_for:
+      - model_dataset_space_metadata
+      - repo_events
+      - downloads_likes_tags
+      - webhooks
+    limitations:
+      - downloads_are_not_unique_users
+    cadence: daily_or_webhook
+
+  ecosystems:
+    family: open_source_ecosystem
+    status: verified
+    docs: "https://ecosyste.ms/api"
+    useful_for:
+      - package_metadata
+      - repository_metadata
+      - dependencies
+      - timeline_events
+      - commits
+      - issues
+      - sponsors
+    limitations:
+      - derived_from_multiple_upstreams
+      - preserve_origin_identity
+    cadence: daily
+
+  openalex:
+    family: scholarly_research
+    status: verified
+    docs: "https://developers.openalex.org/api-reference/introduction"
+    auth: free_api_key
+    useful_for:
+      - works
+      - topics
+      - keywords
+      - institutions
+      - funders
+      - research_velocity
+      - geographic_research_diffusion
+    limitations:
+      - API_is_freemium
+      - topic_classification_is_derived
+    cadence: daily_or_weekly
+
+  google_trends_official:
+    family: search_attention
+    status: alpha_limited_access
+    docs: "https://developers.google.com/search/apis/trends"
+    useful_for:
+      - interest_over_time
+      - geographic_interest
+      - consistently_scaled_comparisons
+    limitations:
+      - alpha_access_required
+      - attention_not_adoption
+    cadence: daily
+
+  pytrends:
+    family: search_attention
+    status: experimental_fallback
+    repo: "https://github.com/GeneralMills/pytrends"
+    useful_for:
+      - interest_over_time_when_official_api_unavailable
+    limitations:
+      - unofficial
+      - repo_archived_2025_04_17
+      - backend_may_break
+      - never_sole_evidence
+    cadence: cached_weekly
+
+  cloudflare_radar:
+    family: web_attention
+    status: verified
+    docs: "https://developers.cloudflare.com/api/resources/radar/subresources/ranking/methods/top/"
+    auth: api_token
+    useful_for:
+      - top_domains
+      - trending_domains
+      - domain_rank_timeseries
+    limitations:
+      - rank_not_unique_users
+      - DNS_based_measurement
+    cadence: daily
+
+  hackernews:
+    family: developer_attention
+    status: verified
+    docs: "https://github.com/HackerNews/API"
+    auth: none
+    useful_for:
+      - new_show_ask_jobs
+      - story_score
+      - comment_volume
+      - early_developer_attention
+    limitations:
+      - community_bias
+      - attention_not_adoption
+    cadence: hourly
+
+  mcp_registry:
+    family: mcp_ecosystem
+    status: preview
+    docs: "https://modelcontextprotocol.io/registry/about"
+    api: "https://registry.modelcontextprotocol.io"
+    openapi: "https://registry.modelcontextprotocol.io/openapi.yaml"
+    useful_for:
+      - new_servers
+      - versions
+      - installation_metadata
+      - namespace_identity
+    limitations:
+      - preview_breaking_changes_possible
+      - registry_is_unopinionated_metadata
+    cadence: hourly
+
+  world_bank_indicators:
+    family: global_official_statistics
+    status: verified
+    docs: "https://datahelpdesk.worldbank.org/knowledgebase/articles/889392"
+    auth: none
+    useful_for:
+      - development
+      - labour_related_indicators
+      - population
+      - poverty
+      - infrastructure
+    limitations:
+      - update_cadence_varies_by_indicator
+    cadence: monthly_or_dataset_specific
+
+  eurostat:
+    family: eu_official_statistics
+    status: verified
+    docs: "https://ec.europa.eu/eurostat/web/user-guides/data-browser/api-data-access/api-introduction"
+    auth: none
+    useful_for:
+      - labour
+      - trade
+      - demographics
+      - industry
+      - regional_stats
+      - dataset_discovery
+    limitations:
+      - live_database_has_latest_version_not_historical_versions
+      - snapshot_raw_responses_for_history
+    cadence: daily
+
+  uk_explore_education_statistics:
+    family: uk_official_statistics
+    status: verified
+    docs: "https://explore-education-statistics.service.gov.uk/"
+    useful_for:
+      - apprenticeships
+      - skills
+      - education
+      - geographic_and_subject_breakdowns
+    limitations:
+      - dataset_specific_release_cadence
+    cadence: release_driven
+
+  unignorant:
+    family: global_reality_federation
+    status: existing_internal_oracle
+    repo: "https://github.com/prx0r/unignorant"
+    interfaces:
+      rest: true
+      mcp: true
+    useful_for:
+      - country_indicators
+      - trade
+      - cost_of_living
+      - owid
+      - world_bank_data360
+      - aid
+      - humanitarian
+      - local_news
+      - country_graphs
+      - trajectory
+    limitations:
+      - each_upstream_connector_has_own_quality_semantics
+      - preserve_original_source_family
+      - scraped_sources_require_terms_review
+    cadence: mixed
