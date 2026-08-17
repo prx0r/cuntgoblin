@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+.venv/
+data/agentsla.db
+data/agentsla.db-wal
+data/agentsla.db-shm
+data/runs/*/
+!data/runs/.gitkeep

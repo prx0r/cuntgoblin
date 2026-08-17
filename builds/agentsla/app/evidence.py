@@ -15,10 +15,14 @@ from __future__ import annotations
 
 import hashlib
 import json
+import os
 from datetime import datetime, timezone
 from pathlib import Path
 
-RUNS_ROOT = Path(__file__).resolve().parent.parent / "data" / "runs"
+RUNS_ROOT = Path(os.environ.get(
+    "AGENTSLA_RUNS_DIR",
+    str(Path(__file__).resolve().parent.parent / "data" / "runs"),
+))
 
 
 def utcnow() -> str:

@@ -1,0 +1,37 @@
+{
+  "benchmark_id": "agentsla-bench-v1",
+  "description": "MVP benchmark: 3 task classes x 4 architectures x 2 attempts. Real model calls via the configured OpenAI-compatible endpoint.",
+  "model": "deepseek-v4-flash",
+  "architectures": {
+    "single_agent": {
+      "description": "One worker with tools, up to 6 steps.",
+      "components": [{"role": "worker", "model": "deepseek-v4-flash", "max_steps": 6}],
+      "max_steps": 6
+    },
+    "worker_verifier": {
+      "description": "Worker produces a patch; advisory LLM verifier reviews; up to 2 revision rounds.",
+      "components": [
+        {"role": "worker", "model": "deepseek-v4-flash", "max_steps": 6},
+        {"role": "verifier", "model": "deepseek-v4-flash"}
+      ],
+      "max_steps": 6,
+      "max_rounds": 2
+    },
+    "planner_worker": {
+      "description": "Planner emits a step plan; worker executes it.",
+      "components": [
+        {"role": "planner", "model": "deepseek-v4-flash"},
+        {"role": "worker", "model": "deepseek-v4-flash", "max_steps": 6}
+      ],
+      "max_steps": 6
+    },
+    "parallel_candidates_judge": {
+      "description": "3 candidate workers; deterministic judge picks the graded-best candidate (no LLM judging).",
+      "components": [{"role": "worker", "model": "deepseek-v4-flash", "max_steps": 6}],
+      "max_steps": 6,
+      "n_candidates": 3
+    }
+  },
+  "task_classes": ["coding.patch", "coding.debug", "research.answer"],
+  "attempts": 2
+}

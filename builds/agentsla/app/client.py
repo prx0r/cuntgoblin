@@ -16,12 +16,30 @@ from __future__ import annotations
 import json
 import time
 from dataclasses import dataclass, field
-from typing import Any
+from typing import Any, Protocol
 
 import httpx
 
 DEFAULT_TIMEOUT = 90.0
 DEFAULT_MAX_RETRIES = 2
+
+
+class ModelClient(Protocol):
+    """The duck-typed client contract the runner requires (LLMClient and
+    FakeClient both satisfy it)."""
+    model: str
+
+    def chat(
+        self,
+        messages: list[dict],
+        *,
+        tools: list[dict] | None = None,
+        temperature: float = 0.2,
+        max_tokens: int | None = None,
+        seed: int | None = None,
+    ) -> "ChatResult": ...
+
+    def close(self) -> None: ...
 
 
 @dataclass

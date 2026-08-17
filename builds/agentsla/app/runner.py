@@ -20,6 +20,7 @@ gate disposes.
 from __future__ import annotations
 
 import json
+import os
 import random
 import shutil
 import subprocess
@@ -28,9 +29,8 @@ import time
 import uuid
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Callable
 
-from .client import ChatResult, LLMClient
+from .client import ChatResult, LLMClient, ModelClient
 from .cost import record_inference_cost, run_totals
 from .dataset import kb_payload, task_spec
 from .evidence import RunEnvelope
@@ -42,7 +42,14 @@ from .grader import (
 )
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-DB_PATH = BASE_DIR / "data" / "agentsla.db"
+
+
+def db_path() -> Path:
+    """Database path; AGENTSLA_DB env overrides (tests use tmp dirs)."""
+    return Path(os.environ.get("AGENTSLA_DB", str(BASE_DIR / "data" / "agentsla.db")))
+
+
+DB_PATH = db_path()
 
 CODING_CLASSES = {"coding.patch", "coding.debug"}
 RESEARCH_CLASS = "research.answer"
@@ -210,6 +217,7 @@ class Recording:
             "amount_usd": row["amount_usd"],
             "basis": row["basis"],
         })
+        self.last_mc_id = mc_id
         return mc_id
 
     def tool_call(self, model_call_id: str, seq: int, name: str, args: dict, ok: bool, summary: str, ms: int) -> str:
@@ -258,7 +266,7 @@ def _extract_final_patch(text: str, task_class: str) -> str:
 
 
 class RunContext:
-    def __init__(self, conn, client: LLMClient, envelope: RunEnvelope, task_class: str, seed: int):
+    def __init__(self, conn, client: ModelClient, envelope: RunEnvelope, task_class: str, seed: int):
         self.conn = conn
         self.client = client
         self.env = envelope
@@ -372,12 +380,7 @@ def run_worker_component(
     return last_text, _extract_final_patch(last_text, ctx.task_class)
 
 
-def _latest_mc_id(ctx: RunContext) -> str:
-    row = ctx.conn.execute(
-        "SELECT model_call_id FROM model_calls WHERE run_id=? ORDER BY rowid DESC LIMIT 1",
-        (ctx.env.run_id,),
-    ).fetchone()
-    return row["model_call_id"] if row else ""
+# ------------------------------------------------------------ architecture executors
 
 
 def run_verifier(
@@ -525,7 +528,7 @@ def run_cell(
     task_class: str,
     architecture_id: str,
     arch_config: dict,
-    client: LLMClient,
+    client: ModelClient,
     attempt: int = 1,
     base_url: str = "",
     git_sha: str = "",
@@ -558,7 +561,7 @@ def run_cell(
         (arch_ver_id, architecture_id, 1, json.dumps(arch_config, default=str), _now()),
     )
 
-    seed = int(hashlib_sha(conn, benchmark_id, task_class, architecture_id, attempt))
+    seed = int(_seed_from(benchmark_id, task_class, architecture_id, str(attempt)))
     run_id = f"{benchmark_id}-{task_class.replace('.', '_')}-{architecture_id}-a{attempt}"
     conn.execute(
         """INSERT INTO runs (run_id, benchmark_id, architecture_version_id, task_version_id, attempt,
@@ -572,7 +575,7 @@ def run_cell(
     )
     conn.commit()
 
-    envelope = RunEnvelope(run_id, BASE_DIR / "data" / "runs" / run_id)
+    envelope = RunEnvelope(run_id)
     ctx = RunContext(conn, client, envelope, task_class, seed)
     envelope.log(f"cell start task={task_class} arch={architecture_id} attempt={attempt}")
     started = time.monotonic()
@@ -756,16 +759,12 @@ def run_cell(
     return manifest
 
 
-def hashlib_sha(conn, *parts) -> int:
+def _seed_from(*parts: str) -> int:
     import hashlib
 
     raw = "|".join(str(p) for p in parts)
     return int(hashlib.sha256(raw.encode()).hexdigest()[:8], 16)
 
 
-def _model_of(client: LLMClient) -> str:
+def _model_of(client: ModelClient) -> str:
     return getattr(client, "model", "unknown")
-
-
-def save_transcript(ctx: RunContext, name: str, data: list[dict]) -> Path:
-    return ctx.env.artifact(name, data)

@@ -41,7 +41,7 @@ def wilson_interval(successes: int, trials: int) -> tuple[float, float]:
 
 
 @dataclass
-class _RunRow:
+class RunRow:
     success: bool
     cost_usd: float
     duration_seconds: float
@@ -69,17 +69,7 @@ class Slasummary:
     insufficient_evidence: bool = field(default=False)
 
 
-def _denominator(n_successes: int, n_attempts: int, per_success: bool, per_attempt: bool) -> int:
-    """Helper that keeps the denominator logic legible: a per-success metric is
-    undefined (0) when no successes exist, and 0 when no attempts exist."""
-    if per_success:
-        return n_successes
-    if per_attempt:
-        return n_attempts
-    return n_attempts
-
-
-def sla_summary(runs: list[_RunRow], min_samples: int = 3) -> Slasummary:
+def sla_summary(runs: list[RunRow], min_samples: int = 3) -> Slasummary:
     """Aggregate a list of run rows into an SLA summary.
 
     min_samples: the minimum number of runs before success_rate is treated as
