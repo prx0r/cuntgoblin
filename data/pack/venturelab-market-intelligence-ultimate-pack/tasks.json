@@ -1,0 +1,109 @@
+{
+  "schema": "venturelab.market_intelligence.tasks.v1",
+  "baseline": {
+    "cuntgoblin_sha": "3ac795ab5b55f5643a1aeafc9a004c1b96a6ead9",
+    "unignorant_sha": "836f1b269004f039b11dd952d660918f02e26595"
+  },
+  "checkpoints": [
+    {
+      "id": "CP-MI0",
+      "name": "contracts-and-observation-store",
+      "depends_on": []
+    },
+    {
+      "id": "CP-MI1",
+      "name": "oracle-registry-core-adapters",
+      "depends_on": [
+        "CP-MI0"
+      ]
+    },
+    {
+      "id": "CP-MI2",
+      "name": "ai-market-adapters",
+      "depends_on": [
+        "CP-MI1"
+      ]
+    },
+    {
+      "id": "CP-MI3",
+      "name": "signal-engine",
+      "depends_on": [
+        "CP-MI1"
+      ]
+    },
+    {
+      "id": "CP-MI4",
+      "name": "topic-radar",
+      "depends_on": [
+        "CP-MI3"
+      ]
+    },
+    {
+      "id": "CP-MI5",
+      "name": "opportunity-engine",
+      "depends_on": [
+        "CP-MI4"
+      ]
+    },
+    {
+      "id": "CP-MI6",
+      "name": "cross-oracle-join-lab",
+      "depends_on": [
+        "CP-MI1",
+        "CP-MI5"
+      ]
+    },
+    {
+      "id": "CP-MI7",
+      "name": "value-of-information",
+      "depends_on": [
+        "CP-MI5"
+      ]
+    },
+    {
+      "id": "CP-MI8",
+      "name": "solution-lab",
+      "depends_on": [
+        "CP-MI5"
+      ]
+    },
+    {
+      "id": "CP-MI9",
+      "name": "factory-resolver",
+      "depends_on": [
+        "CP-MI8"
+      ]
+    },
+    {
+      "id": "CP-MI10",
+      "name": "factory-genesis",
+      "depends_on": [
+        "CP-MI9",
+        "CP-MI6"
+      ]
+    },
+    {
+      "id": "CP-MI11",
+      "name": "outcome-oracle",
+      "depends_on": [
+        "CP-MI10"
+      ]
+    },
+    {
+      "id": "CP-MI12",
+      "name": "historical-replay-calibration",
+      "depends_on": [
+        "CP-MI4",
+        "CP-MI5"
+      ]
+    },
+    {
+      "id": "CP-MI13",
+      "name": "bounded-evolution",
+      "depends_on": [
+        "CP-MI11",
+        "CP-MI12"
+      ]
+    }
+  ]
+}

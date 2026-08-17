@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "MarketTopic",
+  "type": "object",
+  "required": [
+    "topic_id",
+    "name",
+    "kind",
+    "signal_ids",
+    "status"
+  ],
+  "properties": {
+    "topic_id": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "kind": {
+      "enum": [
+        "technology",
+        "industry",
+        "product_category",
+        "problem",
+        "occupation",
+        "geography",
+        "policy",
+        "research"
+      ]
+    },
+    "aliases": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "signal_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "status": {
+      "enum": [
+        "WATCH",
+        "RESEARCH",
+        "ACTIVE",
+        "DECLINING",
+        "ARCHIVED"
+      ]
+    }
+  }
+}

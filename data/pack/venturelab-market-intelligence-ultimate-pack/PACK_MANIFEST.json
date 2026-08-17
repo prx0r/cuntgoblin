@@ -1,0 +1,276 @@
+{
+  "pack": "venturelab-market-intelligence-ultimate-pack",
+  "version": "1.0.0",
+  "created_utc": "2026-08-17T22:33:42.057964+00:00",
+  "targets": {
+    "cuntgoblin": "3ac795ab5b55f5643a1aeafc9a004c1b96a6ead9",
+    "unignorant": "836f1b269004f039b11dd952d660918f02e26595"
+  },
+  "reference_tests": "PASS",
+  "files": {
+    "00_READ_ME_FIRST.md": {
+      "sha256": "321020aa834aa4ed60346fb99d342c8d9ec1eb8a00c8262e21a49c965ab74d55",
+      "bytes": 3171
+    },
+    "01_EXECUTIVE_ARCHITECTURE.md": {
+      "sha256": "1b2524202c72fad3ef627a7de6695966bffbc127dfd5f524942103784b2b63a6",
+      "bytes": 2504
+    },
+    "02_INTEGRATION_WITH_CURRENT_CUNTGOBLIN.md": {
+      "sha256": "6dc0e4f0249d62e4f9c844bdcf9c71150e8d7642fed7bb6b9b0121323743dd9b",
+      "bytes": 2242
+    },
+    "03_ONTOLOGY.md": {
+      "sha256": "de60e80ae7dcf4dab1ae7f45c048b288010e78ee03bbd82c5e660e1324668faf",
+      "bytes": 2372
+    },
+    "04_SOURCE_STRATEGY.md": {
+      "sha256": "5c8301118a0072424c77f5fe0f2ec53e20ab9e9cf81174db208be61bb1d6904c",
+      "bytes": 2225
+    },
+    "05_TOPIC_DISCOVERY_ENGINE.md": {
+      "sha256": "84907ac0f3eebc0587dc035415e3512c79cca1cd9c88b1de571a957320db4c24",
+      "bytes": 4681
+    },
+    "06_OPPORTUNITY_MINERS.md": {
+      "sha256": "c506d6d7450a76a76336fc6caef27c2a87fd10b17e15eef447a9167c9f4851a3",
+      "bytes": 3335
+    },
+    "07_OPPORTUNITY_SCORING.md": {
+      "sha256": "5463788266f1e0626fbbf0ed4af9547dd29deeb3e8c77ef0b1652c669ac8a086",
+      "bytes": 1958
+    },
+    "08_CROSS_ORACLE_JOIN_LAB.md": {
+      "sha256": "a6fb513cb70f14106397f5591ae1a940c86e75ad3fcebe76a773ae71ecdf27bf",
+      "bytes": 3498
+    },
+    "09_UNIGNORANT_AS_GLOBAL_REALITY_ORACLE.md": {
+      "sha256": "a2f7fb6e15898d38ff7dd595fc889f0c2956737c73fb87ffdacdbfcf8fa2ac7f",
+      "bytes": 2028
+    },
+    "10_UK_TRADES_EXAMPLE.md": {
+      "sha256": "59f8ebb3744586c82a1e11c3dcdaf25900ae427ad11305b29cc3815c6b0e2d46",
+      "bytes": 2182
+    },
+    "11_AI_RESEARCH_AND_TRENDS_RADAR.md": {
+      "sha256": "e2e3e1fe8d7d80df6cfbe38773b5465c415df2370fce4f6b6d9d34cd9ce9af71",
+      "bytes": 1983
+    },
+    "12_VALUE_OF_INFORMATION.md": {
+      "sha256": "9ff2ff5c4d4a6ff7612e8ecde04705d4d626136ced75b6c31a18cd810dc8c7e9",
+      "bytes": 1637
+    },
+    "13_FACTORY_RESOLVER.md": {
+      "sha256": "9af993d1ef3ed07d4428a032c021b14959bc6e20685db79510338d21339eb579",
+      "bytes": 858
+    },
+    "14_FACTORY_GENESIS_TIPPING_POINT.md": {
+      "sha256": "5143f8bd2274124d03cb5c002b16925370c55ef3c050e5722a55be38eb7353bc",
+      "bytes": 2590
+    },
+    "15_SOLUTION_LAB.md": {
+      "sha256": "1506cf0fafb32def0ec2b5125f2e6b0f8b14500d8720f7dd950dba2b43512785",
+      "bytes": 1695
+    },
+    "16_PRODUCT_ARCHETYPE_RESOLVER.md": {
+      "sha256": "dd30ea52db8d32cd05aa174a5ae130e858df4f6ffa665a08437b0a8ad5a7cd26",
+      "bytes": 1328
+    },
+    "17_MARKET_ORACLE_API_MCP.md": {
+      "sha256": "0183f7872d3815574365d191a85df274493b8afdb2c677eeb5ef9569b322843f",
+      "bytes": 1193
+    },
+    "18_ORACLE_REGISTRY_AND_MOAT.md": {
+      "sha256": "c0b280c74cae4dc730118fbece242d9f82cf095d93896194f24f8062a7cbf2d3",
+      "bytes": 1591
+    },
+    "19_PORTFOLIO_METAFACTORY.md": {
+      "sha256": "743ea085f7bf664f2ea7680a5feb6998b1ae5758fe407b38aecb5c22422816cd",
+      "bytes": 1146
+    },
+    "20_OUTCOME_ORACLE.md": {
+      "sha256": "12f5cd912045f88ca41d914055e92dff706a9a80954ac806af364180aab92cea",
+      "bytes": 968
+    },
+    "21_EVOLUTION_FRONTIER_ENDGAME.md": {
+      "sha256": "5e0a1b7e0ffd389c5ea2d29e950793ed8b553b246cc65c608160c9e5dd8ab4be",
+      "bytes": 2380
+    },
+    "22_FRONTIER_RESEARCH_MAP.md": {
+      "sha256": "c4ad3d2e6ad50ef80e5d4e6e6e5601004b2ffb54ff362e389e7c0ea2d1055ae4",
+      "bytes": 1593
+    },
+    "23_HERMES_ORCHESTRATION.md": {
+      "sha256": "155dfeeea472122ff3ee320e72f9d71af12fbd9f658f08b26bb19bf4bc642620",
+      "bytes": 1039
+    },
+    "24_VALIDATION_AND_CERTIFICATION.md": {
+      "sha256": "ecf08a0b7b1f7ca5a12bfd4f2062c27f29cd134b165f672e51dab398bb954d20",
+      "bytes": 2250
+    },
+    "25_ACCEPTANCE_CRITERIA.md": {
+      "sha256": "6d2dd8412992d6086e2299f64049947f445891889666517ca9fce6d67ee140ee",
+      "bytes": 1641
+    },
+    "26_IMPLEMENTATION_PLAN.md": {
+      "sha256": "469a96d39bd3fa7764623da17736be7cf0de604a3bcba2fb69d1acc33a3b51be",
+      "bytes": 1843
+    },
+    "27_ADAPTER_CONTRACTS.md": {
+      "sha256": "71e70d7eabfcfb19198112c1eea0ec23ca4ac4af4cbfcf19bea1cebf0195db55",
+      "bytes": 1368
+    },
+    "28_WEEKLY_TREND_REPORT_FORMAT.md": {
+      "sha256": "2a91d25651877303adf6dfcc26cfc8c4ba9a92b443eebb45ff9ae5947892432a",
+      "bytes": 766
+    },
+    "29_MARKET_GRAPH.md": {
+      "sha256": "124b4a6cb23852888ec5dd879574c436da2030999f79954228b3b66e35de04ec",
+      "bytes": 973
+    },
+    "30_SECURITY_PERMISSIONS_AND_GOVERNANCE.md": {
+      "sha256": "a848d93db540f990a8ea69ba8c517d322e7458da436633207d11082739966ef9",
+      "bytes": 956
+    },
+    "31_HISTORICAL_BACKTEST_AND_CALIBRATION.md": {
+      "sha256": "e666e61dc4ae2514eb69599ce672239934dc41aece8471cc5304dd06624738ad",
+      "bytes": 1038
+    },
+    "32_FINAL_AGENT_PROMPT.md": {
+      "sha256": "fb52b4c88864968e2063d1d3b2bac7340d0f140544f31429aed0ef828e69c41b",
+      "bytes": 2765
+    },
+    "33_VERIFIED_WEB_SOURCE_NOTES.md": {
+      "sha256": "7a5b3b59d6ca6fe6cdb8347a02167b87dca28250d08ca14448483d4d0f4c2add",
+      "bytes": 2877
+    },
+    "REFERENCE_TEST_RESULTS.txt": {
+      "sha256": "2368b3478931d9887b9c60ac180877b49dc549ffe5237778ed880055a9f0fd73",
+      "bytes": 1328
+    },
+    "config/factory_genesis.yaml": {
+      "sha256": "12daf025d91fbd84b89de1e1947f2480acb525ba3b352e89397f263dc15e92e5",
+      "bytes": 616
+    },
+    "config/opportunity_scoring.yaml": {
+      "sha256": "b005bfd98c62a23c0222c43b5078f7ba2c83fe461dfc2706b8dded63d2aafa4f",
+      "bytes": 376
+    },
+    "config/source_catalog.yaml": {
+      "sha256": "7e9555948cb5f838b766f8f9359b790ba2129313a35b5081e63773b25e6e3d65",
+      "bytes": 5467
+    },
+    "config/topic_discovery.yaml": {
+      "sha256": "4721e8306ef60327275b434ffdc8d8dc6682a4ba4b5d132ab3b9feb4a8918dfa",
+      "bytes": 523
+    },
+    "reference_implementation/.pytest_cache/.gitignore": {
+      "sha256": "3ed731b65d06150c138e2dadb0be0697550888a6b47eb8c45ecc9adba8b8e9bd",
+      "bytes": 37
+    },
+    "reference_implementation/.pytest_cache/CACHEDIR.TAG": {
+      "sha256": "37dc88ef9a0abeddbe81053a6dd8fdfb13afb613045ea1eb4a5c815a74a3bde4",
+      "bytes": 191
+    },
+    "reference_implementation/.pytest_cache/README.md": {
+      "sha256": "73fd6fccdd802c419a6b2d983d6c3173b7da97558ac4b589edec2dfe443db9ad",
+      "bytes": 302
+    },
+    "reference_implementation/.pytest_cache/v/cache/nodeids": {
+      "sha256": "bab3530db7202b4d8fb4d4ebc5fbab48163523d4e6717d2a35d96f0016b906b0",
+      "bytes": 749
+    },
+    "reference_implementation/README.md": {
+      "sha256": "e5b2d7a5e4f830e0bb9ba9e1504a8d89a88301a598a53cc8e6a8d13e4f6ac3de",
+      "bytes": 379
+    },
+    "reference_implementation/__init__.py": {
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "bytes": 1
+    },
+    "reference_implementation/__pycache__/__init__.cpython-313.pyc": {
+      "sha256": "e4cf7f95a412572f3f52bcc4f15fe945b6e908962bd8e5b75151879b679481ce",
+      "bytes": 188
+    },
+    "reference_implementation/__pycache__/market_algorithms.cpython-313.pyc": {
+      "sha256": "c4fef05b7b1652176468acbc8e4d89d7a64b224343df3090143742e76e90f1b2",
+      "bytes": 13065
+    },
+    "reference_implementation/__pycache__/test_market_algorithms.cpython-313-pytest-9.0.2.pyc": {
+      "sha256": "a8a423fc91ef4b14730446c537eab2c4d43bb186c924ef5e9d6b930282375fcb",
+      "bytes": 14209
+    },
+    "reference_implementation/market_algorithms.py": {
+      "sha256": "9c2599257e3804777376b5c207c958b476579a489139392e55d4004d09e67cda",
+      "bytes": 8173
+    },
+    "reference_implementation/test_market_algorithms.py": {
+      "sha256": "d187811dafb09c1bb502173f32d6b7e112f1794e13c42b8fb7d3a99ce8f62fe6",
+      "bytes": 2524
+    },
+    "schemas/factory_proposal.schema.json": {
+      "sha256": "63826b422fce7f0293a10cf5258ffc77009c7fc39f0d67a20956ec62bbe9fa98",
+      "bytes": 936
+    },
+    "schemas/market_observation.schema.json": {
+      "sha256": "3b3a7cde734760406a48c017c7c517b8d0ba478e1b6cbf548f4e80f5e70556c0",
+      "bytes": 1369
+    },
+    "schemas/market_topic.schema.json": {
+      "sha256": "69f069b26ce0ee5339a33355e4471c5d8322b8951a658736010e366c973db6ea",
+      "bytes": 869
+    },
+    "schemas/opportunity.schema.json": {
+      "sha256": "f2460bac2f11754764574cf5bb7939ea33a15eb195ea2596319aa281f218864e",
+      "bytes": 903
+    },
+    "schemas/oracle_manifest.schema.json": {
+      "sha256": "3101b8ddd4ee2be1a5ef684b85a8c07434a2ff41f9fb745f8ab3d8d63b859fa3",
+      "bytes": 1107
+    },
+    "schemas/outcome.schema.json": {
+      "sha256": "33cae568f58c901f544ef3b952a3c1b86bd608e6c44a28d4a0edfb1eb563e876",
+      "bytes": 580
+    },
+    "schemas/signal.schema.json": {
+      "sha256": "6e1d07d175121034239e6b7480166f42faa5c487e177e6fe919d350e93abf598",
+      "bytes": 990
+    },
+    "skills/factory-genesis/SKILL.md": {
+      "sha256": "d2189c7853f9767c21094246aa24170de8043bd87d7428981d42653f91c084fd",
+      "bytes": 317
+    },
+    "skills/factory-resolver/SKILL.md": {
+      "sha256": "012fea53d8a266c53ec50c799705d2425e40db8755ba4a54d0301bdb88730967",
+      "bytes": 277
+    },
+    "skills/market-auditor/SKILL.md": {
+      "sha256": "bc3167b377b36ffe0efcaf81a709bf0ddc2d1494965ae3168724aed49377d2e5",
+      "bytes": 335
+    },
+    "skills/market-scout/SKILL.md": {
+      "sha256": "64033d3f91d6c3996dbde72574eed827497075c1a205b26507518123d2eabc5e",
+      "bytes": 319
+    },
+    "skills/opportunity-miner/SKILL.md": {
+      "sha256": "887ff92de290cb7e8f074f5445ac9d51feb5ed59c755d58611df381e385f5875",
+      "bytes": 229
+    },
+    "skills/solution-lab/SKILL.md": {
+      "sha256": "aa8e72c57287e207b084d22ec4cb7858972a1c3b00074e5c055fb54f55429184",
+      "bytes": 314
+    },
+    "skills/topic-radar/SKILL.md": {
+      "sha256": "577f263a6e2ef96f077fc705bd2274d9cec90ec601434cc4a0ed30ef730ad4be",
+      "bytes": 326
+    },
+    "skills/voi-researcher/SKILL.md": {
+      "sha256": "25394c0b2b02bddba788e265427278c636a8e64f0c9bd81d70fa3f5f07b49693",
+      "bytes": 216
+    },
+    "tasks.json": {
+      "sha256": "3483711e249d8b228b85c20bae3f3839001a716c46ec7ab285acb50a0ef36740",
+      "bytes": 1952
+    }
+  }
+}

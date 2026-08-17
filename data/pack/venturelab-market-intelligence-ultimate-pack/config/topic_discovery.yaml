@@ -1,0 +1,26 @@
+version: topic-discovery-v1
+weights:
+  velocity: 0.20
+  acceleration: 0.15
+  change_point: 0.15
+  source_breadth: 0.15
+  persistence: 0.10
+  magnitude: 0.10
+  novelty: 0.10
+  source_quality: 0.05
+
+hard_gates:
+  min_independent_source_families: 2
+  allow_single_primary_policy_event: true
+  min_coverage: 0.50
+
+thresholds:
+  active_research:
+    score: 0.68
+    confidence: 0.65
+  watch:
+    score: 0.55
+
+notes:
+  - "Initial operational priors; calibrate with historical replay."
+  - "Missing/error is UNKNOWN, never zero."
