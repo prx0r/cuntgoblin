@@ -1,0 +1,54 @@
+{
+  "source": "ideas2.md",
+  "imported_at": "2026-08-17T18:46:07.866464+00:00",
+  "key_insights": [
+    "Verifiable agency is the emerging scarce resource",
+    "Work Receipts is the strongest venture (9.2/10)",
+    "Receiver-attested receipts are especially interesting",
+    "Proof schemas themselves are valuable data",
+    "RealityRouter remains massive but later",
+    "Human inference API is better than generic HITL",
+    "The five ventures collapse into one loop",
+    "Proof → Reputation, not Reputation → Trust",
+    "Capability-specific reputation is essential",
+    "Work receipts don't need blockchain by default"
+  ],
+  "venture_scores": {
+    "Work Receipts": 9.2,
+    "Reality Attestation": 8.9,
+    "Delegated Authority": 8.6,
+    "RealityRouter": 8.1,
+    "Human Escalation": 7.9
+  },
+  "architecture": "PRINCIPAL → MANDATE → AGENT → REALITY ROUTER → WORK → EVIDENCE → VERIFICATION → RECEIPT → REPUTATION",
+  "mvp_primitives": [
+    "TaskSpec",
+    "ProofSpec",
+    "EvidenceBundle",
+    "VerificationResult",
+    "ExecutionReceipt",
+    "Actor",
+    "Capability",
+    "Dispute"
+  ],
+  "api_endpoints": [
+    "POST /proof/spec",
+    "POST /proof/verify",
+    "POST /receipts",
+    "GET /receipts/:id",
+    "POST /receipts/:id/verify",
+    "GET /actors/:id",
+    "GET /actors/:id/history",
+    "GET /actors/:id/reputation",
+    "POST /tasks/screen"
+  ],
+  "mcp_tools": [
+    "generate_proof_requirements",
+    "verify_evidence",
+    "issue_receipt",
+    "verify_receipt",
+    "lookup_actor_history",
+    "lookup_capability_reputation",
+    "screen_real_world_task"
+  ]
+}
