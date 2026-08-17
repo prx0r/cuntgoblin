@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  venturelab:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=sqlite:///./data/venturelab.db
+    volumes:
+      - ./data:/app/data
+    restart: unless-stopped
+
+  postgres:
+    image: postgres:15
+    environment:
+      - POSTGRES_USER=patala
+      - POSTGRES_PASSWORD=patala
+      - POSTGRES_DB=venturelab
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:

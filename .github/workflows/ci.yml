@@ -1,0 +1,39 @@
+name: CI
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+    
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+    
+    - name: Run HotSwap tests
+      run: cd factory/hotswap && python -m pytest test_hotswap.py -v
+    
+    - name: Run Market tests
+      run: cd factory/market && python -m pytest test_market_algorithms.py -v
+    
+    - name: Run AgentHub tests
+      run: cd data/agenthub-pack/agenthub-agentfactory-ultimate-pack/reference && python -m pytest test_agenthub.py -v
+    
+    - name: Run Global OS tests
+      run: cd data/global-os-pack/venturelab-global-operating-system-pack/reference && python -m pytest test_core.py -v
+    
+    - name: Run system check
+      run: python3 factory/global_os/go.py --dry-run
