@@ -1,0 +1,37 @@
+{
+  "idea_id": "VENT_HOTLOADER",
+  "idea": "HotLoader — Agentic infrastructure that finds minimal LLM/task where quality and price converge",
+  "thesis": "For every task, there is a sweet spot where you get 95% quality at 20% cost. Going cheaper drops quality dramatically. HotLoader finds that elbow.",
+  "media_types": [
+    "text (LLM inference)",
+    "image (generation/analysis)",
+    "video (generation/analysis)",
+    "audio (TTS/STT)",
+    "code (generation/review)",
+    "search (retrieval)",
+    "sandbox (execution)"
+  ],
+  "products": [
+    "HotLoader Text — LLM routing",
+    "HotLoader Image — image model routing",
+    "HotLoader Video — video model routing",
+    "HotLoader Code — coding agent routing",
+    "HotLoader Search — search provider routing",
+    "HotLoader Compute — sandbox/GPU routing",
+    "HotLoader Pro — aggregated multi-media"
+  ],
+  "api_endpoints": [
+    "POST /route — find optimal model for task",
+    "POST /benchmark — benchmark models on task",
+    "GET /elbow/{task} — get cost-quality elbow",
+    "GET /providers — list all providers",
+    "POST /optimize — optimize across media types"
+  ],
+  "existing_routing_infra": [
+    "OpenRouter — LLM routing",
+    "Artificial Analysis — model comparison",
+    "Martian — model routing",
+    "RouteLLM — cost-aware routing",
+    "LiteLLM — unified API"
+  ]
+}
