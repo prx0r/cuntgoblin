@@ -1,0 +1,13 @@
+{
+  "args": {
+    "bogus": "x"
+  },
+  "content": [
+    {
+      "text": "Error executing tool echo: 1 validation error for echoArguments\ntext\n  Field required [type=missing, input_value={'bogus': 'x'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing",
+      "type": "text"
+    }
+  ],
+  "isError": true,
+  "tool": "echo"
+}

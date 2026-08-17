@@ -101,7 +101,7 @@ def test_v1_capability_implementations():
     r = client.get("/v1/capabilities/filesystem.read/implementations")
     assert r.status_code == 200
     impls = r.json()
-    assert any(i["tool_name"] == "read_doc" and i["server_id"] == "mock" for i in impls)
+    assert any(i["tool_name"] == "read_doc" and i["server_id"] == "mock:mock-mcp" for i in impls)
     # a capability nobody implements should be an empty 200 (not an error)
     r2 = client.get("/v1/capabilities/cloud.provision/implementations")
     assert r2.status_code == 200

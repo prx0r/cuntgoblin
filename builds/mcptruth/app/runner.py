@@ -181,6 +181,7 @@ def main() -> None:
     p.add_argument("--max-servers", type=int, default=3)
     p.add_argument("--only-mock", action="store_true")
     p.add_argument("--timeout-ms", type=int, default=25000)
+    p.add_argument("--region", default="local")
     p.set_defaults(fn=cmd_demo)
 
     p = sub.add_parser("show", help="print current tracked/healthiest state")

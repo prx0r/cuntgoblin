@@ -1,0 +1,10 @@
+{
+  "description": "Toggles simulated, random-leveled logging on or off.",
+  "inputSchema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "properties": {},
+    "type": "object"
+  },
+  "name": "toggle-simulated-logging",
+  "safety_class": "UNKNOWN"
+}

@@ -124,7 +124,7 @@ def v1_server_history(server_id: str, limit: int = Query(50, le=500)):
     runs = db.get_probe_runs(server_id=server_id, limit=limit)
     measurements = db.get_measurements(server_id=server_id, limit=limit * 20)
     windows = db.get_windows_for_server(server_id, limit=100)
-    observations = db.list_observations(subject_id=server_id, limit=limit * 10)
+    observations = db.list_observations_for_server(server_id, limit=limit * 10)
     return {
         "server_id": server_id,
         "probe_runs": [ProbeRunOut(**r).model_dump() for r in runs],

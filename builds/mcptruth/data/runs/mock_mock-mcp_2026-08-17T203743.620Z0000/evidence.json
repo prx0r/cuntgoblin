@@ -1,0 +1,32 @@
+[
+  {
+    "artifact": "tool-add.json",
+    "selector": "$.tool-add",
+    "sha256": "381e13cbbafe74f6d3fbd3d635bcc910bed459bed825b17cb8c03baa1c11c9e1"
+  },
+  {
+    "artifact": "tool-echo.json",
+    "selector": "$.tool-echo",
+    "sha256": "c19e40aac39bcf6c829a4c7226acc871b48568005e7de490f8f4fe1cbfd0144d"
+  },
+  {
+    "artifact": "tool-list_tree.json",
+    "selector": "$.tool-list_tree",
+    "sha256": "53e691fb1ba5d3b75ca33d81d933e91c4aaac65c958e5d0a4609c4bd6fce59bb"
+  },
+  {
+    "artifact": "tool-mutate_state.json",
+    "selector": "$.tool-mutate_state",
+    "sha256": "2b4ce8b05ef1b9c0b94a4c4dbfd688a9b1bfaea50de8ad42c456d9bbbcf070f9"
+  },
+  {
+    "artifact": "tool-read_doc.json",
+    "selector": "$.tool-read_doc",
+    "sha256": "abcf48dd706bfb3bf236ef1a80bf4794047f617c0b6b2d16b54f545e29314a5a"
+  },
+  {
+    "artifact": "tool-web_search.json",
+    "selector": "$.tool-web_search",
+    "sha256": "07493d984dadc3a30fc86ffb214dbbe64f0dbbaddc0b74c8ad5af54a13515943"
+  }
+]

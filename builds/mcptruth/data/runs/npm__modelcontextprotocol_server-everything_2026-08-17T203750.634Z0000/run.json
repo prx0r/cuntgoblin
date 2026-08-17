@@ -1,0 +1,14 @@
+{
+  "completed_at": "2026-08-17T20:37:52.537+00:00",
+  "error_class": null,
+  "error_detail": "",
+  "measurement_count": 6,
+  "method_version": "mcptruth-harness-v1",
+  "note": "run-dir reconstructed from immutable DB rows after filesystem cleanup",
+  "probe_type": "full",
+  "region": "local",
+  "run_id": "run_npm__modelcontextprotocol_server-everything_2026-08-17T203750634+0000",
+  "server_id": "npm:@modelcontextprotocol_server-everything",
+  "started_at": "2026-08-17T20:37:50.634+00:00",
+  "status": "SUCCESS"
+}

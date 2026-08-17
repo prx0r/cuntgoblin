@@ -423,7 +423,8 @@ def upsert_tool(
                (tool_id, server_id, name, description, input_schema, schema_sha256,
                 schema_token_count, safety_class, first_seen, last_seen)
                VALUES (?,?,?,?,?,?,?,?,?,?)""",
-            (tool_id, server_id, name, description, canon, new_hash, tokens, safety_class, now, now),
+            (tool_id, server_id, name, description, json.dumps(input_schema),
+             new_hash, tokens, safety_class, now, now),
         )
         conn.execute(
             """INSERT INTO schema_changes
@@ -436,7 +437,7 @@ def upsert_tool(
         conn.execute(
             """UPDATE tools SET description=?, input_schema=?, schema_sha256=?,
                schema_token_count=?, safety_class=?, last_seen=? WHERE tool_id=?""",
-            (description, canon, new_hash, tokens, safety_class, now, tool_id),
+            (description, json.dumps(input_schema), new_hash, tokens, safety_class, now, tool_id),
         )
         if old_hash != new_hash:
             change_type = classify_schema_change(
@@ -530,6 +531,13 @@ def list_tools(server_id: Optional[str] = None, capability: Optional[str] = None
     for r in rows:
         d = dict(r)
         d["input_schema"] = json.loads(d["input_schema"] or "{}") if d.get("input_schema") else {}
+        caps = conn.execute(
+            """SELECT c.capability_id, c.label, tc.confidence, tc.mapping_method
+               FROM tool_capabilities tc JOIN capabilities c ON c.capability_id=tc.capability_id
+               WHERE tc.tool_id=?""",
+            (d["tool_id"],),
+        ).fetchall()
+        d["capabilities"] = [dict(x) for x in caps]
         out.append(d)
     return out
 
@@ -641,6 +649,24 @@ def list_observations(subject_id: Optional[str] = None, predicate: Optional[str]
     q += " ORDER BY observed_at DESC LIMIT ?"
     params.append(limit)
     rows = conn.execute(q, params).fetchall()
+    out = []
+    for r in rows:
+        env = json.loads(r["envelope_json"])
+        env["observation_id"] = r["observation_id"]
+        out.append(env)
+    return out
+
+
+def list_observations_for_server(server_id: str, limit: int = 100) -> list[dict]:
+    """Observations whose subject is the server itself OR one of its tools."""
+    conn = get_conn()
+    rows = conn.execute(
+        """SELECT o.* FROM observations o
+           LEFT JOIN tools t ON t.tool_id = o.subject_id
+           WHERE o.subject_id = ? OR t.server_id = ?
+           ORDER BY o.observed_at DESC LIMIT ?""",
+        (server_id, server_id, limit),
+    ).fetchall()
     out = []
     for r in rows:
         env = json.loads(r["envelope_json"])

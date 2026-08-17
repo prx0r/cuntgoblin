@@ -1,0 +1,67 @@
+[
+  {
+    "artifact": "tool-echo.json",
+    "selector": "$.tool-echo.json",
+    "sha256": "a2f33bb284a07be7a6080b80bfefea533addf7ebc5cdcc0e88b63e0f33028ec9"
+  },
+  {
+    "artifact": "tool-get-annotated-message.json",
+    "selector": "$.tool-get-annotated-message.json",
+    "sha256": "ab8e2ab144b352b8baec644de98b5368f7a3571b9ef51e371a363a9577be9bf5"
+  },
+  {
+    "artifact": "tool-get-env.json",
+    "selector": "$.tool-get-env.json",
+    "sha256": "0dfacdd5f6552125ffba17299393819bcfd4400b0d5bf204a98d603e39e2885a"
+  },
+  {
+    "artifact": "tool-get-resource-links.json",
+    "selector": "$.tool-get-resource-links.json",
+    "sha256": "aeda3d9f2aa903211d0d168d8631b1b3e68b1ba4db4643196886a0f4bffaf570"
+  },
+  {
+    "artifact": "tool-get-resource-reference.json",
+    "selector": "$.tool-get-resource-reference.json",
+    "sha256": "c8bda9698156d654cb27d580632953edb3adfec8d9fa41265ff992e69903101f"
+  },
+  {
+    "artifact": "tool-get-structured-content.json",
+    "selector": "$.tool-get-structured-content.json",
+    "sha256": "877af6d5e0c8c298628089205dfe02f3b885c33c670cb9e2573ca5fdda5e251a"
+  },
+  {
+    "artifact": "tool-get-sum.json",
+    "selector": "$.tool-get-sum.json",
+    "sha256": "9e381584549391a2b5ea237de7b2ef548e05e2be8468ccd326582c7ce14a48ff"
+  },
+  {
+    "artifact": "tool-get-tiny-image.json",
+    "selector": "$.tool-get-tiny-image.json",
+    "sha256": "1a6f851a48b1b98d1c7187f1398689838646f154598bd4e7838db25d935f23cc"
+  },
+  {
+    "artifact": "tool-gzip-file-as-resource.json",
+    "selector": "$.tool-gzip-file-as-resource.json",
+    "sha256": "e09d1c27d0d098957abbe9d13b5a6003f8ccddccabfc1b07d9728b7f5274fe70"
+  },
+  {
+    "artifact": "tool-toggle-simulated-logging.json",
+    "selector": "$.tool-toggle-simulated-logging.json",
+    "sha256": "801ef24e33442347e1b93d701eeb61aab849f498cedf4e3fa9c63d3e4747e976"
+  },
+  {
+    "artifact": "tool-toggle-subscriber-updates.json",
+    "selector": "$.tool-toggle-subscriber-updates.json",
+    "sha256": "cb11b7506a268a6f4846bd333ff7303c37f61979b48704962719d0914884c6f8"
+  },
+  {
+    "artifact": "tool-trigger-long-running-operation.json",
+    "selector": "$.tool-trigger-long-running-operation.json",
+    "sha256": "4808c11a5f0f524df74f78f9bf6f2e10708b3e3c16f6c9ecd0382a42b84aa19f"
+  },
+  {
+    "artifact": "tool-simulate-research-query.json",
+    "selector": "$.tool-simulate-research-query.json",
+    "sha256": "5aaa19a7b7c888ad3d91591359dfa74ac97d29eb13ed69d41f66a15e6c724882"
+  }
+]

@@ -85,16 +85,18 @@ def test_schema_fingerprint_stable_across_probes(seeded_db, mock_server):
 
 def test_safe_args_only_read_only_invoked(seeded_db, mock_probe_summary):
     """MUTATING tool must never be invoked; its observation is NOT_APPLICABLE."""
-    inv_obs = db.list_observations(predicate="tool.invocation")
-    mut = [o for o in inv_obs if "mutate_state" in o["subject"]["id"]]
+    tool_names = {t["tool_id"]: t["name"] for t in db.list_tools(server_id=MOCK)}
+    inv_obs = db.list_observations_for_server(MOCK)
+    mut = [o for o in inv_obs
+           if tool_names.get(o["subject"]["id"]) == "mutate_state"]
     assert mut, "mutate_state should have an invocation observation"
     assert all(o["state"] == "NOT_APPLICABLE" for o in mut)
     ok = [o for o in inv_obs if o["state"] == "KNOWN"]
-    assert any("echo" in o["subject"]["id"] for o in ok)
+    assert any(tool_names.get(o["subject"]["id"]) == "echo" for o in ok)
     # and no invocation artifact may exist for mutate_state
     run_dir = mock_probe_summary["run_dir"]
     names = set(os.listdir(os.path.join(run_dir, "artifacts")))
-    assert not any("mutate_state" in n for n in names)
+    assert not any(n.startswith("invoke-mutate_state") for n in names)
 
 
 def test_invocation_success_and_latency(seeded_db):
@@ -110,7 +112,7 @@ def test_failed_invocation_recorded(seeded_db, mock_server):
     """Tool advertised and callable but fails with bad args -> invocation FALSE."""
     old = dict(SAFE_ARGS)
     try:
-        SAFE_ARGS[("mock:echo", "echo")] = {"text": 12345}  # wrong type -> error
+        SAFE_ARGS[("mock:mock-mcp", "echo")] = {"bogus": "x"}  # missing required arg -> validation error
         summary = run_probe_cycle(mock_server)
         assert summary["status"] == "SUCCESS"  # server itself is fine
     finally:

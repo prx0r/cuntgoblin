@@ -1,0 +1,14 @@
+{
+  "completed_at": "2026-08-17T20:37:44.413+00:00",
+  "error_class": null,
+  "error_detail": "",
+  "measurement_count": 16,
+  "method_version": "mcptruth-harness-v1",
+  "note": "run-dir reconstructed from immutable DB rows after filesystem cleanup",
+  "probe_type": "full",
+  "region": "local",
+  "run_id": "run_mock_mock-mcp_2026-08-17T203743620+0000",
+  "server_id": "mock:mock-mcp",
+  "started_at": "2026-08-17T20:37:43.620+00:00",
+  "status": "SUCCESS"
+}
