@@ -1,18 +1,21 @@
 #!/usr/bin/env python3
 """agent/run.py — the AGENT-RUN orchestrator for venturelab.
 
-A single entry point an agent (or the watchdog) calls to run ANY lab step:
+A single entry point an agent (or the watchdog) calls to run ANY lab step, with kanban awareness:
   - it claims/completes the relevant kanban task
   - runs the underlying lab script
   - logs the result to the experiment registry
   - posts a comment / updates the task
 
+Designed to be driven by hermes (`hermes chat` with the venturelab skill) OR by cron (watchdog).
+
 Usage:
   python3 agent/run.py --step discover --idea "API for X"
   python3 agent/run.py --step research --idea-id VENT_001
   python3 agent/run.py --step evaluate --idea-id VENT_001
+  python3 agent/run.py --step hypothesis --rounds 1
   python3 agent/run.py --step report
-  python3 agent/run.py --step watchdog
+  python3 agent/run.py --step watchdog --loop
 """
 from __future__ import annotations
 
@@ -28,6 +31,9 @@ ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "pipeline"))
 sys.path.insert(0, str(ROOT))
 
+# kanban board (hermes kanban) — the active board is 'venturelab'
+BOARD = "venturelab"
+
 
 def _sh(*args: str, timeout: int = 600) -> str:
     """Run a shell command (background-safe), return stdout."""
@@ -38,14 +44,30 @@ def _sh(*args: str, timeout: int = 600) -> str:
         return f"__TIMEOUT__ {' '.join(args)}"
 
 
+def _kanban(cmd: str, *args: str) -> str:
+    return _sh("hermes", "kanban", cmd, *args)
+
+
 def log_line(record: dict) -> Path:
-    """Append a machine-readable result to the lab registry."""
-    reg = ROOT / "data" / "runs" / "venture-runs.jsonl"
+    """Append a machine-readable result to the lab registry (centralized trace)."""
+    reg = ROOT / "data" / "runs" / "agent-runs.jsonl"
     reg.parent.mkdir(parents=True, exist_ok=True)
     record["ts"] = datetime.now(timezone.utc).isoformat()
     with open(reg, "a", encoding="utf-8") as f:
         f.write(json.dumps(record, ensure_ascii=False) + "\n")
+    # also append to the centralized agent-steps trace (the anti-mess ledger)
+    step_reg = ROOT / "data" / "runs" / "agent-steps.jsonl"
+    step_reg.parent.mkdir(parents=True, exist_ok=True)
+    with open(step_reg, "a", encoding="utf-8") as f:
+        f.write(json.dumps(record, ensure_ascii=False) + "\n")
     return reg
+
+
+def _record_run(step: str, gold, config: dict, metrics: dict, assertion: str = "") -> dict:
+    """Persist a content-addressed run record (the provenance ledger) alongside the registry row."""
+    from run_recorder import RunRecorder
+    return RunRecorder().record(step=step, gold=gold, config=config, metrics=metrics,
+                                assertion=assertion)
 
 
 # ── the lab steps ───────────────────────────────────────────────────────────
@@ -67,8 +89,13 @@ def step_discover(idea: str) -> dict:
     with open(ideas_file, "a", encoding="utf-8") as f:
         f.write(json.dumps(idea_record, ensure_ascii=False) + "\n")
     
+    # Log to trace
     rec = {"step": "discover", "idea_id": idea_id, "idea": idea, "status": "logged"}
     log_line(rec)
+    
+    # Kanban: create task
+    _kanban("add", BOARD, f"Research {idea_id}: {idea[:50]}")
+    
     print(f"Idea logged: {idea_id}")
     print(f"Idea: {idea}")
     return rec
@@ -139,8 +166,13 @@ def step_research(idea_id: str) -> dict:
     with open(research_file, "a", encoding="utf-8") as f:
         f.write(json.dumps(research_record, ensure_ascii=False) + "\n")
     
+    # Log to trace
     rec = {"step": "research", "idea_id": idea_id, "arxiv_count": len(arxiv_results), "github_count": len(github_results)}
     log_line(rec)
+    
+    # Kanban: update task
+    _kanban("comment", BOARD, f"Research complete for {idea_id}: {len(arxiv_results)} papers, {len(github_results)} repos")
+    
     return rec
 
 
@@ -246,8 +278,78 @@ def step_evaluate(idea_id: str) -> dict:
     with open(eval_file, "a", encoding="utf-8") as f:
         f.write(json.dumps(eval_record, ensure_ascii=False) + "\n")
     
+    # Log to trace
     rec = {"step": "evaluate", "idea_id": idea_id, "scores": scores, "verdict": verdict}
     log_line(rec)
+    
+    # Kanban: update task
+    _kanban("comment", BOARD, f"Evaluation complete for {idea_id}: {verdict}")
+    
+    return rec
+
+
+def step_hypothesis(rounds: int = 1) -> dict:
+    """Generate hypotheses about what ventures to pursue."""
+    print("=== HYPOTHESIS LAB ===")
+    print()
+    
+    # Load all evaluations
+    eval_file = ROOT / "data" / "evaluations.jsonl"
+    if not eval_file.exists():
+        print("No evaluations found")
+        return {"step": "hypothesis", "error": "no evaluations"}
+    
+    evaluations = []
+    with open(eval_file, encoding="utf-8") as f:
+        for line in f:
+            evaluations.append(json.loads(line))
+    
+    # Sort by overall score
+    evaluations.sort(key=lambda x: x.get("scores", {}).get("overall", 0), reverse=True)
+    
+    # Generate hypotheses
+    hypotheses = []
+    
+    for i, eval_record in enumerate(evaluations[:5], 1):
+        idea_id = eval_record.get("idea_id", "")
+        idea = eval_record.get("idea", "")
+        scores = eval_record.get("scores", {})
+        verdict = eval_record.get("verdict", "")
+        
+        # Generate hypothesis
+        hypothesis = {
+            "id": f"HYP_{int(time.time())}_{i}",
+            "based_on": idea_id,
+            "idea": idea,
+            "hypothesis": f"If we build {idea}, then we can capture market because novelty={scores.get('novelty', 0)}/10 and research={scores.get('research', 0)}/10",
+            "confidence": scores.get("overall", 0) / 10,
+            "test": f"Build MVP and measure adoption",
+            "created_at": datetime.now(timezone.utc).isoformat(),
+        }
+        hypotheses.append(hypothesis)
+        
+        print(f"Hypothesis {i}:")
+        print(f"  Based on: {idea_id}")
+        print(f"  Hypothesis: {hypothesis['hypothesis']}")
+        print(f"  Confidence: {hypothesis['confidence']:.2f}")
+        print(f"  Test: {hypothesis['test']}")
+        print()
+    
+    # Save hypotheses
+    hyp_file = ROOT / "data" / "hypotheses.jsonl"
+    hyp_file.parent.mkdir(parents=True, exist_ok=True)
+    with open(hyp_file, "a", encoding="utf-8") as f:
+        for hyp in hypotheses:
+            f.write(json.dumps(hyp, ensure_ascii=False) + "\n")
+    
+    # Log to trace
+    rec = {"step": "hypothesis", "count": len(hypotheses), "rounds": rounds}
+    log_line(rec)
+    
+    # Kanban: create tasks for top hypotheses
+    for hyp in hypotheses[:3]:
+        _kanban("add", BOARD, f"Test hypothesis: {hyp['idea'][:50]}")
+    
     return rec
 
 
@@ -273,6 +375,13 @@ def step_report() -> dict:
     print(f"Total ideas evaluated: {len(evaluations)}")
     print()
     
+    # Generate report
+    report = {
+        "generated_at": datetime.now(timezone.utc).isoformat(),
+        "total_ideas": len(evaluations),
+        "top_ideas": [],
+    }
+    
     for i, eval_record in enumerate(evaluations[:10], 1):
         idea_id = eval_record.get("idea_id", "")
         idea = eval_record.get("idea", "")
@@ -284,9 +393,25 @@ def step_report() -> dict:
         print(f"   Score: {scores.get('overall', 0):.1f}/10")
         print(f"   Verdict: {verdict}")
         print()
+        
+        report["top_ideas"].append({
+            "rank": i,
+            "idea_id": idea_id,
+            "idea": idea,
+            "score": scores.get("overall", 0),
+            "verdict": verdict,
+        })
     
-    rec = {"step": "report", "total_evaluated": len(evaluations)}
+    # Save report
+    report_file = ROOT / "data" / "reports" / f"venture-brief-{int(time.time())}.json"
+    report_file.parent.mkdir(parents=True, exist_ok=True)
+    with open(report_file, "w", encoding="utf-8") as f:
+        json.dump(report, f, indent=2, ensure_ascii=False)
+    
+    # Log to trace
+    rec = {"step": "report", "total_evaluated": len(evaluations), "report_file": str(report_file)}
     log_line(rec)
+    
     return rec
 
 
@@ -316,11 +441,16 @@ def step_watchdog() -> dict:
             step_research(idea_id)
             step_evaluate(idea_id)
     
+    # Generate hypotheses
+    step_hypothesis()
+    
     # Generate report
     step_report()
     
+    # Log to trace
     rec = {"step": "watchdog", "processed": len(ideas)}
     log_line(rec)
+    
     return rec
 
 
@@ -391,9 +521,11 @@ def check_existing_products(idea: str) -> list[dict]:
 
 def main():
     parser = argparse.ArgumentParser(description="VentureLab orchestrator")
-    parser.add_argument("--step", required=True, choices=["discover", "research", "evaluate", "report", "watchdog"])
+    parser.add_argument("--step", required=True, choices=["discover", "research", "evaluate", "hypothesis", "report", "watchdog"])
     parser.add_argument("--idea", help="Idea text for discover step")
     parser.add_argument("--idea-id", help="Idea ID for research/evaluate steps")
+    parser.add_argument("--rounds", type=int, default=1, help="Number of rounds for hypothesis step")
+    parser.add_argument("--loop", action="store_true", help="Run in loop mode for watchdog")
     
     args = parser.parse_args()
     
@@ -414,6 +546,9 @@ def main():
             print("Error: --idea-id required for evaluate step")
             sys.exit(1)
         step_evaluate(args.idea_id)
+    
+    elif args.step == "hypothesis":
+        step_hypothesis(args.rounds)
     
     elif args.step == "report":
         step_report()
