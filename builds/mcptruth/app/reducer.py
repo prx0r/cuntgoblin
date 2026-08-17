@@ -68,14 +68,16 @@ def reduce_windows(server_id: Optional[str] = None, window_minutes: int = 15) ->
         runs = db.get_probe_runs(limit=100000)
         server_ids = [s["server_id"] for s in db.list_servers()]
 
-    # aggregate per server
+    # aggregate per server (fetch measurements ONCE per server, not per run)
     per_server: dict[str, list[dict]] = {}
     for r in runs:
         if r["status"] not in ("SUCCESS", "FAILED"):
             continue
         if r["started_at"] < window_start:
             continue
-        per_server.setdefault(r["server_id"], []).extend(db.get_measurements(server_id=r["server_id"]))
+        per_server.setdefault(r["server_id"], [])
+    for sid in per_server:
+        per_server[sid] = db.get_measurements(server_id=sid)
 
     counts = {"servers": 0, "windows": 0, "skipped_empty": 0}
     for sid in server_ids:

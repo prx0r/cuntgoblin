@@ -1,0 +1,10 @@
+{
+  "description": "List a directory tree (read-only mock).",
+  "inputSchema": {
+    "properties": {},
+    "title": "list_treeArguments",
+    "type": "object"
+  },
+  "name": "list_tree",
+  "safety_class": "READ_ONLY"
+}

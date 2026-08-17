@@ -1,0 +1,13 @@
+{
+  "args": {
+    "query": "model context protocol"
+  },
+  "content": [
+    {
+      "text": "{\n  \"query\": \"model context protocol\",\n  \"results\": [\n    {\n      \"title\": \"Model Context Protocol\",\n      \"url\": \"https://modelcontextprotocol.io\"\n    }\n  ]\n}",
+      "type": "text"
+    }
+  ],
+  "isError": false,
+  "tool": "web_search"
+}

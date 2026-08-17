@@ -1,0 +1,13 @@
+{
+  "args": {
+    "path": "data/test-doc.txt"
+  },
+  "content": [
+    {
+      "text": "MCPTruth mock document content.",
+      "type": "text"
+    }
+  ],
+  "isError": false,
+  "tool": "read_doc"
+}

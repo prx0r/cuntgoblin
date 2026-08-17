@@ -61,7 +61,7 @@ def test_modified_schema_change_is_not_breaking():
 
 def test_capability_mapping_curated_and_heuristic():
     from app.capabilities import map_tool_capabilities
-    curated = map_tool_capabilities("mock", "read_doc", "read a document")
+    curated = map_tool_capabilities("mock:mock-mcp", "read_doc", "read a document")
     assert any(c[0] == "filesystem.read" and c[1] == 1.0 and c[2] == "curated" for c in curated)
     heuristic = map_tool_capabilities("other", "lookup_user", "find a user in a repository")
     assert any(c[0] == "repository.read" for c in heuristic)

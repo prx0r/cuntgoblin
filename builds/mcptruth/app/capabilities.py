@@ -42,12 +42,12 @@ CAPABILITIES = [
 
 # Curated overrides: (server_id|tool_name) -> [(capability, confidence, method)]
 CURATED: dict[str, list[tuple[str, float, str]]] = {
-    "mock:echo": [("math.compute", 1.0, "curated")],
-    "mock:add": [("math.compute", 1.0, "curated")],
-    "mock:read_doc": [("filesystem.read", 1.0, "curated"), ("pdf.read", 0.6, "curated")],
-    "mock:list_tree": [("filesystem.read", 1.0, "curated")],
-    "mock:web_search": [("web.search", 1.0, "curated")],
-    "mock:mutate_state": [("memory.store", 0.8, "curated")],
+    "mock:mock-mcp:echo": [("math.compute", 1.0, "curated")],
+    "mock:mock-mcp:add": [("math.compute", 1.0, "curated")],
+    "mock:mock-mcp:read_doc": [("filesystem.read", 1.0, "curated"), ("pdf.read", 0.6, "curated")],
+    "mock:mock-mcp:list_tree": [("filesystem.read", 1.0, "curated")],
+    "mock:mock-mcp:web_search": [("web.search", 1.0, "curated")],
+    "mock:mock-mcp:mutate_state": [("memory.store", 0.8, "curated")],
     "npm:@modelcontextprotocol/server-filesystem:read_file": [("filesystem.read", 1.0, "curated")],
     "npm:@modelcontextprotocol/server-filesystem:read_directory": [("filesystem.read", 1.0, "curated")],
     "npm:@modelcontextprotocol/server-filesystem:write_file": [("filesystem.write", 1.0, "curated")],

@@ -96,11 +96,18 @@ def _check_envelope():
 
 def _check_manifest():
     manifest = json.loads((BASE_DIR / "MANIFEST.json").read_text(encoding="utf-8"))
+    docs = manifest.get("docs", {})
+    if isinstance(docs, dict):
+        paths = list(docs.keys())
+    elif isinstance(docs, list):
+        paths = [p for p in docs if isinstance(p, str)]
+    else:
+        paths = []
     missing = []
-    for path in manifest.get("docs", {}):
+    for path in paths:
         if not (BASE_DIR / path).exists():
             missing.append(path)
-    return (not missing), f"missing referenced docs: {missing[:5]}" if missing else f"{len(manifest['docs'])} docs resolved"
+    return (not missing), f"missing referenced docs: {missing[:5]}" if missing else f"{len(paths)} docs resolved"
 
 
 def _check_nofake():

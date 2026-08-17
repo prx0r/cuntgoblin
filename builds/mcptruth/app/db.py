@@ -447,7 +447,7 @@ def upsert_tool(
                 """INSERT INTO schema_changes
                    (change_id, server_id, tool_name, old_schema_sha256, new_schema_sha256,
                     change_type, detected_at, detail)
-                   VALUES (?,?,?,?,?,?,?)""",
+                   VALUES (?,?,?,?,?,?,?,?)""",
                 (
                     _sha256(f"CHG|{server_id}|{name}|{now}"),
                     server_id, name, old_hash, new_hash, change_type, now,

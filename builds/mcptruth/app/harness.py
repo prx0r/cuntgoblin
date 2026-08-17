@@ -45,9 +45,9 @@ except Exception:  # pragma: no cover - environment guard
 # ---------------------------------------------------------------------------
 
 _MUTATING_KW = [
-    "write_file", "create", "edit", "delete", "remove", "update", "insert",
+    "write", "create", "edit", "delete", "remove", "update", "insert",
     "upsert", "send", "post", "push", "commit", "merge", "deploy", "execute",
-    "run", "transform", "upload", "save", "mkdir", "rm", "move", "copy",
+    "run", "transform", "upload", "save", "mkdir", "move", "copy",
     "mutate", "destroy", "clear", "append", "modify", "rename", "chmod",
 ]
 _READ_ONLY_KW = [
@@ -57,13 +57,27 @@ _READ_ONLY_KW = [
     "calculate", "print", "exists", "ping", "health",
 ]
 
+import re as _re
+
+
+def _has_kw(text: str, keywords: list[str]) -> bool:
+    """Substring match, but word-boundary for short keywords so 'rm' never
+    matches inside 'deterministic' or 'ls' inside 'false'."""
+    for k in keywords:
+        if len(k) <= 3:
+            if _re.search(rf"\b{_re.escape(k)}\b", text):
+                return True
+        elif k in text:
+            return True
+    return False
+
 
 def classify_tool(name: str, description: str) -> str:
     """READ_ONLY | REVERSIBLE | MUTATING | UNKNOWN (spec §Safe testing)."""
     text = f"{name} {description}".lower()
-    if any(k in text for k in _MUTATING_KW):
+    if _has_kw(text, _MUTATING_KW):
         return db.SAFETY_MUTATING
-    if any(k in text for k in _READ_ONLY_KW):
+    if _has_kw(text, _READ_ONLY_KW):
         return db.SAFETY_READ_ONLY
     return db.SAFETY_UNKNOWN
 
@@ -71,11 +85,11 @@ def classify_tool(name: str, description: str) -> str:
 # Curated safe args: only (server_id, tool_name) pairs proven safe to invoke
 # repeatedly from a public probe.  MVP: mock/local servers only.
 SAFE_ARGS: dict[tuple[str, str], dict] = {
-    ("mock:echo", "echo"): {"text": "mcptruth-probe"},
-    ("mock:add", "add"): {"a": 2, "b": 3},
-    ("mock:read_doc", "read_doc"): {"path": "data/test-doc.txt"},
-    ("mock:list_tree", "list_tree"): {},
-    ("mock:web_search", "web_search"): {"query": "model context protocol"},
+    ("mock:mock-mcp", "echo"): {"text": "mcptruth-probe"},
+    ("mock:mock-mcp", "add"): {"a": 2, "b": 3},
+    ("mock:mock-mcp", "read_doc"): {"path": "data/test-doc.txt"},
+    ("mock:mock-mcp", "list_tree"): {},
+    ("mock:mock-mcp", "web_search"): {"query": "model context protocol"},
 }
 
 
@@ -252,8 +266,6 @@ class Harness:
         attempted = 0
         for t in tools:
             tool_key = db._tool_id(server_id, t.name)
-            if attempted >= MAX_INVOCATIONS:
-                break
             safety = classify_tool(t.name, t.description or "")
             if safety != db.SAFETY_READ_ONLY:
                 env = oracle.build_envelope(
@@ -274,6 +286,17 @@ class Harness:
                     source_id=f"run-{server_id}", method_id=self.method_version,
                     method_version=self.method_version,
                     value_text="no curated safe args -> invocation skipped",
+                    valid_for=3600,
+                )
+                results.append({"measurement": None, "envelopes": [env], "artifacts": []})
+                continue
+            if attempted >= MAX_INVOCATIONS:
+                env = oracle.build_envelope(
+                    "tool", tool_key, "tool.invocation",
+                    db.STATE_NOT_APPLICABLE,
+                    source_id=f"run-{server_id}", method_id=self.method_version,
+                    method_version=self.method_version,
+                    value_text="max_invocations_reached -> not attempted",
                     valid_for=3600,
                 )
                 results.append({"measurement": None, "envelopes": [env], "artifacts": []})

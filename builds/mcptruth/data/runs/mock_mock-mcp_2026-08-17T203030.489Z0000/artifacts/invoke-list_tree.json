@@ -1,0 +1,15 @@
+{
+  "args": {},
+  "content": [
+    {
+      "text": "data/test-doc.txt",
+      "type": "text"
+    },
+    {
+      "text": "data/notes/",
+      "type": "text"
+    }
+  ],
+  "isError": false,
+  "tool": "list_tree"
+}

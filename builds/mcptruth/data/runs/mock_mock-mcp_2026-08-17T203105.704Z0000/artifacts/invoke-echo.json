@@ -1,0 +1,13 @@
+{
+  "args": {
+    "text": "mcptruth-probe"
+  },
+  "content": [
+    {
+      "text": "{\n  \"echo\": \"mcptruth-probe\"\n}",
+      "type": "text"
+    }
+  ],
+  "isError": false,
+  "tool": "echo"
+}
