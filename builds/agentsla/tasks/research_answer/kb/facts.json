@@ -1,0 +1,17 @@
+{
+  "facts": [
+    {"id": "F01", "text": "Company Alpha was founded in 1998 in Seattle by A. Reyes.", "refs": ["c1"]},
+    {"id": "F02", "text": "Company Beta was founded in 2005 in Austin by B. Chen.", "refs": ["c2"]},
+    {"id": "F03", "text": "Gamma Inc is headquartered in Nairobi, Kenya.", "refs": ["c3"]},
+    {"id": "F04", "text": "Company Alpha's main product is the Delta analytics platform.", "refs": ["c1", "c4"]},
+    {"id": "F05", "text": "The capital of Kenya is Nairobi.", "refs": ["c3"]},
+    {"id": "F06", "text": "Company Beta's flagship service is the Epsilon data pipeline.", "refs": ["c2"]},
+    {"id": "F07", "text": "Company Alpha reported 200 employees in 2020.", "refs": ["c5"]},
+    {"id": "F08", "text": "Company Beta reported 80 employees in 2020.", "refs": ["c5"]},
+    {"id": "F09", "text": "Gamma Inc was founded in 2010.", "refs": ["c3"]},
+    {"id": "F10", "text": "The Epsilon pipeline handles 2 TB per day.", "refs": ["c6"]}
+  ],
+  "question": "Which company was founded earlier, Alpha or Beta? In what year was that company founded? What is the capital of the country where Gamma Inc is headquartered? Cite the fact IDs you used.",
+  "required_facts": ["F01", "F05"],
+  "required_tokens": ["1998", "Alpha", "Nairobi"]
+}

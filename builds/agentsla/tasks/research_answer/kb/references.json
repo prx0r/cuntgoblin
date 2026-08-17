@@ -1,0 +1,10 @@
+{
+  "references": [
+    {"id": "c1", "title": "Alpha Corporation founding records", "year": 1998},
+    {"id": "c2", "title": "Beta Corp incorporation filing", "year": 2005},
+    {"id": "c3", "title": "Gamma Inc company profile", "year": 2021},
+    {"id": "c4", "title": "Delta platform white paper", "year": 2022},
+    {"id": "c5", "title": "Annual employment report 2020", "year": 2021},
+    {"id": "c6", "title": "Epsilon throughput technical note", "year": 2023}
+  ]
+}
