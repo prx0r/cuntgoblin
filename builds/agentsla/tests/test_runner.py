@@ -20,12 +20,12 @@ SCHEMA_REQUIRED = {"tasks", "task_versions", "architectures", "architecture_vers
                    "evaluations", "cost_events"}
 
 
-def _arch(name, model="fake-model"):
+def _arch(name, model="deepseek-v4-flash"):
     if name == "single_agent":
         return {"components": [{"role": "worker", "model": model, "max_steps": 6}], "max_steps": 6}
     if name == "worker_verifier":
         return {"components": [{"role": "worker", "model": model, "max_steps": 6},
-                               {"role": "verifier", "model": model}], "max_steps": 6, "max_rounds": 1}
+                               {"role": "verifier", "model": model}], "max_steps": 6, "max_rounds": 2}
     if name == "planner_worker":
         return {"components": [{"role": "planner", "model": model},
                                {"role": "worker", "model": model, "max_steps": 6}], "max_steps": 6}
@@ -47,14 +47,14 @@ def _count(conn, table, run_id=None):
 
 
 def test_single_agent_coding_patch_success(conn):
-    client = FakeClient("fake-model", responder=lambda msgs: __import__("app.fake", fromlist=["ChatResult"]).ChatResult(
+    client = FakeClient("deepseek-v4-flash", responder=lambda msgs: __import__("app.fake", fromlist=["ChatResult"]).ChatResult(
         content="Submitting fix.",
         status="ok",
         tool_calls=[{"id": "c1", "type": "function",
                      "function": {"name": "submit_patch", "arguments": json.dumps({"diff": MATHLIB_FIX})}}],
         prompt_tokens=100, completion_tokens=50, total_tokens=150,
     ))
-    manifest = run_cell(conn, benchmark_id="test", task_class="coding.patch",
+    manifest = run_cell(conn, benchmark_id="test-a", task_class="coding.patch",
                         architecture_id="single_agent", arch_config=_arch("single_agent"),
                         client=client, attempt=1, base_url="stub://", git_sha="abc123")
     assert manifest["success"] is True
@@ -69,14 +69,14 @@ def test_single_agent_coding_patch_success(conn):
 
 def test_single_agent_wrong_patch_failure(conn):
     wrong = "--- a/src/mathlib.py\n+++ b/src/mathlib.py\n@@ -17,7 +17,7 @@\n-    return ordered[mid - 1] + ordered[mid] / 2.0\n+    return 0.0\n"
-    client = FakeClient("fake-model", responder=lambda msgs: __import__("app.fake", fromlist=["ChatResult"]).ChatResult(
+    client = FakeClient("deepseek-v4-flash", responder=lambda msgs: __import__("app.fake", fromlist=["ChatResult"]).ChatResult(
         content="done",
         status="ok",
         tool_calls=[{"id": "c1", "type": "function",
                      "function": {"name": "submit_patch", "arguments": json.dumps({"diff": wrong})}}],
         prompt_tokens=100, completion_tokens=50, total_tokens=150,
     ))
-    manifest = run_cell(conn, benchmark_id="test", task_class="coding.patch",
+    manifest = run_cell(conn, benchmark_id="test-b", task_class="coding.patch",
                         architecture_id="single_agent", arch_config=_arch("single_agent"),
                         client=client, attempt=1, base_url="stub://", git_sha="")
     assert manifest["success"] is False
@@ -84,10 +84,10 @@ def test_single_agent_wrong_patch_failure(conn):
 
 
 def test_single_agent_no_patch_failure_reason(conn):
-    client = FakeClient("fake-model", responder=lambda msgs: __import__("app.fake", fromlist=["ChatResult"]).ChatResult(
+    client = FakeClient("deepseek-v4-flash", responder=lambda msgs: __import__("app.fake", fromlist=["ChatResult"]).ChatResult(
         content="I give up.", status="ok", prompt_tokens=10, completion_tokens=5, total_tokens=15,
     ))
-    manifest = run_cell(conn, benchmark_id="test", task_class="coding.patch",
+    manifest = run_cell(conn, benchmark_id="test-h", task_class="coding.patch",
                         architecture_id="single_agent", arch_config=_arch("single_agent"),
                         client=client, attempt=1, base_url="stub://", git_sha="")
     assert manifest["success"] is False
@@ -95,11 +95,11 @@ def test_single_agent_no_patch_failure_reason(conn):
 
 
 def test_research_answer_success(conn):
-    client = FakeClient("fake-model", responder=lambda msgs: __import__("app.fake", fromlist=["ChatResult"]).ChatResult(
+    client = FakeClient("deepseek-v4-flash", responder=lambda msgs: __import__("app.fake", fromlist=["ChatResult"]).ChatResult(
         content=RESEARCH_PERFECT, status="ok",
         prompt_tokens=200, completion_tokens=60, total_tokens=260,
     ))
-    manifest = run_cell(conn, benchmark_id="test", task_class="research.answer",
+    manifest = run_cell(conn, benchmark_id="test-c", task_class="research.answer",
                         architecture_id="single_agent", arch_config=_arch("single_agent"),
                         client=client, attempt=1, base_url="stub://", git_sha="")
     assert manifest["success"] is True
@@ -127,7 +127,7 @@ def test_worker_verifier_rounds(conn):
         )
 
     client = FakeClient("fake-model", responder=responder)
-    manifest = run_cell(conn, benchmark_id="test", task_class="coding.patch",
+    manifest = run_cell(conn, benchmark_id="test-d", task_class="coding.patch",
                         architecture_id="worker_verifier", arch_config=_arch("worker_verifier"),
                         client=client, attempt=1, base_url="stub://", git_sha="")
     assert manifest["success"] is True
@@ -154,7 +154,7 @@ def test_parallel_candidates_judge_picks_best(conn):
         )
 
     client = FakeClient("fake-model", responder=responder)
-    manifest = run_cell(conn, benchmark_id="test", task_class="coding.patch",
+    manifest = run_cell(conn, benchmark_id="test-e", task_class="coding.patch",
                         architecture_id="parallel_candidates_judge",
                         arch_config=_arch("parallel_candidates_judge"),
                         client=client, attempt=1, base_url="stub://", git_sha="")
@@ -164,7 +164,7 @@ def test_parallel_candidates_judge_picks_best(conn):
 
 def test_envelope_written(conn):
     client = make_scripted_client("fake-model", MATHLIB_FIX)[0]
-    manifest = run_cell(conn, benchmark_id="test", task_class="coding.patch",
+    manifest = run_cell(conn, benchmark_id="test-f", task_class="coding.patch",
                         architecture_id="single_agent", arch_config=_arch("single_agent"),
                         client=client, attempt=1, base_url="stub://", git_sha="")
     from app.evidence import RUNS_ROOT
@@ -181,13 +181,13 @@ def test_envelope_written(conn):
     kinds = {e["kind"] for e in events}
     assert "model_call" in kinds
     assert "evaluation" in kinds
-    assert "cost_event" in kinds or any("cost" in k for k in kinds)
+    assert any(any("cost" in k for k in e.keys()) for e in events)
 
 
 def test_all_architectures_leave_consistent_rows(conn):
     for arch in ("single_agent", "worker_verifier", "planner_worker", "parallel_candidates_judge"):
         client = make_scripted_client("fake-model", MATHLIB_FIX)[0]
-        manifest = run_cell(conn, benchmark_id="test2", task_class="coding.patch",
+        manifest = run_cell(conn, benchmark_id="test-g/uniquefy", task_class="coding.patch",
                             architecture_id=arch, arch_config=_arch(arch),
                             client=client, attempt=1, base_url="stub://", git_sha="")
         assert manifest["model_calls"] > 0

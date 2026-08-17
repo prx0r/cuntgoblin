@@ -75,8 +75,13 @@ def test_non_applying_patch_fails():
 
 
 def test_apply_unified_diff_roundtrip(tmp_path):
-    target = tmp_path / "file.py"
-    target.write_text("return ordered[mid - 1] + ordered[mid] / 2.0\n", encoding="utf-8")
+    src_dir = tmp_path / "src"
+    src_dir.mkdir()
+    target = src_dir / "mathlib.py"
+    target.write_text(
+        (TASKS / "coding_patch" / "mathlib" / "src" / "mathlib.py").read_text(encoding="utf-8"),
+        encoding="utf-8",
+    )
     ok, msg = apply_unified_diff(tmp_path, MATHLIB_FIX)
     assert ok, msg
     assert "return (ordered[mid - 1] + ordered[mid]) / 2.0" in target.read_text(encoding="utf-8")

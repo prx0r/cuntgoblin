@@ -101,6 +101,9 @@ def coverage():
     classes = sorted(TASK_CLASSES)
     archs = sorted({r["architecture_id"] for r in rows})
     cells = {(r["task_class"], r["architecture_id"]): r for r in rows}
+    def _cell(tc, ar):
+        row = cells.get((tc, ar))
+        return (int(row["n"] or 0), int(row["successes"] or 0)) if row else (0, 0)
     return {
         "task_classes": classes,
         "architectures": archs,
@@ -108,8 +111,8 @@ def coverage():
             {
                 "task_class": tc,
                 "architecture_id": ar,
-                "runs": int(cells.get((tc, ar), {}).get("n") or 0),
-                "successes": int(cells.get((tc, ar), {}).get("successes") or 0),
+                "runs": _cell(tc, ar)[0],
+                "successes": _cell(tc, ar)[1],
             }
             for tc in classes for ar in archs
         ],

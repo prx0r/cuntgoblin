@@ -88,6 +88,18 @@ def make_client(model: str, stub: bool, task_class: str | None = None):
     return LLMClient(base_url, api_key, model, timeout=90, max_retries=2)
 
 
+def _point_at(db_path_: str, runs_dir: str) -> None:
+    """Point the DB + run-envelope dirs at demo paths when running stubs, so the
+    real observation store (data/agentsla.db, data/runs/) is never polluted."""
+    os.environ["AGENTSLA_DB"] = db_path_
+    os.environ["AGENTSLA_RUNS_DIR"] = runs_dir
+    import app.evidence
+    import app.runner
+
+    app.runner.DB_PATH = Path(db_path_)
+    app.evidence.RUNS_ROOT = Path(runs_dir)
+
+
 def run_cell_cli(
     conn, *, task_class: str, architecture_id: str, arch_config: dict,
     model: str, attempt: int, stub: bool, benchmark_id: str, base_url: str = "",
@@ -109,7 +121,11 @@ def run_cell_cli(
 
 
 def run_benchmark(bench: dict, stub: bool = False, limit_classes: list[str] | None = None):
-    conn = connect(DB_PATH)
+    db_file = Path(DB_PATH)
+    if stub:
+        _point_at("/tmp/agentsla-demo/agentsla-demo.db", "/tmp/agentsla-demo/runs")
+        db_file = Path("/tmp/agentsla-demo/agentsla-demo.db")
+    conn = connect(db_file)
     benchmark_id = bench["benchmark_id"]
     model = bench.get("model", "deepseek-v4-flash")
     archs = bench["architectures"]
@@ -144,8 +160,9 @@ def run_benchmark(bench: dict, stub: bool = False, limit_classes: list[str] | No
     return results
 
 
-def print_summary(task_class: str | None = None):
-    conn = connect(DB_PATH)
+def print_summary(task_class: str | None = None, conn=None):
+    if conn is None:
+        conn = connect(Path(DB_PATH))
     classes = [task_class] if task_class else sorted(TASK_CLASSES)
     for tc in classes:
         print(f"\n=== task class: {tc} ===")
@@ -197,10 +214,14 @@ def main() -> int:
     ap.add_argument("--bench-id", default="agentsla-bench-v1")
     args = ap.parse_args()
 
-    conn = connect(DB_PATH)
+    db_file = Path(DB_PATH)
+    if args.demo or args.demo_everything or (args.bench and not args.live):
+        db_file = Path("/tmp/agentsla-demo/agentsla-demo.db")
+        _point_at(str(db_file), "/tmp/agentsla-demo/runs")
+    conn = connect(db_file)
 
     if args.summary:
-        print_summary(args.task)
+        print_summary(args.task, conn)
         return 0
 
     if args.demo:
@@ -230,7 +251,7 @@ def main() -> int:
             "attempts": 1,
         }
         run_benchmark(bench, stub=True)
-        print_summary()
+        print_summary(None, conn)
         return 0
 
     if args.cell:
@@ -250,7 +271,7 @@ def main() -> int:
             print("WARNING: --bench without --live runs STUB cells (pipeline check only, "
                   "not observations). Pass --live for real model calls.", file=sys.stderr)
         run_benchmark(bench, stub=stub)
-        print_summary()
+        print_summary(None, conn)
         return 0
 
     ap.print_help()

@@ -405,7 +405,8 @@ def run_verifier(
         prompt = (
             "You verify a research answer. Check citations syntax (F## IDs) and "
             "that the answer addresses the question. Reply APPROVED or REVISIONS "
-            "with concrete points.\n\nANSWER:\n{proposal[:4000]}".format(proposal=proposal)
+            "with concrete points.\n\nANSWER:\n"
+            f"{proposal[:4000]}"
         )
     result = ctx.client.chat(
         [{"role": "system", "content": prompt}],
@@ -463,7 +464,7 @@ def _finalize_run(
     retry_count = ctx.conn.execute(
         "SELECT COALESCE(SUM(retries),0) AS c FROM model_calls WHERE run_id=?", (ctx.env.run_id,)
     ).fetchone()["c"]
-    success = all(r.passed for r in eval_results) and eval_results and failure_reason is None
+    success = bool(eval_results) and all(r.passed for r in eval_results) and failure_reason is None
     duration = time.monotonic() - started
 
     ctx.conn.execute(

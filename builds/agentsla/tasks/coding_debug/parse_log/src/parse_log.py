@@ -12,6 +12,8 @@ from dataclasses import dataclass
 
 # Line format:
 #   2026-08-01T12:00:00Z method=GET path=/index status=200 bytes=512
+#   2026-08-01T12:00:04Z method=GET path=/index status=200 bytes=512 skip=0
+# The trailing `skip=N` fragment marks lines that must be ignored when N=1.
 _LINE_RE = re.compile(
     r"^(?P<ts>\S+)\s+"
     r"method=(?P<method>\S+)\s+"
@@ -31,23 +33,30 @@ class LogRecord:
 
 
 def parse_line(line: str) -> LogRecord | None:
-    """Parse one log line; return None for blank lines or lines with a
-    `skip=` marker (used for entries that must be ignored, e.g. health checks).
+    """Parse one log line; return None for blank lines and `skip=1` lines.
 
-    BUG: the `skip=` marker handling below reverses the intended meaning, so
-    lines explicitly marked `skip=1` are parsed and normal lines containing a
-    trailing fragment after `bytes=` are dropped even when well-formed.
+    Correct behaviour:
+      - blank lines            -> None
+      - trailing `skip=0`      -> fragment stripped, line parsed normally
+      - trailing `skip=1`      -> None (line marked for exclusion)
+      - lines without fragment -> parsed normally
+
+    BUG (current code): the trailing `skip=` fragment is handled AFTER the
+    regex match. Because _LINE_RE requires `bytes=\d+$` (end-of-string), any
+    line carrying a trailing fragment fails the match and is silently dropped,
+    so legitimate `skip=0` lines disappear; and when the branch is reached on
+    other inputs its skip semantics are inverted (`skip=0` -> None).
     """
     stripped = line.strip()
     if not stripped:
         return None
-    if "skip=1" in stripped:
-        return None
     m = _LINE_RE.match(stripped)
     if m is None:
         return None
-    # BUG: this drops the trailing `skip=0` fragment that may legally follow
-    # `bytes=` on otherwise well-formed lines (server variant logs).
+    # BUG: trailing fragment handled too late (the regex already failed for
+    # "bytes=512 skip=0" because of the $ anchor) AND the meaning is inverted:
+    # a skip=0 fragment makes the line disappear even though it means
+    # "do NOT skip".
     if "skip=" in stripped:
         trailing = stripped.split("skip=", 1)[1]
         if trailing == "0":

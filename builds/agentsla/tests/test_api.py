@@ -11,7 +11,7 @@ from fastapi.testclient import TestClient  # noqa: E402
 
 from app.api import app  # noqa: E402
 from app.db import connect  # noqa: E402
-from app.fake import MATHLIB_FIX, RESEARCH_PERFECT, FakeClient  # noqa: E402
+from app.fake import MATHLIB_FIX, RESEARCH_PERFECT, ChatResult, FakeClient  # noqa: E402
 from app.runner import run_cell  # noqa: E402
 
 
@@ -21,22 +21,23 @@ def client():
 
 
 @pytest.fixture(scope="module")
-def seeded(conn):
+def seeded(db_path):
     """Create runs for each architecture on coding.patch (success) plus one
     research.answer run, so SLA/compare/frontier have data to serve."""
+    conn = connect(db_path)
     archs = ["single_agent", "worker_verifier", "planner_worker", "parallel_candidates_judge"]
     cfg = {
-        "single_agent": {"components": [{"role": "worker", "model": "fake", "max_steps": 6}], "max_steps": 6},
-        "worker_verifier": {"components": [{"role": "worker", "model": "fake", "max_steps": 6},
-                                           {"role": "verifier", "model": "fake"}], "max_steps": 6, "max_rounds": 1},
-        "planner_worker": {"components": [{"role": "planner", "model": "fake"},
-                                          {"role": "worker", "model": "fake", "max_steps": 6}], "max_steps": 6},
-        "parallel_candidates_judge": {"components": [{"role": "worker", "model": "fake", "max_steps": 6}],
+        "single_agent": {"components": [{"role": "worker", "model": "deepseek-v4-flash", "max_steps": 6}], "max_steps": 6},
+        "worker_verifier": {"components": [{"role": "worker", "model": "deepseek-v4-flash", "max_steps": 6},
+                                           {"role": "verifier", "model": "deepseek-v4-flash"}], "max_steps": 6, "max_rounds": 1},
+        "planner_worker": {"components": [{"role": "planner", "model": "deepseek-v4-flash"},
+                                          {"role": "worker", "model": "deepseek-v4-flash", "max_steps": 6}], "max_steps": 6},
+        "parallel_candidates_judge": {"components": [{"role": "worker", "model": "deepseek-v4-flash", "max_steps": 6}],
                                       "max_steps": 6, "n_candidates": 2},
     }
     for arch in archs:
         for attempt in (1, 2):
-            client = FakeClient("fake", responder=lambda msgs: __import__("app.fake", fromlist=["ChatResult"]).ChatResult(
+            client = FakeClient("deepseek-v4-flash", responder=lambda msgs: __import__("app.fake", fromlist=["ChatResult"]).ChatResult(
                 content="Submitting.",
                 status="ok",
                 tool_calls=[{"id": "c1", "type": "function",
@@ -46,7 +47,7 @@ def seeded(conn):
             run_cell(conn, benchmark_id="apiTest", task_class="coding.patch",
                      architecture_id=arch, arch_config=cfg[arch], client=client,
                      attempt=attempt, base_url="stub://", git_sha="")
-    rc = FakeClient("fake", responder=lambda msgs: __import__("app.fake", fromlist=["ChatResult"]).ChatResult(
+    rc = FakeClient("deepseek-v4-flash", responder=lambda msgs: __import__("app.fake", fromlist=["ChatResult"]).ChatResult(
         content=RESEARCH_PERFECT, status="ok", prompt_tokens=100, completion_tokens=50, total_tokens=150,
     ))
     run_cell(conn, benchmark_id="apiTest", task_class="research.answer",

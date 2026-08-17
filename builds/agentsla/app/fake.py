@@ -96,15 +96,19 @@ import difflib  # noqa: E402
 _TASKS = Path(__file__).resolve().parent.parent / "tasks"
 
 
-def _unified(rel_path: str, transform) -> str:
-    """Build a unified diff between the task file and its fixed version."""
-    src = (_TASKS / rel_path).read_text(encoding="utf-8")
+def _unified(task_rel: str, file_rel: str, transform) -> str:
+    """Build a unified diff between a task file and its fixed version.
+
+    diff headers use `a/{file_rel}` / `b/{file_rel}` so `patch -p1` inside the
+    COPIED task dir (workdir == task root) resolves to workdir/{file_rel}.
+    """
+    src = (_TASKS / task_rel / file_rel).read_text(encoding="utf-8")
     fixed = transform(src)
     diff = difflib.unified_diff(
         src.splitlines(keepends=True),
         fixed.splitlines(keepends=True),
-        fromfile=f"a/{rel_path}",
-        tofile=f"b/{rel_path}",
+        fromfile=f"a/{file_rel}",
+        tofile=f"b/{file_rel}",
     )
     return "".join(diff)
 
@@ -117,14 +121,35 @@ def _mathlib_fixed(src: str) -> str:
 
 
 def _parselog_fixed(src: str) -> str:
-    return src.replace(
-        '        if trailing == "0":\n            return None  # ← wrong: skip=0 means "do NOT skip"',
-        '        if trailing == "1":\n            return None  # only skip=1 lines are dropped',
-    )
+    """Insert the trailing-fragment handling BEFORE the regex match."""
+    old_block = """    m = _LINE_RE.match(stripped)
+    if m is None:
+        return None
+    # BUG: trailing fragment handled too late (the regex already failed for
+    # "bytes=512 skip=0" because of the $ anchor) AND the meaning is inverted:
+    # a skip=0 fragment makes the line disappear even though it means
+    # "do NOT skip".
+    if "skip=" in stripped:
+        trailing = stripped.split("skip=", 1)[1]
+        if trailing == "0":
+            return None  # ← wrong: skip=0 means "do NOT skip"
+    return LogRecord("""
+    new_block = """    m_trail = re.search(r"\sskip=([01])\s*$", stripped)
+    if m_trail is not None:
+        if m_trail.group(1) == "1":
+            return None  # skip=1 lines are excluded
+        stripped = re.sub(r"\sskip=[01]\s*$", "", stripped.strip())
+    m = _LINE_RE.match(stripped)
+    if m is None:
+        return None
+    return LogRecord("""
+    if old_block not in src:
+        raise AssertionError("expected buggy parse_log block not found")
+    return src.replace(old_block, new_block)
 
 
-MATHLIB_FIX = _unified("coding_patch/mathlib/src/mathlib.py", _mathlib_fixed)
-PARSE_LOG_FIX = _unified("coding_debug/parse_log/src/parse_log.py", _parselog_fixed)
+MATHLIB_FIX = _unified("coding_patch/mathlib", "src/mathlib.py", _mathlib_fixed)
+PARSE_LOG_FIX = _unified("coding_debug/parse_log", "src/parse_log.py", _parselog_fixed)
 
 RESEARCH_PERFECT = (
     "Alpha was founded in 1998, which is earlier than Beta (2005). "

@@ -4,19 +4,25 @@
 
     <timestamp> method=GET path=/index status=200 bytes=512 [skip=0|1]
 
+An optional trailing `skip=N` fragment marks lines that must be excluded when
+N=1 (`skip=1`) and parsed normally when N=0 (`skip=0`).
+
 Two behaviours are wrong:
 
-1. Lines with a trailing `skip=0` fragment (a legal server-variant log line
-   meaning "do NOT skip this entry") are dropped instead of parsed.
-2. Lines with `skip=1` are dropped, which is correct, but the implementation
-   is fragile: the intent of the `skip=` marker is inverted in the trailing
-   fragment branch, so `skip=0` lines disappear from the parsed output.
+1. The trailing `skip=` fragment is handled AFTER the regex match. The regex
+   anchors on `bytes=\d+$` (end of string), so any well-formed line that
+   carries a trailing fragment (e.g. `... bytes=512 skip=0`) fails the regex
+   and is silently DROPPED — even though the fragment says "do NOT skip".
+2. When the fragment branch is reached on other inputs, its meaning is
+   inverted: `skip=0` returns None instead of keeping the line.
 
 A correct parser must:
 
 - parse every line in `data/sample.log` that does NOT carry `skip=1`,
 - drop blank lines and `skip=1` lines,
-- return a `LogRecord` with the numeric `status` and `bytes_` fields.
+- return a `LogRecord` with numeric `status` and `bytes_` fields,
+- still reject genuinely malformed lines (i.e. the fix must not weaken the
+  format check by, say, ignoring all fragments or matching anything).
 
 Inspect the source, find the root cause, and produce a minimal unified diff.
 
