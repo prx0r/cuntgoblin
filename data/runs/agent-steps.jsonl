@@ -5,3 +5,4 @@
 {"step": "report", "total_evaluated": 2, "report_file": "/root/venturelab/data/reports/venture-brief-1786991462.json", "ts": "2026-08-17T18:31:02.636976+00:00"}
 {"step": "report", "total_evaluated": 2, "report_file": "/root/venturelab/data/reports/venture-brief-1786992011.json", "ts": "2026-08-17T18:40:11.298620+00:00"}
 {"step": "report", "total_evaluated": 2, "report_file": "/root/venturelab/data/reports/venture-brief-1786992175.json", "ts": "2026-08-17T18:42:55.623654+00:00"}
+{"step": "agentsla-build", "product": "agentsla", "status": "built", "tests": 58, "gate": "6/6 PASS", "runs": 25, "successes": 12, "model_calls": 167, "evals": 69, "cost_usd": 0.051831, "data_dir": "builds/agentsla/data/runs", "ts": "2026-08-17T21:01:09.763545+00:00"}

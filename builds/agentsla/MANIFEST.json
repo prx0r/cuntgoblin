@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "description": "Cost-per-success profiler: measure real cost, duration and success rate of agent task execution.",
   "docs": [
-    "docs/README.md"
+    "docs/README.md",
+    "docs/BENCHMARK.md"
   ],
   "entrypoints": {
     "benchmark": "run_benchmark.py",

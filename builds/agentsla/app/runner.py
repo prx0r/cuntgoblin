@@ -111,10 +111,6 @@ def _short() -> str:
     return uuid.uuid4().hex[:10]
 
 
-def _apply_(workdir: Path, diff: str) -> tuple[bool, str]:
-    return apply_unified_diff(workdir, diff)
-
-
 # ------------------------------------------------------------ workspace
 
 
@@ -347,8 +343,31 @@ def run_worker_component(
                 out = ""
                 if name == "submit_patch":
                     diff = args.get("diff") or ""
-                    ctx.rec.tool_call(ctx.rec.last_mc_id, ctx.rec.tool_calls, name, args, True, "submitted", 0)
-                    return last_text, diff.strip()
+                    diff = diff.strip()
+                    if not diff:
+                        ctx.rec.tool_call(ctx.rec.last_mc_id, ctx.rec.tool_calls, name, args, False, "empty diff", 0)
+                        out = "ERROR: empty diff submitted. Re-read the source and retry with a valid unified diff (```diff block)."
+                        transcript.append({"role": "assistant", "content": result.content or "", "tool_calls": [{"id": tc.get("id"), "type": "function", "function": fn}]})
+                        transcript.append({"role": "tool", "tool_call_id": tc.get("id"), "content": out})
+                        continue
+                    # Validate against a FRESH copy of the task dir: a patch with
+                    # wrong hunk offsets/context must be sent back for revision
+                    # instead of being graded-and-failed mechanically. GNU patch
+                    # can partially apply multi-hunk diffs, so never validate on
+                    # the live workspace.
+                    import tempfile as _tf
+
+                    with _tf.TemporaryDirectory(prefix="agentsla_submit_") as _td:
+                        _tmp = Path(_td)
+                        shutil.copytree(ws.dir, _tmp, dirs_exist_ok=True)
+                        ok, msg = apply_unified_diff(_tmp, diff)
+                    ctx.rec.tool_call(ctx.rec.last_mc_id, ctx.rec.tool_calls, name, args, ok, "applied" if ok else msg[:300], 0)
+                    if not ok:
+                        out = f"ERROR: patch did not apply. Details: {msg[:1500]}\nRetry with a corrected unified diff whose hunk line numbers and context match the current files exactly. Use `patch` semantics (--- a/... +++ b/... @@ -l,c +l,c @@)."
+                        transcript.append({"role": "assistant", "content": result.content or "", "tool_calls": [{"id": tc.get("id"), "type": "function", "function": fn}]})
+                        transcript.append({"role": "tool", "tool_call_id": tc.get("id"), "content": out})
+                        continue
+                    return last_text, diff
                 if name == "read_file":
                     out = ws.read_file(args.get("path", ""))
                     ctx.rec.tool_call(ctx.rec.last_mc_id, ctx.rec.tool_calls, name, args, True, out[:300], 0)

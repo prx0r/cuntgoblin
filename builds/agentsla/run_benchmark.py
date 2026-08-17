@@ -256,6 +256,10 @@ def main() -> int:
 
     if args.cell:
         task_class, arch = args.cell
+        if args.bench_id == "agentsla-bench-v1":
+            import uuid as _uuid
+
+            args.bench_id = f"agentsla-cell-{_uuid.uuid4().hex[:8]}"
         arch_config = _arch_config_for(arch, args.model)
         manifest = run_cell_cli(
             conn, task_class=task_class, architecture_id=arch, arch_config=arch_config,

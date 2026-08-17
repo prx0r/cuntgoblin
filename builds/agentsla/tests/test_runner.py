@@ -159,7 +159,7 @@ def test_parallel_candidates_judge_picks_best(conn):
                         arch_config=_arch("parallel_candidates_judge"),
                         client=client, attempt=1, base_url="stub://", git_sha="")
     assert manifest["success"] is True
-    assert cand["n"] == 2  # both candidates ran
+    assert cand["n"] >= 3  # candidate submits + apply-revalidation retries
 
 
 def test_envelope_written(conn):
