@@ -1,7 +1,6 @@
 # AGENTS.md — VentureLab Factory
 
-*The rules for agents working on this project*
-*Model: mimo v2.5*
+*How agents actually work here. Read this first.*
 
 ---
 
@@ -12,155 +11,199 @@
 
 ---
 
-## MODEL
+## GOOD AGENT BEHAVIOR
 
-**Always use mimo v2.5 for all hermes calls.**
-
----
-
-## HOW AN AGENT CONTROLS THIS SYSTEM
-
-### 1. Read Context First
+### 1. Use Hermes for Everything
 
 ```bash
-cat AGENTS.md          # Rules
-cat REFERENCE.md       # System reference
-cat ENFORCEMENT.md     # Quality gates
-cat STANDARD.md        # Schemas
-cat SCORING-RUBRIC.md  # Scoring rules
+# Research with hermes
+hermes chat -q "Research this market trend"
+
+# Browser with hermes
+hermes chat -q "Find trend reports from Gartner/Forrester"
+
+# Score with hermes
+hermes chat -q "Score this idea against rubric: {rubric}"
+
+# Build with hermes
+hermes chat -q "Build MVP from spec: {spec}"
 ```
 
-### 2. Check Kanban Status
+### 2. Background Processes
 
 ```bash
-hermes kanban list     # See all tasks
-hermes kanban stats    # See summary
+# Start long jobs as background
+setsid nohup python3 script.py > output.log 2>&1 &
+
+# Then continue working
+# Check later with:
+tail -f output.log
 ```
 
-### 3. Create Tasks
+### 3. Kill by PID (never pkill)
 
 ```bash
-hermes kanban create "Build Product X" \
-  --body "Build from specs/product-x/architecture.md" \
-  --assignee patala
+# Find PID
+ps aux | grep python | grep script.py
+
+# Kill by PID
+kill <PID>
+
+# NEVER: pkill python
 ```
 
-### 4. Specify Tasks (hermes fleshes out)
+### 4. Monitor with timeout
 
 ```bash
-hermes kanban specify <task_id>
+# Only timeout when monitoring
+timeout 300 tail -f output.log
+
+# Never: sleep 300
 ```
 
-### 5. Decompose (hermes breaks into subtasks)
+### 5. Use Browser for Research
 
 ```bash
-hermes kanban decompose <task_id>
-```
+# Search trend reports
+hermes chat -q "Find Gartner/Forrester reports on AI agents 2026"
 
-### 6. Dispatch Workers
+# Search market data
+hermes chat -q "Find market size data for LLM infrastructure"
 
-```bash
-hermes kanban dispatch --max 5
-```
-
-### 7. Workers Build
-
-Workers:
-1. Claim task
-2. Read spec
-3. Write code
-4. Run tests
-5. Log evidence
-6. Mark complete
-
-### 8. Verify
-
-```bash
-hermes kanban request-review <task_id>
-```
-
-### 9. Certify
-
-```bash
-cd builds/{product}
-.venv/bin/python -m factory.certification.certifier
+# Search competitors
+hermes chat -q "Find competitors in MCP space"
 ```
 
 ---
 
-## WORKER WORKFLOW
+## BAD AGENT BEHAVIOR
 
-When you claim a task:
-
-1. **Read the spec** from `specs/{product}/architecture.md`
-2. **Read the report** from `reports/{product}/report.md`
-3. **Build the code** following the spec
-4. **Write tests** that verify the spec
-5. **Log evidence** to `data/runs/`
-6. **Compute content hashes** for all artifacts
-7. **Run certification** to verify everything works
-8. **Mark task complete** with results
-
----
-
-## QUALITY GATES
-
-Every task must pass:
-
-### Gate 1: Specification
-- [ ] Task has clear requirements
-- [ ] Tests are defined
-- [ ] Evidence is defined
-
-### Gate 2: Build
-- [ ] Code follows patterns
-- [ ] Code has docstrings
-- [ ] Code handles errors
-
-### Gate 3: Test
-- [ ] Unit tests pass
-- [ ] Integration tests pass
-- [ ] Edge cases handled
-
-### Gate 4: Verify
-- [ ] Evidence logged
-- [ ] Content hashes computed
-- [ ] Provenance tracked
-
-### Gate 5: Certify
-- [ ] All 12 checks pass
-- [ ] Certificate generated
-
----
-
-## EVIDENCE STANDARD
-
-**"Nothing written in markdown counts as evidence."**
-
-Evidence must be:
-- Machine-produced from code
-- Logged to `data/runs/`
-- Content-addressed (SHA-256)
-- Timestamped
-- Reproducible
-
----
-
-## SCORING STANDARD
-
-**Every score MUST have evidence attached.**
-
-```json
-{
-  "factor": "novelty",
-  "score": 8,
-  "evidence": "GitHub search found 0 similar repos",
-  "checked_at": "2026-08-18T09:00:00Z",
-  "method": "github_search"
-}
+### ❌ Creating empty Python files
+```python
+# BAD: This does nothing
+def some_function():
+    pass
 ```
 
-If you can't find evidence, the score is 0.
+### ❌ Saying "done" without doing work
+```bash
+# BAD: Just creating files and claiming done
+echo "Done" > output.txt
+```
+
+### ❌ Using pkill
+```bash
+# BAD: Can kill other processes
+pkill python
+pkill node
+
+# GOOD: Kill specific PID
+kill $(ps aux | grep script.py | grep -v grep | awk '{print $2}')
+```
+
+### ❌ Sleeping to wait
+```bash
+# BAD: Wastes time
+sleep 300
+
+# GOOD: Monitor with timeout
+timeout 300 tail -f output.log
+```
+
+### ❌ Creating synthetic data
+```python
+# BAD: Fake data
+data = {"score": 0.8}  # No evidence
+
+# GOOD: Real data with evidence
+data = {"score": 0.8, "evidence": "GitHub search found 0 repos"}
+```
+
+### ❌ Saying "done" without testing
+```bash
+# BAD: Just creating files
+touch file.txt
+echo "Done"
+
+# GOOD: Actually test
+python3 -m pytest tests/
+python3 -m app.certify
+```
+
+---
+
+## HERMES WORKFLOW
+
+### 1. Research Phase
+
+```bash
+# Start hermes in background
+setsid nohup hermes chat -q "Research market trends for AI agents" > /tmp/research.log 2>&1 &
+
+# Continue other work
+# Check results later
+tail -f /tmp/research.log
+```
+
+### 2. Scoring Phase
+
+```bash
+# Use hermes to score with rubric
+hermes chat -q "Score this idea: {idea}. Rubric: {rubric}. Be granular."
+```
+
+### 3. Building Phase
+
+```bash
+# Use hermes to build from spec
+hermes chat -q "Build MVP from spec: {spec}. Follow template: {template}"
+```
+
+### 4. Verification Phase
+
+```bash
+# Use hermes to verify
+hermes chat -q "Verify this build passes all checks: {checks}"
+```
+
+---
+
+## MARKET INTELLIGENCE
+
+### How to Gather
+
+```bash
+# Use hermes to find trend reports
+hermes chat -q "Find legitimate trend reports from Gartner/Forrester/McKinsey on AI agents 2026"
+
+# Use hermes to find market data
+hermes chat -q "Find market size data for LLM infrastructure 2026"
+
+# Use hermes to find competitors
+hermes chat -q "Find competitors in MCP space with their features"
+```
+
+### How to Structure
+
+```yaml
+topic: agent-infrastructure
+window: 2026-Q3
+signals:
+  competition:
+    active_projects: 38
+    serious_projects: 9
+  demand:
+    github_growth: high
+    enterprise_interest: medium-high
+meta_tags: ["mcp", "agents", "2026"]
+```
+
+### How to Verify
+
+- Link to source
+- Content hash
+- Timestamp
+- Confidence score
 
 ---
 
@@ -168,29 +211,19 @@ If you can't find evidence, the score is 0.
 
 ```
 venturelab/
-├── AGENTS.md              # This file
-├── REFERENCE.md           # System reference
-├── ENFORCEMENT.md         # Quality gates
-├── STANDARD.md            # Schemas
-├── SCORING-RUBRIC.md      # Scoring rules
-├── RECIPES.md             # Step-by-step guides
-├── SCHEMAS.md             # Data structures
-├── DOCS-INDEX.md          # Documentation index
-├── factory/               # Factory implementation
+├── AGENTS.md              # THIS FILE
+├── factory/
 │   ├── domain/            # Domain models
 │   ├── scoring/           # Scoring engine
-│   ├── intake/            # Idea ingestion
-│   ├── research/          # Research generation
-│   ├── builders/          # MVP building
-│   └── certification/     # Certification
-├── templates/             # Product templates
-├── schemas/               # JSON schemas
+│   ├── market/            # Market intelligence
+│   ├── ideas/             # Idea generation
+│   └── vision/            # Vision boundaries
 ├── builds/                # Built MVPs
-├── reports/               # Venture reports
-├── specs/                 # Architecture specs
-├── reviews/               # Review logs
+├── data/                  # Data and runs
 ├── ideas/                 # Research documents
-└── skills/                # Hermes skills
+├── specs/                 # Architecture specs
+├── reports/               # Venture reports
+└── reviews/               # Review logs
 ```
 
 ---
@@ -204,7 +237,10 @@ venturelab/
 5. **"Nothing in markdown counts as evidence"**
 6. **Always use mimo v2.5**
 7. **Every score MUST have evidence**
+8. **Use hermes for all research and building**
+9. **Background processes with nohup**
+10. **Kill by PID, never pkill**
 
 ---
 
-*Version 1.0*
+*Version 2.0*
