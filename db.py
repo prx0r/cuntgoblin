@@ -1,18 +1,22 @@
 #!/usr/bin/env python3
-"""db.py — VentureLab database interface.
+"""db.py — VentureLab database interface (SQLite).
 
 Hermes can use this to write directly to the database.
 """
 import json
-import psycopg2
+import sqlite3
 from datetime import datetime, timezone
+from pathlib import Path
 
-DB_DSN = "postgresql://patala:patala@localhost:5432/venturelab"
+DB_PATH = Path(__file__).parent / "data" / "venturelab.db"
 
 
 def get_conn():
     """Get database connection."""
-    return psycopg2.connect(DB_DSN)
+    DB_PATH.parent.mkdir(parents=True, exist_ok=True)
+    conn = sqlite3.connect(str(DB_PATH))
+    conn.row_factory = sqlite3.Row
+    return conn
 
 
 def init_db():
@@ -20,11 +24,144 @@ def init_db():
     conn = get_conn()
     cur = conn.cursor()
     
-    # Read schema
-    with open('sql/schema.sql', 'r') as f:
-        schema = f.read()
+    # Ideas table
+    cur.execute("""
+        CREATE TABLE IF NOT EXISTS ideas (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            idea_id TEXT UNIQUE NOT NULL,
+            idea TEXT NOT NULL,
+            thesis TEXT,
+            category TEXT,
+            status TEXT DEFAULT 'seeded',
+            scores TEXT DEFAULT '{}',
+            created_at TEXT DEFAULT (datetime('now')),
+            updated_at TEXT DEFAULT (datetime('now'))
+        )
+    """)
     
-    cur.execute(schema)
+    # Research table
+    cur.execute("""
+        CREATE TABLE IF NOT EXISTS research (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            idea_id TEXT,
+            arxiv_results TEXT DEFAULT '[]',
+            github_results TEXT DEFAULT '[]',
+            competitors TEXT DEFAULT '[]',
+            evidence TEXT DEFAULT '[]',
+            researched_at TEXT DEFAULT (datetime('now')),
+            FOREIGN KEY (idea_id) REFERENCES ideas(idea_id)
+        )
+    """)
+    
+    # Evaluations table
+    cur.execute("""
+        CREATE TABLE IF NOT EXISTS evaluations (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            idea_id TEXT,
+            novelty_score REAL,
+            research_score REAL,
+            feasibility_score REAL,
+            overall_score REAL,
+            verdict TEXT,
+            evaluated_at TEXT DEFAULT (datetime('now')),
+            FOREIGN KEY (idea_id) REFERENCES ideas(idea_id)
+        )
+    """)
+    
+    # Hypotheses table
+    cur.execute("""
+        CREATE TABLE IF NOT EXISTS hypotheses (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            hypothesis TEXT NOT NULL,
+            based_on TEXT,
+            confidence REAL,
+            test_plan TEXT,
+            status TEXT DEFAULT 'proposed',
+            created_at TEXT DEFAULT (datetime('now'))
+        )
+    """)
+    
+    # Reports table
+    cur.execute("""
+        CREATE TABLE IF NOT EXISTS reports (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            report_type TEXT,
+            title TEXT,
+            content TEXT,
+            generated_at TEXT DEFAULT (datetime('now'))
+        )
+    """)
+    
+    # Competitors table
+    cur.execute("""
+        CREATE TABLE IF NOT EXISTS competitors (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            venture TEXT,
+            player TEXT,
+            relation TEXT,
+            what_it_does TEXT,
+            capability TEXT,
+            business_model TEXT,
+            strength TEXT,
+            gap TEXT,
+            source_url TEXT,
+            created_at TEXT DEFAULT (datetime('now'))
+        )
+    """)
+    
+    # Evidence table
+    cur.execute("""
+        CREATE TABLE IF NOT EXISTS evidence (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            theme TEXT,
+            finding TEXT,
+            applies_to TEXT,
+            source_url TEXT,
+            created_at TEXT DEFAULT (datetime('now'))
+        )
+    """)
+    
+    # Research papers table
+    cur.execute("""
+        CREATE TABLE IF NOT EXISTS research_papers (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            title TEXT,
+            authors TEXT,
+            published TEXT,
+            relevant_venture TEXT,
+            key_finding TEXT,
+            product_implication TEXT,
+            source_url TEXT,
+            created_at TEXT DEFAULT (datetime('now'))
+        )
+    """)
+    
+    # OSS projects table
+    cur.execute("""
+        CREATE TABLE IF NOT EXISTS oss_projects (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            repository TEXT,
+            theme TEXT,
+            what_it_provides TEXT,
+            why_useful TEXT,
+            url TEXT,
+            created_at TEXT DEFAULT (datetime('now'))
+        )
+    """)
+    
+    # Roadmap table
+    cur.execute("""
+        CREATE TABLE IF NOT EXISTS roadmap (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            phase TEXT,
+            focus TEXT,
+            build_plan TEXT,
+            exit_criterion TEXT,
+            monetization TEXT,
+            created_at TEXT DEFAULT (datetime('now'))
+        )
+    """)
+    
     conn.commit()
     cur.close()
     conn.close()
@@ -37,15 +174,8 @@ def insert_idea(idea_id, idea, thesis=None, category=None, status='seeded', scor
     cur = conn.cursor()
     
     cur.execute("""
-        INSERT INTO ideas (idea_id, idea, thesis, category, status, scores)
-        VALUES (%s, %s, %s, %s, %s, %s)
-        ON CONFLICT (idea_id) DO UPDATE SET
-            idea = EXCLUDED.idea,
-            thesis = EXCLUDED.thesis,
-            category = EXCLUDED.category,
-            status = EXCLUDED.status,
-            scores = EXCLUDED.scores,
-            updated_at = NOW()
+        INSERT OR REPLACE INTO ideas (idea_id, idea, thesis, category, status, scores, updated_at)
+        VALUES (?, ?, ?, ?, ?, ?, datetime('now'))
     """, (idea_id, idea, thesis, category, status, json.dumps(scores or {})))
     
     conn.commit()
@@ -61,7 +191,7 @@ def insert_research(idea_id, arxiv_results=None, github_results=None, competitor
     
     cur.execute("""
         INSERT INTO research (idea_id, arxiv_results, github_results, competitors, evidence)
-        VALUES (%s, %s, %s, %s, %s)
+        VALUES (?, ?, ?, ?, ?)
     """, (idea_id, json.dumps(arxiv_results or []), json.dumps(github_results or []),
           json.dumps(competitors or []), json.dumps(evidence or [])))
     
@@ -77,7 +207,7 @@ def insert_evaluation(idea_id, novelty_score, research_score, feasibility_score,
     
     cur.execute("""
         INSERT INTO evaluations (idea_id, novelty_score, research_score, feasibility_score, overall_score, verdict)
-        VALUES (%s, %s, %s, %s, %s, %s)
+        VALUES (?, ?, ?, ?, ?, ?)
     """, (idea_id, novelty_score, research_score, feasibility_score, overall_score, verdict))
     
     conn.commit()
@@ -92,7 +222,7 @@ def insert_hypothesis(hypothesis, based_on=None, confidence=None, test_plan=None
     
     cur.execute("""
         INSERT INTO hypotheses (hypothesis, based_on, confidence, test_plan)
-        VALUES (%s, %s, %s, %s)
+        VALUES (?, ?, ?, ?)
     """, (hypothesis, based_on, confidence, test_plan))
     
     conn.commit()
@@ -107,7 +237,7 @@ def insert_competitor(venture, player, relation, what_it_does, capability=None, 
     
     cur.execute("""
         INSERT INTO competitors (venture, player, relation, what_it_does, capability, business_model, strength, gap, source_url)
-        VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
     """, (venture, player, relation, what_it_does, capability, business_model, strength, gap, source_url))
     
     conn.commit()
@@ -122,7 +252,7 @@ def insert_evidence(theme, finding, applies_to, source_url=None):
     
     cur.execute("""
         INSERT INTO evidence (theme, finding, applies_to, source_url)
-        VALUES (%s, %s, %s, %s)
+        VALUES (?, ?, ?, ?)
     """, (theme, finding, applies_to, source_url))
     
     conn.commit()
@@ -140,16 +270,16 @@ def get_ideas(status=None, category=None, limit=100):
     conditions = []
     
     if status:
-        conditions.append("status = %s")
+        conditions.append("status = ?")
         params.append(status)
     if category:
-        conditions.append("category = %s")
+        conditions.append("category = ?")
         params.append(category)
     
     if conditions:
         query += " WHERE " + " AND ".join(conditions)
     
-    query += " ORDER BY created_at DESC LIMIT %s"
+    query += " ORDER BY created_at DESC LIMIT ?"
     params.append(limit)
     
     cur.execute(query, params)
@@ -171,7 +301,7 @@ def get_top_ideas(limit=10):
         FROM ideas i
         JOIN evaluations e ON i.idea_id = e.idea_id
         ORDER BY e.overall_score DESC
-        LIMIT %s
+        LIMIT ?
     """, (limit,))
     
     results = [{"idea_id": r[0], "idea": r[1], "score": r[2], "verdict": r[3]} for r in cur.fetchall()]
@@ -227,8 +357,8 @@ def generate_report():
     # Save report
     cur.execute("""
         INSERT INTO reports (report_type, title, content)
-        VALUES ('venture_brief', 'Venture Brief Report', %s)
-    """, (json.dumps(report),))
+        VALUES (?, ?, ?)
+    """, ('venture_brief', 'Venture Brief Report', json.dumps(report)))
     
     conn.commit()
     cur.close()
