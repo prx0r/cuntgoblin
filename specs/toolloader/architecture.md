@@ -27,6 +27,14 @@ is a **scoring function** over semantic relevance, historical success, schema-to
 health, permissions, auth friction, reliability, and price, feeding a token-budgeted selection and a
 lazy schema loader. Everything below serves that one differentiator.
 
+**Continuity note:** an earlier factory-line pass specified this product as "PRODUCT 5 — TOOLLOADER"
+inside the composite document now at `data/technialarchitectures.md` (also mirrored into the sibling
+`specs/*` files). That section's four load-bearing decisions are adopted here and marked
+`[from composite]`: the agent-facing two-tool UX, the explicit (non-trained) v1 score form, the
+telemetry fields that create the ranking moat, and the MCP-native surface. Nothing from the earlier
+pass was discarded; details that conflict with verified research (e.g. training discipline) are
+reconciled in place.
+
 ---
 
 ## 1. Scope
@@ -278,7 +286,36 @@ that makes "scoring function" honest.
 - Feedback is asynchronous and non-blocking: the select endpoint returns immediately; telemetry
   arrives via `POST /toolloader/feedback` or an event bus.
 
-### 4.7 Access Control and Auth Friction Layer
+Every telemetry record carries **[from composite]** the fields that make the ranking moat:
+
+```text
+task fingerprint     # stable hash of the task text + context class
+tool chosen
+alternatives         # the runner-up set at selection time (feeds §7.4 preference pairs)
+latency
+success
+error                # error class, if any
+result usefulness    # if measurable (caller-supplied 0..1), else null
+```
+
+`alternatives` is the crucial one: without it, weight learning (§7.4) has no counterfactual.
+
+### 4.7 Agent-facing surface (the two permanent tools) — [from composite]
+
+The calling agent gets exactly two permanent tools in its context — matching the report thesis
+("context receives search_tools + invoke_tool") — plus one schema-expansion tool:
+
+```text
+tool_search           # POST /toolloader/select — returns the selected tool set + why
+tool_invoke           # proxy invocation through Toolloader (or direct call to selected tool)
+tool_expand_schema    # promote the full JSON schema of one selected tool on demand
+```
+
+Everything else is virtual: the agent names a tool id from the selection response, and the loader
+decides whether the summary or the full schema is in context. This keeps the agent's permanent
+context cost essentially constant as the registry grows to 1,900+ tools.
+
+### 4.8 Access Control and Auth Friction Layer
 
 - Credential/auth handling remains with the MCP server or gateway — Toolloader scores and orders,
   never stores secrets (v1).
@@ -355,10 +392,26 @@ telemetry is frozen); request ids for audit; `task` free-text max length documen
 | Endpoint | Purpose |
 |---|---|
 | `POST /toolloader/registry/sync` | trigger incremental registry refresh from connected servers |
-| `POST /toolloader/feedback` | submit telemetry (outcome, latency, tokens) for a request_id |
+| `POST /toolloader/feedback` | submit telemetry (outcome, latency, tokens, alternatives, usefulness) |
 | `GET  /toolloader/tools/{id}` | inspect a tool record (schema, signals, health) |
 | `GET  /toolloader/stats` | per-server/tool token tax + success-rate dashboard data |
 | `GET  /toolloader/health` | liveness: registry, scorer, loader, budget gate |
+
+### 5.3 Native MCP surface — [from composite]
+
+Toolloader itself is an MCP server, so calling agents never mount downstream servers directly:
+
+```text
+tool_search          # MCP tool          → selection request
+tool_get_schema      # MCP tool          → promote full schema for one tool
+tool_invoke          # MCP tool          → proxy invocation to the selected tool/server
+tool_feedback        # MCP tool          → telemetry submission (same as /feedback)
+```
+
+This is the composability story from the report: any MCP client gains Toolloader's selection and
+lazy-loading behavior by mounting ONE server instead of N. Proxy invocation (`tool_invoke`) is
+behind a flag in v1 — selection without proxy must always work; proxying requires the access-control
+layer (§4.8) to be present so credentials are never forwarded blindly.
 
 ---
 
@@ -377,7 +430,8 @@ co_occurrence(tool_a FK, tool_b FK, success_count, fail_count, updated_at)
 selections(request_id PK, task_hash, task_text, selected_json, context_tokens,
            cost_estimate, created_at)
 telemetry(id PK, request_id FK, tool_id FK, outcome[ok|fail|timeout|malformed],
-          latency_ms, tokens_used, error_class, created_at)
+          latency_ms, tokens_used, error_class, alternatives_json, usefulness,
+          created_at)
 weights(signal_name PK, weight, confidence, updated_at)   -- learned weight vector
 ```
 
@@ -411,6 +465,21 @@ signals `f_i(t, q) ∈ [0,1]`:
 | 9 | price | `1 − min(1, price_per_call / price_normalizer)`; zero-cost local tools score 1 |
 
 ### 7.2 Composition
+
+v1 uses an **explicit, non-trained** score form **[from composite]** — do not train a complex model
+initially:
+
+```text
+score(t, q) = relevance × historical_success × health × compatibility
+              − schema_context_cost − latency_penalty − monetary_cost − auth_friction
+```
+
+where the multiplicative core enforces "all essentials must be present" (a dead or irrelevant tool
+cannot be rescued by a low price), and the subtractive penalties temper the product with costs.
+This form is the seed behavior; the normalized additive form below (`Σ w_i·f_i`) is the *learned*
+upgrade path (§7.4) that keeps scores in [0,1] for the set-level selector. The two forms must agree
+on ordering on the seeded weight vector before the additive form is enabled — checked by gate G6
+(§13).
 
 ```text
 score(t, q) = Σ_i w_i · f_i(t, q)           with Σ_i w_i = 1, w_i ≥ 0
@@ -538,11 +607,13 @@ tokens for a 3-tool selection; schemas promoted only on actual calls.
 
 ### Phase 1 — MVP (weeks 1–2): "50 tools, honest numbers"
 - SQLite registry + embeddings; retriever (server→tool hybrid) over 50 hand-picked tools.
-- Scorer with the nine signals at seed weights; selector greedy with token budget.
+- Scorer with the explicit v1 form (§7.2, no training); selector greedy with token budget.
 - Lazy loader: summary pool + top-k schema promotion (subsumes the report's 3-loader split into
   `retrieve/score/load` — internal service boundaries, single deployable).
-- `POST /toolloader/select` + `/feedback`; SQLite telemetry.
-- **Gate:** local mirror test on 50 real tasks shows per-turn token reduction ≥ 10× vs eager
+- `POST /toolloader/select` + `/feedback`; SQLite telemetry with the full moat fields (§4.6).
+- **Build the fixed 100-tool-choice task corpus [from composite]** (`"open a GitHub issue"`-style
+  tasks paired with expected tool sets) — the G3 harness.
+- **Gate:** local mirror test on the 100-task corpus shows per-turn token reduction ≥ 10× vs eager
   injection, measured by our own counter (§8.3). No public claim before this.
 
 ### Phase 2 — Core (weeks 3–4): "MCP gateway integration"
@@ -573,7 +644,7 @@ fixed harnesses. Toolloader's gates:
 |---|---|---|---|
 | G1 retrieval quality | HumanMCP + Tool-Savvy-style eval on fixed query sets | recall@Top-15, nDCG@10 | ≥ 85% (Top-15) |
 | G2 token economics | mirror test on 50 real tasks (Phase 1) / 200 (Phase 2) | measured per-turn context tokens with/without loader | ≥ 10× reduction |
-| G3 selection quality | AnyToolBench-style protocol + in-house task suite | task success / pass rate | non-inferior to full-schema baseline (±2%) while G2 holds |
+| G3 selection quality | AnyToolBench-style protocol + fixed 100-tool-choice task corpus (the composite's MVP test corpus; §12 Phase 1 delivers it) | task success / pass rate | non-inferior to full-schema baseline (±2%) while G2 holds |
 | G4 cost quality | Knee optimizer on the selection log | realized $/successful-task | decreasing across the weight-learning windows |
 | G5 safety | adversarial eval: injected-description prompts, over-privilege queries | injection success rate, privilege escalation attempts | 0 high-severity incidents in the fixed suite |
 | G6 determinism | replay: same frozen telemetry + input → identical selection | exact match | 100% within a weight window |
@@ -625,5 +696,6 @@ own deployment reproduces the magnitude.
 15. GitHub — punkpeye/awesome-mcp-servers (stars: 92,485, fetched 2026-08-17).
 16. (Unverified) "SING: Synthetic Intention Graph for Scalable Active Tool" — no arXiv record found 2026-08-17; retained here only as the report's citation.
 
-*End of architecture spec. Machine-proposed from the source report + verified external anchors;
-not yet human-reviewed. Next action: Phase 1 MVP + G2 gate.*
+*End of architecture spec. Machine-proposed from the source report + verified external anchors,
+with the factory composite's Toolloader decisions adopted (see Continuity note, §0). Not yet
+human-reviewed. Next action: Phase 1 MVP + G2 gate (100-task corpus first).*
