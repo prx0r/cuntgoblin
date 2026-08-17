@@ -1,0 +1,14 @@
+{
+  "run_id": "run4_1787002619",
+  "started_at": "2026-08-17T21:36:59.088341+00:00",
+  "ideas_ingested": 5,
+  "ideas_scored": 5,
+  "research_packets": 5,
+  "decisions": {
+    "BUILD": 0,
+    "WATCH": 5,
+    "REJECT": 0
+  },
+  "products_built": 0,
+  "products_certified": 0
+}
