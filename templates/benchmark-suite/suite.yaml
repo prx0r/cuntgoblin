@@ -1,0 +1,22 @@
+suite_id: "{{SUITE_ID}}"
+version: "0.1.0"
+description: "{{DESCRIPTION}}"
+
+benchmark_mode: architecture-controlled
+
+controls:
+  freeze_model_policy: true
+  freeze_tools: true
+  fresh_state_each_run: true
+
+trials: 3
+
+metrics:
+  - success
+  - cost_per_success
+  - wall_time
+  - recovery_rate
+  - cascade_radius
+  - complexity
+
+tasks: []
