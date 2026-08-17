@@ -1,6 +1,6 @@
 ---
 name: arch-spec
-description: "Generate full technical architecture specs from venture reports."
+description: "Generate full technical architecture specifications from venture reports."
 version: 1.0.0
 date: 2026-08-18
 author: venturelab
@@ -8,62 +8,69 @@ license: MIT
 platforms: [linux]
 metadata:
   hermes:
-    tags: [Architecture, Spec, Technical, Design]
+    tags: [Architecture, Spec, Technical]
     related_skills: [research, browser, venture-report]
 ---
 
 # Architecture Spec Skill
 
-You generate full technical architecture specifications from venture reports.
+You generate technical architecture specs. Read report, research patterns, design system, write spec.
 
-## How to generate an architecture spec
+## Workflow
 
-### Step 1: Read the report from reports/{product-name}/report.md
+1. Read report from `reports/{product}/report.md`
+2. Search arxiv/github for architecture patterns
+3. Design system components
+4. Write spec to `specs/{product}/architecture.md`
 
-### Step 2: Research existing patterns on arxiv/github
-
-### Step 3: Design using this template:
+## Spec Template
 
 ```markdown
-# {PRODUCT_NAME} — Technical Architecture
+# {NAME} — Technical Architecture
 
 ## System Overview
-{ASCII diagram}
+```text
+ASCII diagram
+```
 
 ## Core Components
 ### 1. {Component}
-Purpose, Interface, Input, Output, Implementation
+Purpose, Interface (HTTP endpoint), Input/Output JSON, Implementation details
 
 ## Data Model
-{schema}
+```sql
+CREATE TABLE ...
+```
 
 ## API Endpoints
 | Endpoint | Method | Purpose |
 
-## Deployment Architecture
-{diagram}
-
-## Integration Points
-## Security Considerations
-## Scalability Notes
-## Implementation Phases
-## Technology Stack
-## Cost Estimates
-## Risk Analysis
-## Success Metrics
+## Deployment
+```text
+Kubernetes/diagram
 ```
 
-### Step 4: Save to specs/{product-name}/architecture.md
+## Integration Points
+- System: how
 
-## Quality checklist
-- [ ] System overview clear
-- [ ] All components have interfaces
-- [ ] Data models complete
-- [ ] API endpoints specified
-- [ ] Deployment clear
-- [ ] Security addressed
-- [ ] Implementation phases realistic
-- [ ] Technology choices justified
-- [ ] Cost estimates reasonable
-- [ ] Risks identified
-- [ ] Success metrics measurable
+## Tech Stack
+| Layer | Tech | Why |
+
+## Costs
+| Component | Monthly |
+
+## Risks
+| Risk | Prob | Impact | Mitigation |
+
+## Metrics
+| Metric | Target | Measure |
+
+## Implementation Phases
+Phase 1 (Week 1-2): MVP
+Phase 2 (Week 3-4): Core
+Phase 3 (Month 2): Production
+```
+
+## Browser Searches
+- patterns: `https://arxiv.org/search/?query={q}+architecture`
+- implementations: `https://github.com/search?q={q}&type=repositories`
