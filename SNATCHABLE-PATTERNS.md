@@ -192,3 +192,80 @@ Location: `check.py`
 ---
 
 *Snatchable patterns v1.0*
+
+---
+
+## From swarm-platform (NEW)
+
+### 1. MCP Marketplace Pattern
+- Agents hire other agents via MCP
+- x402 payment integration
+- On-chain reputation (ERC-8004)
+- **Use for agent-to-agent commerce**
+
+### 2. Human Task Bounties
+- Post bounties for human work
+- Escrowed payments
+- Auto-refund after 7 days
+- **Use for human-in-the-loop**
+
+### 3. Image Generation Agents
+- Multiple style agents (Lumen, Claywork, etc.)
+- Per-call pricing
+- On-chain ratings
+- **Use for multi-model routing**
+
+### 4. Zero-Config MCP Pairing
+- `npx -y swarm-marketplace-mcp pair`
+- One-command setup
+- **Use for easy onboarding**
+
+### 5. Chain-Sourced Live Balance
+- Real-time balance from blockchain
+- No database needed for balance
+- **Use for payment transparency**
+
+---
+
+## FromDispatch
+
+### 1. Agent Dispatch System
+- Multi-agent orchestration
+- Task routing
+- **Use for agent coordination**
+
+---
+
+## FromEpochX
+
+### 1. Evolutionary Agent Improvement
+- Self-evolving agents
+- Open-ended evolution
+- **Use for agent optimization**
+
+---
+
+## From agent-passport-system
+
+### 1. Agent Identity
+- Portable agent identity
+- Capability attestation
+- **Use for agent verification**
+
+---
+
+## From lucid-agents
+
+### 1. Single Definition → Multiple Projections
+- One typed entrypoint
+- Multiple output formats
+- **Use for API design**
+
+### 2. Extension Kernel
+- Topological ordering
+- Build-time slice merge
+- **Use for plugin system**
+
+---
+
+*Snatchable patterns v1.1*
