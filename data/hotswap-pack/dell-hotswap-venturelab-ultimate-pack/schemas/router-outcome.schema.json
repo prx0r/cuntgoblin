@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "RouterOutcome",
+  "type": "object",
+  "required": [
+    "outcome_id",
+    "plan_id",
+    "task_id",
+    "route_id",
+    "evaluation"
+  ],
+  "properties": {
+    "outcome_id": {
+      "type": "string"
+    },
+    "plan_id": {
+      "type": "string"
+    },
+    "task_id": {
+      "type": "string"
+    },
+    "route_id": {
+      "type": "string"
+    },
+    "runtime": {
+      "type": "object"
+    },
+    "usage": {
+      "type": "object"
+    },
+    "evaluation": {
+      "type": "object"
+    },
+    "economics": {
+      "type": "object"
+    }
+  }
+}

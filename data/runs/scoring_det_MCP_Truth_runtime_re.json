@@ -1,0 +1,56 @@
+{
+  "idea": "MCP Truth runtime reliability intelligence",
+  "runs": [
+    {
+      "run": 1,
+      "overall": 0.637,
+      "dimensions": {
+        "novelty": 1.0,
+        "research": 0.2,
+        "feasibility": 0.5,
+        "market_timing": 0.5,
+        "pain_severity": 0.6,
+        "willingness_to_pay": 0.6,
+        "competition_gap": 0.9,
+        "data_moat": 0.6,
+        "strategic_fit": 0.7
+      }
+    },
+    {
+      "run": 2,
+      "overall": 0.637,
+      "dimensions": {
+        "novelty": 1.0,
+        "research": 0.2,
+        "feasibility": 0.5,
+        "market_timing": 0.5,
+        "pain_severity": 0.6,
+        "willingness_to_pay": 0.6,
+        "competition_gap": 0.9,
+        "data_moat": 0.6,
+        "strategic_fit": 0.7
+      }
+    },
+    {
+      "run": 3,
+      "overall": 0.637,
+      "dimensions": {
+        "novelty": 1.0,
+        "research": 0.2,
+        "feasibility": 0.5,
+        "market_timing": 0.5,
+        "pain_severity": 0.6,
+        "willingness_to_pay": 0.6,
+        "competition_gap": 0.9,
+        "data_moat": 0.6,
+        "strategic_fit": 0.7
+      }
+    }
+  ],
+  "analysis": {
+    "mean": 0.637,
+    "std": 0.0,
+    "determinism": "DETERMINISTIC"
+  },
+  "timestamp": "2026-08-17T21:43:14.949576+00:00"
+}

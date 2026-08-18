@@ -1,0 +1,35 @@
+{
+  "factory_id": "benchmark",
+  "version": "1.0.0",
+  "kind": "benchmark",
+  "name": "Dataset / Benchmark",
+  "description": "Canonical VentureLab Dataset / Benchmark factory.",
+  "input_schema": null,
+  "output_schema": null,
+  "phases": [
+    "discover",
+    "research",
+    "plan",
+    "build",
+    "verify",
+    "publish",
+    "observe"
+  ],
+  "mandatory_teams": [
+    "research",
+    "qa",
+    "provenance"
+  ],
+  "conditional_teams": {
+    "public_release": [
+      "docs",
+      "release",
+      "post-release"
+    ]
+  },
+  "default_budget_usd": 1.0,
+  "fixture": {
+    "fixture_id": "benchmark-smoke-v1",
+    "max_cost_usd": 0.1
+  }
+}

@@ -1,0 +1,165 @@
+{
+  "schema": "venturelab.global_os.tasks.v1",
+  "reviewed": {
+    "venturelab": "2fcc6abcce78d4fac8c516e62069827d0e8cf931",
+    "dell_functional_fix": "f3927b261b3f6e52a61ae4723a9b92774d393eb9"
+  },
+  "critical_first": [
+    "CP-G0",
+    "CP-G1",
+    "CP-G2",
+    "CP-G3",
+    "CP-G4",
+    "CP-G5",
+    "CP-G6",
+    "CP-G7"
+  ],
+  "checkpoints": [
+    {
+      "id": "CP-G0",
+      "name": "dell-manifest-freshness",
+      "depends_on": []
+    },
+    {
+      "id": "CP-G1",
+      "name": "global-contracts",
+      "depends_on": []
+    },
+    {
+      "id": "CP-G2",
+      "name": "postgres-ledger-queue",
+      "depends_on": [
+        "CP-G1"
+      ]
+    },
+    {
+      "id": "CP-G3",
+      "name": "manager-daemon",
+      "depends_on": [
+        "CP-G2"
+      ]
+    },
+    {
+      "id": "CP-G4",
+      "name": "artifact-merkle",
+      "depends_on": [
+        "CP-G1",
+        "CP-G2"
+      ]
+    },
+    {
+      "id": "CP-G5",
+      "name": "hermes-kanban-projection",
+      "depends_on": [
+        "CP-G3"
+      ]
+    },
+    {
+      "id": "CP-G6",
+      "name": "hotswap-authority",
+      "depends_on": [
+        "CP-G0",
+        "CP-G3"
+      ]
+    },
+    {
+      "id": "CP-G7",
+      "name": "dry-run-chaos",
+      "depends_on": [
+        "CP-G3",
+        "CP-G4",
+        "CP-G5",
+        "CP-G6"
+      ]
+    },
+    {
+      "id": "CP-G8",
+      "name": "market-schedules",
+      "depends_on": [
+        "CP-G7"
+      ]
+    },
+    {
+      "id": "CP-G9",
+      "name": "product-workflow",
+      "depends_on": [
+        "CP-G7"
+      ]
+    },
+    {
+      "id": "CP-G10",
+      "name": "release-saga",
+      "depends_on": [
+        "CP-G9",
+        "CP-G4"
+      ]
+    },
+    {
+      "id": "CP-G11",
+      "name": "agenthub-operations",
+      "depends_on": [
+        "CP-G7"
+      ]
+    },
+    {
+      "id": "CP-G12",
+      "name": "paper-intake",
+      "depends_on": [
+        "CP-G11"
+      ]
+    },
+    {
+      "id": "CP-G13",
+      "name": "router-lab",
+      "depends_on": [
+        "CP-G6"
+      ]
+    },
+    {
+      "id": "CP-G14",
+      "name": "dell-gtm",
+      "depends_on": [
+        "CP-G0",
+        "CP-G10"
+      ]
+    },
+    {
+      "id": "CP-G15",
+      "name": "visiontruth",
+      "depends_on": [
+        "CP-G13",
+        "CP-G14"
+      ]
+    },
+    {
+      "id": "CP-G16",
+      "name": "videotruth",
+      "depends_on": [
+        "CP-G14"
+      ]
+    },
+    {
+      "id": "CP-G17",
+      "name": "historical-replay",
+      "depends_on": [
+        "CP-G8",
+        "CP-G13"
+      ]
+    },
+    {
+      "id": "CP-G18",
+      "name": "temporal-adapter-optional",
+      "depends_on": [
+        "CP-G17"
+      ]
+    },
+    {
+      "id": "CP-G19",
+      "name": "bounded-evolution",
+      "depends_on": [
+        "CP-G11",
+        "CP-G17"
+      ]
+    }
+  ]
+}

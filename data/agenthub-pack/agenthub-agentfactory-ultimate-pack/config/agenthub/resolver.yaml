@@ -1,0 +1,16 @@
+version: architecture-resolver-v1
+
+weights:
+  capability_fit: 0.25
+  topology_fit: 0.20
+  state_fit: 0.15
+  verification_fit: 0.15
+  runtime_fit: 0.10
+  benchmark_fit: 0.10
+  economics_fit: 0.05
+
+thresholds:
+  reuse: 0.78
+  fork_or_compose: 0.62
+
+hard_unknown_policy: exclude

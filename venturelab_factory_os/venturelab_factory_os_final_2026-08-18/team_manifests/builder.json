@@ -1,0 +1,12 @@
+{
+  "team_id": "builder",
+  "version": "1.0.0",
+  "name": "Builder",
+  "outputs": [
+    "artifacts"
+  ],
+  "gates": [
+    "artifact-present"
+  ],
+  "default_budget_usd": 0.5
+}

@@ -1,0 +1,12 @@
+{
+  "team_id": "portfolio-review",
+  "version": "1.0.0",
+  "name": "Portfolio Review",
+  "outputs": [
+    "allocation_report"
+  ],
+  "gates": [
+    "decision-inputs-frozen"
+  ],
+  "default_budget_usd": 0.1
+}

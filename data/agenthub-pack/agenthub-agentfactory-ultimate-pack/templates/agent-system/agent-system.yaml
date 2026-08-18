@@ -1,0 +1,43 @@
+apiVersion: agenthub.ai/v1
+kind: AgentSystem
+
+metadata:
+  id: "{{SYSTEM_ID}}"
+  name: "{{SYSTEM_NAME}}"
+  version: "0.1.0"
+  source:
+    repo: "{{SOURCE_REPO}}"
+    sha: "{{SOURCE_SHA}}"
+
+classification:
+  runtime: hermes
+  families: []
+  system_types: []
+  domains: []
+
+topology:
+  nodes: []
+  edges: []
+
+model_slots: []
+state: {}
+tools: []
+permissions: {}
+
+operations:
+  doctor: ""
+  install: ""
+  start: ""
+  stop: ""
+  resume: ""
+  status: ""
+  benchmark: ""
+
+verification: {}
+requirements: {}
+
+maturity:
+  overall: experimental
+  features: {}
+
+lineage: {}

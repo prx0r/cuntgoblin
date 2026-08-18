@@ -1,0 +1,22 @@
+{
+  "run_id": "run-acc82b1aad51",
+  "endpoint_id": "opencode-go:hy3",
+  "provider": "opencode-go",
+  "model": "hy3",
+  "probe": {
+    "id": "json-v1",
+    "version": "1.0.0"
+  },
+  "started_at": "2026-08-17T20:41:46Z",
+  "completed_at": "2026-08-17T20:41:49Z",
+  "status": "SUCCESS",
+  "probe_status": "SUCCESS",
+  "measurement_count": 5,
+  "errors": [],
+  "base_url": "https://opencode.ai/zen/go/v1",
+  "region": "gateway",
+  "artifacts": [
+    "data/runs/run-acc82b1aad51/artifacts/artifact-000-0c741461.json",
+    "data/runs/run-acc82b1aad51/artifacts/artifact-001-fef04d06.json"
+  ]
+}

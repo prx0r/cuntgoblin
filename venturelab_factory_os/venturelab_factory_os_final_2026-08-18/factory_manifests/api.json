@@ -1,0 +1,35 @@
+{
+  "factory_id": "api",
+  "version": "1.0.0",
+  "kind": "api",
+  "name": "API / Data Oracle",
+  "description": "Canonical VentureLab API / Data Oracle factory.",
+  "input_schema": null,
+  "output_schema": null,
+  "phases": [
+    "discover",
+    "research",
+    "plan",
+    "build",
+    "verify",
+    "publish",
+    "observe"
+  ],
+  "mandatory_teams": [
+    "research",
+    "qa",
+    "provenance"
+  ],
+  "conditional_teams": {
+    "public_release": [
+      "docs",
+      "release",
+      "post-release"
+    ]
+  },
+  "default_budget_usd": 0.5,
+  "fixture": {
+    "fixture_id": "api-smoke-v1",
+    "max_cost_usd": 0.1
+  }
+}

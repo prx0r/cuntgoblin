@@ -1,0 +1,146 @@
+{
+  "schema": "venturelab.agenthub.tasks.v1",
+  "baseline_sha": "22094efe30dc1a38d8e66ab545f543dd6deb3d93",
+  "checkpoints": [
+    {
+      "id": "CP-AH0",
+      "name": "contracts",
+      "depends_on": []
+    },
+    {
+      "id": "CP-AH1",
+      "name": "registry",
+      "depends_on": [
+        "CP-AH0"
+      ]
+    },
+    {
+      "id": "CP-AH2",
+      "name": "ingest-doctor",
+      "depends_on": [
+        "CP-AH1"
+      ]
+    },
+    {
+      "id": "CP-AH3",
+      "name": "architecture-need",
+      "depends_on": [
+        "CP-AH0"
+      ]
+    },
+    {
+      "id": "CP-AH4",
+      "name": "resolver",
+      "depends_on": [
+        "CP-AH1",
+        "CP-AH3"
+      ]
+    },
+    {
+      "id": "CP-AH5",
+      "name": "hermes-compiler-hotswap",
+      "depends_on": [
+        "CP-AH2",
+        "CP-AH4"
+      ]
+    },
+    {
+      "id": "CP-AH6",
+      "name": "benchmark-runner",
+      "depends_on": [
+        "CP-AH1",
+        "CP-AH5"
+      ]
+    },
+    {
+      "id": "CP-AH7",
+      "name": "first-controlled-experiment",
+      "depends_on": [
+        "CP-AH6"
+      ]
+    },
+    {
+      "id": "CP-AH8",
+      "name": "failure-harness",
+      "depends_on": [
+        "CP-AH6"
+      ]
+    },
+    {
+      "id": "CP-AH9",
+      "name": "lineage-forks",
+      "depends_on": [
+        "CP-AH1",
+        "CP-AH7"
+      ]
+    },
+    {
+      "id": "CP-AH10",
+      "name": "agent-factory-synthesis",
+      "depends_on": [
+        "CP-AH4",
+        "CP-AH9"
+      ]
+    },
+    {
+      "id": "CP-AH11",
+      "name": "architecture-search",
+      "depends_on": [
+        "CP-AH10",
+        "CP-AH6"
+      ]
+    },
+    {
+      "id": "CP-AH12",
+      "name": "orchestration-simulator",
+      "depends_on": [
+        "CP-AH10"
+      ]
+    },
+    {
+      "id": "CP-AH13",
+      "name": "a2a-agentbeats",
+      "depends_on": [
+        "CP-AH6"
+      ]
+    },
+    {
+      "id": "CP-AH14",
+      "name": "promotion",
+      "depends_on": [
+        "CP-AH7",
+        "CP-AH9"
+      ]
+    },
+    {
+      "id": "CP-AH15",
+      "name": "community-api",
+      "depends_on": [
+        "CP-AH14"
+      ]
+    },
+    {
+      "id": "CP-AH16",
+      "name": "dynamic-supernet",
+      "depends_on": [
+        "CP-AH11"
+      ]
+    },
+    {
+      "id": "CP-AH17",
+      "name": "archive-evolution",
+      "depends_on": [
+        "CP-AH11",
+        "CP-AH14"
+      ]
+    },
+    {
+      "id": "CP-AH18",
+      "name": "end-to-end-opportunity-agent-architecture",
+      "depends_on": [
+        "CP-AH10",
+        "CP-AH14"
+      ]
+    }
+  ]
+}

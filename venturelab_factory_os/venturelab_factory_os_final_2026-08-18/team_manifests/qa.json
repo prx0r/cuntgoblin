@@ -1,0 +1,12 @@
+{
+  "team_id": "qa",
+  "version": "1.0.0",
+  "name": "QA / Test",
+  "outputs": [
+    "gate_results"
+  ],
+  "gates": [
+    "tests-pass"
+  ],
+  "default_budget_usd": 0.2
+}

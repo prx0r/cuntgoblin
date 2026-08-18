@@ -1,0 +1,12 @@
+{
+  "team_id": "docs",
+  "version": "1.0.0",
+  "name": "Docs / Publisher",
+  "outputs": [
+    "documentation"
+  ],
+  "gates": [
+    "docs-match-certified-interface"
+  ],
+  "default_budget_usd": 0.1
+}

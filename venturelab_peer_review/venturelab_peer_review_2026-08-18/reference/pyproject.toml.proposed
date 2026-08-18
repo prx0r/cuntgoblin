@@ -1,0 +1,24 @@
+[project]
+name = "venturelab"
+version = "0.2.0"
+requires-python = ">=3.11"
+dependencies = [
+  "fastapi>=0.100",
+  "pydantic>=2",
+  "uvicorn>=0.23",
+  "mcp[cli]>=2,<3",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8",
+  "httpx>=0.27",
+  "ruff>=0.6",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests", "factory"]
+pythonpath = ["."]
+
+[tool.ruff]
+line-length = 100

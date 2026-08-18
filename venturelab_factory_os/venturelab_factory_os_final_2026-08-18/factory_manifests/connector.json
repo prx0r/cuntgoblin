@@ -1,0 +1,34 @@
+{
+  "factory_id": "connector",
+  "version": "1.0.0",
+  "kind": "connector",
+  "name": "Connector / Integration",
+  "description": "Canonical VentureLab Connector / Integration factory.",
+  "input_schema": null,
+  "output_schema": null,
+  "phases": [
+    "research",
+    "plan",
+    "build",
+    "verify",
+    "publish",
+    "observe"
+  ],
+  "mandatory_teams": [
+    "qa",
+    "security",
+    "provenance"
+  ],
+  "conditional_teams": {
+    "public_release": [
+      "docs",
+      "release",
+      "post-release"
+    ]
+  },
+  "default_budget_usd": 0.5,
+  "fixture": {
+    "fixture_id": "connector-smoke-v1",
+    "max_cost_usd": 0.1
+  }
+}

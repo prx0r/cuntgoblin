@@ -1,0 +1,450 @@
+[
+  {
+    "id": "P0-REPAIR",
+    "phase": "P0",
+    "title": "Repair current composition root/CI",
+    "depends_on": [],
+    "files": [
+      "factory/system.py",
+      "Dockerfile",
+      ".github/workflows/ci.yml"
+    ],
+    "tests": [
+      "pytest",
+      "docker build"
+    ],
+    "acceptance": [
+      "imports resolve",
+      "CI attached to head"
+    ]
+  },
+  {
+    "id": "OS-CORE",
+    "phase": "P1",
+    "title": "Canonical OS core",
+    "depends_on": [
+      "P0-REPAIR"
+    ],
+    "files": [
+      "factory/os/core.py",
+      "factory/os/db.py",
+      "factory/os/schema.sql"
+    ],
+    "tests": [
+      "core tests"
+    ],
+    "acceptance": [
+      "idempotent migrate"
+    ]
+  },
+  {
+    "id": "OS-LEDGER",
+    "phase": "P1",
+    "title": "Proof ledger",
+    "depends_on": [
+      "OS-CORE"
+    ],
+    "files": [
+      "factory/os/ledger/*"
+    ],
+    "tests": [
+      "ledger tests",
+      "Merkle tests"
+    ],
+    "acceptance": [
+      "mutation detected",
+      "inclusion verifies"
+    ]
+  },
+  {
+    "id": "OS-GRAPH",
+    "phase": "P1",
+    "title": "WorkGraph and leases",
+    "depends_on": [
+      "OS-LEDGER"
+    ],
+    "files": [
+      "factory/os/graph/*"
+    ],
+    "tests": [
+      "graph tests"
+    ],
+    "acceptance": [
+      "dependencies gate readiness",
+      "single claimant",
+      "stale reclaim"
+    ]
+  },
+  {
+    "id": "OS-HERMES",
+    "phase": "P2",
+    "title": "Hermes executor",
+    "depends_on": [
+      "OS-GRAPH"
+    ],
+    "files": [
+      "factory/os/executors/hermes.py"
+    ],
+    "tests": [
+      "executor contract"
+    ],
+    "acceptance": [
+      "nonzero exit fails",
+      "invalid JSON fails",
+      "no self-certify"
+    ]
+  },
+  {
+    "id": "OS-BEADS",
+    "phase": "P2",
+    "title": "Optional Beads mirror",
+    "depends_on": [
+      "OS-GRAPH"
+    ],
+    "files": [
+      "factory/os/executors/beads.py"
+    ],
+    "tests": [
+      "mirror fixture"
+    ],
+    "acceptance": [
+      "OS remains canonical"
+    ]
+  },
+  {
+    "id": "OS-HOTSWAP",
+    "phase": "P2",
+    "title": "Composite HotSwap route",
+    "depends_on": [
+      "OS-HERMES"
+    ],
+    "files": [
+      "factory/hotswap/*"
+    ],
+    "tests": [
+      "existing HotSwap suite",
+      "route attribution"
+    ],
+    "acceptance": [
+      "old regressions pass"
+    ]
+  },
+  {
+    "id": "OS-FACTORY",
+    "phase": "P3",
+    "title": "Factory registry",
+    "depends_on": [
+      "OS-GRAPH"
+    ],
+    "files": [
+      "factory/factories/*",
+      "schemas/*"
+    ],
+    "tests": [
+      "registry tests"
+    ],
+    "acceptance": [
+      "versions immutable",
+      "fixture gate"
+    ]
+  },
+  {
+    "id": "OS-TEAMS",
+    "phase": "P3",
+    "title": "Global teams",
+    "depends_on": [
+      "OS-FACTORY"
+    ],
+    "files": [
+      "factory/teams/*",
+      "team_manifests/*"
+    ],
+    "tests": [
+      "team expansion"
+    ],
+    "acceptance": [
+      "mandatory teams block publish on fail"
+    ]
+  },
+  {
+    "id": "OS-COST",
+    "phase": "P4",
+    "title": "Cost ledger",
+    "depends_on": [
+      "OS-GRAPH"
+    ],
+    "files": [
+      "factory/os/portfolio/costs.py"
+    ],
+    "tests": [
+      "cost reconciliation"
+    ],
+    "acceptance": [
+      "node/run/factory costs reconcile"
+    ]
+  },
+  {
+    "id": "OS-LEARNING",
+    "phase": "P4",
+    "title": "Outcome learning",
+    "depends_on": [
+      "OS-COST"
+    ],
+    "files": [
+      "factory/os/portfolio/*"
+    ],
+    "tests": [
+      "posterior tests",
+      "replay"
+    ],
+    "acceptance": [
+      "decision snapshots frozen"
+    ]
+  },
+  {
+    "id": "OS-SCHEDULE",
+    "phase": "P4",
+    "title": "Canonical schedules",
+    "depends_on": [
+      "OS-GRAPH"
+    ],
+    "files": [
+      "factory/os/scheduling/*"
+    ],
+    "tests": [
+      "schedule tests"
+    ],
+    "acceptance": [
+      "idempotent enqueue"
+    ]
+  },
+  {
+    "id": "FAC-API",
+    "phase": "P5",
+    "title": "Implement api factory fixture",
+    "depends_on": [
+      "OS-FACTORY",
+      "OS-TEAMS",
+      "OS-COST"
+    ],
+    "files": [
+      "factory/factories/api/"
+    ],
+    "tests": [
+      "api fixture"
+    ],
+    "acceptance": [
+      "success certified",
+      "failure rejected",
+      "under fixture budget"
+    ]
+  },
+  {
+    "id": "FAC-APP",
+    "phase": "P5",
+    "title": "Implement app factory fixture",
+    "depends_on": [
+      "OS-FACTORY",
+      "OS-TEAMS",
+      "OS-COST"
+    ],
+    "files": [
+      "factory/factories/app/"
+    ],
+    "tests": [
+      "app fixture"
+    ],
+    "acceptance": [
+      "success certified",
+      "failure rejected",
+      "under fixture budget"
+    ]
+  },
+  {
+    "id": "FAC-CONNECTOR",
+    "phase": "P5",
+    "title": "Implement connector factory fixture",
+    "depends_on": [
+      "OS-FACTORY",
+      "OS-TEAMS",
+      "OS-COST"
+    ],
+    "files": [
+      "factory/factories/connector/"
+    ],
+    "tests": [
+      "connector fixture"
+    ],
+    "acceptance": [
+      "success certified",
+      "failure rejected",
+      "under fixture budget"
+    ]
+  },
+  {
+    "id": "FAC-AGENT-SERVICE",
+    "phase": "P5",
+    "title": "Implement agent-service factory fixture",
+    "depends_on": [
+      "OS-FACTORY",
+      "OS-TEAMS",
+      "OS-COST"
+    ],
+    "files": [
+      "factory/factories/agent-service/"
+    ],
+    "tests": [
+      "agent-service fixture"
+    ],
+    "acceptance": [
+      "success certified",
+      "failure rejected",
+      "under fixture budget"
+    ]
+  },
+  {
+    "id": "FAC-DIRECTORY",
+    "phase": "P5",
+    "title": "Implement directory factory fixture",
+    "depends_on": [
+      "OS-FACTORY",
+      "OS-TEAMS",
+      "OS-COST"
+    ],
+    "files": [
+      "factory/factories/directory/"
+    ],
+    "tests": [
+      "directory fixture"
+    ],
+    "acceptance": [
+      "success certified",
+      "failure rejected",
+      "under fixture budget"
+    ]
+  },
+  {
+    "id": "FAC-SHOP-MARKETPLACE",
+    "phase": "P5",
+    "title": "Implement shop-marketplace factory fixture",
+    "depends_on": [
+      "OS-FACTORY",
+      "OS-TEAMS",
+      "OS-COST"
+    ],
+    "files": [
+      "factory/factories/shop-marketplace/"
+    ],
+    "tests": [
+      "shop-marketplace fixture"
+    ],
+    "acceptance": [
+      "success certified",
+      "failure rejected",
+      "under fixture budget"
+    ]
+  },
+  {
+    "id": "FAC-DEVELOPER-TOOL",
+    "phase": "P5",
+    "title": "Implement developer-tool factory fixture",
+    "depends_on": [
+      "OS-FACTORY",
+      "OS-TEAMS",
+      "OS-COST"
+    ],
+    "files": [
+      "factory/factories/developer-tool/"
+    ],
+    "tests": [
+      "developer-tool fixture"
+    ],
+    "acceptance": [
+      "success certified",
+      "failure rejected",
+      "under fixture budget"
+    ]
+  },
+  {
+    "id": "FAC-BROWSER-EXTENSION",
+    "phase": "P5",
+    "title": "Implement browser-extension factory fixture",
+    "depends_on": [
+      "OS-FACTORY",
+      "OS-TEAMS",
+      "OS-COST"
+    ],
+    "files": [
+      "factory/factories/browser-extension/"
+    ],
+    "tests": [
+      "browser-extension fixture"
+    ],
+    "acceptance": [
+      "success certified",
+      "failure rejected",
+      "under fixture budget"
+    ]
+  },
+  {
+    "id": "FAC-BENCHMARK",
+    "phase": "P5",
+    "title": "Implement benchmark factory fixture",
+    "depends_on": [
+      "OS-FACTORY",
+      "OS-TEAMS",
+      "OS-COST"
+    ],
+    "files": [
+      "factory/factories/benchmark/"
+    ],
+    "tests": [
+      "benchmark fixture"
+    ],
+    "acceptance": [
+      "success certified",
+      "failure rejected",
+      "under fixture budget"
+    ]
+  },
+  {
+    "id": "FAC-DATA-PIPELINE",
+    "phase": "P5",
+    "title": "Implement data-pipeline factory fixture",
+    "depends_on": [
+      "OS-FACTORY",
+      "OS-TEAMS",
+      "OS-COST"
+    ],
+    "files": [
+      "factory/factories/data-pipeline/"
+    ],
+    "tests": [
+      "data-pipeline fixture"
+    ],
+    "acceptance": [
+      "success certified",
+      "failure rejected",
+      "under fixture budget"
+    ]
+  },
+  {
+    "id": "OS-PROOF-ANCHOR",
+    "phase": "P6",
+    "title": "Signed/external root anchors",
+    "depends_on": [
+      "OS-LEDGER"
+    ],
+    "files": [
+      "factory/os/ledger/signing.py",
+      "factory/os/ledger/anchor.py"
+    ],
+    "tests": [
+      "signature verify",
+      "tampered root fails"
+    ],
+    "acceptance": [
+      "core works without external service"
+    ]
+  }
+]

@@ -1,0 +1,22 @@
+{
+  "run_id": "run-7aed00713d5d",
+  "endpoint_id": "opencode-go:gpt-5.6-luna",
+  "provider": "opencode-go",
+  "model": "gpt-5.6-luna",
+  "probe": {
+    "id": "context-smoke-v1",
+    "version": "1.0.0"
+  },
+  "started_at": "2026-08-17T20:44:44Z",
+  "completed_at": "2026-08-17T20:44:47Z",
+  "status": "SUCCESS",
+  "probe_status": "SUCCESS",
+  "measurement_count": 6,
+  "errors": [],
+  "base_url": "https://opencode.ai/zen/go/v1",
+  "region": "gateway",
+  "artifacts": [
+    "data/runs/run-7aed00713d5d/artifacts/artifact-000-253637ad.json",
+    "data/runs/run-7aed00713d5d/artifacts/artifact-001-01c04c31.json"
+  ]
+}

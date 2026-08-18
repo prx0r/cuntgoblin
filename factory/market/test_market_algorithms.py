@@ -1,4 +1,4 @@
-from market_algorithms import (
+from factory.market.market_algorithms import (
     TopicFeatures, topic_discovery_score,
     OpportunityFeatures, opportunity_score,
     JoinFeatures, join_score,

@@ -1,0 +1,1 @@
+{"kind": "body", "text": "{\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Error from provider (Console Go): Upstream request failed: [invalid_request_error] invalid temperature: only 1 is allowed for this model\"}}"}

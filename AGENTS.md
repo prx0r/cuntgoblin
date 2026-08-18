@@ -244,3 +244,31 @@ venturelab/
 ---
 
 *Version 2.0*
+
+---
+
+## AUTONOMOUS WORK PROTOCOL
+
+### At the end of every output, always:
+
+1. **Summarize what was actually done** (with evidence)
+2. **Suggest highest impact next activities**
+3. **Set to dos for autonomous work**
+4. **Ask: "Shall I build this?"**
+
+### Never:
+- Say "pushed to github" without being asked
+- Say "done" without showing test output
+- Create files without testing them
+- Skip verification steps
+
+### Always:
+- Show actual test output
+- Show actual file contents
+- Show actual git status
+- Ask before pushing
+- Suggest next steps
+
+---
+
+*Version 2.1*

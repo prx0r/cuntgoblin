@@ -1,0 +1,107 @@
+apiVersion: agentarchitectures.ai/v1
+kind: AgentSystem
+
+metadata:
+  name: venturelab-factory
+  slug: cuntgoblin
+  version: 0.3.0
+  description: "Autonomous venture factory that converts raw ideas into researched, tested, versioned, deployed products"
+
+classification:
+  runtime:
+    - hermes
+  family:
+    - hierarchical-orchestrator
+    - autonomous-factory
+  patterns:
+    - planner-worker
+    - task-decomposition
+    - parallel-workers
+    - reviewer-gate
+    - persistent-kanban
+    - evidence-logging
+    - certification
+  domains:
+    - software-development
+    - product-generation
+    - research
+    - autonomous-operations
+
+orchestrator:
+  name: hermes
+  required: true
+  primitives:
+    - kanban
+    - specify
+    - decompose
+    - dispatch
+    - request-review
+
+models:
+  default:
+    provider: configurable
+    model: mimo-v2.5
+
+state:
+  task_state:
+    backend: hermes-kanban
+  artifact_state:
+    backend: filesystem
+  run_history:
+    backend: data/runs
+
+verification:
+  independent_review: true
+  certification: true
+  content_hashing: true
+  reproducible_runs: intended
+
+execution:
+  parallelism:
+    supported: true
+    default: 5
+
+interfaces:
+  cli: true
+  hermes: true
+  mcp: planned
+
+requirements:
+  software:
+    - git
+    - python
+    - hermes
+  permissions:
+    filesystem_write: true
+    shell_execute: true
+    git_write: true
+
+maturity:
+  status: experimental
+  production_ready: false
+  evidence:
+    - "AgentSLA: 58/58 tests, 12/12 certification"
+    - "Knee MVP: 31 tests pass"
+    - "Run 4: 5 ideas scored, 0 products built"
+
+weaknesses:
+  - "Idea scoring appears degraded"
+  - "Evolution mechanics conceptual"
+  - "Manifest was stale (now fixed)"
+  - "Docs fragmented"
+
+operations:
+  - install
+  - fork
+  - run
+  - resume
+  - inspect-tasks
+  - scale-workers
+  - benchmark
+
+lineage:
+  original: true
+  forks:
+    - cheap-factory
+    - research-factory
+    - strict-verified-factory

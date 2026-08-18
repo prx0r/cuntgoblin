@@ -1,0 +1,13 @@
+{
+  "team_id": "architecture",
+  "version": "1.0.0",
+  "name": "Architecture",
+  "outputs": [
+    "build_plan",
+    "work_graph"
+  ],
+  "gates": [
+    "schema-valid"
+  ],
+  "default_budget_usd": 0.2
+}

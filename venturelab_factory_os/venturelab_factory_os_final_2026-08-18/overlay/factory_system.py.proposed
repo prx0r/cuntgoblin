@@ -1,0 +1,13 @@
+"""Proposed repo composition-root shape. Adapt imports to current code."""
+from factory.os.system import VentureLabSystem as FactoryOS
+
+class VentureLabSystem:
+    def __init__(self, db_path="data/venturelab.db"):
+        self.os = FactoryOS(db_path)
+        # Inject existing components, do not rewrite them:
+        # self.hotswap = ExistingHotSwap(...)
+        # self.market = ExistingMarket(...)
+        # self.agenthub = ExistingAgentHub(...)
+
+    def health(self):
+        return {"os": self.os.doctor()}

@@ -1,0 +1,27 @@
+version: agenthub-taxonomy-v1
+
+runtimes:
+  - hermes
+  - langgraph
+  - letta
+  - microsoft-agent-framework
+  - google-adk
+  - autogen
+  - crewai
+  - a2a
+  - custom
+
+families:
+  - single-agent
+  - planner-worker
+  - supervisor-specialists
+  - worker-verifier
+  - hierarchical
+  - dag
+  - sequential
+  - fan-out-fan-in
+  - ensemble
+  - swarm
+  - persistent-factory
+  - dynamic-runtime-graph
+  - evolutionary

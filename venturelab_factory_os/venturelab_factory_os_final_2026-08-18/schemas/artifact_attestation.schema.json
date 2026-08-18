@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "certificate_id",
+    "artifact_hashes",
+    "gate_hashes",
+    "ledger_root",
+    "issued_at"
+  ],
+  "properties": {
+    "certificate_id": {
+      "type": "string"
+    },
+    "artifact_hashes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "gate_hashes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "ledger_root": {
+      "type": "string"
+    },
+    "issued_at": {
+      "type": "string"
+    },
+    "signature": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false
+}

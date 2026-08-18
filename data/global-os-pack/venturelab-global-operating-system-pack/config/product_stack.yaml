@@ -1,0 +1,30 @@
+version: product-stack-v1
+
+backend:
+  language: python
+  api: fastapi
+  database: postgres
+  migrations: alembic
+
+artifacts:
+  development: filesystem
+  production: s3-compatible
+
+frontend:
+  framework: astro
+  rendering: static-first
+  interactivity: islands-only
+
+mcp:
+  local: stdio
+  hosted: streamable-http
+  endpoint: /mcp
+
+container:
+  format: OCI
+
+schemas:
+  dialect: json-schema-2020-12
+
+canonical_json:
+  standard: RFC8785

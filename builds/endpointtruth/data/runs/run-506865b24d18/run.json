@@ -1,0 +1,21 @@
+{
+  "run_id": "run-506865b24d18",
+  "endpoint_id": "openrouter:deepseek/deepseek-v4-flash",
+  "provider": "openrouter",
+  "model": "deepseek/deepseek-v4-flash",
+  "probe": {
+    "id": "ttft-v1",
+    "version": "1.0.0"
+  },
+  "started_at": "2026-08-17T20:40:33Z",
+  "completed_at": "2026-08-17T20:40:33Z",
+  "status": "FAILURE",
+  "probe_status": "FAILURE",
+  "measurement_count": 1,
+  "errors": [
+    "no credentials"
+  ],
+  "base_url": "https://openrouter.ai/api/v1",
+  "region": "any",
+  "artifacts": []
+}

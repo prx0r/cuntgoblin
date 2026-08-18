@@ -1,0 +1,41 @@
+{
+  "reviewed_head": "a56716251f4c60a2593e71efc6c88c5c61beb5bf",
+  "preserve": [
+    "factory/hotswap/*",
+    "factory/market/market_algorithms.py",
+    "factory/market/test_market_algorithms.py",
+    "factory/agenthub/*",
+    "factory/certification/*"
+  ],
+  "replace_or_retire": [
+    {
+      "path": "agent/run.py",
+      "action": "compatibility wrapper after OS live"
+    },
+    {
+      "path": "factory/global_os/go.py",
+      "action": "replace with factory/os composition"
+    },
+    {
+      "path": "mcp/server.py",
+      "action": "official SDK interface after core"
+    },
+    {
+      "path": "AGENTS.md",
+      "action": "remove Hermes/model hard-coding, preserve anti-cheat"
+    },
+    {
+      "path": "FACTORY-FULL.md",
+      "action": "rewrite around Factory OS + adapters"
+    }
+  ],
+  "add": [
+    "factory/os/",
+    "factory/factories/",
+    "factory/teams/",
+    "factory/intelligence/",
+    "schemas/",
+    "factory-manifests/",
+    "team-manifests/"
+  ]
+}

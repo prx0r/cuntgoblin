@@ -1,0 +1,13 @@
+{
+  "team_id": "provenance",
+  "version": "1.0.0",
+  "name": "Provenance / Certifier",
+  "outputs": [
+    "certificate"
+  ],
+  "gates": [
+    "hashes-valid",
+    "lineage-complete"
+  ],
+  "default_budget_usd": 0.05
+}

@@ -1,0 +1,887 @@
+{
+  "name": "venturelab_factory_os_final_2026-08-18",
+  "target_repository": "prx0r/cuntgoblin",
+  "reviewed_head": "a56716251f4c60a2593e71efc6c88c5c61beb5bf",
+  "generated_date": "2026-08-18",
+  "reference_tests": "20 passed",
+  "syntax_failures": 0,
+  "json_failures": 0,
+  "file_count_excluding_manifest": 175,
+  "files": [
+    {
+      "path": "JSON_CHECK.json",
+      "bytes": 2469,
+      "sha256": "17c1d0c3c494e60d9c2e70b1018a069456bdbd9296e311530352ac310a80e801"
+    },
+    {
+      "path": "README.md",
+      "bytes": 1229,
+      "sha256": "ea1848430a7109d1675e74a49f9a26f7ea8085cd65512b6238f838974255b420"
+    },
+    {
+      "path": "SYNTAX_CHECK.json",
+      "bytes": 3959,
+      "sha256": "b081a91b5abf6986965883a8eda7d0b53b629d6720548b78c3205ac2021378c6"
+    },
+    {
+      "path": "TEST_RUN.json",
+      "bytes": 1388,
+      "sha256": "c4acac8d5e2561a655c1f95c71ea0b259921751932a9c2119eac5b878689f62f"
+    },
+    {
+      "path": "agent/MASTER_IMPLEMENTATION_PROMPT.md",
+      "bytes": 2799,
+      "sha256": "784bd8dc52c9711153dacf742f1257d0ea5405af9ab30ef0f710d08399d8f1af"
+    },
+    {
+      "path": "agent/PHASED_AGENT_COMMANDS.md",
+      "bytes": 870,
+      "sha256": "dc2412cff663faa5316d4a419ebcdb9cc02f96f45c527f9974c4e21872dae6ec"
+    },
+    {
+      "path": "checklists/NEW_FACTORY_TYPE.md",
+      "bytes": 498,
+      "sha256": "176e144a5e00c52bff16090b354ff7370650c29eac0f7497fd26e6031f5a2ce9"
+    },
+    {
+      "path": "checklists/PHASE_ACCEPTANCE.md",
+      "bytes": 531,
+      "sha256": "8a1fe057ce67292faad84b32047c81888d044e6244d96aaf3040c3c000f17899"
+    },
+    {
+      "path": "checklists/PRODUCTION_CERTIFICATE.md",
+      "bytes": 417,
+      "sha256": "ff23708e2b3ab8c35b1e1a2859d22cf1bdbcac2b5c5512130426ded8dd9faed4"
+    },
+    {
+      "path": "data/marketplaces.seed.json",
+      "bytes": 1318,
+      "sha256": "e00f6da63bdb4e82fbe45b95ccc3edbfa6d62686d87a80a03f001fcb953a2e72"
+    },
+    {
+      "path": "docs/00_FINAL_ARCHITECTURE.md",
+      "bytes": 3490,
+      "sha256": "4055c11a61d6516b5abe856a80eb20775b0aa27a4e3c5af6d2c23e0ce035841c"
+    },
+    {
+      "path": "docs/01_MIGRATION_FROM_CURRENT_REPO.md",
+      "bytes": 1384,
+      "sha256": "b8d2567ef2f80c2ef3808d155c62bdd6f277c49f2bdc873e29f3a1bcf0b7d9c7"
+    },
+    {
+      "path": "docs/02_ECONOMIC_ORCHESTRATION.md",
+      "bytes": 1291,
+      "sha256": "227457d17f4226753e463917b874d28cf0f1a8e5cbfaee66249f5b7d1c35a0e6"
+    },
+    {
+      "path": "docs/03_LEARNING_AND_EVOLUTION.md",
+      "bytes": 1334,
+      "sha256": "8dfb93e3a7000e69fedf9c6bd475fd65d734234cf089e4ff1248a0c5957d776c"
+    },
+    {
+      "path": "docs/04_GLOBAL_TEAMS.md",
+      "bytes": 654,
+      "sha256": "6ef45e7998c418753df72a004fdbd44ec64c2534f8f611141c13d1b067453996"
+    },
+    {
+      "path": "docs/05_FACTORY_CATALOG.md",
+      "bytes": 1247,
+      "sha256": "fae6f52cc43e5616dca8e0c30c66fb924f0d5440e265905a8f253eca2fa3a8b8"
+    },
+    {
+      "path": "docs/06_GLOBAL_COMMERCE_AND_COUNTRY_ARBITRAGE.md",
+      "bytes": 1437,
+      "sha256": "064e4c49351b2dc5ed3bb15d9a586be6e1a3577f2275e919ca21988061f7ad75"
+    },
+    {
+      "path": "docs/07_PROOF_LEDGER.md",
+      "bytes": 829,
+      "sha256": "0cd450eae8bde982455190a1c792aa7b06e7affe372ca5244c10646b81d0a63b"
+    },
+    {
+      "path": "docs/08_SCHEDULING_AND_TIME.md",
+      "bytes": 491,
+      "sha256": "8996b49019dc24d195447624dd4760c36a6c867a95342ad8d794ab864a20c31f"
+    },
+    {
+      "path": "docs/09_BENCHMARKS_AND_ACCEPTANCE.md",
+      "bytes": 704,
+      "sha256": "eb4a6f9fbce9f54347b5c29e8ed454b54ba150d6a746adcab89dec6d06c6878f"
+    },
+    {
+      "path": "docs/10_PREVIOUS_PACK_COMPATIBILITY.md",
+      "bytes": 687,
+      "sha256": "376e0f04520e33284e27020a21b8bed7b702a4d1fef063bbf60f83c88a3daa4a"
+    },
+    {
+      "path": "factory_manifests/agent-service.json",
+      "bytes": 659,
+      "sha256": "407d15d32848b657d87d828d408a30024574684fdc4447fb9b527d5f88d3a513"
+    },
+    {
+      "path": "factory_manifests/api.json",
+      "bytes": 621,
+      "sha256": "338d527e9dbe127e70714e0c96537d4da761d0881de7fd7a977f12f61fe520d2"
+    },
+    {
+      "path": "factory_manifests/app.json",
+      "bytes": 635,
+      "sha256": "2ae6a67445f90c7b44a1bedee05f4dc20ff4d705bfda1dd82faf6c2480c68c6f"
+    },
+    {
+      "path": "factory_manifests/benchmark.json",
+      "bytes": 643,
+      "sha256": "d43fb830a1e223b31b016bd2740a26106f917ecea83b69d126f101206c7d0c4d"
+    },
+    {
+      "path": "factory_manifests/browser-extension.json",
+      "bytes": 660,
+      "sha256": "565f24cdd2f114b1f6da49596b97c40d9ee936a074a13230f16cd458acdd9f3e"
+    },
+    {
+      "path": "factory_manifests/connector.json",
+      "bytes": 635,
+      "sha256": "89204658a9ebc653b4244c5d7e9997cddc92db062e79112ded840ca86bf83a5d"
+    },
+    {
+      "path": "factory_manifests/data-pipeline.json",
+      "bytes": 682,
+      "sha256": "6520f00e9763ee27479f3ba2c85e59f92cd3d006d3cb2f7a9c15741130c2e8c6"
+    },
+    {
+      "path": "factory_manifests/developer-tool.json",
+      "bytes": 656,
+      "sha256": "0268987afa3a652649c75788792bf49d6fcb054a31914869e3597d0a82619fa9"
+    },
+    {
+      "path": "factory_manifests/directory.json",
+      "bytes": 672,
+      "sha256": "ca3a37ff4fa978e9cdb8b54f0abc8fc5a2b090dc3cd7d5e2fe01510d5b1990bc"
+    },
+    {
+      "path": "factory_manifests/shop-marketplace.json",
+      "bytes": 678,
+      "sha256": "dc326ecde5c246792c229f998f23d7e79967bc8f014a463dc3e499bf394d26c8"
+    },
+    {
+      "path": "integration/CURRENT_REPO_CHANGE_MAP.json",
+      "bytes": 976,
+      "sha256": "a9fdf086d576d320fd69aa2e9441d1a08d0515041cac09ed3f81507e62bede6a"
+    },
+    {
+      "path": "overlay/AGENTS.md.proposed",
+      "bytes": 1067,
+      "sha256": "7ff9f05cbd9ecc1a4c1a23fba444e8c9c5c99391f415753c1b988272eb4ebc90"
+    },
+    {
+      "path": "overlay/factory_system.py.proposed",
+      "bytes": 511,
+      "sha256": "ee9fcc1aff674dc523b945890e495f327ee4258d34f1510de275ea6551a9ace1"
+    },
+    {
+      "path": "reference/.pytest_cache/.gitignore",
+      "bytes": 37,
+      "sha256": "3ed731b65d06150c138e2dadb0be0697550888a6b47eb8c45ecc9adba8b8e9bd"
+    },
+    {
+      "path": "reference/.pytest_cache/CACHEDIR.TAG",
+      "bytes": 191,
+      "sha256": "37dc88ef9a0abeddbe81053a6dd8fdfb13afb613045ea1eb4a5c815a74a3bde4"
+    },
+    {
+      "path": "reference/.pytest_cache/README.md",
+      "bytes": 302,
+      "sha256": "73fd6fccdd802c419a6b2d983d6c3173b7da97558ac4b589edec2dfe443db9ad"
+    },
+    {
+      "path": "reference/.pytest_cache/v/cache/nodeids",
+      "bytes": 969,
+      "sha256": "17b777b1d732d7421a658748ba4cf3cedfb7647b5a0d9ae0e137a55ccf5d97cf"
+    },
+    {
+      "path": "reference/pyproject.toml",
+      "bytes": 313,
+      "sha256": "82d59571b6e3ea6dca72d07e61cfc886ff72751757fec535664ac1cada4b8bba"
+    },
+    {
+      "path": "reference/tests/__pycache__/conftest.cpython-313-pytest-9.0.2.pyc",
+      "bytes": 589,
+      "sha256": "4a46376e492464c415be669ad7e30ff5f75b9e539b9732a23b4323751a3810ba"
+    },
+    {
+      "path": "reference/tests/__pycache__/conftest.cpython-313.pyc",
+      "bytes": 475,
+      "sha256": "9bff0bd3c329793605e4a668fe87ed5df703703c8d77ae3285a704b1e93e2b2d"
+    },
+    {
+      "path": "reference/tests/__pycache__/test_arbitrage.cpython-313-pytest-9.0.2.pyc",
+      "bytes": 3790,
+      "sha256": "cb6da9312fcf1f3b935f6c5d0ca8c2f686786ba9eb37d0b8be079b85040985d8"
+    },
+    {
+      "path": "reference/tests/__pycache__/test_arbitrage.cpython-313.pyc",
+      "bytes": 1168,
+      "sha256": "8491d61fdfc0beb6b464dd21e352cb6f8f8e20bda8503302febaf889c7d1fc25"
+    },
+    {
+      "path": "reference/tests/__pycache__/test_certificate.cpython-313-pytest-9.0.2.pyc",
+      "bytes": 2911,
+      "sha256": "fc260a36f7dc6b87509b883aa2916adb1e50ba59a22cf454040dbe11912a1f1b"
+    },
+    {
+      "path": "reference/tests/__pycache__/test_certificate.cpython-313.pyc",
+      "bytes": 735,
+      "sha256": "8f8dbd2bc5072544985902a43389cc1d52fac953f3cb35103a6c5a8060ebf476"
+    },
+    {
+      "path": "reference/tests/__pycache__/test_core.cpython-313-pytest-9.0.2.pyc",
+      "bytes": 2966,
+      "sha256": "b187132be7d8a6f8bc540c6ada30ec3aa78aafd1311418642e46d9b5b9ae7473"
+    },
+    {
+      "path": "reference/tests/__pycache__/test_core.cpython-313.pyc",
+      "bytes": 728,
+      "sha256": "c0ac3a2438c62ab8e3f07fdff0ace32b99887dfae7d2a752c478d837d59bf06e"
+    },
+    {
+      "path": "reference/tests/__pycache__/test_graph.cpython-313-pytest-9.0.2.pyc",
+      "bytes": 8801,
+      "sha256": "ff5ac9aff7909e5c16600a237a5ecd2d1ff6ca4f9b57384b635fdb99d65c6777"
+    },
+    {
+      "path": "reference/tests/__pycache__/test_graph.cpython-313.pyc",
+      "bytes": 2706,
+      "sha256": "d4d0adb9ed27d39c6233833aa7363d48074580a6399a6fdfc7e75187e887e927"
+    },
+    {
+      "path": "reference/tests/__pycache__/test_learning.cpython-313-pytest-9.0.2.pyc",
+      "bytes": 3917,
+      "sha256": "a0568dcbe0aad9138787ee9c5aa7da1d9b8c7de2527b7055c46c73d909ba1988"
+    },
+    {
+      "path": "reference/tests/__pycache__/test_learning.cpython-313.pyc",
+      "bytes": 1007,
+      "sha256": "e2549d6231d6c63cdea9740749307ea6320a69b19980385537a72532cd1ef84f"
+    },
+    {
+      "path": "reference/tests/__pycache__/test_ledger.cpython-313-pytest-9.0.2.pyc",
+      "bytes": 3933,
+      "sha256": "704b564ea4aea976605bfad1c966ef036c60e3d2c8a5d5cc677923a4a60ed1c0"
+    },
+    {
+      "path": "reference/tests/__pycache__/test_ledger.cpython-313.pyc",
+      "bytes": 1866,
+      "sha256": "d6a981e5ce4a8a583056e79fb1e6c16570810e99b4ba88ecb8f318dc3552a43d"
+    },
+    {
+      "path": "reference/tests/__pycache__/test_merkle.cpython-313-pytest-9.0.2.pyc",
+      "bytes": 5566,
+      "sha256": "73878bfd5223b1fa17b471423bc41c1720fc22e42cd9bcfe640d9c0c4c72bcbd"
+    },
+    {
+      "path": "reference/tests/__pycache__/test_merkle.cpython-313.pyc",
+      "bytes": 1024,
+      "sha256": "5520e72b9aa1d795a0ea2de447815130766ddcac51fc01ccb1f4ef92f738c4b2"
+    },
+    {
+      "path": "reference/tests/__pycache__/test_registry.cpython-313-pytest-9.0.2.pyc",
+      "bytes": 1668,
+      "sha256": "bf708721ede184993e8a02fdf1b804e5bf9aa22bcd7d0baaf24bbbb8041a791a"
+    },
+    {
+      "path": "reference/tests/__pycache__/test_registry.cpython-313.pyc",
+      "bytes": 1295,
+      "sha256": "3cf3bf75347bdb3de0872edc727d407a0aa8f7e295b259738f290e7704caf063"
+    },
+    {
+      "path": "reference/tests/__pycache__/test_schedule.cpython-313-pytest-9.0.2.pyc",
+      "bytes": 4406,
+      "sha256": "e7acdb13c6190a04a243bdb9359337bd2b0a289009e9562e050c6dcb3493a406"
+    },
+    {
+      "path": "reference/tests/__pycache__/test_schedule.cpython-313.pyc",
+      "bytes": 1107,
+      "sha256": "4168034a971dd6db0baf616b6d39c3e0851ee82b590ffc837963fbd95689e1ac"
+    },
+    {
+      "path": "reference/tests/__pycache__/test_scheduler.cpython-313-pytest-9.0.2.pyc",
+      "bytes": 5468,
+      "sha256": "ddb05ac2f851d450c29ab5cb6d8dd8b9401eddd60cfe7c8df12bbbd5c35bd457"
+    },
+    {
+      "path": "reference/tests/__pycache__/test_scheduler.cpython-313.pyc",
+      "bytes": 1170,
+      "sha256": "6d463391f5fe08789dd510f469c57883e1cd57d56c9fb05052e12f38ba31ebdb"
+    },
+    {
+      "path": "reference/tests/__pycache__/test_signing.cpython-313-pytest-9.0.2.pyc",
+      "bytes": 2449,
+      "sha256": "dfede5ca3b479f95463fc34749a7960e7d9f193340a61e029f841a84ff55fab3"
+    },
+    {
+      "path": "reference/tests/__pycache__/test_signing.cpython-313.pyc",
+      "bytes": 985,
+      "sha256": "425d99d4a2cd3b78fbe5339d50ad89aa92a184c99cdd9acdf4705c914ff882fa"
+    },
+    {
+      "path": "reference/tests/conftest.py",
+      "bytes": 106,
+      "sha256": "f7efe8a2052374264cb892d9dcc96b35d466e9d4ce5f8053456244cf4ea424ea"
+    },
+    {
+      "path": "reference/tests/test_arbitrage.py",
+      "bytes": 454,
+      "sha256": "c912589de4b7cc05fdab40696d5ef866f6dc811aa5de3adf7d4c87294ca715ca"
+    },
+    {
+      "path": "reference/tests/test_certificate.py",
+      "bytes": 294,
+      "sha256": "d6af9172badf9b2fc71035933f1fa580d416fdd239dc54db060f63d7dbd60aaf"
+    },
+    {
+      "path": "reference/tests/test_core.py",
+      "bytes": 244,
+      "sha256": "5bd4c822d5ffac57a597aa663b7e914af57bd22e03bdcc8734690ff3f01631d9"
+    },
+    {
+      "path": "reference/tests/test_graph.py",
+      "bytes": 1182,
+      "sha256": "df32c2ad1ba796338852cd81f89cd2da723dc861edf75567bb58ef346bbedaf2"
+    },
+    {
+      "path": "reference/tests/test_learning.py",
+      "bytes": 381,
+      "sha256": "6456580405822bd4e4f81624c9dc592153e0a353380d62052832ff061e008eb4"
+    },
+    {
+      "path": "reference/tests/test_ledger.py",
+      "bytes": 711,
+      "sha256": "43ed8101c757fca3846c5cfe9e8d8c6afd904faeaa36138cc992aa3e8d4a3219"
+    },
+    {
+      "path": "reference/tests/test_merkle.py",
+      "bytes": 412,
+      "sha256": "c1f48d9107b2cdcb5e50650f94fcb711fce4e3a61d7c832977028664891f5ad1"
+    },
+    {
+      "path": "reference/tests/test_registry.py",
+      "bytes": 644,
+      "sha256": "b01b42e8eddb0c6669684b3e6dacc80a9ff51245c7d295f0ec9925b3b29ffef1"
+    },
+    {
+      "path": "reference/tests/test_schedule.py",
+      "bytes": 374,
+      "sha256": "8cf5c0982903eb92f9f2f96e8e54fd5e61c6091226558998e1adaedbd2ea3cbe"
+    },
+    {
+      "path": "reference/tests/test_scheduler.py",
+      "bytes": 424,
+      "sha256": "e2fd6430505d2525d6af3693b0b85ebc96677b8d082333133b19a56aaa8bface"
+    },
+    {
+      "path": "reference/tests/test_signing.py",
+      "bytes": 361,
+      "sha256": "f0fdf0550e2a28548e402273732a5fb438edb6137f730286b7104e98d862aff2"
+    },
+    {
+      "path": "reference/venturelab_os/__init__.py",
+      "bytes": 22,
+      "sha256": "91447944015cec709e8aa7655f7e9d64e1e4508e7023a57fe3746911c0fc6fed"
+    },
+    {
+      "path": "reference/venturelab_os/__pycache__/__init__.cpython-313.pyc",
+      "bytes": 207,
+      "sha256": "8ee389990eb4650347827d388af39f9233cdc052a19497cecca348b1028d075d"
+    },
+    {
+      "path": "reference/venturelab_os/__pycache__/cli.cpython-313.pyc",
+      "bytes": 2056,
+      "sha256": "6a848f7ace20341b4eb42602f3b5863fea3c3678602ccba613c3cd8e0dff16f3"
+    },
+    {
+      "path": "reference/venturelab_os/__pycache__/core.cpython-313.pyc",
+      "bytes": 2201,
+      "sha256": "5d6fbfda7cf2d1c4036265b6b96dd78017dd8f36204b86101da0e7b87f2e2a8d"
+    },
+    {
+      "path": "reference/venturelab_os/__pycache__/db.cpython-313.pyc",
+      "bytes": 2696,
+      "sha256": "54535df3e19fbbdccad89c6c28b2a9807b29bfd11dbf34cfb0eb23926d5daf7d"
+    },
+    {
+      "path": "reference/venturelab_os/__pycache__/system.cpython-313.pyc",
+      "bytes": 2349,
+      "sha256": "7553c8efb56761bf297a20c5fdc3bc5ac7b94650fec2caf18a5e169ebda6d98a"
+    },
+    {
+      "path": "reference/venturelab_os/cli.py",
+      "bytes": 892,
+      "sha256": "052d70ee90ef927ede149252182fbd762db09ec4ef6f2ad6502654c79aba7faf"
+    },
+    {
+      "path": "reference/venturelab_os/core.py",
+      "bytes": 823,
+      "sha256": "145502932e33492e0f388ff7c375778fc8f1d1be27b34bfef8bef27b17150986"
+    },
+    {
+      "path": "reference/venturelab_os/db.py",
+      "bytes": 1157,
+      "sha256": "2ea577a3180fa41c05747e475de662aeae0464d0d9eecae7f1d91d057b0fc857"
+    },
+    {
+      "path": "reference/venturelab_os/executors/__init__.py",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "reference/venturelab_os/executors/__pycache__/__init__.cpython-313.pyc",
+      "bytes": 191,
+      "sha256": "7ed185a5588e19bc8e600b34655eb8ca5f789cd56e49bba198fc40abd0bf28f7"
+    },
+    {
+      "path": "reference/venturelab_os/executors/__pycache__/beads.cpython-313.pyc",
+      "bytes": 3149,
+      "sha256": "edd04c671820649563eafde705cf3bd035355cf1ca643c0ffba1226584d26078"
+    },
+    {
+      "path": "reference/venturelab_os/executors/__pycache__/hermes.cpython-313.pyc",
+      "bytes": 3082,
+      "sha256": "8305680195ddf36507751752e6f618c2e8da23ddd20226c066ba5fda3c191141"
+    },
+    {
+      "path": "reference/venturelab_os/executors/__pycache__/local.cpython-313.pyc",
+      "bytes": 1438,
+      "sha256": "ed0809a4cbe45605602b678447858115906d28e61b24975f531d6bfdfcfe9e51"
+    },
+    {
+      "path": "reference/venturelab_os/executors/__pycache__/protocol.cpython-313.pyc",
+      "bytes": 1942,
+      "sha256": "e286e6990a731acc046671315e2cf31635d71d47cc23420c7ce2c42a203469a1"
+    },
+    {
+      "path": "reference/venturelab_os/executors/beads.py",
+      "bytes": 1199,
+      "sha256": "7b42183de67feb4ac8f4d371a8ca2de328fd8d2e0a0c879afc61ea18a0f5a0d9"
+    },
+    {
+      "path": "reference/venturelab_os/executors/hermes.py",
+      "bytes": 1677,
+      "sha256": "1e671cb6582ed46a3cac4c805d1cb08db5d58efec4f7cb8d2a4832fc90274fd4"
+    },
+    {
+      "path": "reference/venturelab_os/executors/local.py",
+      "bytes": 595,
+      "sha256": "6faaecd5544c71048c4d303958720183f44c3ef770e3a1cf3aa7c8ff38e3b10e"
+    },
+    {
+      "path": "reference/venturelab_os/executors/protocol.py",
+      "bytes": 726,
+      "sha256": "12e8a7dcf2b8c139b0f05a6960963ea51c36ce9d663d7c1ee6cf82687e0c271b"
+    },
+    {
+      "path": "reference/venturelab_os/factories/__init__.py",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "reference/venturelab_os/factories/__pycache__/__init__.cpython-313.pyc",
+      "bytes": 191,
+      "sha256": "91a9cc947fc8ba2109b7a4783cf8e279b3353303acecfee59c950eb26bd1e5fa"
+    },
+    {
+      "path": "reference/venturelab_os/factories/__pycache__/base.cpython-313.pyc",
+      "bytes": 2767,
+      "sha256": "8a35a7b74d29db804db619daef875150332469f4163691a46316a9dd3332ff36"
+    },
+    {
+      "path": "reference/venturelab_os/factories/__pycache__/planner.cpython-313.pyc",
+      "bytes": 2186,
+      "sha256": "7d4ebc023b26f4e8af352e8d24fdbccbf6441df08f5f1b114612983943a4d36d"
+    },
+    {
+      "path": "reference/venturelab_os/factories/__pycache__/registry.cpython-313.pyc",
+      "bytes": 3757,
+      "sha256": "29487ae1a2844b890e12de0dfb34045317f65252f733257aaf5701fc049d56d4"
+    },
+    {
+      "path": "reference/venturelab_os/factories/base.py",
+      "bytes": 1183,
+      "sha256": "db1945c4187c899cf2eff20f0e148ca8580c2286d065f9698bc15f6b6fb60cf5"
+    },
+    {
+      "path": "reference/venturelab_os/factories/planner.py",
+      "bytes": 1510,
+      "sha256": "ca2d73720ee8889c4db7284df4459c70d6d8b1053b2101b9b466d6154fc0a6cf"
+    },
+    {
+      "path": "reference/venturelab_os/factories/registry.py",
+      "bytes": 1782,
+      "sha256": "e05843e5c459c558274f0f1fcbdcb39e4921a1f7cacd634a104bd844a544955d"
+    },
+    {
+      "path": "reference/venturelab_os/graph/__init__.py",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "reference/venturelab_os/graph/__pycache__/__init__.cpython-313.pyc",
+      "bytes": 187,
+      "sha256": "98064909c622a597302dffdc99d010d61179450a78e4645f3f5032ee1ce175a7"
+    },
+    {
+      "path": "reference/venturelab_os/graph/__pycache__/scheduler.cpython-313.pyc",
+      "bytes": 2776,
+      "sha256": "0623609c078246d3b92abf7e1c168287bea59a4d44c1c3507bc5b5f8bc2d22b0"
+    },
+    {
+      "path": "reference/venturelab_os/graph/__pycache__/store.cpython-313.pyc",
+      "bytes": 12707,
+      "sha256": "28b52f2642ce0cee44e2ce70d74f5ad2767452dae48a4679bdd7d7c11a6500d4"
+    },
+    {
+      "path": "reference/venturelab_os/graph/scheduler.py",
+      "bytes": 1106,
+      "sha256": "6f35683127e5c0fec9924b4691a09a79968d9b2c6659b027babab961eaeaacd4"
+    },
+    {
+      "path": "reference/venturelab_os/graph/store.py",
+      "bytes": 7788,
+      "sha256": "70547e1d9dc9390d00a348810c08095b3f58368e57f3be70e21610219de97438"
+    },
+    {
+      "path": "reference/venturelab_os/ledger/__init__.py",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "reference/venturelab_os/ledger/__pycache__/__init__.cpython-313.pyc",
+      "bytes": 188,
+      "sha256": "0129ba2a6048ac355df8eeb6971eb2804fbf417ee71a50bb89d78713d34b52a0"
+    },
+    {
+      "path": "reference/venturelab_os/ledger/__pycache__/anchor.cpython-313.pyc",
+      "bytes": 1241,
+      "sha256": "fda8fecd650c156feab0cd85e40be1a1772c4f48d6f84b32c22e2a7700f0d3b3"
+    },
+    {
+      "path": "reference/venturelab_os/ledger/__pycache__/events.cpython-313.pyc",
+      "bytes": 6240,
+      "sha256": "b7d00c3e464346acd1751998dccd1c29e0575d35532198fd08f4e05bea3b159a"
+    },
+    {
+      "path": "reference/venturelab_os/ledger/__pycache__/merkle.cpython-313.pyc",
+      "bytes": 2638,
+      "sha256": "743ab8ba796ed8ec764daaf64e0af05aae48287255b49e9d4e96efe5ad89bce1"
+    },
+    {
+      "path": "reference/venturelab_os/ledger/__pycache__/signing.cpython-313.pyc",
+      "bytes": 2487,
+      "sha256": "6436767f643ac24ac67e5ab51c3af570543b9669cb51263898be5b850d5fdcd0"
+    },
+    {
+      "path": "reference/venturelab_os/ledger/anchor.py",
+      "bytes": 519,
+      "sha256": "961f7e074a66ba1217654a9ab1810d3d4bbdf83524f89342ce6bb597611c6e4a"
+    },
+    {
+      "path": "reference/venturelab_os/ledger/events.py",
+      "bytes": 4218,
+      "sha256": "2c736f5f23baa28848d81dc0e015341b0dfdfb8629c1e3fedf3264d5b4f9a7e0"
+    },
+    {
+      "path": "reference/venturelab_os/ledger/merkle.py",
+      "bytes": 1260,
+      "sha256": "46a0883e429d609a2efda06b166a74b91aeeea0c5032c1102805a6a0a3aca8d3"
+    },
+    {
+      "path": "reference/venturelab_os/ledger/signing.py",
+      "bytes": 1087,
+      "sha256": "2a2ff34629efc7fc60014149fdba4fa60a0f94e08bbf93d5ca0460a5f02e6574"
+    },
+    {
+      "path": "reference/venturelab_os/market/__init__.py",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "reference/venturelab_os/market/__pycache__/__init__.cpython-313.pyc",
+      "bytes": 188,
+      "sha256": "5dbc0ced14be01447e5cf168df6b8c827b7762d13feeb01979619efaa4c5f785"
+    },
+    {
+      "path": "reference/venturelab_os/market/__pycache__/arbitrage.cpython-313.pyc",
+      "bytes": 3240,
+      "sha256": "ec0e9a657c8285089251ed0bfd0e1bad4b23a89534181d07798279e974ea48b3"
+    },
+    {
+      "path": "reference/venturelab_os/market/__pycache__/marketplaces.cpython-313.pyc",
+      "bytes": 1381,
+      "sha256": "77f6d7e29c6a6b3d24bf928c7df5e787b740e1a2a0e97562bfd659560e8e7e42"
+    },
+    {
+      "path": "reference/venturelab_os/market/__pycache__/opportunity.cpython-313.pyc",
+      "bytes": 2372,
+      "sha256": "d192285b2a4a87553f7437c36c314eb8c1be821531ea1fcc75fa3944a957b588"
+    },
+    {
+      "path": "reference/venturelab_os/market/arbitrage.py",
+      "bytes": 1215,
+      "sha256": "931d90ccf86f9377f944669bc3fb93717e7fa22da4da6c0d2cc6330a3111cce8"
+    },
+    {
+      "path": "reference/venturelab_os/market/marketplaces.py",
+      "bytes": 435,
+      "sha256": "4534e856f6df251758c8a7b1827aae5af8e6c6db3f8a86c3a65dbfbe6a9daff8"
+    },
+    {
+      "path": "reference/venturelab_os/market/opportunity.py",
+      "bytes": 946,
+      "sha256": "69e810f1731c62aa3740ffbc72c20f75f6ad72d5a4656f84685ebd3d1968b756"
+    },
+    {
+      "path": "reference/venturelab_os/portfolio/__init__.py",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "reference/venturelab_os/portfolio/__pycache__/__init__.cpython-313.pyc",
+      "bytes": 191,
+      "sha256": "5eff8134e5686bc4c654471f9a72bde8a93b29889164c99537ad8ad4d53dcb0f"
+    },
+    {
+      "path": "reference/venturelab_os/portfolio/__pycache__/costs.cpython-313.pyc",
+      "bytes": 2878,
+      "sha256": "4c1e43af112059d6242d37e863479757676544ab3928be885aeb3bd77e6d5129"
+    },
+    {
+      "path": "reference/venturelab_os/portfolio/__pycache__/learning.cpython-313.pyc",
+      "bytes": 3555,
+      "sha256": "a5daf1ec38df319320ef6a4f8628babb6939107b3b8fb45e8504fcc5251084da"
+    },
+    {
+      "path": "reference/venturelab_os/portfolio/__pycache__/replay.cpython-313.pyc",
+      "bytes": 1794,
+      "sha256": "4490865956a3237fbc5738c6435839467eff6d9f6c44c1bcb0f59904be2c7290"
+    },
+    {
+      "path": "reference/venturelab_os/portfolio/__pycache__/reward.cpython-313.pyc",
+      "bytes": 2193,
+      "sha256": "fb11a35b02a45f008823f3f83026fabb1673d1e6912755994ba44b3da4b9e532"
+    },
+    {
+      "path": "reference/venturelab_os/portfolio/costs.py",
+      "bytes": 1220,
+      "sha256": "71e603d22c9ec50933674c7fd1f5d003f0235f3e4ca0059dd8198bbac0ef40a4"
+    },
+    {
+      "path": "reference/venturelab_os/portfolio/learning.py",
+      "bytes": 2142,
+      "sha256": "7fcd4ca062384f929b2e85e42634ae44706991f17e4bfd01eba79867ec2107b3"
+    },
+    {
+      "path": "reference/venturelab_os/portfolio/replay.py",
+      "bytes": 686,
+      "sha256": "4519e6797d17e4dc5de4078a6e87079f24d023e02fcff86e7ce193097f5a3e26"
+    },
+    {
+      "path": "reference/venturelab_os/portfolio/reward.py",
+      "bytes": 864,
+      "sha256": "bcbe7dc34fcaee61710d2e64a5a201fd3b310a4baffb671c634b2947cdaf838c"
+    },
+    {
+      "path": "reference/venturelab_os/scheduling/__init__.py",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "reference/venturelab_os/scheduling/__pycache__/__init__.cpython-313.pyc",
+      "bytes": 192,
+      "sha256": "bc073487558a387dee1ee8a5cd74ce4f8dfc5e54fa1bc6a941885098ad537958"
+    },
+    {
+      "path": "reference/venturelab_os/scheduling/__pycache__/service.cpython-313.pyc",
+      "bytes": 1661,
+      "sha256": "b15f5cb2fd1c830c5dcb30a63c70169029ab6d0080493ae385885d2e3dda8198"
+    },
+    {
+      "path": "reference/venturelab_os/scheduling/service.py",
+      "bytes": 724,
+      "sha256": "a881b1f4f42801287d2ed51adb2236e5a0c16a3fc9c69cc86e38079ed2659e2a"
+    },
+    {
+      "path": "reference/venturelab_os/schema.sql",
+      "bytes": 4736,
+      "sha256": "6f028c21a33fc1810d114e08b35956cab28e623bf748dc3c8cc17a2247ba15ed"
+    },
+    {
+      "path": "reference/venturelab_os/system.py",
+      "bytes": 993,
+      "sha256": "a490a2319e657e18a7e121d1bd9e3f717b1eb62aca0a010addba5dc417f1f930"
+    },
+    {
+      "path": "reference/venturelab_os/teams/__init__.py",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "reference/venturelab_os/teams/__pycache__/__init__.cpython-313.pyc",
+      "bytes": 187,
+      "sha256": "80e8c413645f52a2f2323f33d11d3b6ec06473f65e3101439d9b9753800e1051"
+    },
+    {
+      "path": "reference/venturelab_os/teams/__pycache__/registry.cpython-313.pyc",
+      "bytes": 1406,
+      "sha256": "7bc60f16af0d1045acebafe945cd29d2ca8d7985e550fc442e84a061fb7258b3"
+    },
+    {
+      "path": "reference/venturelab_os/teams/registry.py",
+      "bytes": 548,
+      "sha256": "5fd0e28c6108f4883963d0af3c5453ff103298548080ec344755021ef13749e1"
+    },
+    {
+      "path": "reference/venturelab_os/verification/__init__.py",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "reference/venturelab_os/verification/__pycache__/__init__.cpython-313.pyc",
+      "bytes": 194,
+      "sha256": "c577715119f498707cb71e05946335d16201fb237f1fd1b4e15e379b4a77fd5a"
+    },
+    {
+      "path": "reference/venturelab_os/verification/__pycache__/certificate.cpython-313.pyc",
+      "bytes": 1690,
+      "sha256": "aa651e087b7505508e52a20c331696a41e8ce8b1ce5bbfff109ced8025d218b1"
+    },
+    {
+      "path": "reference/venturelab_os/verification/__pycache__/gates.cpython-313.pyc",
+      "bytes": 1926,
+      "sha256": "58e6a7bc0bda82925dc44e639a9f9df159bce001f261e2af42a8c7fa3d457de5"
+    },
+    {
+      "path": "reference/venturelab_os/verification/certificate.py",
+      "bytes": 845,
+      "sha256": "33fddeeeed02b422d99f9dbf179bbacd6f079c65808bff1c359c8cf5684a39b9"
+    },
+    {
+      "path": "reference/venturelab_os/verification/gates.py",
+      "bytes": 658,
+      "sha256": "b456cef7e3d0d308aa5375495a37a11ea7d1357c8a0c900df5837a4b5d4027b6"
+    },
+    {
+      "path": "research/PRIMARY_SOURCES.md",
+      "bytes": 1436,
+      "sha256": "69c70df9a6d152e21f045a988a19b41a1b0a55ddc6b1d72d436cc7adf888d200"
+    },
+    {
+      "path": "schemas/artifact_attestation.schema.json",
+      "bytes": 701,
+      "sha256": "9ec6f01e200b3ce8acca74baaed13b184f1931f117a0650056ac7013c4cc7e4e"
+    },
+    {
+      "path": "schemas/factory_definition.schema.json",
+      "bytes": 1499,
+      "sha256": "b4d18e34a8f28112229422b97e2a8a705f34703aca87aa1b0ff0672b3eab206c"
+    },
+    {
+      "path": "schemas/opportunity.schema.json",
+      "bytes": 709,
+      "sha256": "69b0ba95113be73391da234f17cde4855bd06a46f885fc7801b8a02b56e79938"
+    },
+    {
+      "path": "schemas/outcome.schema.json",
+      "bytes": 599,
+      "sha256": "ea792ea66bc5a8d6bc253d3fbf53ff4c544dbab33ed5052f3980e6388fcec3f4"
+    },
+    {
+      "path": "schemas/team_definition.schema.json",
+      "bytes": 636,
+      "sha256": "e7cae91a727066f3f9c79a76f6d6c966cbe21e9aaccbadcbbe93f5b767653da7"
+    },
+    {
+      "path": "schemas/work_graph.schema.json",
+      "bytes": 726,
+      "sha256": "03a8a89d84dae0aa0b1899ae0617671531c753c0a11c665af88cabc4c052bff9"
+    },
+    {
+      "path": "tasks/IMPLEMENTATION_TASKS.json",
+      "bytes": 8301,
+      "sha256": "e0e83a5870151232506bac84c2f9a06c0e988bc4e21110c22f029b4102e5456b"
+    },
+    {
+      "path": "team_manifests/architecture.json",
+      "bytes": 200,
+      "sha256": "44b9322f5186817624d85dc5a648b0a3d4efcbfd614dfe92a114856e8aebadf6"
+    },
+    {
+      "path": "team_manifests/builder.json",
+      "bytes": 175,
+      "sha256": "6addf9e3db5b32cb1ae9a209103575fd755c8500dd1ce991e39590dc18526078"
+    },
+    {
+      "path": "team_manifests/cost.json",
+      "bytes": 179,
+      "sha256": "56fb21515e1a1ef6e6c2b0f79e308daae14f258dfd288fc931fd448f653a6f4f"
+    },
+    {
+      "path": "team_manifests/docs.json",
+      "bytes": 199,
+      "sha256": "4f77ecbe60fe39a05400dcae19b7c2f68989c32c30731883c72fd20f3f24e1d2"
+    },
+    {
+      "path": "team_manifests/maintenance.json",
+      "bytes": 208,
+      "sha256": "f3a37ba1a37c74e4fee832fe142ea793c85ad4c537fd5b5b9de50e967fcbbb7c"
+    },
+    {
+      "path": "team_manifests/observability.json",
+      "bytes": 195,
+      "sha256": "4b3cd4828277f80bd16c817e8e53424e810dbcd564b73a71d39b7dd64d8e39e0"
+    },
+    {
+      "path": "team_manifests/portfolio-review.json",
+      "bytes": 207,
+      "sha256": "34744d1ba08e59a110e22e9badc7216954dffd4d7be6b08adc54b7e7526895de"
+    },
+    {
+      "path": "team_manifests/post-release.json",
+      "bytes": 197,
+      "sha256": "20613c3a9bca5d4cc1f8cf8013ec962960b03e81f64f5a46c858dd79d2586703"
+    },
+    {
+      "path": "team_manifests/provenance.json",
+      "bytes": 216,
+      "sha256": "9ffc011237ad87a5fed56198b210694d1d21dc0ee11946b17613a4c8badf81e2"
+    },
+    {
+      "path": "team_manifests/qa.json",
+      "bytes": 169,
+      "sha256": "26528d53363e4197fbc6ff54d9d114bc033d7105a6db6ac5ad84c2209243918c"
+    },
+    {
+      "path": "team_manifests/red-team.json",
+      "bytes": 183,
+      "sha256": "3bc0a734a6d39272f7835fbba08f166063a34e09c7f9e9b43c9a2805fbcd803f"
+    },
+    {
+      "path": "team_manifests/release.json",
+      "bytes": 178,
+      "sha256": "416fe58e568b25316a830b56509cfa6c3bc8d877febf469ad1f6866707651e6c"
+    },
+    {
+      "path": "team_manifests/research.json",
+      "bytes": 194,
+      "sha256": "7b94a08631feb3ebed9603d81b768f95736614c1c3ee40317eae2a607cd2d8c5"
+    },
+    {
+      "path": "team_manifests/security.json",
+      "bytes": 197,
+      "sha256": "bf03c1ac59cce272a82a3a3c4b82d3001d669e448164f8a04c811888a2ca4773"
+    },
+    {
+      "path": "upstream/venturelab_peer_review_2026-08-18.zip",
+      "bytes": 46381,
+      "sha256": "10789dc648c556e1ab18476690dcfd700c3ff1fa9358d092a7b111fa937743f5"
+    }
+  ]
+}

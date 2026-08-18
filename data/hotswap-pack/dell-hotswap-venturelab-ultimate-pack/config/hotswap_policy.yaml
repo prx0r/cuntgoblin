@@ -1,0 +1,35 @@
+version: hotswap-policy-v1
+
+candidate_pool:
+  max_per_task_cell: 8
+  min_free_candidates: 1
+  keep_paid_reliable: 1
+  keep_strong_escalation: 1
+
+free_quota:
+  pressure_abundant: 0.67
+  pressure_scarce: 1.0
+  pressure_very_scarce: 1.5
+
+learning:
+  minimum_local_samples_before_posterior_dominates: 10
+  thompson_exploration:
+    enabled_for:
+      - disposable
+      - routine
+    max_frontier_candidates: 4
+
+criticality:
+  release_gate:
+    use_lower_bound: true
+    exploration: false
+  production:
+    use_lower_bound: true
+    exploration: false
+
+failure:
+  server_breaker_failures: 3
+  breaker_cooldown_seconds: 60
+  auth_retries: 0
+  quota_retries: 0
+  transient_retries: 1

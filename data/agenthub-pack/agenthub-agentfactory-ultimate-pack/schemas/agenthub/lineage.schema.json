@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ArchitectureLineage",
+  "type": "object",
+  "required": [
+    "child_build_id",
+    "parents",
+    "mutations"
+  ],
+  "properties": {
+    "child_build_id": {
+      "type": "string"
+    },
+    "parents": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "mutations": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "reason": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

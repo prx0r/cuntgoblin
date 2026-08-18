@@ -1,0 +1,22 @@
+{
+  "run_id": "run-9444b35fb15f",
+  "endpoint_id": "opencode-go:deepseek-v4-flash",
+  "provider": "opencode-go",
+  "model": "deepseek-v4-flash",
+  "probe": {
+    "id": "tools-v1",
+    "version": "1.0.0"
+  },
+  "started_at": "2026-08-17T20:39:57Z",
+  "completed_at": "2026-08-17T20:39:59Z",
+  "status": "SUCCESS",
+  "probe_status": "SUCCESS",
+  "measurement_count": 5,
+  "errors": [],
+  "base_url": "https://opencode.ai/zen/go/v1",
+  "region": "gateway",
+  "artifacts": [
+    "data/runs/run-9444b35fb15f/artifacts/artifact-000-58bdf753.json",
+    "data/runs/run-9444b35fb15f/artifacts/artifact-001-ec7440b2.json"
+  ]
+}

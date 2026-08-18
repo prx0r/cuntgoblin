@@ -1,0 +1,35 @@
+{
+  "factory_id": "directory",
+  "version": "1.0.0",
+  "kind": "directory",
+  "name": "Directory / Vertical Intelligence",
+  "description": "Canonical VentureLab Directory / Vertical Intelligence factory.",
+  "input_schema": null,
+  "output_schema": null,
+  "phases": [
+    "discover",
+    "research",
+    "plan",
+    "build",
+    "verify",
+    "publish",
+    "observe"
+  ],
+  "mandatory_teams": [
+    "research",
+    "qa",
+    "provenance"
+  ],
+  "conditional_teams": {
+    "public_release": [
+      "docs",
+      "release",
+      "post-release"
+    ]
+  },
+  "default_budget_usd": 0.75,
+  "fixture": {
+    "fixture_id": "directory-smoke-v1",
+    "max_cost_usd": 0.1
+  }
+}

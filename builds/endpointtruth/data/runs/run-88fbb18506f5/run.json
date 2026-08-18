@@ -1,0 +1,22 @@
+{
+  "run_id": "run-88fbb18506f5",
+  "endpoint_id": "opencode-go:minimax-m3",
+  "provider": "opencode-go",
+  "model": "minimax-m3",
+  "probe": {
+    "id": "context-smoke-v1",
+    "version": "1.0.0"
+  },
+  "started_at": "2026-08-17T20:43:32Z",
+  "completed_at": "2026-08-17T20:43:34Z",
+  "status": "SUCCESS",
+  "probe_status": "SUCCESS",
+  "measurement_count": 6,
+  "errors": [],
+  "base_url": "https://opencode.ai/zen/go/v1",
+  "region": "gateway",
+  "artifacts": [
+    "data/runs/run-88fbb18506f5/artifacts/artifact-000-eaa94c51.json",
+    "data/runs/run-88fbb18506f5/artifacts/artifact-001-70845f48.json"
+  ]
+}

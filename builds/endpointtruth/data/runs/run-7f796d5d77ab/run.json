@@ -1,0 +1,22 @@
+{
+  "run_id": "run-7f796d5d77ab",
+  "endpoint_id": "opencode-go:glm-5.2",
+  "provider": "opencode-go",
+  "model": "glm-5.2",
+  "probe": {
+    "id": "tools-v1",
+    "version": "1.0.0"
+  },
+  "started_at": "2026-08-17T20:40:01Z",
+  "completed_at": "2026-08-17T20:40:03Z",
+  "status": "SUCCESS",
+  "probe_status": "SUCCESS",
+  "measurement_count": 5,
+  "errors": [],
+  "base_url": "https://opencode.ai/zen/go/v1",
+  "region": "gateway",
+  "artifacts": [
+    "data/runs/run-7f796d5d77ab/artifacts/artifact-000-c511c228.json",
+    "data/runs/run-7f796d5d77ab/artifacts/artifact-001-3ca32259.json"
+  ]
+}

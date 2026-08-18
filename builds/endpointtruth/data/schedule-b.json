@@ -1,0 +1,9 @@
+{
+  "summary_file": "data/runs/scheduler-1786999442.json",
+  "cycles": 2,
+  "probe_runs": 8,
+  "observations": 48,
+  "failures": 0,
+  "skipped": 0
+}
+PHASE_B_EXIT=0

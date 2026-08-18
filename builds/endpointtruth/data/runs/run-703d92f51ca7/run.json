@@ -1,0 +1,22 @@
+{
+  "run_id": "run-703d92f51ca7",
+  "endpoint_id": "opencode-go:minimax-m3",
+  "provider": "opencode-go",
+  "model": "minimax-m3",
+  "probe": {
+    "id": "json-v1",
+    "version": "1.0.0"
+  },
+  "started_at": "2026-08-17T20:40:07Z",
+  "completed_at": "2026-08-17T20:40:08Z",
+  "status": "SUCCESS",
+  "probe_status": "SUCCESS",
+  "measurement_count": 5,
+  "errors": [],
+  "base_url": "https://opencode.ai/zen/go/v1",
+  "region": "gateway",
+  "artifacts": [
+    "data/runs/run-703d92f51ca7/artifacts/artifact-000-0c741461.json",
+    "data/runs/run-703d92f51ca7/artifacts/artifact-001-d829cee5.json"
+  ]
+}

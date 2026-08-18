@@ -1,0 +1,12 @@
+{
+  "team_id": "release",
+  "version": "1.0.0",
+  "name": "Release / Deploy",
+  "outputs": [
+    "release"
+  ],
+  "gates": [
+    "release-gate"
+  ],
+  "default_budget_usd": 0.1
+}

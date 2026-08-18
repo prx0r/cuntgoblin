@@ -1,0 +1,22 @@
+{
+  "run_id": "run-90a8a458a214",
+  "endpoint_id": "local:qwen2.5-0.5b-instruct",
+  "provider": "local",
+  "model": "qwen2.5-0.5b-instruct",
+  "probe": {
+    "id": "throughput-v1",
+    "version": "1.0.0"
+  },
+  "started_at": "2026-08-17T20:42:39Z",
+  "completed_at": "2026-08-17T20:42:48Z",
+  "status": "SUCCESS",
+  "probe_status": "SUCCESS",
+  "measurement_count": 5,
+  "errors": [],
+  "base_url": "http://127.0.0.1:8080/v1",
+  "region": "local-cpu",
+  "artifacts": [
+    "data/runs/run-90a8a458a214/artifacts/artifact-000-b31cbc5c.json",
+    "data/runs/run-90a8a458a214/artifacts/artifact-001-dbf81d93.json"
+  ]
+}

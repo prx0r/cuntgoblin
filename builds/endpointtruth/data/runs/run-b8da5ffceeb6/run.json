@@ -1,0 +1,24 @@
+{
+  "run_id": "run-b8da5ffceeb6",
+  "endpoint_id": "opencode-go:qwen3.7-max",
+  "provider": "opencode-go",
+  "model": "qwen3.7-max",
+  "probe": {
+    "id": "tools-v1",
+    "version": "1.0.0"
+  },
+  "started_at": "2026-08-17T20:40:03Z",
+  "completed_at": "2026-08-17T20:40:04Z",
+  "status": "FAILURE",
+  "probe_status": "FAILURE",
+  "measurement_count": 1,
+  "errors": [
+    "http 503"
+  ],
+  "base_url": "https://opencode.ai/zen/go/v1",
+  "region": "gateway",
+  "artifacts": [
+    "data/runs/run-b8da5ffceeb6/artifacts/artifact-000-4ca110ec.json",
+    "data/runs/run-b8da5ffceeb6/artifacts/artifact-001-1860be04.json"
+  ]
+}

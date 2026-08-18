@@ -1,0 +1,12 @@
+{
+  "team_id": "cost",
+  "version": "1.0.0",
+  "name": "Cost / FinOps",
+  "outputs": [
+    "cost_report"
+  ],
+  "gates": [
+    "cost-accounted"
+  ],
+  "default_budget_usd": 0.05
+}

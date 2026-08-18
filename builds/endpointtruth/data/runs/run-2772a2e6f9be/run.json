@@ -1,0 +1,23 @@
+{
+  "run_id": "run-2772a2e6f9be",
+  "endpoint_id": "opencode-go:qwen3.5-plus",
+  "provider": "opencode-go",
+  "model": "qwen3.5-plus",
+  "probe": {
+    "id": "reachability-v1",
+    "version": "1.0.0"
+  },
+  "started_at": "2026-08-17T20:40:25Z",
+  "completed_at": "2026-08-17T20:40:26Z",
+  "status": "FAILURE",
+  "probe_status": "FAILURE",
+  "measurement_count": 1,
+  "errors": [
+    "http 503"
+  ],
+  "base_url": "https://opencode.ai/zen/go/v1",
+  "region": "gateway",
+  "artifacts": [
+    "data/runs/run-2772a2e6f9be/artifacts/artifact-000-8da53d9e.json"
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "factory_id": "browser-extension",
+  "version": "1.0.0",
+  "kind": "browser_extension",
+  "name": "Browser Extension",
+  "description": "Canonical VentureLab Browser Extension factory.",
+  "input_schema": null,
+  "output_schema": null,
+  "phases": [
+    "research",
+    "plan",
+    "build",
+    "verify",
+    "publish",
+    "observe"
+  ],
+  "mandatory_teams": [
+    "qa",
+    "security",
+    "docs",
+    "provenance"
+  ],
+  "conditional_teams": {
+    "public_release": [
+      "docs",
+      "release",
+      "post-release"
+    ]
+  },
+  "default_budget_usd": 0.75,
+  "fixture": {
+    "fixture_id": "browser-extension-smoke-v1",
+    "max_cost_usd": 0.1
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "repository": "prx0r/cuntgoblin",
+  "branch": "master",
+  "head": "a56716251f4c60a2593e71efc6c88c5c61beb5bf",
+  "verdict": "not_end_to_end_operational_at_reviewed_head",
+  "hard_static_breaks": [
+    "Dockerfile targets missing factory.system:app",
+    "api.py imports missing factory.system.VentureLabSystem",
+    "mcp/server.py imports missing factory.system.VentureLabSystem",
+    "factory/global_os/go.py imports sibling modules absent from reviewed directory",
+    "factory/research/packet.py imports search functions absent from reviewed scoring engine"
+  ],
+  "strong_modules": [
+    "factory/hotswap/router.py",
+    "factory/market/market_algorithms.py",
+    "factory/agenthub/resolver.py"
+  ],
+  "ci_observation": "No GitHub status checks/workflow runs were attached to inspected head during review."
+}

@@ -1,0 +1,22 @@
+{
+  "run_id": "run-45ad8a4282f8",
+  "endpoint_id": "opencode-go:mimo-v2.5",
+  "provider": "opencode-go",
+  "model": "mimo-v2.5",
+  "probe": {
+    "id": "tools-v1",
+    "version": "1.0.0"
+  },
+  "started_at": "2026-08-17T20:40:24Z",
+  "completed_at": "2026-08-17T20:40:26Z",
+  "status": "SUCCESS",
+  "probe_status": "SUCCESS",
+  "measurement_count": 5,
+  "errors": [],
+  "base_url": "https://opencode.ai/zen/go/v1",
+  "region": "gateway",
+  "artifacts": [
+    "data/runs/run-45ad8a4282f8/artifacts/artifact-000-19d4534b.json",
+    "data/runs/run-45ad8a4282f8/artifacts/artifact-001-baacd3c6.json"
+  ]
+}

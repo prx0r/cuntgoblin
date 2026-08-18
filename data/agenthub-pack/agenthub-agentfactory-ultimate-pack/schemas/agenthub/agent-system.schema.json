@@ -1,0 +1,148 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AgentSystemManifest",
+  "type": "object",
+  "required": [
+    "apiVersion",
+    "kind",
+    "metadata",
+    "classification",
+    "topology",
+    "operations",
+    "maturity"
+  ],
+  "properties": {
+    "apiVersion": {
+      "const": "agenthub.ai/v1"
+    },
+    "kind": {
+      "const": "AgentSystem"
+    },
+    "metadata": {
+      "type": "object",
+      "required": [
+        "id",
+        "name",
+        "version",
+        "source"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        },
+        "source": {
+          "type": "object",
+          "required": [
+            "repo",
+            "sha"
+          ],
+          "properties": {
+            "repo": {
+              "type": "string"
+            },
+            "sha": {
+              "type": "string"
+            }
+          }
+        },
+        "license": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "classification": {
+      "type": "object",
+      "required": [
+        "runtime",
+        "families",
+        "system_types"
+      ],
+      "properties": {
+        "runtime": {
+          "type": "string"
+        },
+        "families": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "system_types": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "domains": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "topology": {
+      "type": "object",
+      "required": [
+        "nodes",
+        "edges"
+      ],
+      "properties": {
+        "nodes": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "edges": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        }
+      }
+    },
+    "model_slots": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "state": {
+      "type": "object"
+    },
+    "tools": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "permissions": {
+      "type": "object"
+    },
+    "operations": {
+      "type": "object"
+    },
+    "verification": {
+      "type": "object"
+    },
+    "requirements": {
+      "type": "object"
+    },
+    "maturity": {
+      "type": "object"
+    },
+    "lineage": {
+      "type": "object"
+    }
+  }
+}

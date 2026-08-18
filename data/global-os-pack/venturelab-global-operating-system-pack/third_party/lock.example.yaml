@@ -1,0 +1,31 @@
+version: third-party-lock-v1
+repositories:
+  - repo: https://github.com/ynulihao/LLMRouterBench
+    purpose: router benchmark lab
+    pin: "<COMMIT_SHA>"
+    license: "<VERIFY>"
+    production_dependency: false
+
+  - repo: https://github.com/ZhangYiqun018/AvengersPro
+    purpose: exact upstream router reproduction when required
+    pin: "<COMMIT_SHA>"
+    license: "<VERIFY>"
+    production_dependency: false
+
+  - repo: https://github.com/jmiao24/Paper2Agent
+    purpose: paper-to-agent lab adapter
+    pin: "<COMMIT_SHA>"
+    license: MIT
+    production_dependency: false
+
+  - repo: https://github.com/going-doer/paper2code
+    purpose: paper-to-code lab adapter
+    pin: "<COMMIT_SHA>"
+    license: "<VERIFY>"
+    production_dependency: false
+
+rules:
+  - never certify against floating main
+  - verify license before redistribution
+  - no production secrets
+  - adapter boundary required

@@ -1,0 +1,21 @@
+{
+  "run_id": "run-8e78dd4d1632",
+  "endpoint_id": "local:qwen2.5-0.5b-instruct",
+  "provider": "local",
+  "model": "qwen2.5-0.5b-instruct",
+  "probe": {
+    "id": "throughput-v1",
+    "version": "1.0.0"
+  },
+  "started_at": "2026-08-17T20:40:27Z",
+  "completed_at": "2026-08-17T20:41:27Z",
+  "status": "FAILURE",
+  "probe_status": "FAILURE",
+  "measurement_count": 1,
+  "errors": [
+    "timeout"
+  ],
+  "base_url": "http://127.0.0.1:8080/v1",
+  "region": "local-cpu",
+  "artifacts": []
+}

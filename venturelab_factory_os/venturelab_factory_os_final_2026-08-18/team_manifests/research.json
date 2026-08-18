@@ -1,0 +1,12 @@
+{
+  "team_id": "research",
+  "version": "1.0.0",
+  "name": "Research & Evidence",
+  "outputs": [
+    "research_packet"
+  ],
+  "gates": [
+    "evidence-present"
+  ],
+  "default_budget_usd": 0.2
+}

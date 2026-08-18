@@ -1,0 +1,25 @@
+{
+  "product": "endpointtruth",
+  "artifact": "/root/venturelab/builds/endpointtruth",
+  "verdict": "PASS",
+  "checks": {
+    "unit_tests": "17 passed",
+    "endpoints": 424,
+    "probe_runs": 226,
+    "observations": 3264,
+    "windows": 430,
+    "probe_types": 7,
+    "api_live": true,
+    "mcp_live": true,
+    "mvp_user_story": "recommended opencode-go:deepseek-v4-flash (ttft_p50 1465.8ms, tps_p50 47.1, tool 1.0, json 1.0, 64K tested)",
+    "raw_observations_immutable": true,
+    "evidence_sha256_linked": true
+  },
+  "honest_limitations": [
+    "no paid remote keys -> openrouter catalog advertised-only, inference NOT_OBSERVED",
+    "context token counts approximate (chars/4)",
+    "kimi-k3/qwen3.5-plus/qwen3.7-max outages observed at run time (may recover)"
+  ],
+  "generated_at": "2026-08-17T20:59:43Z",
+  "manifest_sha256": "9ffceeeba496ecfe3d03746b5503c2422afd412f95ed4264e3e8e8a40c2388ec"
+}

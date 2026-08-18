@@ -1,0 +1,24 @@
+{
+  "run_id": "run-c5bf36f75356",
+  "endpoint_id": "opencode-go:kimi-k3",
+  "provider": "opencode-go",
+  "model": "kimi-k3",
+  "probe": {
+    "id": "json-v1",
+    "version": "1.0.0"
+  },
+  "started_at": "2026-08-17T20:42:17Z",
+  "completed_at": "2026-08-17T20:42:19Z",
+  "status": "FAILURE",
+  "probe_status": "FAILURE",
+  "measurement_count": 1,
+  "errors": [
+    "http 400"
+  ],
+  "base_url": "https://opencode.ai/zen/go/v1",
+  "region": "gateway",
+  "artifacts": [
+    "data/runs/run-c5bf36f75356/artifacts/artifact-000-c673d320.json",
+    "data/runs/run-c5bf36f75356/artifacts/artifact-001-616f074e.json"
+  ]
+}

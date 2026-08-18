@@ -1,0 +1,43 @@
+{
+  "schedule": {
+    "endpoints": [
+      "opencode-go:deepseek-v4-flash",
+      "opencode-go:glm-5.2",
+      "opencode-go:minimax-m3",
+      "local:qwen2.5-0.5b-instruct"
+    ],
+    "probes": [
+      "context-smoke-v1"
+    ],
+    "cycles": 2,
+    "interval_seconds": 0.0,
+    "concurrency": 2
+  },
+  "result": {
+    "cycles_completed": 2,
+    "probe_runs": 8,
+    "observations": 48,
+    "failures": 0,
+    "skipped": 0,
+    "started_at": "2026-08-17T20:43:30Z",
+    "finished_at": "2026-08-17T20:44:02Z"
+  },
+  "per_endpoint": {
+    "opencode-go:deepseek-v4-flash:context-smoke-v1": {
+      "runs": 2,
+      "failures": 0
+    },
+    "opencode-go:glm-5.2:context-smoke-v1": {
+      "runs": 2,
+      "failures": 0
+    },
+    "opencode-go:minimax-m3:context-smoke-v1": {
+      "runs": 2,
+      "failures": 0
+    },
+    "local:qwen2.5-0.5b-instruct:context-smoke-v1": {
+      "runs": 2,
+      "failures": 0
+    }
+  }
+}

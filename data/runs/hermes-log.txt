@@ -1,0 +1,15 @@
+
+Session:        20260817_235306_5c2a4e
+Title:          Check system status with dry run
+Duration:       9s
+Messages:       4 (1 user, 2 tool calls)
+    gotit = waiter.acquire(True, timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/hermes-agent/cli.py", line 19819, in _signal_handler_q
+    raise KeyboardInterrupt()
+KeyboardInterrupt
+    gotit = waiter.acquire(True, timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/hermes-agent/cli.py", line 19819, in _signal_handler_q
+    raise KeyboardInterrupt()
+KeyboardInterrupt

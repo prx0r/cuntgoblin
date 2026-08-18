@@ -1,0 +1,12 @@
+{
+  "team_id": "maintenance",
+  "version": "1.0.0",
+  "name": "Maintenance / Refactor",
+  "outputs": [
+    "maintenance_report"
+  ],
+  "gates": [
+    "regression-suite-pass"
+  ],
+  "default_budget_usd": 0.2
+}

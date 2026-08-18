@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "opportunity_id",
+    "kind",
+    "feature_snapshot_hash",
+    "observed_at",
+    "confidence"
+  ],
+  "properties": {
+    "opportunity_id": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string"
+    },
+    "feature_snapshot_hash": {
+      "type": "string"
+    },
+    "observed_at": {
+      "type": "string"
+    },
+    "confidence": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "features": {
+      "type": "object"
+    },
+    "evidence_refs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "additionalProperties": false
+}

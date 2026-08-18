@@ -1,0 +1,135 @@
+{
+  "schema": "dell.hotswap.venturelab.tasks.v1",
+  "reviewed": {
+    "dell": "ce10713f3a25999bea6120c5a7fa27754710713c",
+    "venturelab": "b94dfc0d7109464b3021db21d573da08e98da783"
+  },
+  "checkpoints": [
+    {
+      "id": "CP-HS0",
+      "name": "repair-dell-certificate-and-decision",
+      "depends_on": []
+    },
+    {
+      "id": "CP-HS1",
+      "name": "factory-task-spec",
+      "depends_on": []
+    },
+    {
+      "id": "CP-HS2",
+      "name": "litellm-gateway",
+      "depends_on": []
+    },
+    {
+      "id": "CP-HS3",
+      "name": "dell-candidate-api",
+      "depends_on": [
+        "CP-HS0"
+      ]
+    },
+    {
+      "id": "CP-HS4",
+      "name": "hotswap-deterministic-router",
+      "depends_on": [
+        "CP-HS1",
+        "CP-HS3"
+      ]
+    },
+    {
+      "id": "CP-HS5",
+      "name": "quota-ledger",
+      "depends_on": [
+        "CP-HS4"
+      ]
+    },
+    {
+      "id": "CP-HS6",
+      "name": "hermes-runtime-adapter",
+      "depends_on": [
+        "CP-HS2",
+        "CP-HS4"
+      ]
+    },
+    {
+      "id": "CP-HS7",
+      "name": "failure-classifier",
+      "depends_on": [
+        "CP-HS6"
+      ]
+    },
+    {
+      "id": "CP-HS8",
+      "name": "outcome-learner",
+      "depends_on": [
+        "CP-HS6"
+      ]
+    },
+    {
+      "id": "CP-HS9",
+      "name": "account-opportunity-queue",
+      "depends_on": [
+        "CP-HS3",
+        "CP-HS5"
+      ]
+    },
+    {
+      "id": "CP-HS10",
+      "name": "shadow-benchmark",
+      "depends_on": [
+        "CP-HS7",
+        "CP-HS8"
+      ]
+    },
+    {
+      "id": "CP-HS11",
+      "name": "low-risk-rollout",
+      "depends_on": [
+        "CP-HS10"
+      ]
+    },
+    {
+      "id": "CP-HS12",
+      "name": "coding-rollout",
+      "depends_on": [
+        "CP-HS11"
+      ]
+    },
+    {
+      "id": "CP-HS13",
+      "name": "bandit",
+      "depends_on": [
+        "CP-HS8",
+        "CP-HS12"
+      ]
+    },
+    {
+      "id": "CP-HS14",
+      "name": "verified-cascade",
+      "depends_on": [
+        "CP-HS12"
+      ]
+    },
+    {
+      "id": "CP-HS15",
+      "name": "contextual-router",
+      "depends_on": [
+        "CP-HS13"
+      ]
+    },
+    {
+      "id": "CP-HS16",
+      "name": "dell-runtime-feedback",
+      "depends_on": [
+        "CP-HS8"
+      ]
+    },
+    {
+      "id": "CP-HS17",
+      "name": "production-certificate",
+      "depends_on": [
+        "CP-HS14",
+        "CP-HS16"
+      ]
+    }
+  ]
+}

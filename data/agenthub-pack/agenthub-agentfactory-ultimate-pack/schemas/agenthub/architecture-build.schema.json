@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ArchitectureBuild",
+  "type": "object",
+  "required": [
+    "build_id",
+    "system_id",
+    "source_sha",
+    "manifest_sha256",
+    "runtime",
+    "created_at"
+  ],
+  "properties": {
+    "build_id": {
+      "type": "string"
+    },
+    "system_id": {
+      "type": "string"
+    },
+    "source_sha": {
+      "type": "string"
+    },
+    "manifest_sha256": {
+      "type": "string"
+    },
+    "runtime": {
+      "type": "object"
+    },
+    "model_policy": {
+      "type": "object"
+    },
+    "tool_policy": {
+      "type": "object"
+    },
+    "dependency_lock_sha256": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "image_digest": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "created_at": {
+      "type": "string"
+    }
+  }
+}

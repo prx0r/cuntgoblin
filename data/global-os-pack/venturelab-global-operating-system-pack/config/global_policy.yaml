@@ -1,0 +1,25 @@
+version: global-policy-v1
+
+concurrency:
+  total_workers: 4
+  hermes_workers: 3
+  benchmark_workers: 1
+
+budgets:
+  daily_llm_usd: 3.00
+  max_single_task_usd: 0.50
+  exploration_fraction: 0.15
+
+leases:
+  default_seconds: 600
+  heartbeat_seconds: 120
+
+retry:
+  max_default_attempts: 3
+  backoff_base_seconds: 10
+  backoff_max_seconds: 900
+
+integrity:
+  checkpoint_every_events: 1000
+  checkpoint_daily: true
+  require_current_dell_manifest: true

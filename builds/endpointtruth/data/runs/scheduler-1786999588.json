@@ -1,0 +1,53 @@
+{
+  "schedule": {
+    "endpoints": [
+      "opencode-go:deepseek-v4-flash",
+      "opencode-go:glm-5.2",
+      "opencode-go:gpt-5.6-luna",
+      "opencode-go:hy3",
+      "opencode-go:mimo-v2.5",
+      "opencode-go:minimax-m3"
+    ],
+    "probes": [
+      "context-smoke-v1"
+    ],
+    "cycles": 1,
+    "interval_seconds": 0.0,
+    "concurrency": 2
+  },
+  "result": {
+    "cycles_completed": 1,
+    "probe_runs": 6,
+    "observations": 36,
+    "failures": 0,
+    "skipped": 0,
+    "started_at": "2026-08-17T20:46:12Z",
+    "finished_at": "2026-08-17T20:46:28Z"
+  },
+  "per_endpoint": {
+    "opencode-go:deepseek-v4-flash:context-smoke-v1": {
+      "runs": 1,
+      "failures": 0
+    },
+    "opencode-go:glm-5.2:context-smoke-v1": {
+      "runs": 1,
+      "failures": 0
+    },
+    "opencode-go:gpt-5.6-luna:context-smoke-v1": {
+      "runs": 1,
+      "failures": 0
+    },
+    "opencode-go:hy3:context-smoke-v1": {
+      "runs": 1,
+      "failures": 0
+    },
+    "opencode-go:mimo-v2.5:context-smoke-v1": {
+      "runs": 1,
+      "failures": 0
+    },
+    "opencode-go:minimax-m3:context-smoke-v1": {
+      "runs": 1,
+      "failures": 0
+    }
+  }
+}

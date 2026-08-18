@@ -1,0 +1,35 @@
+apiVersion: venturelab.ai/v1
+kind: Workflow
+metadata:
+  id: market-cycle
+  version: 1.0.0
+spec:
+  nodes:
+    - id: oracle_refresh
+      executor: python
+      fanout: oracle_adapters
+      output_schema: MarketObservationBatch
+    - id: signals
+      executor: python
+      depends_on: [oracle_refresh]
+    - id: topic_radar
+      executor: python
+      depends_on: [signals]
+    - id: opportunity_mine
+      executor: hermes
+      depends_on: [topic_radar]
+      task_spec:
+        task_kind: opportunity_adjudication
+        quality_floor: 0.76
+        free_policy: prefer
+      verifier: market-auditor
+    - id: voi
+      executor: python
+      depends_on: [opportunity_mine]
+    - id: solution_lab
+      executor: hermes
+      depends_on: [opportunity_mine]
+      task_spec:
+        task_kind: solution_generation
+        quality_floor: 0.65
+        free_policy: prefer

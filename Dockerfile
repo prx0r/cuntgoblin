@@ -1,16 +1,14 @@
-FROM python:3.11-slim
+FROM python:3.13-slim
 
 WORKDIR /app
 
-# Install dependencies
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy application
 COPY . .
 
-# Expose port
+RUN mkdir -p /app/data
+
 EXPOSE 8000
 
-# Run application
-CMD ["python", "-m", "uvicorn", "factory.system:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["uvicorn", "api:app", "--host", "0.0.0.0", "--port", "8000"]

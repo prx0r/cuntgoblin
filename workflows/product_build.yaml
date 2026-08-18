@@ -1,0 +1,37 @@
+apiVersion: venturelab.ai/v1
+kind: Workflow
+metadata:
+  id: product-build
+  version: 1.0.0
+spec:
+  nodes:
+    - id: resolve_factory
+      executor: python
+    - id: specification
+      executor: hermes
+      depends_on: [resolve_factory]
+      task_spec:
+        task_kind: specification
+        quality_floor: 0.80
+    - id: build
+      executor: hermes
+      depends_on: [specification]
+      task_spec:
+        task_kind: coding_feature
+        quality_floor: 0.80
+        free_policy: prefer
+    - id: test
+      executor: python
+      depends_on: [build]
+    - id: review
+      executor: hermes
+      depends_on: [test]
+      task_spec:
+        task_kind: code_review
+        quality_floor: 0.82
+    - id: certify
+      executor: python
+      depends_on: [review]
+    - id: release
+      executor: release_transaction
+      depends_on: [certify]

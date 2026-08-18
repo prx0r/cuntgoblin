@@ -1,9 +1,23 @@
 """VentureLab API server."""
 
-from fastapi import FastAPI
+from contextlib import asynccontextmanager
 from datetime import datetime, timezone
+import sqlite3
 
-app = FastAPI(title="VentureLab API")
+from fastapi import FastAPI
+
+from factory.db.migrate import migrate
+
+_DB = "data/venturelab.db"
+
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    migrate(_DB)
+    yield
+
+
+app = FastAPI(title="VentureLab API", lifespan=lifespan)
 
 
 @app.get("/")
@@ -23,13 +37,13 @@ def health():
 
 @app.get("/ideas")
 def list_ideas():
-    import sqlite3
-    conn = sqlite3.connect("data/venturelab.db")
-    cur = conn.cursor()
-    cur.execute("SELECT COUNT(*) FROM ideas")
-    count = cur.fetchone()[0]
-    cur.close()
-    conn.close()
+    conn = sqlite3.connect(_DB)
+    try:
+        count = conn.execute("SELECT COUNT(*) FROM opportunities").fetchone()[0]
+    except sqlite3.OperationalError:
+        count = 0
+    finally:
+        conn.close()
     return {"count": count}
 
 

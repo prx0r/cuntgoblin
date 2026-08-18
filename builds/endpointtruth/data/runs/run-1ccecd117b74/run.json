@@ -1,0 +1,22 @@
+{
+  "run_id": "run-1ccecd117b74",
+  "endpoint_id": "opencode-go:mimo-v2.5",
+  "provider": "opencode-go",
+  "model": "mimo-v2.5",
+  "probe": {
+    "id": "ttft-v1",
+    "version": "1.0.0"
+  },
+  "started_at": "2026-08-17T20:40:21Z",
+  "completed_at": "2026-08-17T20:40:25Z",
+  "status": "SUCCESS",
+  "probe_status": "SUCCESS",
+  "measurement_count": 5,
+  "errors": [],
+  "base_url": "https://opencode.ai/zen/go/v1",
+  "region": "gateway",
+  "artifacts": [
+    "data/runs/run-1ccecd117b74/artifacts/artifact-000-14324e35.json",
+    "data/runs/run-1ccecd117b74/artifacts/artifact-001-1018c107.json"
+  ]
+}

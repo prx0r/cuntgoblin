@@ -1,0 +1,35 @@
+{
+  "factory_id": "agent-service",
+  "version": "1.0.0",
+  "kind": "agent",
+  "name": "Agent / MCP / A2A Service",
+  "description": "Canonical VentureLab Agent / MCP / A2A Service factory.",
+  "input_schema": null,
+  "output_schema": null,
+  "phases": [
+    "research",
+    "plan",
+    "build",
+    "verify",
+    "publish",
+    "observe"
+  ],
+  "mandatory_teams": [
+    "qa",
+    "red-team",
+    "security",
+    "provenance"
+  ],
+  "conditional_teams": {
+    "public_release": [
+      "docs",
+      "release",
+      "post-release"
+    ]
+  },
+  "default_budget_usd": 1.0,
+  "fixture": {
+    "fixture_id": "agent-service-smoke-v1",
+    "max_cost_usd": 0.1
+  }
+}

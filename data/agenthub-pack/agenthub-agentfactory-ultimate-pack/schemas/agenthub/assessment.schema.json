@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AgentHubAssessment",
+  "type": "object",
+  "required": [
+    "assessment_id",
+    "build_id",
+    "suite_id",
+    "runs",
+    "metrics",
+    "evidence"
+  ],
+  "properties": {
+    "assessment_id": {
+      "type": "string"
+    },
+    "build_id": {
+      "type": "string"
+    },
+    "suite_id": {
+      "type": "string"
+    },
+    "runs": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "metrics": {
+      "type": "object"
+    },
+    "confidence_intervals": {
+      "type": "object"
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "status": {
+      "enum": [
+        "PASS",
+        "FAIL",
+        "PARTIAL",
+        "BLOCKED"
+      ]
+    }
+  }
+}

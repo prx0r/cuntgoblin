@@ -1,0 +1,22 @@
+{
+  "run_id": "run-be51c45df85a",
+  "endpoint_id": "opencode-go:minimax-m3",
+  "provider": "opencode-go",
+  "model": "minimax-m3",
+  "probe": {
+    "id": "ttft-v1",
+    "version": "1.0.0"
+  },
+  "started_at": "2026-08-17T20:40:06Z",
+  "completed_at": "2026-08-17T20:40:08Z",
+  "status": "SUCCESS",
+  "probe_status": "SUCCESS",
+  "measurement_count": 5,
+  "errors": [],
+  "base_url": "https://opencode.ai/zen/go/v1",
+  "region": "gateway",
+  "artifacts": [
+    "data/runs/run-be51c45df85a/artifacts/artifact-000-a8bbac22.json",
+    "data/runs/run-be51c45df85a/artifacts/artifact-001-c5d47da9.json"
+  ]
+}

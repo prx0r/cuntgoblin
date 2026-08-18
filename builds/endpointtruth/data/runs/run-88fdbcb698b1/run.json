@@ -1,0 +1,23 @@
+{
+  "run_id": "run-88fdbcb698b1",
+  "endpoint_id": "opencode-go:kimi-k3",
+  "provider": "opencode-go",
+  "model": "kimi-k3",
+  "probe": {
+    "id": "reachability-v1",
+    "version": "1.0.0"
+  },
+  "started_at": "2026-08-17T20:40:03Z",
+  "completed_at": "2026-08-17T20:40:04Z",
+  "status": "FAILURE",
+  "probe_status": "FAILURE",
+  "measurement_count": 1,
+  "errors": [
+    "http 400"
+  ],
+  "base_url": "https://opencode.ai/zen/go/v1",
+  "region": "gateway",
+  "artifacts": [
+    "data/runs/run-88fdbcb698b1/artifacts/artifact-000-dcd80624.json"
+  ]
+}

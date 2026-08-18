@@ -1,0 +1,389 @@
+{
+  "pack": "venturelab-global-operating-system-pack",
+  "version": "1.0.0",
+  "created_utc": "2026-08-17T23:32:00.235426+00:00",
+  "reviewed": {
+    "venturelab": "2fcc6abcce78d4fac8c516e62069827d0e8cf931",
+    "dell_functional_fix": "f3927b261b3f6e52a61ae4723a9b92774d393eb9",
+    "dell_manifest_observed_old_sha": "65ddbd6b9aa6449fad2fc8631658adee9bd09cb5"
+  },
+  "reference_tests": "PASS",
+  "files": {
+    "00_READ_ME_FIRST.md": {
+      "sha256": "9c3ce00507e3ea5cd661ff2c8ce3a05fb695eeb97343290684e6d2f240cf9c75",
+      "bytes": 1835
+    },
+    "01_FINAL_SYSTEM_MAP.md": {
+      "sha256": "9a17f9a2dd558131d652e0c09dec285b2161fbe70de0f9ae90bf822633bdd267",
+      "bytes": 1963
+    },
+    "02_CURRENT_FLAWS_AND_FIXES.md": {
+      "sha256": "b94a8045933ed5881159e5867e64aeb9095ce155b46222a09bce6d78e635ceae",
+      "bytes": 1542
+    },
+    "03_MANAGER_ARCHITECTURE.md": {
+      "sha256": "0ca827392dffbf5bc343a9d5bf6db51afc9955b254c79795b131c99e810a25f2",
+      "bytes": 1302
+    },
+    "04_GLOBAL_STATE_MACHINES.md": {
+      "sha256": "d6cde6eb30b74040bf13d955513b669b2c2700d2944f5367ac83b531c20d1df8",
+      "bytes": 1017
+    },
+    "05_QUEUE_LEASES_IDEMPOTENCY.md": {
+      "sha256": "415ffb47dbd57111d86c75dc8c0d4c4b2bc04216c8d56ad4ecb00857857f1e29",
+      "bytes": 913
+    },
+    "06_WORKFLOW_GRAPH.md": {
+      "sha256": "72c7a030653f5033a0031ac757f6da3c807a8e10450a9d021aea3da0cd54f476",
+      "bytes": 759
+    },
+    "07_HERMES_KANBAN_AND_CRON.md": {
+      "sha256": "1f6d010153bc4ed94de9921caf66090293dc8d962a75a3603c2cc41f99c94e59",
+      "bytes": 856
+    },
+    "08_PRESS_GO_SEMANTICS.md": {
+      "sha256": "56ad648fea8744cfb0f672bafeb20e164f1f595e589e30a03c66ac3aad8dec24",
+      "bytes": 1081
+    },
+    "09_SCHEDULING_POLICY.md": {
+      "sha256": "9a8c7b5a78842a60e1f529e33ea93ea3f77f6dff9fc17c0a5138df94d04b611a",
+      "bytes": 1090
+    },
+    "10_ARTIFACT_AND_HASH_STANDARD.md": {
+      "sha256": "76fc82e90080781239bc8d69beb40e3091ec47df257497a26f7c4078ea9f87d7",
+      "bytes": 594
+    },
+    "11_MERKLE_LEDGER.md": {
+      "sha256": "f31c170bf57ee28228636d181871dd3aa620cc83764921535df3898bc04da870",
+      "bytes": 979
+    },
+    "12_SCHEMA_REGISTRY.md": {
+      "sha256": "9125502efcee5e933dd6b56d9d624a3745ee16d53817d6746d61ef22395c7dbc",
+      "bytes": 745
+    },
+    "13_IDS_NAMES_FILES.md": {
+      "sha256": "123b8247635b5496f4f983b2ddbd4f024f6f8825991ede70198aa0e8456e49b8",
+      "bytes": 671
+    },
+    "14_EVENT_MODEL.md": {
+      "sha256": "e0fd6c974ac7faaa4c4323bdb6547d927a4e87933f0b2a8dbae53a73d9573d0a",
+      "bytes": 538
+    },
+    "15_PRIORITY_AND_FAIRNESS.md": {
+      "sha256": "950588cc9de4d344c2040b31d03ce1667514ad955c7e98b1805bd3205debf7d6",
+      "bytes": 745
+    },
+    "16_GLOBAL_BUDGET_MANAGER.md": {
+      "sha256": "b6f10778e4aed44fdc3a6173588f3ecf6bbd5f6ca88b071a74d16694c427f8c7",
+      "bytes": 614
+    },
+    "17_COMMIT_TIME_VALIDATION.md": {
+      "sha256": "efbe5cd0d5f68c0eaf7c4d3619dbb21acf1291e07cfe6ee824297c39556c4083",
+      "bytes": 653
+    },
+    "18_PAPER_INTAKE_FACTORY.md": {
+      "sha256": "8dbf916cd396a69dbb3f0799145a9912c156fa7fc7cdbe89b7cac9315a21da40",
+      "bytes": 1109
+    },
+    "19_PAPER2AGENT_AND_PAPER2CODE.md": {
+      "sha256": "0c4a4855afff0dde00392e970e6e3e83ed706bbdc45556aae73de400fb652441",
+      "bytes": 958
+    },
+    "20_RESEARCH_TO_MARKET_TRANSFER.md": {
+      "sha256": "a1874e631b28ff6a85333e840a4fc651ae6155ecd89f1ce121aa13bbed8bdeff",
+      "bytes": 686
+    },
+    "21_ROUTER_RESEARCH_LAB.md": {
+      "sha256": "53b6ca31751900741c90a74279bd93b982cecd4d084ad637a8c49c2472800d00",
+      "bytes": 1095
+    },
+    "22_ROUTER_ADAPTER_STANDARD.md": {
+      "sha256": "4b49e731351321fa60803f296f3bd4faff9ec2e1ee63443c45bdd79d53ba729b",
+      "bytes": 738
+    },
+    "23_HOTSWAP_TROUBLESHOOTING.md": {
+      "sha256": "99201d3864963ec6ee3cbd33abdd4a3327b99ea1cd2d94b760ee9bdbded67afb",
+      "bytes": 2464
+    },
+    "24_DELL_STATUS.md": {
+      "sha256": "e501edbfdce2fcf01a87fb2d3c5c54911ba3838d9dc2f368596056e42b61f0c1",
+      "bytes": 721
+    },
+    "25_DELL_GO_TO_MARKET.md": {
+      "sha256": "38026aea14b6ca5638704916941c07673eaa7828656cf9572fcea0416b53d834",
+      "bytes": 1230
+    },
+    "26_DELL_PRODUCT_FAMILY.md": {
+      "sha256": "c6b9d140c951440a3d6fff5aa3bbe1821e6124e0ee06755a41fc9da93466d5b5",
+      "bytes": 1225
+    },
+    "27_CANONICAL_TECH_STACK.md": {
+      "sha256": "07b7f2789c7edb4dcd4c44c9ad4d738e90ac5bf490390b4a4dc1be0b3491c2eb",
+      "bytes": 927
+    },
+    "28_API_STANDARD.md": {
+      "sha256": "cf106db89ea00edcb50bcef297d6436f409891625c5e3ebc7cb2f0a305ed7444",
+      "bytes": 841
+    },
+    "29_MCP_STANDARD.md": {
+      "sha256": "8cf2e49aaea8110fdc2b393fab1aa75f2c6cc017310f5e9d9b51920dd459787b",
+      "bytes": 713
+    },
+    "30_SEO_WEB_STANDARD.md": {
+      "sha256": "4db15b28497275d781665155f9e08418d7caa85160ea33926568823e040f69f4",
+      "bytes": 999
+    },
+    "31_PRODUCT_REPO_STANDARD.md": {
+      "sha256": "448123ea78bda62c45c33cea22645277c453b8d55538da73661dea1faa7f4b26",
+      "bytes": 658
+    },
+    "32_RELEASE_SAGA.md": {
+      "sha256": "23deea25062b6a896710e692ec09c9607a47487f80dbacd5fcd7120549bb7179",
+      "bytes": 559
+    },
+    "33_MARKET_OPERATIONS.md": {
+      "sha256": "8965738137331d9bf66de3df15feb0ff49ec97cc148125bb63efa6290668d46f",
+      "bytes": 566
+    },
+    "34_FACTORY_MANAGEMENT.md": {
+      "sha256": "b02a0e508f4cd49274b69b3157bf02eaa11c43aadf8230c07d50b739a64689d5",
+      "bytes": 563
+    },
+    "35_AGENTHUB_AGENTFACTORY_OPERATIONS.md": {
+      "sha256": "4607d927669dbe02a01e89779a7a5273d1b817cdb7bd5fcb02face950980bb5b",
+      "bytes": 658
+    },
+    "36_OBSERVABILITY.md": {
+      "sha256": "45af05ccddc2a70684a7c4beb9d75b43eaf20980adc6df5111e64b0e82319f3f",
+      "bytes": 604
+    },
+    "37_SECURITY_AUTHORITY.md": {
+      "sha256": "a358b4c34e660e58d3763800ae60b00f59c16548a8cf6a8e2c33d8ae3c70d82f",
+      "bytes": 719
+    },
+    "38_SOFTWARE_SUPPLY_CHAIN.md": {
+      "sha256": "97aebdc654d8be71f6ada9ee5919230edbfa2987cd3d0d12bc21a9e1d90f491b",
+      "bytes": 498
+    },
+    "39_ALERTS_AND_HEALTH.md": {
+      "sha256": "b4f948ad5ca1574eb7bed31f46769787d10e7e0e277cf94a3a067b84930938b4",
+      "bytes": 593
+    },
+    "40_CHAOS_TESTS.md": {
+      "sha256": "ff22cad36661b0115a56366082e86c96364ac1c2491aeb7381a3d46443def6d3",
+      "bytes": 849
+    },
+    "41_MANAGER_TROUBLESHOOTING.md": {
+      "sha256": "16c397e164c0b1fe87aa1ed1fa5d775550c56f6388d8d44f26b1b5ab3245e1ed",
+      "bytes": 811
+    },
+    "42_BACKUP_RESTORE.md": {
+      "sha256": "607e4aeabcc156934215120581b8d1f763e1973f30b6bf570e806d6f1bbbf13b",
+      "bytes": 491
+    },
+    "43_MANAGERIAL_NOTES.md": {
+      "sha256": "bf89dbc41c07b288e8c1c63c5ccd1983ae3518bf8a92b49269294e6769482dc3",
+      "bytes": 693
+    },
+    "44_BACKEND_OPTIMIZATION.md": {
+      "sha256": "4226dbfa67b7c540ee02cc2ee728135e7140bb93c7c15ac159f5afc0c302410c",
+      "bytes": 807
+    },
+    "45_DATA_RETENTION.md": {
+      "sha256": "2620a6b3226470a7b69c888de493f691b3224af36c008b13fefffcd7ef96b006",
+      "bytes": 503
+    },
+    "46_GLOBAL_STANDARDS.md": {
+      "sha256": "6e2766ca5f90470e0736fdf2783966c86c5540fe4faabe75d87c19c7a6cf6edf",
+      "bytes": 552
+    },
+    "47_CLI_SPEC.md": {
+      "sha256": "36e9864e21649907570dacdb4bcd5f7dc5679c64a09d0b59f20b8e4eef21eb60",
+      "bytes": 1188
+    },
+    "48_DAY_ONE_RUNBOOK.md": {
+      "sha256": "bb54cada04bf9fda1591ebc3782c2c8c6ca72ece20111b779459f136399646f0",
+      "bytes": 859
+    },
+    "49_PUBLIC_SITE_INFORMATION_ARCHITECTURE.md": {
+      "sha256": "581aa830864107345c84035a0d142c9fbc6fd3d3b418b7494cc1ccd49b0561d7",
+      "bytes": 554
+    },
+    "50_FACTORY_FINISH_AGENT.md": {
+      "sha256": "87727a050db570fd5121a5e5629e74aab71b151749b6a8fcca54f61a0fd95e5d",
+      "bytes": 650
+    },
+    "51_GLOBAL_CONVENTIONS_CHECKLIST.md": {
+      "sha256": "5c3ba528ac548da25aa7cc565cb6f8d42332776bc3e76f8eb0f5aad4f1635aac",
+      "bytes": 585
+    },
+    "52_DASHBOARD_SPEC.md": {
+      "sha256": "cfa089eb1c3a426dbadc325e23b40a2003cf03993d7a4cda6323bd5525f65453",
+      "bytes": 578
+    },
+    "53_PROCESS_DEPLOYMENT.md": {
+      "sha256": "4ee695ce600472f7113f88597dec640c48376f60101403eaac7606343ce52b99",
+      "bytes": 443
+    },
+    "54_GO_NO_GO_CHECKLIST.md": {
+      "sha256": "b5d35cdae84825a639d43591ccb0fb4e318870af1a6f0d37ffbc94f8ae99b75d",
+      "bytes": 524
+    },
+    "55_EXPANSION_ROADMAP.md": {
+      "sha256": "a5cd5b68d54377278cb90db3dff1290bf402eb63653f0ac6e48138ed4280b41e",
+      "bytes": 804
+    },
+    "56_VALIDATION_MATRIX.md": {
+      "sha256": "8d812a102b0250633c5d1c85ad782c1807b17dcead1e7649be86a6ec05630ecb",
+      "bytes": 1584
+    },
+    "57_IMPLEMENTATION_PLAN.md": {
+      "sha256": "ed5fc58927ef954d1ca070bd8387cbb991d0441d76dce966050548ddc7f0dd69",
+      "bytes": 1778
+    },
+    "58_VERIFIED_RESEARCH_NOTES.md": {
+      "sha256": "8e0bd413ea59dbf767b84b6ef0ccc44019434b7c6c5b45af83d2069e355e9aa8",
+      "bytes": 2928
+    },
+    "59_FINAL_AGENT_PROMPT.md": {
+      "sha256": "8d02055a6cddc5757c3dea86cfdbed0fca39e3dcb82fbd77a621c39cd5bd3bf5",
+      "bytes": 2080
+    },
+    "REFERENCE_TEST_RESULTS.txt": {
+      "sha256": "0e1b2c60c684675c7c2e055938e7869dfe0acf40f16477b129698384723429c3",
+      "bytes": 1356
+    },
+    "config/global_policy.yaml": {
+      "sha256": "896bcbc850b6848e7f53b366ff57f9f2162d941aa158de09ceb5ec33a9d9f478",
+      "bytes": 443
+    },
+    "config/product_stack.yaml": {
+      "sha256": "433dda82d35615a3b349c3da1a6f70d606799e20da93e59f948fd784ca463b3f",
+      "bytes": 433
+    },
+    "config/schedules.yaml": {
+      "sha256": "6cfd8cd4f45ef2b7966a86bc7efd922aca03dd25872c96a1620991c4880eadda",
+      "bytes": 847
+    },
+    "reference/.pytest_cache/.gitignore": {
+      "sha256": "3ed731b65d06150c138e2dadb0be0697550888a6b47eb8c45ecc9adba8b8e9bd",
+      "bytes": 37
+    },
+    "reference/.pytest_cache/CACHEDIR.TAG": {
+      "sha256": "37dc88ef9a0abeddbe81053a6dd8fdfb13afb613045ea1eb4a5c815a74a3bde4",
+      "bytes": 191
+    },
+    "reference/.pytest_cache/README.md": {
+      "sha256": "73fd6fccdd802c419a6b2d983d6c3173b7da97558ac4b589edec2dfe443db9ad",
+      "bytes": 302
+    },
+    "reference/.pytest_cache/v/cache/nodeids": {
+      "sha256": "c34b8f26c86051c3b10d4b532202ae2fb7bbe99091d3fd116fe6973a4ab87842",
+      "bytes": 551
+    },
+    "reference/README.md": {
+      "sha256": "977eacbadf24162c22bb663c96980df42ecd6d08f343937aed1e34e627a1f77b",
+      "bytes": 355
+    },
+    "reference/__pycache__/test_core.cpython-313-pytest-9.0.2.pyc": {
+      "sha256": "83bc1426b421cd5efe0db383d3dcf47be8783ba3dfe939df7787449be738425c",
+      "bytes": 16945
+    },
+    "reference/test_core.py": {
+      "sha256": "dd1ad470e3620ad0b1ad73287aa653c6c4e68f336def5ab95a724dd6a7aba6fd",
+      "bytes": 2167
+    },
+    "reference/venturelab_core/__init__.py": {
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "bytes": 1
+    },
+    "reference/venturelab_core/__pycache__/__init__.cpython-313.pyc": {
+      "sha256": "134c73399232c719103bcfa30549d0c2d022a9653f9e51322463a97f54737a60",
+      "bytes": 184
+    },
+    "reference/venturelab_core/__pycache__/graph.cpython-313.pyc": {
+      "sha256": "2b8bd54852923327cb5632bd59ead2237ec43922582fcce20b61a516f96017ad",
+      "bytes": 2767
+    },
+    "reference/venturelab_core/__pycache__/identity.cpython-313.pyc": {
+      "sha256": "3f9ca54dca965889f394ce52c1e4df13e2b195feddad17dd8f6ca3bb86ad2a7b",
+      "bytes": 1419
+    },
+    "reference/venturelab_core/__pycache__/merkle.cpython-313.pyc": {
+      "sha256": "1c123c5560c96db7071cd496fca6917aaaf62eb573fce7589460b95052e746bd",
+      "bytes": 3190
+    },
+    "reference/venturelab_core/__pycache__/queue.cpython-313.pyc": {
+      "sha256": "7be20077fbe90b69e8d4f16a43f190be9901176b54705d3da1a75c869407056e",
+      "bytes": 1266
+    },
+    "reference/venturelab_core/__pycache__/release.cpython-313.pyc": {
+      "sha256": "c594edcc7c9f53bd448e3a24d9b4cfb74354e98e3a4172a50c20fc7fdbebf5fb",
+      "bytes": 735
+    },
+    "reference/venturelab_core/__pycache__/scheduler.cpython-313.pyc": {
+      "sha256": "435dca76e115aa3afca1de093e12dbf3628a96a7d3dfdfafae61aa026e4a8121",
+      "bytes": 839
+    },
+    "reference/venturelab_core/__pycache__/state.cpython-313.pyc": {
+      "sha256": "82be4dc00b71352c897009974dce8db327bf1f4dd06ff97e0103f9e913e499dc",
+      "bytes": 912
+    },
+    "reference/venturelab_core/graph.py": {
+      "sha256": "7187bd2299ea929e177bc80ebb77cbc766c25ee44d73e302e4b2c659d05971a1",
+      "bytes": 848
+    },
+    "reference/venturelab_core/identity.py": {
+      "sha256": "b680d7748ba85772d4007e17f45d8fd881815fcadd736aea260470c71ba62147",
+      "bytes": 561
+    },
+    "reference/venturelab_core/merkle.py": {
+      "sha256": "a8edd4311530c165824517691d4e3c2b11137cb032f345cbde2fb2d2478c14f1",
+      "bytes": 1299
+    },
+    "reference/venturelab_core/queue.py": {
+      "sha256": "3fb1c4f7cd2c656c9b7d26c883d45b4ba8babb055b43ad585a282f4bcc6f4002",
+      "bytes": 563
+    },
+    "reference/venturelab_core/release.py": {
+      "sha256": "9784a14d0943dfd1da4c6389957ab69ea5f78db0cc556f214a0842ec47fe15ba",
+      "bytes": 418
+    },
+    "reference/venturelab_core/scheduler.py": {
+      "sha256": "e18f312c673e90b35e331937c81f882ba813cab96a1499ed879e66f13036ec07",
+      "bytes": 445
+    },
+    "reference/venturelab_core/state.py": {
+      "sha256": "97e5cc45ec971c09541e46035b547168d62f7aeb1236abe80c0e35013a4484d9",
+      "bytes": 657
+    },
+    "sql/global_manager.sql": {
+      "sha256": "ab28caa81b05a4896a77fb977aa731756d340d370984955741a9208abe7373c6",
+      "bytes": 4791
+    },
+    "tasks.json": {
+      "sha256": "6e1f8ac649e49f40bb4de4d40038ff9abc5e5b70dea4a6911f7e2e3ec50aa0bd",
+      "bytes": 2773
+    },
+    "third_party/lock.example.yaml": {
+      "sha256": "7d9dfb1ce5641a9f152b8472e195297095f61894308db0ea30b3133de5871753",
+      "bytes": 891
+    },
+    "workflows/agent_architecture_search.yaml": {
+      "sha256": "f557b2cbdf0802b84f33bb5cee3a1b26a4e5bf733917d056642228498a96eadd",
+      "bytes": 649
+    },
+    "workflows/market_cycle.yaml": {
+      "sha256": "a354e740f14eac722543fb300332f9bcf2a79d489af34072e3a09d220eee97c1",
+      "bytes": 875
+    },
+    "workflows/paper_to_agent.yaml": {
+      "sha256": "d73b79add9929de385dab98a71799f4e6f4772f67686fd0959fc5fbb3441d80e",
+      "bytes": 646
+    },
+    "workflows/product_build.yaml": {
+      "sha256": "cb9671ad40007b4109e03ba56d764a6a0f6bd37a209b5ca70630e81da85b9142",
+      "bytes": 851
+    }
+  }
+}

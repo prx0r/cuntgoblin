@@ -1,0 +1,44 @@
+version: schedules-v1
+schedules:
+  - id: source-health
+    workflow: source-health
+    every: 30m
+    jitter_seconds: 120
+    max_overlap: 1
+    catchup: latest_only
+
+  - id: dell-refresh
+    workflow: dell-refresh
+    every: 6h
+    jitter_seconds: 600
+    max_overlap: 1
+    catchup: latest_only
+
+  - id: ai-market-daily
+    workflow: oracle-refresh-ai
+    cron: "17 2 * * *"
+    timezone: UTC
+    jitter_seconds: 900
+    max_overlap: 1
+    catchup: one
+
+  - id: market-weekly
+    workflow: market-cycle
+    cron: "23 3 * * 1"
+    timezone: UTC
+    max_overlap: 1
+    catchup: one
+
+  - id: agenthub-weekly
+    workflow: agenthub-ingest
+    cron: "41 4 * * 2"
+    timezone: UTC
+    max_overlap: 1
+    catchup: one
+
+  - id: portfolio-monthly
+    workflow: portfolio-epoch
+    cron: "7 5 1 * *"
+    timezone: UTC
+    max_overlap: 1
+    catchup: one

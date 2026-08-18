@@ -1,0 +1,116 @@
+[
+  {
+    "id": "P0-01",
+    "priority": 0,
+    "title": "Purge tracked venv/cache",
+    "acceptance": "No .venv-* or __pycache__ tracked"
+  },
+  {
+    "id": "P0-02",
+    "priority": 0,
+    "title": "Create real composition root",
+    "acceptance": "factory.system imports and status works"
+  },
+  {
+    "id": "P0-03",
+    "priority": 0,
+    "title": "Fix Docker target",
+    "acceptance": "container /health=200"
+  },
+  {
+    "id": "P0-04",
+    "priority": 0,
+    "title": "Repair research source imports",
+    "acceptance": "research module imports cleanly"
+  },
+  {
+    "id": "P0-05",
+    "priority": 0,
+    "title": "Restore/remove broken global runtime",
+    "acceptance": "CI checks production imports only"
+  },
+  {
+    "id": "P0-06",
+    "priority": 0,
+    "title": "Implement DB migration",
+    "acceptance": "empty checkout creates schema"
+  },
+  {
+    "id": "P0-07",
+    "priority": 0,
+    "title": "Fix Hermes Kanban adapter",
+    "acceptance": "board-scoped JSON create stores task id"
+  },
+  {
+    "id": "P0-08",
+    "priority": 0,
+    "title": "Replace manual MCP dispatcher",
+    "acceptance": "official SDK smoke test passes"
+  },
+  {
+    "id": "P0-09",
+    "priority": 0,
+    "title": "Unify root tests",
+    "acceptance": "pytest -q from root"
+  },
+  {
+    "id": "P0-10",
+    "priority": 0,
+    "title": "Green GitHub Actions",
+    "acceptance": "remote clean workflow attached to commit"
+  },
+  {
+    "id": "P1-01",
+    "priority": 1,
+    "title": "Durable jobs/leasing/events",
+    "acceptance": "race/restart/retry/idempotency tests"
+  },
+  {
+    "id": "P1-02",
+    "priority": 1,
+    "title": "Hermes bounded worker contract",
+    "acceptance": "fake failure/timeout/JSON tests"
+  },
+  {
+    "id": "P1-03",
+    "priority": 1,
+    "title": "Evidence bundles and UNKNOWN semantics",
+    "acceptance": "source outage cannot score as no competition"
+  },
+  {
+    "id": "P1-04",
+    "priority": 1,
+    "title": "Plan-execute-verify-replan",
+    "acceptance": "bounded repair loop reaches correct terminal state"
+  },
+  {
+    "id": "P1-05",
+    "priority": 1,
+    "title": "Wire HotSwap into execution",
+    "acceptance": "fallback + verifier reward updates route"
+  },
+  {
+    "id": "P2-01",
+    "priority": 2,
+    "title": "Factory plugin protocol",
+    "acceptance": "API factory conforms"
+  },
+  {
+    "id": "P2-02",
+    "priority": 2,
+    "title": "Agent Factory vertical slice",
+    "acceptance": "evaluated Hermes agent bundle"
+  },
+  {
+    "id": "P2-03",
+    "priority": 2,
+    "title": "Connector Factory",
+    "acceptance": "second plugin proves abstraction"
+  },
+  {
+    "id": "P3-01",
+    "priority": 3,
+    "title": "Commerce Factory",
+    "acceptance": "dry-run store artifact + QA + approval gate"
+  }
+]

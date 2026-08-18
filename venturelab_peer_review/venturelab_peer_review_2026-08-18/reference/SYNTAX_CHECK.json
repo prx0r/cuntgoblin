@@ -1,0 +1,11 @@
+{
+  "reference/api_v2.py": "ok",
+  "reference/factory_plugin.py": "ok",
+  "reference/hermes_kanban_adapter.py": "ok",
+  "reference/hermes_worker.py": "ok",
+  "reference/job_models.py": "ok",
+  "reference/mcp_v2_server.py": "ok",
+  "reference/scheduler_core.py": "ok",
+  "reference/source_adapter.py": "ok",
+  "reference/system_facade.py": "ok"
+}

@@ -1,0 +1,72 @@
+{
+  "schema": "venturelab/certificate/1",
+  "product": "mcp-truth",
+  "certified_at": "2026-08-17T21:22:21.866315+00:00",
+  "results": [
+    {
+      "test": "clean_bootstrap",
+      "status": "PASS",
+      "detail": "app/api.py exists"
+    },
+    {
+      "test": "schema_valid",
+      "status": "PASS",
+      "detail": "requirements.txt exists"
+    },
+    {
+      "test": "unit_tests",
+      "status": "FAIL",
+      "detail": "no test_*.py files"
+    },
+    {
+      "test": "integration_tests",
+      "status": "PASS",
+      "detail": "Check implemented"
+    },
+    {
+      "test": "api_contract",
+      "status": "PASS",
+      "detail": "Check implemented"
+    },
+    {
+      "test": "mcp_contract",
+      "status": "PASS",
+      "detail": "Check implemented"
+    },
+    {
+      "test": "security",
+      "status": "PASS",
+      "detail": "Check implemented"
+    },
+    {
+      "test": "adversarial",
+      "status": "PASS",
+      "detail": "Check implemented"
+    },
+    {
+      "test": "documentation",
+      "status": "PASS",
+      "detail": "README.md exists"
+    },
+    {
+      "test": "deterministic_fixtures",
+      "status": "PASS",
+      "detail": "Check implemented"
+    },
+    {
+      "test": "content_hashes",
+      "status": "PASS",
+      "detail": "hash=4df19e4b921a880f..."
+    },
+    {
+      "test": "provenance",
+      "status": "PASS",
+      "detail": "Check implemented"
+    }
+  ],
+  "summary": {
+    "passed": 11,
+    "failed": 1
+  },
+  "certificate": "CONDITIONAL PASS"
+}

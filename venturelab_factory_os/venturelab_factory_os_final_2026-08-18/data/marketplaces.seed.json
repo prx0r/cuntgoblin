@@ -1,0 +1,61 @@
+{
+  "shopify": {
+    "mode": "owned_storefront",
+    "country_scope": "merchant_defined_markets",
+    "publisher": true,
+    "discovery": false,
+    "notes": "Query configured Markets dynamically."
+  },
+  "etsy": {
+    "mode": "marketplace",
+    "country_scope": "shop_and_shipping_profiles",
+    "publisher": true,
+    "discovery": "access_level_dependent",
+    "notes": "Open API v3; OAuth/access level are capabilities."
+  },
+  "ebay": {
+    "mode": "marketplace",
+    "country_scope": "marketplace_id_enum",
+    "publisher": true,
+    "discovery": true,
+    "notes": "Offers are marketplace-specific; refresh marketplace enum."
+  },
+  "amazon": {
+    "mode": "marketplace",
+    "country_scope": "regional_sp_api_marketplaces",
+    "publisher": true,
+    "discovery": "seller_data_authorized",
+    "regions": {
+      "north_america": [
+        "CA",
+        "US",
+        "MX",
+        "BR"
+      ],
+      "europe_endpoint": [
+        "IE",
+        "ES",
+        "GB",
+        "FR",
+        "BE",
+        "NL",
+        "DE",
+        "IT",
+        "SE",
+        "ZA",
+        "PL",
+        "SA",
+        "EG",
+        "TR",
+        "AE",
+        "IN"
+      ],
+      "far_east": [
+        "SG",
+        "AU",
+        "JP"
+      ]
+    },
+    "notes": "Seed from current SP-API endpoint docs; refresh/version it."
+  }
+}

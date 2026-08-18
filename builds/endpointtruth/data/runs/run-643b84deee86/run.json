@@ -1,0 +1,22 @@
+{
+  "run_id": "run-643b84deee86",
+  "endpoint_id": "opencode-go:mimo-v2.5",
+  "provider": "opencode-go",
+  "model": "mimo-v2.5",
+  "probe": {
+    "id": "reachability-v1",
+    "version": "1.0.0"
+  },
+  "started_at": "2026-08-17T20:40:20Z",
+  "completed_at": "2026-08-17T20:40:21Z",
+  "status": "SUCCESS",
+  "probe_status": "SUCCESS",
+  "measurement_count": 5,
+  "errors": [],
+  "base_url": "https://opencode.ai/zen/go/v1",
+  "region": "gateway",
+  "artifacts": [
+    "data/runs/run-643b84deee86/artifacts/artifact-000-33f56196.json",
+    "data/runs/run-643b84deee86/artifacts/artifact-001-e8546df8.json"
+  ]
+}

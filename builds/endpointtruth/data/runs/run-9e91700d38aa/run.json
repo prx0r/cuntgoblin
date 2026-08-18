@@ -1,0 +1,21 @@
+{
+  "run_id": "run-9e91700d38aa",
+  "endpoint_id": "openrouter:deepseek/deepseek-v4-flash",
+  "provider": "openrouter",
+  "model": "deepseek/deepseek-v4-flash",
+  "probe": {
+    "id": "json-v1",
+    "version": "1.0.0"
+  },
+  "started_at": "2026-08-17T20:42:41Z",
+  "completed_at": "2026-08-17T20:42:41Z",
+  "status": "FAILURE",
+  "probe_status": "FAILURE",
+  "measurement_count": 1,
+  "errors": [
+    "no credentials"
+  ],
+  "base_url": "https://openrouter.ai/api/v1",
+  "region": "any",
+  "artifacts": []
+}

@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ArchitectureNeed",
+  "type": "object",
+  "required": [
+    "need_id",
+    "solution_id",
+    "task_profile",
+    "requirements",
+    "quality"
+  ],
+  "properties": {
+    "need_id": {
+      "type": "string"
+    },
+    "solution_id": {
+      "type": "string"
+    },
+    "task_profile": {
+      "type": "object"
+    },
+    "requirements": {
+      "type": "object"
+    },
+    "quality": {
+      "type": "object"
+    },
+    "economics": {
+      "type": "object"
+    },
+    "security": {
+      "type": "object"
+    },
+    "preferred_patterns": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

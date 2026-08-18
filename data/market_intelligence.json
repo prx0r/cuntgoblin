@@ -1,0 +1,33 @@
+{
+  "observations": [
+    {
+      "observation_id": "obs_2f3ea6c2dc83",
+      "observed_at": "2026-08-17T22:12:38.565058+00:00",
+      "source": {
+        "type": "github",
+        "url": "https://github.com/agentregistry-dev/agentregistry",
+        "authority": "primary"
+      },
+      "artifact_sha256": "6ede7322ffb54a227cccf2229f475066d218ac1a7f2ae4b0c0d81051af5d7894",
+      "extractor_version": "github-v1"
+    }
+  ],
+  "claims": [
+    {
+      "claim_id": "claim_997812683d45",
+      "subject": "agent-registry-market",
+      "predicate": "competitor.exists",
+      "object": "agentregistry-dev/agentregistry",
+      "state": "KNOWN",
+      "evidence": [
+        "obs_2f3ea6c2dc83"
+      ],
+      "confidence": 0.99,
+      "created_at": "2026-08-17T22:12:38.565291+00:00"
+    }
+  ],
+  "stats": {
+    "total_observations": 1,
+    "total_claims": 1
+  }
+}

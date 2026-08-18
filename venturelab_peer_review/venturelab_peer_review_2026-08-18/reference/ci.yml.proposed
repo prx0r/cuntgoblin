@@ -1,0 +1,39 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v4
+
+      - name: Install
+        run: uv sync --all-extras --frozen
+
+      - name: Repo hygiene
+        run: |
+          test ! -d .venv-agentsla
+          ! git ls-files | grep -E '(^|/)(__pycache__/|.*\.pyc$)'
+
+      - name: Tests
+        run: uv run pytest -q
+
+      - name: Import API
+        run: uv run python -c "from api import app"
+
+      - name: Container build
+        run: docker build -t venturelab:test .
+
+      - name: Container smoke
+        run: |
+          docker run -d --rm --name venturelab-test -p 18000:8000 venturelab:test
+          for i in $(seq 1 30); do
+            if curl -fsS http://127.0.0.1:18000/health; then exit 0; fi
+            sleep 1
+          done
+          docker logs venturelab-test
+          exit 1

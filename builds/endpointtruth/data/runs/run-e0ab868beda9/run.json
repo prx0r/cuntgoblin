@@ -1,0 +1,22 @@
+{
+  "run_id": "run-e0ab868beda9",
+  "endpoint_id": "local:qwen2.5-0.5b-instruct",
+  "provider": "local",
+  "model": "qwen2.5-0.5b-instruct",
+  "probe": {
+    "id": "ttft-v1",
+    "version": "1.0.0"
+  },
+  "started_at": "2026-08-17T20:40:27Z",
+  "completed_at": "2026-08-17T20:40:29Z",
+  "status": "SUCCESS",
+  "probe_status": "SUCCESS",
+  "measurement_count": 5,
+  "errors": [],
+  "base_url": "http://127.0.0.1:8080/v1",
+  "region": "local-cpu",
+  "artifacts": [
+    "data/runs/run-e0ab868beda9/artifacts/artifact-000-aaf09779.json",
+    "data/runs/run-e0ab868beda9/artifacts/artifact-001-a122f6d1.json"
+  ]
+}

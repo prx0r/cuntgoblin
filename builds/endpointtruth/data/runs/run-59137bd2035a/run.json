@@ -1,0 +1,22 @@
+{
+  "run_id": "run-59137bd2035a",
+  "endpoint_id": "opencode-go:glm-5.2",
+  "provider": "opencode-go",
+  "model": "glm-5.2",
+  "probe": {
+    "id": "context-smoke-v1",
+    "version": "1.0.0"
+  },
+  "started_at": "2026-08-17T20:44:41Z",
+  "completed_at": "2026-08-17T20:44:45Z",
+  "status": "SUCCESS",
+  "probe_status": "SUCCESS",
+  "measurement_count": 6,
+  "errors": [],
+  "base_url": "https://opencode.ai/zen/go/v1",
+  "region": "gateway",
+  "artifacts": [
+    "data/runs/run-59137bd2035a/artifacts/artifact-000-253637ad.json",
+    "data/runs/run-59137bd2035a/artifacts/artifact-001-3cdd572f.json"
+  ]
+}

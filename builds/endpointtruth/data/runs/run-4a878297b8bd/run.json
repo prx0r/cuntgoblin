@@ -1,0 +1,22 @@
+{
+  "run_id": "run-4a878297b8bd",
+  "endpoint_id": "local:qwen2.5-0.5b-instruct",
+  "provider": "local",
+  "model": "qwen2.5-0.5b-instruct",
+  "probe": {
+    "id": "json-v1",
+    "version": "1.0.0"
+  },
+  "started_at": "2026-08-17T20:42:40Z",
+  "completed_at": "2026-08-17T20:42:41Z",
+  "status": "SUCCESS",
+  "probe_status": "SUCCESS",
+  "measurement_count": 5,
+  "errors": [],
+  "base_url": "http://127.0.0.1:8080/v1",
+  "region": "local-cpu",
+  "artifacts": [
+    "data/runs/run-4a878297b8bd/artifacts/artifact-000-0c741461.json",
+    "data/runs/run-4a878297b8bd/artifacts/artifact-001-3c0e15aa.json"
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "experiment": "scoring_determinism_ab_test",
+  "test_idea": "MCP Truth runtime reliability intelligence for MCP servers",
+  "runs": [
+    {
+      "run": 1,
+      "overall": 0.637,
+      "dimensions": {
+        "novelty": 1.0,
+        "research": 0.2,
+        "feasibility": 0.5,
+        "market_timing": 0.5,
+        "pain_severity": 0.6,
+        "willingness_to_pay": 0.6,
+        "competition_gap": 0.9,
+        "data_moat": 0.6,
+        "strategic_fit": 0.7
+      }
+    },
+    {
+      "run": 2,
+      "overall": 0.637,
+      "dimensions": {
+        "novelty": 1.0,
+        "research": 0.2,
+        "feasibility": 0.5,
+        "market_timing": 0.5,
+        "pain_severity": 0.6,
+        "willingness_to_pay": 0.6,
+        "competition_gap": 0.9,
+        "data_moat": 0.6,
+        "strategic_fit": 0.7
+      }
+    },
+    {
+      "run": 3,
+      "overall": 0.637,
+      "dimensions": {
+        "novelty": 1.0,
+        "research": 0.2,
+        "feasibility": 0.5,
+        "market_timing": 0.5,
+        "pain_severity": 0.6,
+        "willingness_to_pay": 0.6,
+        "competition_gap": 0.9,
+        "data_moat": 0.6,
+        "strategic_fit": 0.7
+      }
+    }
+  ],
+  "analysis": {
+    "overall_mean": 0.637,
+    "overall_std": 0.0,
+    "novelty_mean": 1.0,
+    "novelty_std": 0.0,
+    "research_mean": 0.20000000000000004,
+    "research_std": 2.7755575615628914e-17
+  },
+  "timestamp": "2026-08-17T21:42:51.426173+00:00"
+}

@@ -1,0 +1,22 @@
+{
+  "run_id": "run-a968b4604bfb",
+  "endpoint_id": "opencode-go:mimo-v2.5",
+  "provider": "opencode-go",
+  "model": "mimo-v2.5",
+  "probe": {
+    "id": "context-smoke-v1",
+    "version": "1.0.0"
+  },
+  "started_at": "2026-08-17T20:44:47Z",
+  "completed_at": "2026-08-17T20:44:50Z",
+  "status": "SUCCESS",
+  "probe_status": "SUCCESS",
+  "measurement_count": 6,
+  "errors": [],
+  "base_url": "https://opencode.ai/zen/go/v1",
+  "region": "gateway",
+  "artifacts": [
+    "data/runs/run-a968b4604bfb/artifacts/artifact-000-253637ad.json",
+    "data/runs/run-a968b4604bfb/artifacts/artifact-001-3dd1760c.json"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "team_id": "red-team",
+  "version": "1.0.0",
+  "name": "Red Team",
+  "outputs": [
+    "attack_report"
+  ],
+  "gates": [
+    "independent-review"
+  ],
+  "default_budget_usd": 0.3
+}

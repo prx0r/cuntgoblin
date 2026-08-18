@@ -1,0 +1,27 @@
+# P0 Acceptance Checklist
+
+- [ ] Fresh clone has no committed virtualenv.
+- [ ] No tracked `__pycache__` / `.pyc`.
+- [ ] Locked install succeeds.
+- [ ] `factory.system` imports.
+- [ ] API imports.
+- [ ] research production modules import.
+- [ ] global runtime production imports or obsolete gate is removed.
+- [ ] migration creates an empty usable DB.
+- [ ] local `/health` is 200.
+- [ ] container `/health` is 200.
+- [ ] official MCP server starts.
+- [ ] MCP test client can invoke tools.
+- [ ] Hermes Kanban create returns/stores exact task ID.
+- [ ] nonzero Hermes exit propagates.
+- [ ] Hermes timeout propagates.
+- [ ] invalid agent JSON fails validation.
+- [ ] source failure does not mean zero competitors.
+- [ ] job survives restart.
+- [ ] duplicate idempotency key creates one job.
+- [ ] two workers cannot claim one job.
+- [ ] bad artifact is rejected.
+- [ ] bounded retry can succeed.
+- [ ] HotSwap records verifier outcome.
+- [ ] root `pytest -q` passes.
+- [ ] GitHub Actions is green on the commit.

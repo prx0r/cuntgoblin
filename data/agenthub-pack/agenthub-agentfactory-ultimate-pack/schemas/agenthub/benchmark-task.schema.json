@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AgentHubBenchmarkTask",
+  "type": "object",
+  "required": [
+    "task_id",
+    "suite_id",
+    "task_kind",
+    "input",
+    "evaluator",
+    "limits"
+  ],
+  "properties": {
+    "task_id": {
+      "type": "string"
+    },
+    "suite_id": {
+      "type": "string"
+    },
+    "task_kind": {
+      "type": "string"
+    },
+    "input": {
+      "type": "object"
+    },
+    "environment": {
+      "type": "object"
+    },
+    "evaluator": {
+      "type": "object"
+    },
+    "limits": {
+      "type": "object"
+    },
+    "fault_plan": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "gold": {
+      "type": "object"
+    }
+  }
+}

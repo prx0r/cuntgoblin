@@ -1,0 +1,22 @@
+{
+  "run_id": "run-8691a880faca",
+  "endpoint_id": "opencode-go:deepseek-v4-flash",
+  "provider": "opencode-go",
+  "model": "deepseek-v4-flash",
+  "probe": {
+    "id": "context-smoke-v1",
+    "version": "1.0.0"
+  },
+  "started_at": "2026-08-17T20:43:57Z",
+  "completed_at": "2026-08-17T20:43:59Z",
+  "status": "SUCCESS",
+  "probe_status": "SUCCESS",
+  "measurement_count": 6,
+  "errors": [],
+  "base_url": "https://opencode.ai/zen/go/v1",
+  "region": "gateway",
+  "artifacts": [
+    "data/runs/run-8691a880faca/artifacts/artifact-000-eaa94c51.json",
+    "data/runs/run-8691a880faca/artifacts/artifact-001-d7d30c39.json"
+  ]
+}

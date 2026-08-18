@@ -1,0 +1,12 @@
+{
+  "team_id": "security",
+  "version": "1.0.0",
+  "name": "Security / Privacy",
+  "outputs": [
+    "security_report"
+  ],
+  "gates": [
+    "no-critical-findings"
+  ],
+  "default_budget_usd": 0.2
+}

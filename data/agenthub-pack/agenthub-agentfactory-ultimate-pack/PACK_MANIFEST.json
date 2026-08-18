@@ -1,0 +1,402 @@
+{
+  "pack": "agenthub-agentfactory-ultimate-pack",
+  "version": "1.0.0",
+  "created_utc": "2026-08-17T23:06:26.672675+00:00",
+  "target_repo": "prx0r/cuntgoblin",
+  "reviewed_sha": "22094efe30dc1a38d8e66ab545f543dd6deb3d93",
+  "reference_tests": "PASS",
+  "files": {
+    "00_READ_ME_FIRST.md": {
+      "sha256": "0a248567586e520f3f32f750ee200029c58c774bcd4e6d1da4c284fa8f197438",
+      "bytes": 3395
+    },
+    "01_SYSTEM_ARCHITECTURE.md": {
+      "sha256": "7438b3c9d21a46a42a3752ab7e1c3f7132ac090d30f32c92cfa9457e2c2e5fe9",
+      "bytes": 3119
+    },
+    "02_INTEGRATION_WITH_VENTURELAB.md": {
+      "sha256": "3024fc3d8b1c9a86f9eb8e81d4617c620d8c5b6f949373c5fd433c0a343bbb06",
+      "bytes": 1775
+    },
+    "03_ONTOLOGY.md": {
+      "sha256": "bf2c1f02e4511823a5192a17787eb75722ce4099d764f60a4a5b63a9aab6202f",
+      "bytes": 1367
+    },
+    "04_ARCHITECTURE_TAXONOMY.md": {
+      "sha256": "63202fcd0b3eeeb39997899818604eccabe3b323e2d390dd4b3fce35276fce07",
+      "bytes": 1288
+    },
+    "05_AGENT_SYSTEM_MANIFEST.md": {
+      "sha256": "95940ad1818be9aa159d7c0e263bd15b2b590577bc922838b28d39d21cbe4faf",
+      "bytes": 1671
+    },
+    "06_BENCHMARK_PHILOSOPHY.md": {
+      "sha256": "dded693121b27e5b76d1a7fb5dd1914efc7a53c01170595cab501cb296529d4c",
+      "bytes": 981
+    },
+    "07_BENCHMARK_METRICS.md": {
+      "sha256": "e69385d4a8d51d1cfd1d9311853237e7d2592add49e0d41ae06631f67707f3c4",
+      "bytes": 1227
+    },
+    "08_BENCHMARK_SUITES.md": {
+      "sha256": "aa3f3a5873b0d53a711298e34d1f2d3ecb7f8ea999b64982d1a8936aa911bcd2",
+      "bytes": 1669
+    },
+    "09_ORCHESTRATION_SIMULATOR.md": {
+      "sha256": "a293e4c588e4b95332113e9ca561596310e7e582fee3c7506b66ef96135eb38c",
+      "bytes": 791
+    },
+    "10_FAILURE_INJECTION.md": {
+      "sha256": "2820e0f532558bde00ae6f434298e7bdcf59b7a0bd0203610dd5e89e47cafdd7",
+      "bytes": 1021
+    },
+    "11_AGENTBEATS_A2A_INTEGRATION.md": {
+      "sha256": "1fe167fd3f2bebf5815c6942368ef6e8e722a4f73e09c880483ba97d87dc9598",
+      "bytes": 1077
+    },
+    "12_REGISTRY_MODEL.md": {
+      "sha256": "e5c716439772f9756e635593d5769639d793db6b83b088f9f2da1b3a82f6ed1c",
+      "bytes": 565
+    },
+    "13_INSTALL_RUN_CONTROL_PLANE.md": {
+      "sha256": "64d63b56feff3e4bc371e1cd1a4cebbee9be0b94f5524436008b5802b3ed3062",
+      "bytes": 866
+    },
+    "14_AGENTHUB_API_MCP.md": {
+      "sha256": "328e1f268bd75a0282540223315633f2f087c8cedf3219907d9151bf12be7432",
+      "bytes": 902
+    },
+    "15_ARCHITECTURE_NEED.md": {
+      "sha256": "e99d0c7c487c7fe0f4d7c282f2699ec89cc069897112eec5bf254f91479322c7",
+      "bytes": 673
+    },
+    "16_ARCHITECTURE_RESOLVER.md": {
+      "sha256": "55604b611f3f13a587ff28fba38cfe34d9c3ef7efd1a4ef4767fd2d0136cdbf8",
+      "bytes": 922
+    },
+    "17_AGENT_FACTORY.md": {
+      "sha256": "9d2ba15d903f91c9d256a877efab834c02b1bf3d77500ed0526fa1298e0d1ac1",
+      "bytes": 757
+    },
+    "18_ARCHITECTURE_PROMOTION_GATES.md": {
+      "sha256": "bba12f6232bc991ddbec8f6acc36e6d8b1de676b87d9adbdfd05ea6292bd31d8",
+      "bytes": 1100
+    },
+    "19_SEARCH_SPACE.md": {
+      "sha256": "a2308a8de3b3db4a0ef79c5b32d2d79a133657f7bf8eeaece6dd0ebdfa1736f0",
+      "bytes": 979
+    },
+    "20_MUTATION_OPERATORS.md": {
+      "sha256": "557361aac5d8a8a795bf1adb0b5c3927e638c6efb478e85833007a9ba339d0b2",
+      "bytes": 1025
+    },
+    "21_SEARCH_ALGORITHMS.md": {
+      "sha256": "bafb6d97b176794be69a2c8bf58cfc28333a6678adbcf6d0cf7ee6fba22b9d05",
+      "bytes": 1212
+    },
+    "22_MAAS_SUPERNET_ADAPTATION.md": {
+      "sha256": "b07345abe60e4b12c1fa4649872c1a2226e8a3b30e947a1c629e008d12528353",
+      "bytes": 1022
+    },
+    "23_DGM_SHINKA_ARCHIVE.md": {
+      "sha256": "a6339acf7049dd28449de7e41599c8c4466c387d4e542910d56e40ca379e61d4",
+      "bytes": 970
+    },
+    "24_HYPERAGENT_ENDGAME.md": {
+      "sha256": "f88faf32a7ab12e4b3ac49ce6a010c6995311be9026faf9f5fca05c48365775d",
+      "bytes": 612
+    },
+    "25_HOTSWAP_MODEL_SLOTS.md": {
+      "sha256": "78dd39fc82977dd9f8e01c3a3ca2e0afbd9a57d5e291bd96539e9cc4b67018df",
+      "bytes": 781
+    },
+    "26_HERMES_COMPILER.md": {
+      "sha256": "f20cea2070d91a8ed7c8754057319740690151ccd675fbfc54f024ec1be2b962",
+      "bytes": 1076
+    },
+    "27_RUNTIME_ADAPTER_INTERFACE.md": {
+      "sha256": "2fb5c3cd6fba3ce4cf56d0761d9359f86fa5c740f26f57833e4e0f9ce0f75eda",
+      "bytes": 595
+    },
+    "28_LINEAGE_AND_FORKS.md": {
+      "sha256": "db4ab148cd614a713ccc3318304f955856e9089710d84362025d3f4f9716b23e",
+      "bytes": 574
+    },
+    "29_COMMUNITY_LEADERBOARDS.md": {
+      "sha256": "883c27b782ca2db334ba4606baf94f9e0863b4cfcfe5835c3ff9ce5aca88fab0",
+      "bytes": 601
+    },
+    "30_PATTERN_REGISTRY.md": {
+      "sha256": "2092f24ce83f6f0788a0e53179bc2efc9ff037ee7358434245490f935ef39c26",
+      "bytes": 519
+    },
+    "31_SANDBOX_SECURITY.md": {
+      "sha256": "e3d6bef9562231846766d869211280c85d1b0938c1b104b4257f5ece845a1a7d",
+      "bytes": 550
+    },
+    "32_REPRODUCIBILITY.md": {
+      "sha256": "7273153081c521069b2856a5b8a114cc2c88e960c2f107cac7dd17c1698e5ad3",
+      "bytes": 633
+    },
+    "33_FRONTIER_RESEARCH_MAP.md": {
+      "sha256": "1751996e8694d804b1f9a489d6e39f1124f68e11ca573defe9f6d86770630c04",
+      "bytes": 2112
+    },
+    "34_ARCHITECTURE_COMPARISON.md": {
+      "sha256": "eb906b17f4d2688946d7025a7e830a42e9f58ebab0cdd27a275af9373d56c13e",
+      "bytes": 725
+    },
+    "35_ARCHITECTURE_FACTORY_DECISION.md": {
+      "sha256": "bd2dbb6ea10da28a0136c8f9dd8419dda47251f444ae9cc2c207579163849c69",
+      "bytes": 914
+    },
+    "36_EXACT_VENTURELAB_PATCH_PLAN.md": {
+      "sha256": "b58673c63f06ca498e98851e8c1b9ec07212be40db4ae9dc0c85e28707892ae4",
+      "bytes": 1181
+    },
+    "37_CUNTGOBLIN_AS_FIRST_SYSTEM.md": {
+      "sha256": "7d48073e6235596a90c41a4d928d9233d2beb2d81f613ad6289635f86e9a06cc",
+      "bytes": 855
+    },
+    "38_TEST_MATRIX.md": {
+      "sha256": "d4dd4362b8c0f6d834ea47788cbd1b118e1cdf5993086cd1705d8f7d9636e1ae",
+      "bytes": 1684
+    },
+    "39_ACCEPTANCE_CRITERIA.md": {
+      "sha256": "1d16ff1d048a66ccdbf71b0096cc5e6b6580811be3b9575f55542402dd79cfb1",
+      "bytes": 1366
+    },
+    "40_IMPLEMENTATION_PLAN.md": {
+      "sha256": "0cf3a6ed958ed6c9d47a1dc458a0c1b62e4d1a33f147739eb2d7a9def483e756",
+      "bytes": 1582
+    },
+    "41_FINAL_CERTIFICATE.md": {
+      "sha256": "9cb9b0a8abed6014d7fcda49f6190b5cc1f7f2474a34dde63b7f4cc0d5d50da2",
+      "bytes": 1023
+    },
+    "42_FINAL_AGENT_PROMPT.md": {
+      "sha256": "5839542744b3c57b6da893b52f90440f5762c9372cc74b60a61531d95596b668",
+      "bytes": 2898
+    },
+    "43_VERIFIED_SOURCE_NOTES.md": {
+      "sha256": "e43426e5b6d151318d1677fbc4f175d18cfbcc7840a79b974388c937ff449a00",
+      "bytes": 2333
+    },
+    "REFERENCE_TEST_RESULTS.txt": {
+      "sha256": "3c529e07e1574dce5194b004ce33b161366552e30c53db2ae2a91071e33e110f",
+      "bytes": 1346
+    },
+    "config/agenthub/promotion.yaml": {
+      "sha256": "70377bdd50f24e924507d4647555c9c3b3335c13c2d0ef15e35dce88e3412632",
+      "bytes": 451
+    },
+    "config/agenthub/resolver.yaml": {
+      "sha256": "71d856a6250c9836c6fa0fcc392b4f01a4a9b3079366bebf423bd4c059059f7b",
+      "bytes": 276
+    },
+    "config/agenthub/search.yaml": {
+      "sha256": "592e8ae275253c84603f07c1a0f451ce33d3158293d50b437508d7daf4c9b3a2",
+      "bytes": 567
+    },
+    "config/agenthub/taxonomy.yaml": {
+      "sha256": "0eb7650f724c9f22de6356adbc092c2c214f7d36910904d0613fa2f79d5749c7",
+      "bytes": 405
+    },
+    "reference/.pytest_cache/.gitignore": {
+      "sha256": "3ed731b65d06150c138e2dadb0be0697550888a6b47eb8c45ecc9adba8b8e9bd",
+      "bytes": 37
+    },
+    "reference/.pytest_cache/CACHEDIR.TAG": {
+      "sha256": "37dc88ef9a0abeddbe81053a6dd8fdfb13afb613045ea1eb4a5c815a74a3bde4",
+      "bytes": 191
+    },
+    "reference/.pytest_cache/README.md": {
+      "sha256": "73fd6fccdd802c419a6b2d983d6c3173b7da97558ac4b589edec2dfe443db9ad",
+      "bytes": 302
+    },
+    "reference/.pytest_cache/v/cache/nodeids": {
+      "sha256": "f625344fd1e3a15d27ea50db0282b99e8ae530160ed771719983d55018b9c7d4",
+      "bytes": 739
+    },
+    "reference/README.md": {
+      "sha256": "2201a31bc29368236bd03e7a8df26e298b0c4704b6ebab36eebf5e700cd9b017",
+      "bytes": 384
+    },
+    "reference/__pycache__/test_agenthub.cpython-313-pytest-9.0.2.pyc": {
+      "sha256": "aa4c4bb97240c7dda2b4d5dd3550b17118bddfa75b6f33901aa35dc195a48079",
+      "bytes": 18360
+    },
+    "reference/agenthub/__init__.py": {
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "bytes": 1
+    },
+    "reference/agenthub/__pycache__/__init__.cpython-313.pyc": {
+      "sha256": "42d1b6e2040d30c0c50668cf7f62dc88a968479f39b11629a2342712dae75f8b",
+      "bytes": 173
+    },
+    "reference/agenthub/__pycache__/failures.cpython-313.pyc": {
+      "sha256": "9580d268ed541693354c9fbd9da9c77c2a9179fa4ea61a773c529297ade77e78",
+      "bytes": 2128
+    },
+    "reference/agenthub/__pycache__/hermes.cpython-313.pyc": {
+      "sha256": "7f8bcdaaaeb056f93b8c4c85644835b17224452ebb808e953e49b2f4f93c5c19",
+      "bytes": 1370
+    },
+    "reference/agenthub/__pycache__/identity.cpython-313.pyc": {
+      "sha256": "1d380cacc138e93644488e7ac40206da3712decc73cd0af9a1afa0c0ac89bb2b",
+      "bytes": 1183
+    },
+    "reference/agenthub/__pycache__/lineage.cpython-313.pyc": {
+      "sha256": "9f7871fc7d09c317271f3417b2430f8f3d60da03f5b2b298208b6b78728946f0",
+      "bytes": 2379
+    },
+    "reference/agenthub/__pycache__/metrics.cpython-313.pyc": {
+      "sha256": "3629c764888eb8f07ac5d6824a7459f0bea9a7fdd601caa841d401b3ba71b43e",
+      "bytes": 2926
+    },
+    "reference/agenthub/__pycache__/promotion.cpython-313.pyc": {
+      "sha256": "1b1268d5c59bd3f33c6874731b8b0d3887166d1f82c16d0895bd10fd8a0c9c4f",
+      "bytes": 1673
+    },
+    "reference/agenthub/__pycache__/resolver.cpython-313.pyc": {
+      "sha256": "dab25c3b6693fdc5e8669661a7169e74830abbf88fd11de9177110c58604cc51",
+      "bytes": 3896
+    },
+    "reference/agenthub/__pycache__/simulator.cpython-313.pyc": {
+      "sha256": "fe686d633659c2c918b69ebeb79424601267d755cfd6df7d7dc4696d188af4b2",
+      "bytes": 4557
+    },
+    "reference/agenthub/__pycache__/types.cpython-313.pyc": {
+      "sha256": "737a0b5fe1d25c9e63c39f11a074d575211fa65041437fd78fa97a443f2ec626",
+      "bytes": 4828
+    },
+    "reference/agenthub/a2a.py": {
+      "sha256": "3743ca725d50bcf75eae29a4e6ebea7947328d5e1d7aee3ba2de41afd9f6b509",
+      "bytes": 517
+    },
+    "reference/agenthub/failures.py": {
+      "sha256": "1b4ae0f6456acda3c0ad98a45b263d762e22f4819ddd52dc930400487135d0a6",
+      "bytes": 800
+    },
+    "reference/agenthub/hermes.py": {
+      "sha256": "76ebd995540e0b33433f82156ed1c40b68f5b9153954f7f284dc724c3cf90136",
+      "bytes": 797
+    },
+    "reference/agenthub/identity.py": {
+      "sha256": "756ce8dab2c6a1f4296acdea7c98a843ad2398cdf6efa5084ad124ae7d19cdcc",
+      "bytes": 741
+    },
+    "reference/agenthub/lineage.py": {
+      "sha256": "14da5aae722a1fc86acdd8539bbaea1ad36395029b5c644911c636a7943ff9e8",
+      "bytes": 1343
+    },
+    "reference/agenthub/metrics.py": {
+      "sha256": "5d591d15d46a3c345b2901812d6ceb35809b1b625bf87d1a7e99fb80c88b672e",
+      "bytes": 1332
+    },
+    "reference/agenthub/promotion.py": {
+      "sha256": "5a0f720b6271bf6b9f1e0daec81378bd17a188a4b093cad7f1b3a23fe97308b0",
+      "bytes": 923
+    },
+    "reference/agenthub/resolver.py": {
+      "sha256": "8b8f3c333ebd7a3057de7663e170fe408caf3e2f02b4b351e238a07ecafae143",
+      "bytes": 2835
+    },
+    "reference/agenthub/search.py": {
+      "sha256": "957b0ef2f3d88f6fc89e649c6db08c6939d74e9590567599798d6ee3e7c8a923",
+      "bytes": 1240
+    },
+    "reference/agenthub/simulator.py": {
+      "sha256": "742390cad0439d36f7a79eea5cf3ff175a28c59deb440a077e4713b2c1317e75",
+      "bytes": 2028
+    },
+    "reference/agenthub/types.py": {
+      "sha256": "c130b7715fd00801731bee2a13ccd73f6b45a94a4e32585ff5977a276df94640",
+      "bytes": 2247
+    },
+    "reference/test_agenthub.py": {
+      "sha256": "e1083b6fb72bbf40e8d79fa9d0c3d7c1342d51a448a118df49be57651bf268a5",
+      "bytes": 4485
+    },
+    "schemas/agenthub/agent-system.schema.json": {
+      "sha256": "62b50a5f3580d6d04bf1f46ba0bb2fbb99bb77d6cc354a3fb62c2a8574f92f2c",
+      "bytes": 2662
+    },
+    "schemas/agenthub/architecture-build.schema.json": {
+      "sha256": "cc3ac3547873e11c7d0954e8399741ad37644e12dfd04b6739299b93ee553820",
+      "bytes": 849
+    },
+    "schemas/agenthub/architecture-need.schema.json": {
+      "sha256": "1a8c338904e92c159783204f674c20135e07fd87bce52b01926224c09dec7f88",
+      "bytes": 700
+    },
+    "schemas/agenthub/assessment.schema.json": {
+      "sha256": "7049e3cea7814a2f5e747e3a26d1184acbee784b766b2310febf854f37f875d7",
+      "bytes": 819
+    },
+    "schemas/agenthub/benchmark-task.schema.json": {
+      "sha256": "8fceeac57dfb219a2ba0ff82851e95a4b42a413fd28d4fe312e6fe476e276ff2",
+      "bytes": 733
+    },
+    "schemas/agenthub/lineage.schema.json": {
+      "sha256": "a4e0c9fb1db10cad077c6c3dbafb0a3284518c42bf81cea0cc4588c8bdf26a6b",
+      "bytes": 642
+    },
+    "skills/agentfactory-promote/SKILL.md": {
+      "sha256": "daa777a1a092bf00732fe4fc354e4c08db46e78439232f167df78542db384a89",
+      "bytes": 195
+    },
+    "skills/agentfactory-search/SKILL.md": {
+      "sha256": "41b90113e373c298bf53986e11fd834744e2992ccf91b24c81dd293b92dfa727",
+      "bytes": 164
+    },
+    "skills/agentfactory-synthesize/SKILL.md": {
+      "sha256": "00394b625d5e270f85f88e2b85a8296d36fe3ecfb56f7218c88b4aa6514b5e93",
+      "bytes": 223
+    },
+    "skills/agenthub-benchmark/SKILL.md": {
+      "sha256": "872e59c91ee45780c1c6df9beff0a030787187de1540dc2cdd00ab5a704d0c5f",
+      "bytes": 246
+    },
+    "skills/agenthub-doctor/SKILL.md": {
+      "sha256": "c8471ad4653dfdb8956a14e59736238ad16d3160ef042d846bfa7ecbf9a85555",
+      "bytes": 278
+    },
+    "skills/agenthub-fork/SKILL.md": {
+      "sha256": "bf63c485f56c1b19325d418235afa3d1111b249b54d1173bfb5cb0643bf5425c",
+      "bytes": 153
+    },
+    "skills/agenthub-ingest/SKILL.md": {
+      "sha256": "b95e33c0ebe4b2af75f3b7817175325e70fe82a6e8c1b456616eb04763eaebca",
+      "bytes": 279
+    },
+    "skills/agenthub-pattern-extract/SKILL.md": {
+      "sha256": "85e6a4bd3e9fd356e86d3371c82ff197b63b6ea56f80162dcbf1ec578949221c",
+      "bytes": 176
+    },
+    "skills/agenthub-resolve/SKILL.md": {
+      "sha256": "1ac00002b2bb1a62df6cdf134657f63148715c9277457332ddcbfa5cbaea8b83",
+      "bytes": 200
+    },
+    "sql/agenthub.sql": {
+      "sha256": "94d67c78787d5a048cf21a3b287fb64b211c8481e4b47641926ae72a74501564",
+      "bytes": 2845
+    },
+    "tasks.json": {
+      "sha256": "6ad49f91eadda98abae33a322dfbd73d444611315c8786b8777e76ca03db606a",
+      "bytes": 2511
+    },
+    "templates/a2a-subject/README.md": {
+      "sha256": "6f1d9387e1e771cf19c29ff98a1dfee5703d83adeb0e00536801a1e5b72cf204",
+      "bytes": 353
+    },
+    "templates/agent-system/agent-system.yaml": {
+      "sha256": "18fbbe4867399dac719218c6f8921b3a61875605af0eaad6b753135257f5dfa7",
+      "bytes": 561
+    },
+    "templates/benchmark-suite/suite.yaml": {
+      "sha256": "4604ed510810b1fc1d74e036fc5b646cc3dd0ee8fe8e9c9a464f5fa28947a364",
+      "bytes": 334
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "team_id": "observability",
+  "version": "1.0.0",
+  "name": "Observability",
+  "outputs": [
+    "telemetry_report"
+  ],
+  "gates": [
+    "telemetry-present"
+  ],
+  "default_budget_usd": 0.1
+}

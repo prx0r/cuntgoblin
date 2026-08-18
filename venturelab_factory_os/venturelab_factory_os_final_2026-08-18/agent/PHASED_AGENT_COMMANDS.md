@@ -1,0 +1,27 @@
+# Bounded implementation work units
+
+- OS-001: canonical IDs/JSON/DB schema
+- OS-002: append-only ledger + Merkle epochs
+- OS-003: WorkGraph/dependencies/atomic claims/leases
+- OS-004: executor protocol + Hermes
+- OS-005: optional Beads mirror
+- OS-006: HotSwap composite route
+- OS-007: factory registry
+- OS-008: team registry and graph expansion
+- OS-009: cost ledger
+- OS-010: outcomes + lineage
+- OS-011: portfolio allocator
+- OS-012: historical replay
+- OS-013: schedules
+- OS-014: certificate/signature/anchor adapters
+- FAC-001: API fixture
+- FAC-002: App fixture
+- FAC-003: Connector fixture
+- FAC-004: Agent-service fixture
+- FAC-005: Directory fixture
+- FAC-006: Shop/Marketplace fixture
+- FAC-007: Developer-tool fixture
+- FAC-008: Browser-extension fixture
+- FAC-009: Benchmark fixture
+- FAC-010: Data-pipeline fixture
+- TEAM-001..014: global team formulas

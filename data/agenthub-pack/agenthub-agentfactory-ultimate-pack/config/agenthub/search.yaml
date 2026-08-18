@@ -1,0 +1,31 @@
+version: architecture-search-v1
+
+baseline_candidates:
+  - single-agent
+  - planner-worker
+  - worker-verifier
+  - planner-worker-verifier
+  - parallel-workers-aggregator
+
+candidate_batch_size: 6
+pareto_archive_max: 30
+
+mutation_ops:
+  - ADD_VERIFIER
+  - SPLIT_WORKER_SPECIALTY
+  - FAN_OUT
+  - ADD_PLANNER
+  - ADD_AGGREGATOR
+  - ADD_RETRY_EDGE
+  - ADD_PERSISTENT_TASK_GRAPH
+  - ADD_CONTEXT_COMPACTION
+  - ADD_DETERMINISTIC_GATE
+  - CHANGE_PARALLELISM
+  - ADD_CHECKPOINT
+
+immutable:
+  - provenance
+  - benchmark_gold
+  - evaluator
+  - sandbox_floor
+  - outcome_history

@@ -1,0 +1,22 @@
+{
+  "run_id": "run-0a633114b6d5",
+  "endpoint_id": "opencode-go:gpt-5.6-luna",
+  "provider": "opencode-go",
+  "model": "gpt-5.6-luna",
+  "probe": {
+    "id": "ttft-v1",
+    "version": "1.0.0"
+  },
+  "started_at": "2026-08-17T20:40:10Z",
+  "completed_at": "2026-08-17T20:40:11Z",
+  "status": "SUCCESS",
+  "probe_status": "SUCCESS",
+  "measurement_count": 5,
+  "errors": [],
+  "base_url": "https://opencode.ai/zen/go/v1",
+  "region": "gateway",
+  "artifacts": [
+    "data/runs/run-0a633114b6d5/artifacts/artifact-000-c160db78.json",
+    "data/runs/run-0a633114b6d5/artifacts/artifact-001-6102774c.json"
+  ]
+}

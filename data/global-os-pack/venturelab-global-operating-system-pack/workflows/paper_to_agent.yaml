@@ -1,0 +1,27 @@
+apiVersion: venturelab.ai/v1
+kind: Workflow
+metadata:
+  id: paper-to-agent
+  version: 1.0.0
+spec:
+  nodes:
+    - id: paper_triage
+      executor: hermes
+    - id: source_resolution
+      executor: python
+      depends_on: [paper_triage]
+    - id: reproduce
+      executor: agent_system
+      depends_on: [source_resolution]
+    - id: tool_extract
+      executor: agent_system
+      depends_on: [reproduce]
+    - id: mcp_build
+      executor: hermes
+      depends_on: [tool_extract]
+    - id: paper_benchmark
+      executor: python
+      depends_on: [mcp_build]
+    - id: agenthub_ingest
+      executor: python
+      depends_on: [paper_benchmark]

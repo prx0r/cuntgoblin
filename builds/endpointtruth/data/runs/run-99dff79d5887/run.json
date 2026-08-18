@@ -1,0 +1,22 @@
+{
+  "run_id": "run-99dff79d5887",
+  "endpoint_id": "opencode-go:mimo-v2.5",
+  "provider": "opencode-go",
+  "model": "mimo-v2.5",
+  "probe": {
+    "id": "throughput-v1",
+    "version": "1.0.0"
+  },
+  "started_at": "2026-08-17T20:40:21Z",
+  "completed_at": "2026-08-17T20:40:26Z",
+  "status": "SUCCESS",
+  "probe_status": "SUCCESS",
+  "measurement_count": 5,
+  "errors": [],
+  "base_url": "https://opencode.ai/zen/go/v1",
+  "region": "gateway",
+  "artifacts": [
+    "data/runs/run-99dff79d5887/artifacts/artifact-000-ac1146d5.json",
+    "data/runs/run-99dff79d5887/artifacts/artifact-001-c2fa045c.json"
+  ]
+}

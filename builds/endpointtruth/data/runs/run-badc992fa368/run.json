@@ -1,0 +1,22 @@
+{
+  "run_id": "run-badc992fa368",
+  "endpoint_id": "opencode-go:hy3",
+  "provider": "opencode-go",
+  "model": "hy3",
+  "probe": {
+    "id": "reachability-v1",
+    "version": "1.0.0"
+  },
+  "started_at": "2026-08-17T20:42:25Z",
+  "completed_at": "2026-08-17T20:42:28Z",
+  "status": "SUCCESS",
+  "probe_status": "SUCCESS",
+  "measurement_count": 5,
+  "errors": [],
+  "base_url": "https://opencode.ai/zen/go/v1",
+  "region": "gateway",
+  "artifacts": [
+    "data/runs/run-badc992fa368/artifacts/artifact-000-3e2bc139.json",
+    "data/runs/run-badc992fa368/artifacts/artifact-001-0dd933f5.json"
+  ]
+}

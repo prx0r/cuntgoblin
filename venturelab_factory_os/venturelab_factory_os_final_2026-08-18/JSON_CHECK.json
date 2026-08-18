@@ -1,0 +1,142 @@
+[
+  {
+    "path": "SYNTAX_CHECK.json",
+    "ok": true
+  },
+  {
+    "path": "TEST_RUN.json",
+    "ok": true
+  },
+  {
+    "path": "data/marketplaces.seed.json",
+    "ok": true
+  },
+  {
+    "path": "factory_manifests/agent-service.json",
+    "ok": true
+  },
+  {
+    "path": "factory_manifests/api.json",
+    "ok": true
+  },
+  {
+    "path": "factory_manifests/app.json",
+    "ok": true
+  },
+  {
+    "path": "factory_manifests/benchmark.json",
+    "ok": true
+  },
+  {
+    "path": "factory_manifests/browser-extension.json",
+    "ok": true
+  },
+  {
+    "path": "factory_manifests/connector.json",
+    "ok": true
+  },
+  {
+    "path": "factory_manifests/data-pipeline.json",
+    "ok": true
+  },
+  {
+    "path": "factory_manifests/developer-tool.json",
+    "ok": true
+  },
+  {
+    "path": "factory_manifests/directory.json",
+    "ok": true
+  },
+  {
+    "path": "factory_manifests/shop-marketplace.json",
+    "ok": true
+  },
+  {
+    "path": "integration/CURRENT_REPO_CHANGE_MAP.json",
+    "ok": true
+  },
+  {
+    "path": "schemas/artifact_attestation.schema.json",
+    "ok": true
+  },
+  {
+    "path": "schemas/factory_definition.schema.json",
+    "ok": true
+  },
+  {
+    "path": "schemas/opportunity.schema.json",
+    "ok": true
+  },
+  {
+    "path": "schemas/outcome.schema.json",
+    "ok": true
+  },
+  {
+    "path": "schemas/team_definition.schema.json",
+    "ok": true
+  },
+  {
+    "path": "schemas/work_graph.schema.json",
+    "ok": true
+  },
+  {
+    "path": "tasks/IMPLEMENTATION_TASKS.json",
+    "ok": true
+  },
+  {
+    "path": "team_manifests/architecture.json",
+    "ok": true
+  },
+  {
+    "path": "team_manifests/builder.json",
+    "ok": true
+  },
+  {
+    "path": "team_manifests/cost.json",
+    "ok": true
+  },
+  {
+    "path": "team_manifests/docs.json",
+    "ok": true
+  },
+  {
+    "path": "team_manifests/maintenance.json",
+    "ok": true
+  },
+  {
+    "path": "team_manifests/observability.json",
+    "ok": true
+  },
+  {
+    "path": "team_manifests/portfolio-review.json",
+    "ok": true
+  },
+  {
+    "path": "team_manifests/post-release.json",
+    "ok": true
+  },
+  {
+    "path": "team_manifests/provenance.json",
+    "ok": true
+  },
+  {
+    "path": "team_manifests/qa.json",
+    "ok": true
+  },
+  {
+    "path": "team_manifests/red-team.json",
+    "ok": true
+  },
+  {
+    "path": "team_manifests/release.json",
+    "ok": true
+  },
+  {
+    "path": "team_manifests/research.json",
+    "ok": true
+  },
+  {
+    "path": "team_manifests/security.json",
+    "ok": true
+  }
+]

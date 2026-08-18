@@ -1,0 +1,21 @@
+{
+  "run_id": "run-e8ee08414b36",
+  "endpoint_id": "openrouter:openai/gpt-5.6-luna",
+  "provider": "openrouter",
+  "model": "openai/gpt-5.6-luna",
+  "probe": {
+    "id": "throughput-v1",
+    "version": "1.0.0"
+  },
+  "started_at": "2026-08-17T20:42:41Z",
+  "completed_at": "2026-08-17T20:42:41Z",
+  "status": "FAILURE",
+  "probe_status": "FAILURE",
+  "measurement_count": 1,
+  "errors": [
+    "no credentials"
+  ],
+  "base_url": "https://openrouter.ai/api/v1",
+  "region": "any",
+  "artifacts": []
+}

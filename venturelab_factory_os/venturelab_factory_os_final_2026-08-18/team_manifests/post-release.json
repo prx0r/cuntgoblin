@@ -1,0 +1,12 @@
+{
+  "team_id": "post-release",
+  "version": "1.0.0",
+  "name": "Post-release Audit",
+  "outputs": [
+    "smoke_report"
+  ],
+  "gates": [
+    "external-smoke-pass"
+  ],
+  "default_budget_usd": 0.1
+}

@@ -1,0 +1,22 @@
+{
+  "run_id": "run-f6d21a205219",
+  "endpoint_id": "opencode-go:glm-5.2",
+  "provider": "opencode-go",
+  "model": "glm-5.2",
+  "probe": {
+    "id": "ttft-v1",
+    "version": "1.0.0"
+  },
+  "started_at": "2026-08-17T20:42:11Z",
+  "completed_at": "2026-08-17T20:42:12Z",
+  "status": "SUCCESS",
+  "probe_status": "SUCCESS",
+  "measurement_count": 5,
+  "errors": [],
+  "base_url": "https://opencode.ai/zen/go/v1",
+  "region": "gateway",
+  "artifacts": [
+    "data/runs/run-f6d21a205219/artifacts/artifact-000-36dacf1f.json",
+    "data/runs/run-f6d21a205219/artifacts/artifact-001-dbf226c0.json"
+  ]
+}

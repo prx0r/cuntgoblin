@@ -1,0 +1,27 @@
+apiVersion: venturelab.ai/v1
+kind: Workflow
+metadata:
+  id: agent-architecture-search
+  version: 1.0.0
+spec:
+  nodes:
+    - id: architecture_need
+      executor: python
+    - id: resolve_existing
+      executor: python
+      depends_on: [architecture_need]
+    - id: synthesize
+      executor: hermes
+      depends_on: [resolve_existing]
+    - id: simulate
+      executor: python
+      depends_on: [synthesize]
+    - id: benchmark
+      executor: agent_system
+      depends_on: [simulate]
+    - id: pareto_select
+      executor: python
+      depends_on: [benchmark]
+    - id: promotion_check
+      executor: python
+      depends_on: [pareto_select]

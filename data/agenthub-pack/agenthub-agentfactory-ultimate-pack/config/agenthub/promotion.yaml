@@ -1,0 +1,18 @@
+version: architecture-promotion-v1
+
+verified_system:
+  min_distinct_tasks: 3
+  min_task_categories: 2
+  allow_narrow_domain_exception: true
+  min_repetitions_per_key_task: 2
+  require_ablation: true
+  require_clean_install: true
+  require_reproducible_build: true
+  require_lineage: true
+
+zero_tolerance:
+  - benchmark_gold_access
+  - evaluator_mutation
+  - sandbox_escape
+  - unsupported_success_claim
+  - hidden_model_change_in_controlled_benchmark

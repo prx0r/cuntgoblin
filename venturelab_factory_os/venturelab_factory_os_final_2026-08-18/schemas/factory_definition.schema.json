@@ -1,0 +1,86 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "factory_id",
+    "version",
+    "kind",
+    "name",
+    "phases",
+    "mandatory_teams",
+    "fixture"
+  ],
+  "properties": {
+    "factory_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9._-]+$"
+    },
+    "version": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "input_schema": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "output_schema": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "phases": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "mandatory_teams": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "conditional_teams": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      }
+    },
+    "default_budget_usd": {
+      "type": "number",
+      "minimum": 0
+    },
+    "fixture": {
+      "type": "object",
+      "required": [
+        "fixture_id",
+        "max_cost_usd"
+      ],
+      "properties": {
+        "fixture_id": {
+          "type": "string"
+        },
+        "max_cost_usd": {
+          "type": "number",
+          "minimum": 0
+        }
+      }
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,28 @@
+# AGENTS.md — VentureLab Factory OS doctrine
+
+## THE ONE RULE
+Nothing is real because an agent said it, a file exists, or a task moved to done.
+A claim is accepted only when independently defined evidence and reproducible logged gates support it.
+
+## Authority
+- Factory OS DB is canonical lifecycle truth.
+- Hermes Kanban is the default worker/operations adapter.
+- Beads is an optional dependency/coding mirror.
+- Workers cannot self-certify.
+- Markdown is documentation, not evidence.
+
+## Execution
+Prefer deterministic code when sufficient.
+Otherwise Factory OS selects an approved executor; Hermes is default.
+HotSwap chooses model/provider routes under quality, cost, quota and policy constraints.
+No model is globally hard-coded.
+
+## Evidence
+Every observation, artifact, decision, gate, release and outcome needs:
+stable ID, timestamp, content hash and provenance where applicable.
+
+## Safety
+No secrets in prompts/logs/artifacts.
+No unapproved external side effects.
+Publication/deployment requires release gates.
+No platform/account/policy circumvention.

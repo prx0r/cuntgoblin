@@ -1,0 +1,22 @@
+{
+  "run_id": "run-4954b19df4dc",
+  "endpoint_id": "openrouter:catalog",
+  "provider": "openrouter",
+  "model": "catalog",
+  "probe": {
+    "id": "discovery-v1",
+    "version": "1.0.0"
+  },
+  "started_at": "2026-08-17T20:38:03Z",
+  "completed_at": "2026-08-17T20:38:14Z",
+  "status": "SUCCESS",
+  "probe_status": "SUCCESS",
+  "measurement_count": 2486,
+  "errors": [],
+  "base_url": "https://openrouter.ai/api/v1",
+  "region": "",
+  "artifacts": [
+    "data/runs/run-4954b19df4dc/artifacts/artifact-000-120cde04.json",
+    "data/runs/run-4954b19df4dc/artifacts/artifact-001-453e4e6b.json"
+  ]
+}

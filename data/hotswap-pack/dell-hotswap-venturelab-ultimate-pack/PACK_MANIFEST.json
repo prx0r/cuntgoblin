@@ -1,0 +1,308 @@
+{
+  "pack": "dell-hotswap-venturelab-ultimate-pack",
+  "version": "1.0.0",
+  "created_utc": "2026-08-17T22:49:50.924511+00:00",
+  "reviewed": {
+    "dell": "ce10713f3a25999bea6120c5a7fa27754710713c",
+    "venturelab": "b94dfc0d7109464b3021db21d573da08e98da783"
+  },
+  "reference_tests": "PASS",
+  "files": {
+    "00_READ_ME_FIRST.md": {
+      "sha256": "8ab83367edc4fe1b36b7cc2fb768d6acf9c7b1648b3c8e670b012c19e609490d",
+      "bytes": 2855
+    },
+    "01_DELL_FINAL_PEER_REVIEW.md": {
+      "sha256": "1de58986e8f28d4d88d6c7b7078234313f97a6f2ea241003ad61ab1c7e65a7a4",
+      "bytes": 4228
+    },
+    "02_FINAL_STACK_ARCHITECTURE.md": {
+      "sha256": "94a377ca49af5b578ae5d62c1c53ec963b098bb525497aef6bdca748ba6de98a",
+      "bytes": 2549
+    },
+    "03_FRONTIER_ROUTING_RESEARCH.md": {
+      "sha256": "0804b7566434b92b6900fd9289aba4b10f289f86cdedbf9ebc5e5437d6881c2d",
+      "bytes": 3015
+    },
+    "04_LITELLM_HERMES_REUSE.md": {
+      "sha256": "d1e58929632cc84fb862f211b8f7a4e768e695b485c5179ec67e2ca5bef0187b",
+      "bytes": 1459
+    },
+    "05_TASKSPEC_CONTRACT.md": {
+      "sha256": "217cb4d43c83eb9029379d7f83c7148343cba4f45cd8b2185b18e507f4a28cfc",
+      "bytes": 1147
+    },
+    "06_FACTORY_TASK_TAXONOMY.md": {
+      "sha256": "fd92ca5d10c99bad16999d91c3ec3edfc47d703572c3888ea848e394cd7f5d75",
+      "bytes": 1608
+    },
+    "07_FACTORY_FILE_CHANGES.md": {
+      "sha256": "a52d1eb652f5f92edf1289cd8d56649b37e712304e2e59e135801aeeb31fd708",
+      "bytes": 1546
+    },
+    "08_HOTSWAP_ALGORITHM.md": {
+      "sha256": "176d4fdb39e84cd925d1f3c3c6e032394a1d83f6bd2788fc3c38490eed7d5be4",
+      "bytes": 3285
+    },
+    "09_EXPECTED_COST_PER_SUCCESS.md": {
+      "sha256": "ee2ecdb34df0ccb0e6620dcd67a6d78eb1b4f05d5ce9b358aaccf88b2da39f38",
+      "bytes": 1208
+    },
+    "10_FREE_QUOTA_ALLOCATOR.md": {
+      "sha256": "3c74659589a180aec7f431f1fda3210c4a96a4413489387f6066d62df880b86f",
+      "bytes": 1899
+    },
+    "11_QUOTA_LEDGER.md": {
+      "sha256": "7f400e3c677f6d68632ae69a328a66cb11d81004bf98d45f06fbe12044d9eef4",
+      "bytes": 840
+    },
+    "12_FAILURE_FAILOVER.md": {
+      "sha256": "d68db58ff7a4f5fe25418bf35b83b5c1ef0ee43f43278dd371eeb46bb50ef014",
+      "bytes": 1680
+    },
+    "13_ONLINE_LEARNING.md": {
+      "sha256": "0c1e407b6f6e0e9a8670e17eb2d1f0e6894351632a35377c94860020f4c908b0",
+      "bytes": 1473
+    },
+    "14_CONFORMAL_VERIFIED_CASCADE.md": {
+      "sha256": "bf4c1eed12754a3e3955c04a646c51ed85b0045a6681e6b2846e0676c29833b6",
+      "bytes": 1166
+    },
+    "15_MODEL_POOL_CURATION.md": {
+      "sha256": "320f29a7705e3b131ccc7eecbb58374bd6497ecc001a57df2555a741f6868256",
+      "bytes": 838
+    },
+    "16_DELL_INTEGRATION.md": {
+      "sha256": "67ab04f9b1df24a7f3b8396191c5a588d8d87ad36d1b037b503e6094b2de41b1",
+      "bytes": 1233
+    },
+    "17_LITELLM_INTEGRATION.md": {
+      "sha256": "b20e8a58b50ec57ebd60ca737b87d9baea02cc6fa4b1d3f12a3d6ac009bfa00a",
+      "bytes": 1555
+    },
+    "18_HERMES_INTEGRATION.md": {
+      "sha256": "5c8d934c28b82a446c485301dcc1574405bc2ea20cf6c3adf967f5653e003377",
+      "bytes": 1371
+    },
+    "19_OPENROUTER_PROVIDER_ROUTING.md": {
+      "sha256": "83e89a372d4398f78f0fe6ba4b1471bc57dfd3841fe2e6ffc5d2a6b25dc7b852",
+      "bytes": 822
+    },
+    "20_ACCOUNT_OPPORTUNITY_QUEUE.md": {
+      "sha256": "c0d603387b6a54234a0a1e9c698459ae6e8670a0228d2d3d35a7d07b14eb2d95",
+      "bytes": 1393
+    },
+    "21_OUTCOME_TELEMETRY.md": {
+      "sha256": "418947df1385739b9a9f3f4d92f622fa4a894db2d71bfd39c34152335c89b7b5",
+      "bytes": 815
+    },
+    "22_SHADOW_MODE_AND_TRAINING.md": {
+      "sha256": "9aff07c733879856c49b925cc64767c41085fe7a856e018d7df85e73e7c8f4cd",
+      "bytes": 1090
+    },
+    "23_SECURITY_SECRETS.md": {
+      "sha256": "8057a6b186957147f9eef208a4a94dd05c823b30dbbf5e8b58db0cb71ed9f57f",
+      "bytes": 629
+    },
+    "24_HOTSWAP_API_MCP.md": {
+      "sha256": "86569d6e8aeeef487f2978deacadb90c59c53640641bb577f05c0220b2e42978",
+      "bytes": 843
+    },
+    "25_TEST_MATRIX.md": {
+      "sha256": "64614e11766066e0e4d4418827f54f58a028f75f593fa1f84f2f57af9a3afadd",
+      "bytes": 1875
+    },
+    "26_ROUTER_BENCHMARK.md": {
+      "sha256": "3c1b71ba2837433bc31c5dbf3b2e65f7cdfd2d2d97b9d792684b0746339799ca",
+      "bytes": 834
+    },
+    "27_OPERATIONS.md": {
+      "sha256": "1230d2cdb165ac90266608ffcc1590f5df892f3676f4fba972632f32a7347930",
+      "bytes": 865
+    },
+    "28_IMPLEMENTATION_PLAN.md": {
+      "sha256": "2c6c926fcc3bdeb02e5f5c48c6dce49996daffa72ceac94a93e6ff6bc86adb70",
+      "bytes": 2028
+    },
+    "29_FINAL_CERTIFICATE.md": {
+      "sha256": "4f89bb57748a56b5919a71c8f236ab65c4559d44255f267dab52399f3d444edb",
+      "bytes": 1081
+    },
+    "30_VERIFIED_SOURCE_NOTES.md": {
+      "sha256": "bcb18a5425321c924d074a764c9d3e46f2c3e97cf3ad5ab8561d4fd880016f08",
+      "bytes": 2314
+    },
+    "31_FINAL_AGENT_PROMPT.md": {
+      "sha256": "2d502ba3a49016c9c77617576c1ae1d716aed130caff9ed16033c0b9b8735dbe",
+      "bytes": 2539
+    },
+    "32_ACCOUNT_SETUP_WORKFLOW.md": {
+      "sha256": "7f52e8f0928b6e2ae82c79b1783f7844c1fbf534f4e344121255d755c27bbe15",
+      "bytes": 1030
+    },
+    "33_FREE_FIRST_POLICY_EXAMPLES.md": {
+      "sha256": "3878ee0b939df807be8df2979b741ee23c0028321aa6452db4e790831b2e84be",
+      "bytes": 919
+    },
+    "34_AUXILIARY_MODEL_POLICY.md": {
+      "sha256": "40485a3351d5504b78ff125c1c4c14e2d7348ca225502533a35177a41a13514b",
+      "bytes": 718
+    },
+    "35_CANDIDATE_POOL_REFRESH.md": {
+      "sha256": "a8438c9a1a9a7b493ebc62b60bf0e02ae23e822b57b6a045f04dcc0a8bc054cd",
+      "bytes": 678
+    },
+    "36_LEARNING_DATASET_FORMAT.md": {
+      "sha256": "9f8d148553458d46ad973b6e3f40f8f311f98dafa21474e2ab0648848ff6a34f",
+      "bytes": 841
+    },
+    "37_FUTURE_ROUTER_EVOLUTION.md": {
+      "sha256": "0563dfebb44864ca4dd1c894c086200f05bc95e851d6f81e1d1b7d0db4b0348b",
+      "bytes": 667
+    },
+    "REFERENCE_TEST_RESULTS.txt": {
+      "sha256": "e4f5c2fa68dae0758329560168506f05eaac99ecf719b6a3675ce4d5667a5b1c",
+      "bytes": 1328
+    },
+    "config/factory_model_policies.yaml": {
+      "sha256": "2425999ec90b44e8ac25a32d5ecd0f835eb6aa1a43a8b7211637c0a2a443d8e4",
+      "bytes": 1597
+    },
+    "config/hotswap_policy.yaml": {
+      "sha256": "795b9f2602bc7b16d34fd1dd3af976f67bfdcd474d6de31b0d4a5140775d6ab4",
+      "bytes": 679
+    },
+    "reference/.pytest_cache/.gitignore": {
+      "sha256": "3ed731b65d06150c138e2dadb0be0697550888a6b47eb8c45ecc9adba8b8e9bd",
+      "bytes": 37
+    },
+    "reference/.pytest_cache/CACHEDIR.TAG": {
+      "sha256": "37dc88ef9a0abeddbe81053a6dd8fdfb13afb613045ea1eb4a5c815a74a3bde4",
+      "bytes": 191
+    },
+    "reference/.pytest_cache/README.md": {
+      "sha256": "73fd6fccdd802c419a6b2d983d6c3173b7da97558ac4b589edec2dfe443db9ad",
+      "bytes": 302
+    },
+    "reference/.pytest_cache/v/cache/nodeids": {
+      "sha256": "1b2fbd0803fe6a2b458ec191c1ff9f5fad3430cd23626d379b692f23c66608f9",
+      "bytes": 715
+    },
+    "reference/README.md": {
+      "sha256": "120056d9b83e4c63d8a4a4a7bf2464c1f46b462a1f1177eba7ca72e61cf73be8",
+      "bytes": 290
+    },
+    "reference/__pycache__/test_hotswap.cpython-313-pytest-9.0.2.pyc": {
+      "sha256": "6f2b0b73b81d8c28b9dfd3a6ddb0daf88ca7780418043a9ee2ff2bfc27f859db",
+      "bytes": 20319
+    },
+    "reference/hotswap/__init__.py": {
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "bytes": 1
+    },
+    "reference/hotswap/__pycache__/__init__.cpython-313.pyc": {
+      "sha256": "fec1cee0ecfee673f9d5b22835c95e08a6b187b933c71b2681e5e31cbb60f120",
+      "bytes": 174
+    },
+    "reference/hotswap/__pycache__/accounts.cpython-313.pyc": {
+      "sha256": "a646fd70d8651b3994d720c106e2f3075048abda87f9d8fe7141876f24ee75e0",
+      "bytes": 1548
+    },
+    "reference/hotswap/__pycache__/bandit.cpython-313.pyc": {
+      "sha256": "605566148a53bbd3e3cee47733d13da69d860a05b50054d26939f0e6ff20b717",
+      "bytes": 3078
+    },
+    "reference/hotswap/__pycache__/failure.cpython-313.pyc": {
+      "sha256": "da55b5b26a7d91819c278020f75e40455249d77580cdb7161af81f610871b6a8",
+      "bytes": 3300
+    },
+    "reference/hotswap/__pycache__/hermes_plan.cpython-313.pyc": {
+      "sha256": "3502f57d1da16106964eddde85f293354080d24fd341d2dc036354ac71d297e8",
+      "bytes": 1257
+    },
+    "reference/hotswap/__pycache__/policy.cpython-313.pyc": {
+      "sha256": "7ec9d4b911d5c64be23e141c6e61e898454e3e8219a2b905e3c57476d310f906",
+      "bytes": 2640
+    },
+    "reference/hotswap/__pycache__/quota.cpython-313.pyc": {
+      "sha256": "54f103c3c382446219d5ba54ab3b726d2dad2aab7e3f9510596f3989019615b3",
+      "bytes": 4606
+    },
+    "reference/hotswap/__pycache__/router.cpython-313.pyc": {
+      "sha256": "b31bafd9cde6f1b2662ae9eabb3e8fd04822413982f2d8b69345d9c004a50505",
+      "bytes": 8649
+    },
+    "reference/hotswap/__pycache__/stats.cpython-313.pyc": {
+      "sha256": "7a5ff3bdc18bfa91b3fc3a2bc7bc1a750e83461978a6a31db705911b6009dddd",
+      "bytes": 1483
+    },
+    "reference/hotswap/__pycache__/types.cpython-313.pyc": {
+      "sha256": "1cb78970be6c7596509b5659b4283b2933c0390b8f3a9eb8f7521671c7b4cd36",
+      "bytes": 5261
+    },
+    "reference/hotswap/accounts.py": {
+      "sha256": "a9fd7a4dc27446ce1f4f68561112d79d40a90ff1ced36cfa2f0ba04b16c61123",
+      "bytes": 662
+    },
+    "reference/hotswap/bandit.py": {
+      "sha256": "ab93c8e2a866c424ac341f5cd695a660534d6ea5c32b4526fdfa0fb01b360a51",
+      "bytes": 1625
+    },
+    "reference/hotswap/failure.py": {
+      "sha256": "3df9e05c8058f229e0509baeb99762b472a63bf1f19d0c16b62bc0e86d31b600",
+      "bytes": 1821
+    },
+    "reference/hotswap/hermes_plan.py": {
+      "sha256": "93b164d1313febad2d314d57849c3e69f8ee4451239f761c65fa4cfc25dcf82f",
+      "bytes": 718
+    },
+    "reference/hotswap/litellm_plan.py": {
+      "sha256": "28fd7b75a24902c72fc0c4c76c553e83009b21b4698ea70b93dbc78ca43c5acd",
+      "bytes": 590
+    },
+    "reference/hotswap/policy.py": {
+      "sha256": "703fd4f639ca07649e7e1705b34191e53b79602f866524b818718a71eda2b2e3",
+      "bytes": 1615
+    },
+    "reference/hotswap/quota.py": {
+      "sha256": "0f96042f8cef172a7bf2fb6dad62a9cd1b85f679d80af8a305357beb0affe632",
+      "bytes": 2479
+    },
+    "reference/hotswap/router.py": {
+      "sha256": "2ff496a1ccfb274b371c9b46e0b761d7ed74cce6e495024d289d4c322ea9c25e",
+      "bytes": 5983
+    },
+    "reference/hotswap/stats.py": {
+      "sha256": "e7d737a9b6da8bf84ac0ef748ff94f3a339c9ce5c58f2ceebd919efce318f4f0",
+      "bytes": 794
+    },
+    "reference/hotswap/types.py": {
+      "sha256": "04e8864afb564c767c5c8b6499ab46f54443e35cd191c29531b10fce4c63d3f3",
+      "bytes": 2910
+    },
+    "reference/test_hotswap.py": {
+      "sha256": "6bd6c656bdd1c727b2b72a191c48636dde01092b5dca1810939b68764af8bed8",
+      "bytes": 4439
+    },
+    "schemas/execution-plan.schema.json": {
+      "sha256": "302da464ede74646e1f4dc528b9cf6267ceaf5ff1af4af4b73b87407dccfb0f7",
+      "bytes": 746
+    },
+    "schemas/router-outcome.schema.json": {
+      "sha256": "3087b856ee4f7b61ed3e3898df80d2968b12e6911d713e343c127dd89a97ed62",
+      "bytes": 619
+    },
+    "schemas/task-spec.schema.json": {
+      "sha256": "54aaa093ce46836e208f9347f325deb4fe17201410a5dce69424f5f5ba884fc1",
+      "bytes": 2010
+    },
+    "sql/hotswap.sql": {
+      "sha256": "ab9321916a1d4428a63545b310e8142735ce9acedb80a9668e8261e2508a3265",
+      "bytes": 2885
+    },
+    "tasks.json": {
+      "sha256": "89522ac111e7e6ef0a7035e2bc143baf156f0f3870945b717fdb33db91a6515f",
+      "bytes": 2397
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "run_id": "run-63a679a17b04",
+  "endpoint_id": "opencode-go:gpt-5.6-luna",
+  "provider": "opencode-go",
+  "model": "gpt-5.6-luna",
+  "probe": {
+    "id": "tools-v1",
+    "version": "1.0.0"
+  },
+  "started_at": "2026-08-17T20:40:13Z",
+  "completed_at": "2026-08-17T20:40:15Z",
+  "status": "SUCCESS",
+  "probe_status": "SUCCESS",
+  "measurement_count": 5,
+  "errors": [],
+  "base_url": "https://opencode.ai/zen/go/v1",
+  "region": "gateway",
+  "artifacts": [
+    "data/runs/run-63a679a17b04/artifacts/artifact-000-7dda30cb.json",
+    "data/runs/run-63a679a17b04/artifacts/artifact-001-d456f551.json"
+  ]
+}

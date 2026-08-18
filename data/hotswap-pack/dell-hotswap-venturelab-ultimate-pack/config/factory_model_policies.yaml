@@ -1,0 +1,86 @@
+version: factory-model-policies-v1
+
+defaults:
+  free_policy: prefer
+  paid_allowed: true
+  exploration_allowed: true
+
+task_kinds:
+  source_extract:
+    quality_floor: 0.55
+    free_policy: prefer
+    paid_allowed: false
+    criticality: routine
+
+  source_analysis:
+    quality_floor: 0.62
+    free_policy: prefer
+    paid_allowed: false
+
+  research_synthesis:
+    quality_floor: 0.70
+    free_policy: prefer
+
+  opportunity_adjudication:
+    quality_floor: 0.76
+    criticality: important
+
+  market_audit:
+    quality_floor: 0.80
+    criticality: important
+    independent_verifier: true
+
+  solution_generation:
+    quality_floor: 0.65
+    free_policy: prefer
+    exploration_allowed: true
+
+  architecture_design:
+    quality_floor: 0.78
+
+  specification:
+    quality_floor: 0.80
+
+  coding_scaffold:
+    quality_floor: 0.65
+    free_policy: prefer
+
+  coding_patch:
+    quality_floor: 0.76
+    evaluator: pytest
+
+  coding_feature:
+    quality_floor: 0.80
+    evaluator: certification
+
+  coding_refactor:
+    quality_floor: 0.78
+    evaluator: pytest
+
+  debugging:
+    quality_floor: 0.78
+    evaluator: pytest
+
+  test_generation:
+    quality_floor: 0.73
+
+  code_review:
+    quality_floor: 0.82
+    independent_verifier: true
+
+  certification:
+    quality_floor: 0.88
+    criticality: release_gate
+    exploration_allowed: false
+    independent_verifier: true
+
+  security_review:
+    quality_floor: 0.90
+    criticality: release_gate
+    exploration_allowed: false
+    independent_verifier: true
+
+  release_finish:
+    quality_floor: 0.90
+    criticality: release_gate
+    exploration_allowed: false

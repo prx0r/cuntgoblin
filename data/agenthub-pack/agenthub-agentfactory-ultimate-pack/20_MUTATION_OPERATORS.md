@@ -1,0 +1,57 @@
+# Architecture Mutation Operators
+
+All mutations are semantic and recorded.
+
+## Structural
+
+- ADD_VERIFIER
+- REMOVE_REDUNDANT_ROLE
+- SPLIT_WORKER_SPECIALTY
+- MERGE_ROLES
+- FAN_OUT
+- FAN_IN
+- ADD_PLANNER
+- ADD_AGGREGATOR
+- ADD_CONDITIONAL_EDGE
+- ADD_RETRY_EDGE
+- ADD_ESCALATION_EDGE
+
+## State/context
+
+- ADD_PERSISTENT_TASK_GRAPH
+- ADD_SHARED_BLACKBOARD
+- ADD_ROLE_MEMORY
+- ADD_CONTEXT_COMPACTION
+- SWITCH_HANDOFF_TO_ARTIFACT
+- INCREASE_CRITICAL_CONTEXT_RETENTION
+
+## Verification
+
+- ADD_DETERMINISTIC_GATE
+- ADD_INDEPENDENT_REVIEW
+- ADD_SECOND_VERIFIER
+- ADD_CLEAN_COPY_VALIDATION
+
+## Runtime/economics
+
+- ADD_DIFFICULTY_ROUTING
+- CHANGE_PARALLELISM
+- CHANGE_MODEL_SLOT_POLICY
+- ADD_HOTSWAP_FALLBACK
+- ADD_QUOTA_AWARE_SCHEDULING
+
+## Recovery
+
+- ADD_CHECKPOINT
+- ADD_WORKER_REPLACEMENT
+- ADD_TOOL_FAILOVER
+- ADD_TRUSTED_STATE_REPAIR
+
+## Mutation safety
+
+Do not allow mutation of:
+- provenance contracts
+- benchmark gold
+- permission sandbox floor
+- outcome history
+- certifier pass thresholds during the same evaluation epoch

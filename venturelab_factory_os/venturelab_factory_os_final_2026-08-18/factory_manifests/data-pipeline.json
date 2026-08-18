@@ -1,0 +1,36 @@
+{
+  "factory_id": "data-pipeline",
+  "version": "1.0.0",
+  "kind": "data_pipeline",
+  "name": "Data Pipeline / Automation",
+  "description": "Canonical VentureLab Data Pipeline / Automation factory.",
+  "input_schema": null,
+  "output_schema": null,
+  "phases": [
+    "discover",
+    "research",
+    "plan",
+    "build",
+    "verify",
+    "publish",
+    "observe"
+  ],
+  "mandatory_teams": [
+    "qa",
+    "security",
+    "cost",
+    "provenance"
+  ],
+  "conditional_teams": {
+    "public_release": [
+      "docs",
+      "release",
+      "post-release"
+    ]
+  },
+  "default_budget_usd": 0.75,
+  "fixture": {
+    "fixture_id": "data-pipeline-smoke-v1",
+    "max_cost_usd": 0.1
+  }
+}
